@@ -1,0 +1,244 @@
+
+
+                      Spielanleitung zu Ballerburg
+
+1. Sinn des Spieles 
+Bei  dem  Spiel  Ballerburg  geht  es  darum,  daß  sich  zwei  Burgherren 
+mit dem Ziel gegenüber stehen, durch gezielte Kanonenschüsse den Gegner zu 
+besiegen.  Dabei  haben  die  Spieler  die  Möglichkeit,  durch  Kauf  von 
+Fördertürmen Geld zu verdienen, vom Volk Steuern zu fordern und mit diesen 
+Einnahmen zum Beispiel neue Geschütze und Munition zu kaufen.
+
+2. Verschiedene Spielmodi
+Ihnen  stehen verschiedene Spielmodi,  die Sie unter dem Menüpunkt 'Modus' 
+wählen   können,   zur  Verfügung:   Normalerweise  kämpfen  zwei  Spieler 
+gegeneinander.  Weiterhin  besteht die Möglichkeit,  daß ein Spieler gegen 
+einen  Computer spielt.  Dabei kann der Computer wahlweise auf der  linken 
+oder  rechten  Seite spielen.  Schließlich können Sie auch  zwei  Computer 
+gegeneinander  spielen  lassen.  Da  Sie den Modus während  des  laufenden 
+Spieles  ändern  können,  besteht  zum Beispiel die Möglichkeit,  daß  Sie 
+zwischendurch auch einmal den Computer für sich schießen lassen,  oder daß 
+Sie in einem aussichtslosen Kampf gegen den Computer durch vorübergehendes 
+Umschalten   auf  'Spieler  gegen  Spieler'  Ihren  Gegner  durch   eigene 
+Entscheidungen schwächen.
+
+3. Spielernamen und Computerspieler
+Mit 'Namen eingeben' bestimmen Sie die Namen der menschlichen Spieler. Die 
+Namen der Computer legen Sie beim 'Computer auswählen' fest.  ( Beides ist 
+auch während des Spieles möglich. ) Computer 1 und Spieler 1 spielen immer 
+auf der linken  Computer 2 und Spieler 2 auf der rechten Seite.  Die Namen 
+der Computer stehen gleichzeitig für eine bestimmte Strategie.  Die Zahlen 
+1-4 stellen die Treffsicherheit dar. Dabei bedeutet 4, daß praktisch jeder 
+Schuß  ein Treffer ist.  Die Strategien unterscheiden sich darin,  daß die 
+Computer  den  Zielen eine unterschiedliche Priorität geben,  d.h.  manche 
+Computer  schießen grundsätzlich auf Kanonen,  wenn welche vorhanden sind, 
+während andere zum Beispiel eher auf das gegnerische Geld zielen. 
+Tölpel : Kein konkretes Ziel, versucht nur, die Burg irgendwie zu treffen.
+Dummel : Geld vor Pulver/Kugeln vor König
+Brubbel: Geld vor Kanonen vor König
+Wusel  : Geld,  Pulver,  Kugeln,  Fördertürme, Kanonen,  König:  Alle  mit                            
+         gleicher Wahrscheinlichkeit
+Brösel : Kanonen vor König
+Toffel : Förderturme vor Kanonen vor König
+Rüpel  : Zielt nur auf den König.
+Desweiteren sind  nur Wusel,  Brösel,  Toffel und Rüpel in der Lage,  sich 
+Fördertürme zu kaufen.
+
+4. Neues Spiel, Wahl der Burgen
+Nach  Anklicken von 'Neues Spiel' können Sie für die beiden Seiten  Burgen 
+auswählen und anschließend mit 'OK' das Spiel beginnen.  Sollten Sie nicht 
+bereits  die Burgendatei 'BALLER.DAT' erweitert haben,  so stehen Ihnen  6 
+Burgen  zur Verfügung.  Bei gleichguten Spielern sollten Sie in der  Regel 
+auch  gleiche Burgen auswählen,  denn sie unterscheiden sich in der Stärke 
+teilweise recht erheblich untereinander. Bei der Wahl von kleineren Burgen 
+wird  sich natürlich auch im allgemeinen die  Gesamtspieldauer  verkürzen. 
+Hier nun die Werte der Burgen:
+   Kanonen   Geld    Pulver    Kugeln     Volk
+      2       400      180       12        200
+      5       500      180       12        270
+      5       500      150       14        270
+      6       500      190       12        300
+      3       500      120        6        220
+      4       500      120       10        240
+
+
+5. Das Spielfeld: Der Berg und die Burgen
+Nachdem  Sie  nun mit 'Neues Spiel' das Spiel begonnen haben,  werden  die 
+Burgen  und der Berg gezeichnet.  Sowohl die Lage der Burgen als auch  das 
+Aussehen und die Höhe das Berges sind ( innerhalb eines gewissen Rahmens ) 
+zufällig. Die Burgen bestehen aus folgenden Teilen:
+- den eigentlichen Gemäuern sowie den Dächern
+- dem Saal, im dem der König trohnt
+- den verschiedenen Kanonen
+- der Pulverkammer ( 1 Fass entspricht 30 Pulvereinheiten. ) 
+- der Kammer für die Kugeln
+- der Schatzkammer ( 1 Sack entspricht 150 Geldeinheiten. )
+- der Windfahne ( Es ist immer nur die Windfahne des Spielers,  der an der 
+  Reihe ist, gehißt. )
+Außerdem wird angezeigt,  wer am Zug ist.  Ist der Spieler im Besitz einer 
+Windfahne,  so wird sie im Kasten oben vergrößert gezeigt und außerdem die 
+genaue Windgeschwindigkeit und -richtung angegeben.
+
+6. Spielablauf
+Nach  dem  Starten des Spieles führen die Spieler immer  abwechselnd  Ihre 
+Aktionen  aus,  bis  einer  gewonnen hat.  Innerhalb eines Zuges kann  der 
+Spieler  verschiedene Dinge machen:  Nach Anklicken einer der Kammern  für 
+Pulver,  Kugeln  oder Geld wird der Besitz des Spielers angezeigt und  man 
+hat dann die Möglichkeit, auf dem Markt verschiedene Dinge zu kaufen. Mehr 
+dazu wird im nächsten Abschnitt gesagt.  Durch Anklicken des Königs können 
+Sie  erfahren,  was  Ihr  Herrscher denn zu Ihren Erfolgen zu  sagen  hat. 
+Abgeschlossen  werden kann der Zug durch zweierlei Möglichkeiten:  Sollten 
+Sie  keine  Kanone,  nicht genügend Pulver bzw.  Kugeln oder einfach keine 
+Lust  zum  Schießen  haben,  so müssen Sie auf 'Fertig' im  oberen  Kasten 
+klicken.  Andernfalls wählen Sie die Kanone,  mit der Sie schießen wollen, 
+aus,  stellen  Winkel  und Pulver ein und klicken auf 'OK'.  ( Näheres zum 
+Schießen in Abschnitt 8 )
+
+7. Der eigene Besitz und der Markt
+Wenn  Sie  während  Ihres  Zuges auf eine der  drei  Kammern  klicken,  so 
+erscheint eine Übersicht, auf die jetzt näher eingegangen werden soll.
+Unter 'Du hast' steht eine genaue Aufzählung über Ihren Besitz sowie  über 
+die Größe Ihres Volkes.  Außerdem können Sie hier die Steuern, die Sie von 
+Ihrem  Volk  fordern,  (  durch Klicken auf die  entsprechenden  Pfeile  ) 
+einstellen.  Bei  hohen  Steuern bekommen Sie natürlich mehr Geld als  bei 
+niedrigen.  Allerdings  kann Sie bei zu hohen Steuern ein Teil des  Volkes 
+verlassen.  Bei  niedrigen Steuern hingegen können Sie sich einer gewissen 
+Zahl  Einwanderer  erfreuen.  Um das ganze etwas interessanter zu  machen, 
+schwanken allerdings die Zahl der Ein/Auswanderer sowie die Einnahmen auch 
+bei  konstanten  Steuern innerhalb einer  gewissen  Bandbreite.  Außerdem, 
+seien Sie gewarnt:  Bei gar zu hohen Steuern, nehmen Ihre Einnahmen wieder 
+ab.  (  Welches  Volk hat schon Lust,  Gewinne zu erwirtschaften,  wenn es 
+sowieso wieder alles abgeben muß. )
+Der  zweite  Teil  der Anzeige stellt den Markt dar.  Hier haben  Sie  die 
+Möglichkeit,  gewisse  Dinge zu kaufen oder auch Ihre Burg zu  reparieren. 
+Sie  führen  eine  Aktion aus,  indem sie einfach  auf  die  entsprechende 
+Bezeichnung  klicken.  Dies ist jedoch nur dann möglich,  wenn der Eintrag 
+aktiv ist. Sollte er dünngedruckt sein, so liegt es entweder an mangelndem 
+Geld oder an einem der nachfolgenden Gründe: 
+- Sie können nur eine Windfahne haben.  Besitzen Sie also eine, so ist der 
+Eintrag nicht aktiv.
+- Sie  können nie  mehr  Kanonen  haben,  als zu Spielbeginn  auf der Burg 
+waren. Sollten Sie im Laufe des Spieles Kanonenstandplätze durch 'Anbauen' 
+zugemauert haben, so können auch dort keine Kanonen mehr plaziert werden.
+- Maximal  kann  ein  Spieler fünf Fördertürme besitzen. Je nach Burggröße 
+kann diese Obergrenze auch niedriger liegen, denn Fördertürme dürfen nicht 
+über die Bildschirmmitte hinaus gebaut werden.
+
+
+
+Beim  Kaufen  von  Kugeln oder Pulver sollten Sie beachten,  daß  Sie  nur 
+soviel einkaufen können,  wie in Ihre Kammern paßt. Weiteres Anklicken der 
+entsprechenden  Menüpunkte  verringert zwar nach wie vor das Geld  um  den 
+angezeigten Preis,  bringt aber keine neuen Kugeln oder Fässer!  Ähnliches 
+gilt  für  die Schatzkammer:  Ist sie gefüllt,  so können Sie auch mit den 
+schönsten Einnahmen Ihr Vermögen nicht weiter steigern.
+Der Kauf von Fördertürmen ist eine langfristige Investition. Pro Runde und 
+pro Turm nehmen Sie ungefähr zwischen 40 und 70 Geldeinheiten ein.
+Nun  noch  zum  Anbauen:  Wählen Sie diesen Punkt an,  so stehen Ihnen  20 
+Steine zur Verfügung ( die verbleibenen werden unten angezeigt  ), die Sie 
+sofort alle anbauen müssen.  Beachten Sie,  daß Sie nicht 'irgendwo in der 
+Luft'  anbauen können,  sondern von den vorhanden Wänden ausgehen  müssen. 
+Desweiteren  brauchen Sie nicht auf den bösen Gedanken zu kommen,  bei der 
+Burg des Gegners zum Beispiel die Geschütze zuzumauern - das geht  nämlich 
+nicht, Sie können nur im Bereich Ihrer eigenen Burg bauen.
+Zu den Preisen ist nur zu sagen,  daß Sie alle jeweils in einem bestimmten 
+Bereich  schwanken und daß Sie teilweise unterschiedlich starken  Sprüngen 
+unterworfen  sind.  (  Mehr möchte ich eigentlich nicht verraten,  denn so 
+können  Sie  noch immer wieder staunen,  wie teuer doch  Fördertürme  sein 
+können... )
+
+8. Schießen
+Nach dem Anklicken einer Kanone haben Sie Winkel und Pulver  einzustellen. 
+Mit den einfachen Pfeilen stellen Sie in Einerschritten, mit den doppelten 
+in Dreier- ( Pulver ) bzw. Zehnerschritten ( Winkel ) ein. Die Pulvermenge 
+liegt  zwischen  5 und 20 Einheiten.  ( Wenn Sie insgesamt weniger als  20 
+Pulvereinheiten haben,  liegt die Obergrenze automatisch auch niedriger. ) 
+Pulvermengen im Bereich von 5 werden Sie eigentlich nur selten gebrauchen, 
+nämlich  nur  dann,  wenn  Sie Ihre eigenen  Fördertürme  kaputt  schießen 
+wollen?!
+Winkel können Sie im Bereich von 0 bis 180 Grad einstellen. Winkel über 90 
+(  bei  stärkerem Gegenwind auch schon über 80 ) und unter  10  Grad  sind 
+allerdings erfahrungsgemäß auch nur sehr bedingt brauchbar. 
+Wenn  Sie schließlich mit Ihren Einstellungen zufrieden sind (  Haben  Sie 
+auch den Wind berücksichtigt? ), können Sie mit 'OK' den Schuß auslösen.
+
+9. Treffen
+Nachdem  Sie  in Abschnitt 8 lesen konnten,  wie man schießt,  möchte  ich 
+Ihnen  nun  verraten,  was man denn so alles treffen kann:  
+In  der größten Zahl der Fälle wird die Kugel wohl nur den Berg  oder  die 
+Mauern der Burg treffen.  In diesem Fall passiert nicht viel:  Es entsteht 
+ein in der Tiefe  der Aufprallgeschwindigkeit proportionales Loch. Sollten 
+Sie  die  Burg  getroffen haben,  so können außerdem ein  paar  Leute  der 
+Bevölkerung sterben.  Interessanter wird es dagegen,  wenn Sie eine Kanone 
+treffen.  Diese  wird  dann  nämlich  mit  einer  Explosion  verschwinden. 
+Gleiches  gilt  für die Windfahne.  Treffen Sie die Kammern für Geld  oder 
+Kugeln,  so  geht  ein  bestimmter  Betrag verloren.  Ein Treffer  in  der 
+Pulverkammer  bewirkt,  daß  das gesamte Pulver explodiert.  Wenn Sie  den 
+König  treffen,  ist  das  besonders  effektiv - Sie  haben  dann  nämlich 
+gewonnen. 
+Die  hohe  Kunst  des  Schießens,   Fördertürme  zu  zerstören,  ist  eine 
+schwierige  Angelegenheit.  Mitunter sind sie sowieso schon so hinter  dem 
+Berg  versteckt,  daß  sie  nur mit steilen Schüssen und  viel  Pulver  zu 
+erreichen sind.  Nun kommt aber auch noch hinzu, daß man häufig eine ganze 
+Reihe von Schüssen braucht,  um einen Turm zu zerstören.  Hier ein kleiner 
+Tip:  Schüsse,  die  den  Turm  seitlich  treffen,  sind eher  von  Erfolg 
+gekrönt. 
+
+
+
+
+
+
+
+10. Spielende
+Wann  ist das Spiel denn eigentlich zu Ende?  Nun,  ganz einfach:  
+Der weit am häufigsten auftretende Fall ist, daß ein König getroffen wird. 
+Es  besteht  jedoch  auch die Möglichkeit,  daß sich ein  König  von  ganz 
+alleine ergibt.  Dies ist jedoch nur dann der Fall, wenn man keine Kanonen 
+mehr besitzt,  die finanziellen Mittel so bescheiden sind, daß man sich in 
+absehbarer  Zeit  keine  Kanone  leisten können wird  und  auch  das  Volk 
+aufgrund  mangelnder Größe nicht die Hoffnung zuläßt,  durch Steuern genug 
+Einkünfte  zu schaffen.  Die dritte,  letzte und seltenste Möglichkeit für 
+ein Spielende besteht darin, daß man kein Volk mehr hat, denn dann gibt es 
+ja auch nichts mehr zu regieren.  Dieser Fall tritt aber wirklich nur dann 
+ein,  wenn  jemand sein Volk über längere Zeit mit gewaltigen Steuern  zum 
+Auswandern veranlaßt hat.
+
+
+---------------- Erweiterte 89er Version von Ballerburg ------------------
+11. Spieloptionen
+Da sich bei gleichguten Spielern manchmal Patt-Situationen einstellten, in 
+denen keiner es schaffte, den anderen zu besiegen, gab es das Problem, daß 
+ein  Spiel  quasi endlos dauern konnte.  Insbesondere durch viel Volk  und 
+häufiges 'Anbauen' wurde man praktisch unbesiegbar.
+Daher  habe  ich die 89er Version mit dem Menüpunkt  'Optionen'  versehen. 
+Hier  kann  man  Einstellungen  vor und  noch  während  des  Spielablaufes 
+vornehmen: 
+- es besteht die Möglichkeit das 'Anbauen' zu verbieten.
+- man  kann  eine  maximale  Rundenzahl  festlegen  oder  auch  unbegrenzt   
+spielen.  Ist die maximale Rundenzahl erreicht, wird das Spiel automatisch 
+beendet.  Sieger ist der, der sich in der besseren Situation befindet. Die 
+Beurteilung erfolgt nach dem Gesamtwert von Kanonen,  Fördertürmen,  Geld, 
+Pulver, Kugeln, Windfahne und Volk.
+- Man  kann wählen,  ob der König in einer aussichtslosen Lage von alleine 
+kapituliert und damit das Spiel beendet.
+
+Die  hier vorgenommenen Einstellungen werden automatisch mit  der  Tabelle 
+abgespeichert.
+
+12. Die Tabelle
+Es  läßt  sich  eine  Tabelle für sechs  Spieler  anlegen,  in  die  deren 
+Spielergebnisse  automatisch  aufgenommen werden.  Dazu  müssen  dieselben 
+Namen  der  Spieler  wie  bei 'Namen eingeben'  (bzw.  die  ersten  sieben 
+Buchstaben   -  Groß-/Kleinschreibung  wird   unterschieden)   eingetragen 
+werden.  Durch  Anwählen von 'Ergebnisse löschen' werden mit dem Verlassen 
+der Dialogbox die gespeicherten Spielergebnisse gelöscht.
+Mit  'Tabelle laden' und 'Tabelle speichern' werden die Tabelle mit  Namen 
+und  Ergebnissen  sowie  die Einstellungen  aus  'Optionen'  geladen  bzw. 
+gespeichert  (Datei  BALLER.TAB).  Mit  dem Starten  von  Ballerburg  wird 
+'Tabelle  laden'  und  mit dem  Beenden  'Tabelle  speichern'  automatisch 
+ausgeführt,  so  daß  Sie  diese Funktionen in der  Regel  nicht  aufrufen 
+müssen.
+'Tabelle zeigen' stellt die Tabelle dar.  Sie können sie durch das Drücken 
+einer Maustaste wieder verlassen. 
+
