@@ -42,9 +42,6 @@
 #define menu(a)   /*menu_bar(a_men,a)*/
 #define sav_scr() /*hide();movmem(scr,buf,32000);show()*/
 #define lod_scr() /*hide();movmem(buf,scr,32000);show()*/
-#define PI        3.1416
-#define P57       57.296
-#define G         0.02    /* Fallbeschleunigung ( g/500 ) */
 #define bing()    printf("\007");
 #define fn()      f=1-2*(n&1);
 

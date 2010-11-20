@@ -1,9 +1,18 @@
 
 #include <stdio.h>
 #include <SDL.h>
+#include <math.h>
 
 #include "baller1.h"
+#include "baller.h"
 #include "ballergui.h"
+#include "sdlgui.h"
+#include "screen.h"
+
+#define hide()    /* graf_mouse(256,0) */
+#define show()    /* graf_mouse(257,0) */
+#define sav_scr() /* hide();movmem(scr,buf,32000);show() */
+#define lod_scr() /* hide();movmem(buf,scr,32000);show() */
 
 #if GEMSTUFF
 /* Verwaltung von Ereignissen: Messages, Maus oder Timer */
@@ -219,3 +228,208 @@ int event(void)
 	return 0;
 }
 #endif
+
+
+/* The cannoneer dialog data: */
+
+#define WL2 3		/* Winkel um 10 verkleinern */
+#define WL1 4		/* Winkel um 1 verkleinern */
+#define WR1 6		
+#define WR2 7		
+#define PL2 9		
+#define PL1 10		
+#define PR1 12		
+#define PR2 13
+#define SOK 15
+#define SAB 16
+
+// #define WINK TBD
+// #define PULV TBD
+
+char dlg_winkel[4];
+char dlg_pulver[2];
+
+static SGOBJ cannoneerdlg[] =
+{
+	{ SGBOX, 0, 0, 0,0, 36,18, NULL },
+	{ SGTEXT, 0, 0, 17,1, 6,1, "Kanone" },
+
+	{ SGTEXT, 0, 0, 3,3, 7,1, "Winkel:" },
+	{ SGBUTTON, SG_TOUCHEXIT, 0, 12,3, 4,1, "\x04\04" },   // 2 arrows left
+	{ SGBUTTON, SG_TOUCHEXIT, 0, 17,3, 3,1, "\x04" },      // Arrow left
+	{ SGTEXT, 0, 0, 22,3, 4,1, dlg_winkel },
+	{ SGBUTTON, SG_TOUCHEXIT, 0, 26,3, 3,1, "\x03" },      // Arrow right
+	{ SGBUTTON, SG_TOUCHEXIT, 0, 30,3, 4,1, "\x03\x03" },  // 2 arrows right
+
+	{ SGTEXT, 0, 0, 3,5, 7,1, "Pulver:" },
+	{ SGBUTTON, SG_TOUCHEXIT, 0, 12,5, 4,1, "\x04\04" },   // 2 arrows left
+	{ SGBUTTON, SG_TOUCHEXIT, 0, 17,5, 3,1, "\x04" },      // Arrow left
+	{ SGTEXT, 0, 0, 22,5, 4,1, dlg_pulver },
+	{ SGBUTTON, SG_TOUCHEXIT, 0, 26,5, 3,1, "\x03" },      // Arrow right
+	{ SGBUTTON, SG_TOUCHEXIT, 0, 30,5, 4,1, "\x03\x03" },  // 2 arrows right
+
+	{ SGBOX, 0, 0, 2,7, 24,10, NULL },
+
+	{ SGBUTTON, SG_DEFAULT, 0, 27,14, 8,1, "OK" },
+	{ SGBUTTON, SG_CANCEL, 0, 27,16, 8,1, "Cancel" },
+	{ -1, 0, 0, 0,0, 0,0, NULL }
+};
+
+
+/**
+ * Kanonenobjektbaum, Wahl von Winkel und Pulver
+ */
+int sch_obj(short k)
+{
+	static short fig[]={ 0,0,15,20,30,20,20,15,10,0,10,-30,18,-18,20,-5,24,-6,
+	                     20,-25,10,-40,0,-45, -10,-40,-20,-25,-24,-6,-20,-5,-18,-18,-10,-30,-10,0,
+	                     -20,15,-30,20,-15,20, -1,-1
+	                   }; /* Daten für das Männchen */
+	short i = 0, wi,pv;
+	// short xw,yw,xp,yp;
+	short xk,yk;
+	double s,c;
+	char fl=1;
+	char *aw,*ap;
+
+#if GEMSTUFF
+	aw=*(char **)(a_sch+24*WINK+12);
+	ap=*(char **)(a_sch+24*PULV+12);
+#else
+	puts("sch_obj");
+	dlg_winkel[0] = dlg_pulver[0] = 0;
+	aw = dlg_winkel;
+	ap = dlg_pulver;
+#endif
+	*(ap+2)=0;
+
+	sav_scr();
+#if GEMSTUFF
+	form_center( a_sch,&fx,&fy,&fw,&fh );
+	objc_offset( a_sch,WINK,&xw,&yw );
+	objc_offset( a_sch,PULV,&xp,&yp );
+	objc_offset( a_sch,KAST,&xk,&yk );
+	xk+=105+f*36;
+	yk+=102;
+	form_dial(1, ka[n][k].x+10*f,ka[n][k].y-10,20,14,fx,fy,fw,fh );
+#else
+	SDLGui_CenterDlg(cannoneerdlg);
+	/* FIXME: */
+	xk = 280;
+	yk = 360;
+#endif
+
+	wi=ka[n][k].w;
+	pv=ka[n][k].p;
+
+	vsf_interior( handle,1 );
+
+	do
+	{
+		if (pv > pu[n])
+		{
+			pv=pu[n];
+		}
+		*aw=48+wi/100;
+		*(aw+1)=48+wi%100/10;
+		*(aw+2)=48+wi%10;
+		if (wi < 100)
+		{
+			*aw=*(aw+1);
+			*(aw+1)=*(aw+2);
+			*(aw+2)=0;
+		}
+		*ap=48+pv/10;
+		*(ap+1)=48+pv%10;
+		if (pv<10)
+		{
+			*ap=*(ap+1);
+			*(ap+1)=0;
+		}
+
+		if ( fl )
+		{
+#if GEMSTUFF
+			objc_draw( a_sch,0,4,0,0,640,400 );
+#endif
+			hide();
+			color(1);
+			v_circle( handle,xk-88*f,yk-60,15 );
+			i=0;
+			while ( fig[i]!=-1 )
+			{
+				xy[i]=xk-88*f+fig[i];
+				i++;
+				xy[i]=yk-5+fig[i];
+				i++;
+			}
+			xy[i++]=xy[0];
+			xy[i++]=xy[1];
+			v_fillarea( handle,i/2-1,xy );
+			show();
+		}
+#if GEMSTUFF
+		objc_draw( a_sch,0,4,xw,yw,42,18 );
+		objc_draw( a_sch,0,4,xp,yp,42,18 );
+#endif
+
+		if ((i!=PL2 && i!=PR2 && i!=PL1 && i!=PR1) || fl)
+		{
+			hide();
+			clr( xk-55,yk-76,110,90 );
+			color( 1 );
+			v_circle( handle,xk,yk,15 );
+
+			s=sin(wi/P57);
+			c=cos(wi/P57);
+			fl=-f;
+			if ( wi>90 )
+			{
+				fl=-fl;
+				c=-c;
+			}
+			xy[0]=xk+fl*(c*14+s*14);
+			xy[1]=yk+s*14-c*14;
+			xy[2]=xk+fl*(c*14+s*40);
+			xy[3]=yk+s*14-c*40;
+			xy[4]=xk-fl*(c*55-s*40);
+			xy[5]=yk-s*55-c*40;
+			xy[6]=xk-fl*(c*55-s*14);
+			xy[7]=yk-s*55-c*14;
+			xy[8]=xy[0];
+			xy[9]=xy[1];
+			v_fillarea( handle,4,xy );
+			show();
+			fl=0;
+		}
+
+#if GEMSTUFF
+		i=form_do( a_sch,0 );
+		if ( i>=0 ) *(short *)(a_sch+24*i+10)=0;
+#else
+		i = SDLGui_DoDialog(cannoneerdlg, NULL);
+		SDL_Delay(200);
+#endif
+
+		wi-=10*(i==WL2)-10*(i==WR2)+(i==WL1)-(i==WR1);
+		if ( wi<0 ) wi=0;
+		if ( wi>180 ) wi=180;
+		pv-= 3*(i==PL2)- 3*(i==PR2)+(i==PL1)-(i==PR1);
+		if ( pv<5 ) pv=5;
+		if ( pv>20 ) pv=20;
+	}
+	while (i != SOK && i != SAB);
+
+	lod_scr();
+
+#if GEMSTUFF
+	form_dial(2, ka[n][k].x+10*f,ka[n][k].y-10,20,14,fx,fy,fw,fh );
+#else
+	SDL_UpdateRect(surf, 0,0, 0,0);
+#endif
+
+	ka[n][k].w=wi;
+	ka[n][k].p=pv;
+
+	return (i == SOK);
+}

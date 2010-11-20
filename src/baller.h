@@ -6,19 +6,7 @@
 #define MOD4 28  	/* OBJECT in TREE #0 */
 #define INFOTREE 2  	/* TREE */
 #define SCHUSS 1  	/* TREE */
-#define WL2 9  	/* OBJECT in TREE #1 */
-#define WL1 8  	/* OBJECT in TREE #1 */
-#define WR1 7  	/* OBJECT in TREE #1 */
-#define WR2 10  	/* OBJECT in TREE #1 */
-#define PL2 15  	/* OBJECT in TREE #1 */
-#define PL1 13  	/* OBJECT in TREE #1 */
-#define PR1 14  	/* OBJECT in TREE #1 */
-#define PR2 16  	/* OBJECT in TREE #1 */
-#define WINK 6  	/* OBJECT in TREE #1 */
-#define PULV 12  	/* OBJECT in TREE #1 */
 #define SPI3 19  	/* OBJECT in TREE #0 */
-#define SOK 1  	/* OBJECT in TREE #1 */
-#define SAB 2  	/* OBJECT in TREE #1 */
 #define KAST 3  	/* OBJECT in TREE #1 */
 #define BURG 3  	/* TREE */
 #define BK1 4  	/* OBJECT in TREE #3 */

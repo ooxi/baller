@@ -14,6 +14,7 @@ const char SDLGui_fileid[] = "sdlgui.c : " __DATE__ " " __TIME__;
 #include <stdbool.h>
 
 #include "sdlgui.h"
+#include "baller1.h"
 
 #include "font10x16.h"
 
@@ -947,6 +948,8 @@ int SDLGui_DoDialog(SGOBJ *dlg, SDL_Event *pEventOut)
 
 	//if (retbutton == SDLGUI_QUIT)
 	//	bQuitProgram = true;
+
+	bt = 0;		// FIXME: Hack
 
 	return retbutton;
 }

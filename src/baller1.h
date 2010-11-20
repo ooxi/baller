@@ -17,6 +17,9 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+#define P57       57.296
+#define G         0.02     /* Fallbeschleunigung ( g/500 ) */
+
 extern double vvx,vvy;
 extern short handle, mx,my,bt,dum,m_buf[8], xy[100],
 	bur[2],bx[2],by[2], ge[2],pu[2],ku[2],vo[2],st[2],kn[2],
@@ -59,7 +62,6 @@ int t_save(void);
 char zeichen(FILE *f_h);
 int rdzahl(FILE *f_h);
 void burgen_laden(void);
-int sch_obj(short k);
 int bur_obj(void);
 int obj_do(int adr);
 void gem_init(void);

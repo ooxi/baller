@@ -21,8 +21,6 @@ const char DlgAlert_fileid[] = "dlgAlert.c : " __DATE__ " " __TIME__;
 
 #include "sdlgui.h"
 #include "screen.h"
-#include "baller1.h"
-
 
 #define MAX_LINES 4
 
@@ -157,8 +155,6 @@ static int DlgAlert_ShowDlg(const char *text)
 
 	SDL_UpdateRect(surf, 0,0, 0,0);
 	SDL_ShowCursor(bOldMouseVisibility);
-
-	bt = 0;		// FIXME: Hack
 
 	return (i == DLGALERT_OK);
 }
