@@ -3,7 +3,7 @@
 include_directories(${CMAKE_BINARY_DIR} ${SDL_INCLUDE_DIR})
 
 
-add_executable (ballerburg baller1.c baller2.c ballergui.c screen.c
+add_executable (ballerburg baller1.c baller2.c ballergui.c cannoneer.c screen.c
 			dlgAlert.c sdlgui.c)
 
 target_link_libraries(ballerburg ${SDL_LIBRARY} SDL_gfx)
