@@ -59,8 +59,6 @@ void werdran(char c);
 void fahne(void);
 int t_load(void);
 int t_save(void);
-char zeichen(FILE *f_h);
-int rdzahl(FILE *f_h);
 void burgen_laden(void);
 int bur_obj(void);
 int obj_do(int adr);

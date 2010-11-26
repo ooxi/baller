@@ -627,7 +627,7 @@ int t_save(void)
 /************************* BALLER.DAT laden **********************************/
 
 /* liest ein char von der Datei */
-char zeichen(FILE *f_h)
+static char zeichen(FILE *f_h)
 {
 	char a;
 	fread(&a, 1, 1, f_h);
@@ -635,7 +635,7 @@ char zeichen(FILE *f_h)
 }
 
 /* liest eine Dezimalzahl von der Datei, Remarks werden überlesen */
-int rdzahl(FILE *f_h)
+static int rdzahl(FILE *f_h)
 {
 	char a,sign=1,rem=0;    /* wird durch * getoggled, und zeigt damit an, */
 	/* ob man sich in einer Bemerkung befindet */

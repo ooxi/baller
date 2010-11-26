@@ -22,6 +22,7 @@
 #include <SDL_gfxPrimitives.h>
 
 #include "screen.h"
+#include "sdlgui.h"
 
 
 SDL_Surface *surf;
@@ -76,7 +77,7 @@ void v_circle(int handle, int x, int y, int w)
 {
 	//printf("v_circle: %i %i %i\n", x,y,w);
 
-	filledCircleColor(surf, x, y, w, the_color|0x40000000);
+	filledCircleColor(surf, x, y, w, the_color);
 
 	SDL_UpdateRect(surf, 0,0, 640,480);
 }
@@ -191,7 +192,7 @@ void v_pline(short handle, short num, short xy[])
 	if (xy[i*2] < minx)  minx = xy[i*2];
 	if (xy[i*2+1] < miny)  miny = xy[i*2+1];
 
-//printf("blit %i %i %i %i\n", minx,miny, maxx-minx+1,maxy-miny+1);
+	//printf("blit %i %i %i %i\n", minx,miny, maxx-minx+1,maxy-miny+1);
 	SDL_UpdateRect(surf, minx,miny, maxx-minx+1,maxy-miny+1);
 }
 
@@ -212,7 +213,7 @@ int scr_getpixel(int x, int y)
 void scr_color(int c)
 {
 	if (c)
-		the_color = 0x006000ff;
+		the_color = 0x203020ff;
 	else
 		the_color = 0xffffffff;
 }

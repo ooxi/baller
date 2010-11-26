@@ -435,14 +435,14 @@ void bild(void)
 #if GEMSTUFF
 	vsl_type( handle,7 );
 #else
-	puts("vsl_type 7");
+	//puts("vsl_type 7");
 #endif
 	while ( x1<x2 && --y>20 )
 	{
 #if GEMSTUFF
 		vsl_udsty( handle,~((257<<(rand()&7))*(y&1)) );
 #else
-		puts("vsl_udsty");
+		//puts("vsl_udsty");
 #endif
 		line( x1/4,y,x2/4,y );
 		if ( y==by[0] ) x1=*burgen[bur[0]]*4;
