@@ -577,6 +577,30 @@ static void SDLGui_EditField(SGOBJ *dlg, int objnum)
 }
 
 
+/**
+ * Draw a user object.
+ */
+static void SDLGui_DrawUserObj(const SGOBJ *bdlg, int objnum)
+{
+	int x, y, w, h;
+	char (*userfun)(int x, int y, int w, int h);
+
+	x = bdlg[objnum].x*sdlgui_fontwidth;
+	y = bdlg[objnum].y*sdlgui_fontheight;
+
+	/* add absolute coordinates */
+	x += bdlg[0].x*sdlgui_fontwidth;
+	y += bdlg[0].y*sdlgui_fontheight;
+
+	w = bdlg[objnum].w*sdlgui_fontwidth;
+	h = bdlg[objnum].h*sdlgui_fontheight;
+
+	userfun = (void*)bdlg[objnum].txt;
+
+	userfun(x, y, w, h);
+}
+
+
 /*-----------------------------------------------------------------------*/
 /**
  * Draw a whole dialog.
@@ -612,6 +636,9 @@ void SDLGui_DrawDialog(const SGOBJ *dlg)
 			break;
 		 case SGSCROLLBAR:
 			SDLGui_DrawScrollbar(dlg, i);
+			break;
+		 case SGUSER:
+			SDLGui_DrawUserObj(dlg, i);
 			break;
 		}
 	}
