@@ -18,8 +18,9 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include <SDL.h>
 #include <math.h>
+#include <SDL.h>
+#include <SDL_gfxPrimitives.h>
 
 #include "ballergui.h"
 #include "baller1.h"
@@ -107,7 +108,9 @@ static void draw_cannoneer(int x, int y, int w, int h)
 
 	/* Draw the cannoneer man */
 	color(1);
-	v_circle( handle,xk-88*f,yk-60,15 );
+	//v_circle( handle,xk-88*f,yk-60,15 );
+	filledCircleColor(surf, xk-88*f, yk-60, 15, 0x402020ff);
+
 	i=0;
 	while ( fig[i]!=-1 )
 	{
@@ -123,7 +126,8 @@ static void draw_cannoneer(int x, int y, int w, int h)
 	/* Draw the cannon */
 	// clr( xk-55,yk-76,110,90 );
 	color( 1 );
-	v_circle( handle,xk,yk,15 );
+	//v_circle( handle,xk,yk,15 );
+	filledCircleColor(surf, xk, yk, 15, 0x402020ff);
 
 	s=sin(wi/P57);
 	c=cos(wi/P57);
