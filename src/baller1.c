@@ -59,8 +59,10 @@ short handle, mx,my,bt,dum,m_buf[8], xy[100],
 	*burgen[20],b_anz;
 void *buf, *bur_ad;
 int   scr, a_opt, a_ein;
+#if GEMSTUFF
 int a_men,a_inf,a_sch,a_brg,a_nam,a_dra;
 int a_sta,a_sie,a_com,a_re1,a_re2,a_re3;
+#endif
 char *l_nam, *r_nam;
 char  f, mod, wnd, end, txt[4], an_erl, mxin, au_kap,
 	cw[2]={2,2}, cx[2]={1,1};
@@ -233,7 +235,7 @@ void neues(void)
 /************************* Durchführen eines Zuges ***************************/
 int ein_zug(void)
 {
-	short i,fl,a;
+	short i = 0, fl, a;
 
 	puts("ein zug ...");
 
@@ -251,13 +253,8 @@ int ein_zug(void)
 		do
 		{
 			if ( event() ) return(0);
-			for ( a=i=0;i<60; i++) {
-#if GEMSTUFF
-				a|=*(char *)(scr+80+i);
-#endif
-			}
 		}
-		while ( !bt && !(mod&(2-n)) || a );
+		while (!bt && !(mod&(2-n)));
 //printf("ein zug %i %i %i\n", bt, mod, a);
 		menu(0);
 		bg=burgen[bur[n]];
@@ -462,9 +459,10 @@ void werdran(char c)
 {
 #if GEMSTUFF
 	short *a;
-#endif
-	short i,x,y,w,h,c1,s1,c2,s2;
 	char *ad;
+	short i;
+#endif
+	short x, y, w, h, c1, s1, c2, s2;
 	double wk,wl;
 
 	z_txt(zug/2+1);
@@ -538,8 +536,8 @@ void werdran(char c)
 			xy[9]=xy[1]+c1;
 			xy[10]=xy[0];
 			xy[11]=xy[1];
-			xy[6]=(xy[4]+xy[8]>>1)+s2;
-			xy[7]=(xy[5]+xy[9]>>1)+c2;
+			xy[6] = ((xy[4] + xy[8]) >> 1) + s2;
+			xy[7] = ((xy[5] + xy[9]) >> 1) + c2;
 			v_pline( handle,6,xy );
 		}
 		fahne();
@@ -630,8 +628,13 @@ int t_save(void)
 static char zeichen(FILE *f_h)
 {
 	char a;
-	fread(&a, 1, 1, f_h);
-	return(a);
+
+	if (fread(&a, 1, 1, f_h) != 1)
+	{
+		perror("zeichen");
+	}
+
+	return a;
 }
 
 /* liest eine Dezimalzahl von der Datei, Remarks werden überlesen */
@@ -643,7 +646,7 @@ static int rdzahl(FILE *f_h)
 
 	do
 		if ( (a=zeichen(f_h))=='*' ) rem=!rem;
-	while ( a!='-' && a<'0' || a>'9' || rem );
+	while ((a != '-' && a < '0') || a > '9' || rem);
 
 	if ( a=='-' )
 	{
@@ -699,10 +702,9 @@ int bur_obj(void)
 	ob0=bur[0];
 	ob1=bur[1];
 
+#if GEMSTUFF
 	*(int *)(a_brg+24*BSP1+12)=l_nam;
 	*(int *)(a_brg+24*BSP2+12)=r_nam;
-
-#if GEMSTUFF
 	form_center( a_brg,&fx,&fy,&fw,&fh );
 #else
 	puts("bur_obj form center");
@@ -745,11 +747,11 @@ int bur_obj(void)
 		ge[0]=ge[1]=pu[0]=pu[1]=ku[0]=ku[1]=9999;
 #if GEMSTUFF
 		i=form_do( a_brg,0 );
-#else
-	puts("form do");
-	i = BOK;
-#endif
 		*(short *)(a_brg+24*i+10)=0;
+#else
+		puts("form do");
+		i = BOK;
+#endif
 		if ( i==BL1 || i==BR1 )
 		{
 			bur[0]=(bur[0]+1-2*(i==BL1)+b_anz)%b_anz;
@@ -795,8 +797,8 @@ int bur_obj(void)
 int obj_do(int adr)
 {
 	int a = 0;
-	short x=20,fl=0;
 #if GEMSTUFF
+	short x=20,fl=0;
 
 	if (adr==a_nam)
 	{
@@ -860,8 +862,9 @@ void color(int a)
 
 int loc(int x, int y)  /* Ermittelt, ob Punkt gesetzt ist */
 {
-	short a,b;
+	short a;
 #if GEMSTUFF
+	short b;
 	v_get_pixel(handle,x,y,&a,&b);
 	return((int)a);
 #else

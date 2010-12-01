@@ -229,7 +229,9 @@ void z_pk(void)
 /* k = Nr. der Kanone */
 void schuss(int k)
 {
-	double x,y,ox,oy,vx,vy;
+	double x, y;
+	double ox = 0.0, oy = 0.0;
+	double vx, vy;
 	short v,c,a, j;
 
 	hide();
@@ -265,15 +267,20 @@ void schuss(int k)
 		y-=vy;
 		vy-=G;
 		vx+=(wnd/2-vx)/5000;
-scr_color(0);
+#if GEMSTUFF
 		kugel( (int)ox,(int)oy );
-if ( x>=3 && x<=637 && y>= 3 && y <= 397) {
-	v=loc((int)x,(int)y)& loc((int)x-1,(int)y+1)& loc((int)x+1,(int)y+2);
-}
-scr_color(1);
 		if ( kugel( (int)x,(int)y ) )
-			/*v=*/loc((int)x,(int)y)& loc((int)x-1,(int)y+1)& loc((int)x+1,(int)y+2);
-SDL_Delay(8);
+			v=loc((int)x,(int)y)& loc((int)x-1,(int)y+1)& loc((int)x+1,(int)y+2);
+#else
+		scr_color(0);
+		kugel( (int)ox,(int)oy );
+		if ( x>=3 && x<=637 && y>= 3 && y <= 397) {
+			v=loc((int)x,(int)y)& loc((int)x-1,(int)y+1)& loc((int)x+1,(int)y+2);
+		}
+		scr_color(1);
+		kugel( (int)x,(int)y );
+		SDL_Delay(8);
+#endif
 		a=1000+2*y;
 		if ( a<30 ) a=30;
 		Giaccess( 10,137 );
@@ -424,8 +431,8 @@ void bild(void)
 	hide();
 	cls();
 
-	by[0]=rand()%80+300&~3;
-	by[1]=rand()%80+300&~3;
+	by[0] = (rand()%80 + 300) & ~3;
+	by[1] = (rand()%80 + 300) & ~3;
 
 	y=400;
 	x1=0;
@@ -445,8 +452,14 @@ void bild(void)
 		//puts("vsl_udsty");
 #endif
 		line( x1/4,y,x2/4,y );
-		if ( y==by[0] ) x1=*burgen[bur[0]]*4;
-		if ( y==by[1] ) x2=639-*burgen[bur[1]]<<2;
+		if (y == by[0])
+		{
+			x1 = *burgen[bur[0]] * 4;
+		}
+		if (y == by[1])
+		{
+			x2 = (639 - *burgen[bur[1]]) << 2;
+		}
 		if ( x1 )
 		{
 			v1=v1+rand()%5-2;
@@ -697,7 +710,11 @@ void zahl(short nr, short wert) /* 5-stellige Zahl, rechtsbündig, ohne führende 
 	short i,a,b;
 	char *adr;
 
+#if GEMSTUFF
 	adr=*(char **)(a_sta+24*nr+12)+11;
+#else
+	puts("zahl");
+#endif
 	for ( b=i=0,a=10000; i<5; i++,a/=10 )
 	{
 		*adr++=48+wert/a-16*(wert<a && i<4 && !b);
@@ -817,7 +834,7 @@ void koenig(void)
 		if ( j&4 ) s[i++]=kn14;
 
 		if ( ge[n]>p[1]&&t<3 ) s[i++]=kn5;
-		if ( st[n]>40&&vo[n]<bg[40]||st[n]>70 ) s[i++]=kn3;
+		if ( (st[n]>40 && vo[n]<bg[40]) || st[n]>70 ) s[i++]=kn3;
 		if ( wx[n]<0 ) s[i++]=kn9;
 		if ( ge[n]>bg[37]&&vo[n]>bg[40]&&k>1 ) s[1]=t<2? kn1:kn2;
 		if ( t>2 ) s[i++]=kn2;
@@ -826,7 +843,7 @@ void koenig(void)
 		{
 			s[i++]=kn7; s[i++]=kn7; s[i++]=kn7;
 		}
-		if ( (kn[n]&15)>6 || !(rand()&7) && kn[n]>2048 )
+		if ( (kn[n]&15)>6 || (!(rand()&7) && kn[n]>2048) )
 		{
 			s[i++]=kn8; s[i++]=kn8;
 		}

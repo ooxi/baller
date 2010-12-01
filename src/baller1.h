@@ -28,7 +28,7 @@ extern short handle, mx,my,bt,dum,m_buf[8], xy[100],
 	fx,fy,fw,fh,
 	ftx,fty,ftw,fth,
 	f_h, *burgen[20],b_anz;
-extern int scr, a_men,a_inf,a_sch,a_brg,a_nam,a_dra,a_sta,a_sie;
+//extern int scr, a_men,a_inf,a_sch,a_brg,a_nam,a_dra,a_sta,a_sie;
 extern char f, mod, wnd, end, an_erl,
 	cw[2],cx[2],
 	nsp1[],nsp2[];

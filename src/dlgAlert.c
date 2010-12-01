@@ -166,7 +166,7 @@ static int DlgAlert_ShowDlg(const char *text)
 int DlgAlert_Notice(const char *text, const char *button)
 {
 	/* First "OK" button: */
-	alertdlg[DLGALERT_OK].txt = button;
+	alertdlg[DLGALERT_OK].txt = (char *)button;
 	alertdlg[DLGALERT_OK].w = strlen(button) + 2;
 
 	/* Hide "cancel" button: */
@@ -189,12 +189,12 @@ int DlgAlert_Query(const char *text, const char *button1,
 		   const char *button2)
 {
 	/* First "OK" button: */
-	alertdlg[DLGALERT_OK].txt = button1;
+	alertdlg[DLGALERT_OK].txt = (char *)button1;
 	alertdlg[DLGALERT_OK].w = strlen(button1) + 2;
 
 	/* Show "cancel" button: */
 	alertdlg[DLGALERT_CANCEL].type = SGBUTTON;
-	alertdlg[DLGALERT_CANCEL].txt = button2;
+	alertdlg[DLGALERT_CANCEL].txt = (char *)button2;
 	alertdlg[DLGALERT_OK].w = strlen(button2) + 2;
 	alertdlg[DLGALERT_CANCEL].h = 1;
 
