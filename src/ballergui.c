@@ -182,7 +182,7 @@ int event(void)
 
 	SDL_Event event;
 
-	while (SDL_PollEvent(&event))
+	if (SDL_WaitEvent(&event))
 	{
 		// printf("EVENT = %i\n", event.type);
 		switch(event.type)
