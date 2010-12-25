@@ -41,6 +41,7 @@ void Giaccess(int a, int b);
 
 void scr_init(void);
 void scr_clear(void);
+void scr_line(int x1, int y1, int x2, int y2, int rgba);
 int scr_getpixel(int x, int y);
 void scr_color(int c);
 

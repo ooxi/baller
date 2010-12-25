@@ -196,6 +196,14 @@ void v_pline(short handle, short num, short xy[])
 	SDL_UpdateRect(surf, minx,miny, maxx-minx+1,maxy-miny+1);
 }
 
+
+void scr_line(int x1, int y1, int x2, int y2, int rgba)
+{
+	lineColor(surf, x1, y1, x2, y2, rgba);
+	SDL_UpdateRect(surf, x1, y1, x2, y2);
+}
+
+
 int scr_getpixel(int x, int y)
 {
 	Uint32 *p = surf->pixels;

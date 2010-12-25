@@ -423,6 +423,7 @@ void baller(char r)
 #endif
 }
 
+
 /**************************** Neues Bild zeichnen ****************************/
 void bild(void)
 {
@@ -439,19 +440,11 @@ void bild(void)
 	x2=2556;
 	color( 1 );
 	v1=v2=2;
-#if GEMSTUFF
-	vsl_type( handle,7 );
-#else
-	//puts("vsl_type 7");
-#endif
+
 	while ( x1<x2 && --y>20 )
 	{
-#if GEMSTUFF
-		vsl_udsty( handle,~((257<<(rand()&7))*(y&1)) );
-#else
-		//puts("vsl_udsty");
-#endif
-		line( x1/4,y,x2/4,y );
+		int green = 0x70 + (400-y)/4;
+		scr_line(x1/4, y, x2/4, y, 0x300030ff+(green<<16));
 		if (y == by[0])
 		{
 			x1 = *burgen[bur[0]] * 4;
@@ -475,12 +468,9 @@ void bild(void)
 			x2-=v2;
 		}
 	}
-#if GEMSTUFF
-	vsl_type( handle,1 );
-	setmem( ka,160,-1 );
-#else
-	puts("vsl_type 1");
-#endif
+
+	memset(ka, -1, sizeof(ka));
+
 	burg(0);
 	burg(1);
 	v_gtext(handle,276,395," Runde     ");
