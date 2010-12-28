@@ -272,12 +272,12 @@ void schuss(int k)
 		if ( kugel( (int)x,(int)y ) )
 			v=loc((int)x,(int)y)& loc((int)x-1,(int)y+1)& loc((int)x+1,(int)y+2);
 #else
-		scr_color(0);
+		color(0);
 		kugel( (int)ox,(int)oy );
 		if ( x>=3 && x<=637 && y>= 3 && y <= 397) {
 			v=loc((int)x,(int)y)& loc((int)x-1,(int)y+1)& loc((int)x+1,(int)y+2);
 		}
-		scr_color(1);
+		color(1);
 		kugel( (int)x,(int)y );
 		SDL_Delay(8);
 #endif
@@ -309,8 +309,8 @@ void schuss(int k)
 					if ( ka[n][j].x<ox+2 && ka[n][j].x+22>ox && ka[n][j].x>-1 &&
 					                ka[n][j].y-16<oy && ka[n][j].y>oy )
 					{
-						clr( a=ka[n][j].x,v=ka[n][j].y-12,20,13 );
-						expls( a+10,v+6,13,8,50 );
+						clr_bg( a=ka[n][j].x,v=ka[n][j].y-12,20,13 );
+						expls( a+10,v+6,10,8,50 );
 						color(0);
 						ka[n][j].x=-1;
 					}
@@ -374,16 +374,20 @@ void schuss(int k)
 /****************************** Explosion ************************************/
 void expls(int x, int y, int w, int h, int d)
 {
-	short i,j;
+	int i,j;
 
-	vswr_mode( handle,3 );
+	color(0);
+
 	for ( i=0;i<32; )
 	{
 		xy[i++]=x;
 		xy[i++]=y;
 	}
+
 	while ( d-->0 )
 	{
+		int fire_col;
+
 		v_pline( handle,2,xy );
 		movmem( xy+4,xy,120 );
 		for ( j=28;j<32; )
@@ -391,11 +395,17 @@ void expls(int x, int y, int w, int h, int d)
 			xy[j++]=x-w+w*(rand()&511)/256;
 			xy[j++]=y-h+h*(rand()&511)/256;
 		}
-		v_pline( handle,2,xy+28 );
+		fire_col = (rand()&0x3f) + 0xc0;
+		fire_col = (fire_col << 16) | ((rand()%fire_col) << 8);
+		scr_line(xy[28], xy[29], xy[30], xy[31], fire_col);
 		baller((d&31)^31);
+		SDL_Delay(10);
 	}
-	for ( i=0;i<32;i+=4 ) v_pline( handle,2,xy+i );
-	vswr_mode( handle,1 );
+
+	for ( i=0;i<32;i+=4 )
+	{
+		v_pline( handle,2,xy+i );
+	}
 }
 
 
@@ -430,7 +440,7 @@ void bild(void)
 	short y,x1,x2,v1,v2;
 
 	hide();
-	cls();
+	scr_clear();
 
 	by[0] = (rand()%80 + 300) & ~3;
 	by[1] = (rand()%80 + 300) & ~3;
@@ -444,7 +454,7 @@ void bild(void)
 	while ( x1<x2 && --y>20 )
 	{
 		int green = 0x70 + (400-y)/4;
-		scr_line(x1/4, y, x2/4, y, 0x300030ff+(green<<16));
+		scr_line(x1/4, y, x2/4, y, 0x300030+(green<<8));
 		if (y == by[0])
 		{
 			x1 = *burgen[bur[0]] * 4;
@@ -695,16 +705,14 @@ void markt(void)
 #endif
 }
 
+#if GEMSTUFF
 void zahl(short nr, short wert) /* 5-stellige Zahl, rechtsbündig, ohne führende Nullen */
 {
 	short i,a,b;
 	char *adr;
 
-#if GEMSTUFF
 	adr=*(char **)(a_sta+24*nr+12)+11;
-#else
-	puts("zahl");
-#endif
+
 	for ( b=i=0,a=10000; i<5; i++,a/=10 )
 	{
 		*adr++=48+wert/a-16*(wert<a && i<4 && !b);
@@ -712,6 +720,7 @@ void zahl(short nr, short wert) /* 5-stellige Zahl, rechtsbündig, ohne führende 
 		wert%=a;
 	}
 }
+#endif
 
 /********************* Von Markt aufzurufende Routinen ***********************/
 void fturm(void)  /* Förderturm bauen */

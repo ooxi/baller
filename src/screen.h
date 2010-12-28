@@ -29,6 +29,8 @@ void v_pline(short handle, short num, short xy[]);
 void v_fillarea(short handle, short num, short xy[]);
 void v_circle(int handle, int x, int y, int w);
 void v_bar(short handle, short *xy);
+void clr(short x, short y, short w, short h);
+void clr_bg(short x, short y, short w, short h);
 void vsf_interior(short handle, short val);
 void v_gtext(int handle, int x, int y, char *text);
 void vsf_style(short handle, short val);
@@ -44,6 +46,8 @@ void scr_clear(void);
 void scr_line(int x1, int y1, int x2, int y2, int rgba);
 int scr_getpixel(int x, int y);
 void scr_color(int c);
+void scr_fillcolor(int c);
+void color(int a);
 
 int DlgAlert_Notice(const char *text, const char *button);
 int DlgAlert_Query(const char *text, const char *button1, const char *button2);

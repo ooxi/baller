@@ -29,7 +29,8 @@ extern short handle, mx,my,bt,dum,m_buf[8], xy[100],
 	ftx,fty,ftw,fth,
 	f_h, *burgen[20],b_anz;
 //extern int scr, a_men,a_inf,a_sch,a_brg,a_nam,a_dra,a_sta,a_sie;
-extern char f, mod, wnd, end, an_erl,
+extern int f;
+extern char mod, wnd, end, an_erl,
 	cw[2],cx[2],
 	nsp1[],nsp2[];
 
@@ -63,9 +64,6 @@ void burgen_laden(void);
 int bur_obj(void);
 int obj_do(int adr);
 void gem_init(void);
-void color(int a);
 int loc(int x, int y);
 void line(short x1, short y1, short x2, short y2);
 void box(short x, short y, short x2, short y2, short c);
-void clr(short x, short y, short w, short h);
-void cls(void);

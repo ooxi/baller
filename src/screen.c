@@ -26,7 +26,11 @@
 
 
 SDL_Surface *surf;
-Uint32 the_color;
+Uint32 the_color, fill_color;
+Uint32 bg_color;
+
+int fill_style, fill_interior;
+
 
 void scr_init(void)
 {
@@ -45,6 +49,8 @@ void scr_init(void)
 		exit(-1);
 	}
 
+	bg_color = SDL_MapRGB(surf->format,0xe0,0xf0,0xff);
+
 	SDLGui_Init();
 	SDLGui_SetScreen(surf);
 }
@@ -53,13 +59,18 @@ void scr_clear(void)
 {
 	SDL_Rect rect;
 
-	puts("scr_clear");
-
 	rect.x = 0;
 	rect.y = 0;
 	rect.w = 640;
-	rect.h = 480;
-	SDL_FillRect(surf, &rect, SDL_MapRGB(surf->format,255,255,255));
+	rect.h = 400;
+	SDL_FillRect(surf, &rect, bg_color);
+
+	rect.x = 0;
+	rect.y = 400;
+	rect.w = 640;
+	rect.h = 80;
+	SDL_FillRect(surf, &rect, SDL_MapRGB(surf->format,192,192,192));
+
 }
 
 int form_alert(int type, char *text)
@@ -98,14 +109,37 @@ void vswr_mode(short handle, short val)
 	//printf("vswr_mode %i\n", val);
 }
 
+static void update_fill_color(void)
+{
+	if (fill_interior == 1)
+	{
+		fill_color = 0x000000ff;
+	}
+	else if (fill_interior == 2)
+	{
+		switch (fill_style)
+		{
+		case 2:  fill_color = 0x602060ff; break;   // King color
+		case 9:  fill_color = 0x909080ff; break;   // Wall color
+		case 11:  fill_color = 0xc04020ff; break;  // Roof color
+		}
+	}
+	else
+	{
+		puts("unknown fill interior");
+	}
+}
+
 void vsf_style(short handle, short val)
 {
-	//printf("vsf_style %i\n", val);
+	fill_style = val;
+	update_fill_color();
 }
 
 void vsf_interior(short handle, short val)
 {
-	//printf("vsf_interior %i\n", val);
+	fill_interior = val;
+	update_fill_color();
 }
 
 void vst_height(short handle, short height, short *val1, short *val2, short *val3, short *val4)
@@ -139,6 +173,35 @@ void v_bar(short handle, short *xy)
 	SDL_UpdateRect(surf, 0,0, 640,480);
 }
 
+
+void clr(short x, short y, short w, short h)
+{
+	SDL_Rect rect;
+
+	rect.x = x;
+	rect.y = y;
+	rect.w = w;
+	rect.h = h;
+	SDL_FillRect(surf, &rect, SDL_MapRGB(surf->format,0xff,0xff,0xff));
+
+	SDL_UpdateRect(surf, x,y, w,h);
+}
+
+
+void clr_bg(short x, short y, short w, short h)
+{
+	SDL_Rect rect;
+
+	rect.x = x;
+	rect.y = y;
+	rect.w = w;
+	rect.h = h;
+	SDL_FillRect(surf, &rect, bg_color);
+
+	SDL_UpdateRect(surf, x,y, w,h);
+}
+
+
 void v_fillarea(short handle, short num, short xy[])
 {
 	int i;
@@ -156,7 +219,7 @@ void v_fillarea(short handle, short num, short xy[])
 		vy[i] = xy[i*2+1];
 	}
 
-	filledPolygonRGBA(surf, vx, vy, num, 60, 30, 30, 255);
+	filledPolygonColor(surf, vx, vy, num, fill_color);
 
 	SDL_UpdateRect(surf, 0,0, 640,480);
 }
@@ -197,10 +260,34 @@ void v_pline(short handle, short num, short xy[])
 }
 
 
-void scr_line(int x1, int y1, int x2, int y2, int rgba)
+void scr_line(int x1, int y1, int x2, int y2, int rgb)
 {
-	lineColor(surf, x1, y1, x2, y2, rgba);
-	SDL_UpdateRect(surf, x1, y1, x2, y2);
+	int minx, miny, maxx, maxy;
+
+	if (x1 < x2)
+	{
+		minx = x1;
+		maxx = x2;
+	}
+	else
+	{
+		minx = x2;
+		maxx = x1;
+	}
+
+	if (y1 < y2)
+	{
+		miny = y1;
+		maxy = y2;
+	}
+	else
+	{
+		miny = y2;
+		maxy = y1;
+	}
+
+	lineColor(surf, x1, y1, x2, y2, (rgb<<8)|0xff);
+	SDL_UpdateRect(surf, minx, miny, maxx-minx+1, maxy-miny+1);
 }
 
 
@@ -220,8 +307,22 @@ int scr_getpixel(int x, int y)
 
 void scr_color(int c)
 {
+	the_color = (c << 8) | 0xff;
+}
+
+void scr_fillcolor(int c)
+{
+	fill_color = (c << 8) | 0xff;
+}
+
+
+/**
+ * Select foreground (1) or background (0) color
+ */
+void color(int c)
+{
 	if (c)
-		the_color = 0x203020ff;
+		the_color = 0x000000ff;
 	else
-		the_color = 0xffffffff;
+		the_color = (bg_color<<8) | 0x0ff;
 }

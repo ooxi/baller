@@ -64,7 +64,8 @@ int a_men,a_inf,a_sch,a_brg,a_nam,a_dra;
 int a_sta,a_sie,a_com,a_re1,a_re2,a_re3;
 #endif
 char *l_nam, *r_nam;
-char  f, mod, wnd, end, txt[4], an_erl, mxin, au_kap,
+int f;
+char  mod, wnd, end, txt[4], an_erl, mxin, au_kap,
 	cw[2]={2,2}, cx[2]={1,1};
 
 char cn[7][8]={ "Tölpel","Dummel","Brubbel","Wusel","Brösel","Toffel","Rüpel" };
@@ -498,8 +499,8 @@ void werdran(char c)
 		objc_draw( a_dra,0,4,0,0,640,400 );
 #else
 		// FIXME:
-		x = 5+(629-50)*n; y = 410;
-		w = 50; h = 60;
+		x = 5+(629-80)*n; y = 410;
+		w = 40; h = 60;
 #endif
 		c=wnd>0? 1:-1;
 		wk=c*wnd/15.0;
@@ -549,7 +550,7 @@ void werdran(char c)
 #if GEMSTUFF
 		clr( a[0],a[1],a[2],a[3] );
 #else
-		puts("werdran clr");
+		clr(5+(629-80)*(n^1),410, 60,60);
 #endif
 		show();
 	}
@@ -563,7 +564,7 @@ void fahne(void)
 
 	while ( ++m<2 ) if ( wx[m]>-1 )
 		{
-			clr( wx[m]-10,wy[m]-15,20,15 );
+			clr_bg( wx[m]-10,wy[m]-15,20,15 );
 			color(1);
 			line( wx[m],wy[m],wx[m],wy[m]-15 );
 			if ( m==n )
@@ -847,30 +848,17 @@ gem_init() /* Öffnen der Workstation... */
 #endif
 
 
-void color(int a)
-{
-#if GEMSTUFF
-	vst_color( handle,a );
-	vsl_color( handle,a );
-	vsf_color( handle,a );
-#else
-	// printf("color %i\n",a);
-	scr_color(a);
-#endif
-}
-
-
 int loc(int x, int y)  /* Ermittelt, ob Punkt gesetzt ist */
 {
-	short a;
+	int a;
 #if GEMSTUFF
 	short b;
 	v_get_pixel(handle,x,y,&a,&b);
 	return((int)a);
 #else
 	a = scr_getpixel(x,y);
-	// printf("loc %i %i = %i\n", x,y, a);
-	return  (a == 0xffffffff);
+	// printf("loc %i %i = 0x%x\n", x,y, a);
+	return  ((a&0xff) == 0xff);
 #endif
 }
 
@@ -891,22 +879,4 @@ void box(short x, short y, short x2, short y2, short c)
 	xy[2]=x2;
 	xy[3]=y2;
 	v_bar( handle,xy );
-}
-
-
-void clr(short x, short y, short w, short h)
-{
-	box(x,y,x+w-1,y+h-1,0);
-}
-
-void cls(void) /* Löscht den gesamten Bildschirm außer der Menüleiste */
-{
-#if GEMSTUFF
-	int *a,i;
-
-	a=(int *)(scr+32000);
-	for ( i=0;i<7600;i++ ) *--a=0;
-#else
-	scr_clear();
-#endif
 }
