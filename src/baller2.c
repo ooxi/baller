@@ -33,6 +33,7 @@
 #include "baller1.h"
 #include "baller2.h"
 #include "screen.h"
+#include "market.h"
 
 #define Min(a,b)  ((a)<(b)?(a):(b))
 #define Max(a,b)  ((a)>(b)?(a):(b))
@@ -275,7 +276,7 @@ void schuss(int k)
 		color(0);
 		kugel( (int)ox,(int)oy );
 		if ( x>=3 && x<=637 && y>= 3 && y <= 397) {
-			v=loc((int)x,(int)y)& loc((int)x-1,(int)y+1)& loc((int)x+1,(int)y+2);
+			v=!loc((int)x,(int)y) & !loc((int)x-1,(int)y+1) & !loc((int)x+1,(int)y+2);
 		}
 		color(1);
 		kugel( (int)x,(int)y );
@@ -627,103 +628,10 @@ void draw(short x, short y, short *a)
 }
 
 
-/******************************** Markt **************************************/
-void markt(void)
-{
-#if GEMSTUFF
-	short a,k,ko,t;
-	form_center( a_sta,&fx,&fy,&fw,&fh );
-	sav_scr();
-	form_dial( 1,mx,my,30,20,fx,fy,fw,fh );
-
-	for ( a=0;a<6;a++ ) zahl( SM1+a, p[a] );
-	do
-	{
-		for ( t=k=0;k<5; ) t+=(ft[n][k++].x>-1);
-		for ( ko=k=0;k<10; ) ko+=(ka[n][k++].x>-1);
-		for ( k=0;k<10;k++ )
-			if ( bg[1+k*2]>-1 && ka[n][k].x==-1 )
-			{
-				hide();
-				for ( a=1;a<10;a++ )
-					if ( loc(639*n+(bg[1+k*2]+5+a)*f,by[n]-bg[2+k*2]-a) ) break;
-				show();
-				if ( a>9 ) break;
-			}
-		zahl( SH1,ge[n] );
-		zahl( SH2,t );
-		zahl( SH3,ko    );
-		zahl( SH4,wx[n]>-1 );
-		zahl( SH5,pu[n] );
-		zahl( SH6,ku[n] );
-		zahl( SH7,vo[n] );
-		zahl( SH8,st[n] );
-		for ( a=0;a<6;a++ )
-			*(short *)(a_sta+24*(SM1+a)+10)=8* ( ge[n]<p[a] || !an_erl && !a ||
-			                                     a==1 && (bg[0]+t*30>265||t>4) || a==2 && k>9 || a==3 && wx[n]>-1 );
-
-		objc_draw( a_sta,0,5,0,0,640,400 );
-
-		a=form_do( a_sta,0 );
-		if ( a>=0 ) *(short *)(a_sta+24*a+10)=0;
-		if ( a==SHK ) st[n]-=2*(st[n]>0);
-		else if ( a==SHG ) st[n]+=2*(st[n]<100);
-		else if ( a!=FERTIG && a-SM1>-1 && a-SM1<6)
-		{
-			ge[n]-=p[a-SM1];
-			if ( a<SM5 )
-			{
-				lod_scr();
-				drw_all();
-				if ( a==SM1 ) anbau();
-				else if ( a==SM2 ) fturm();
-				else if ( a==SM3 ) init_ka( k,639*n );
-				else if ( a==SM4 )
-				{
-					wx[n]=639*n+f*bg[23];
-					wy[n]=by[n]-bg[24];
-					werdran(1);
-				}
-				sav_scr();
-			}
-			else
-			{
-				pu[n]+=30*(a==SM5);
-				ku[n]+=2*(a==SM6);
-				drw_gpk(a-SM4);
-				drw_gpk(0);
-			}
-		}
-	}
-	while ( a!=FERTIG );
-
-	lod_scr();
-	drw_all();
-	form_dial( 2,mx,my,30,20,fx,fy,fw,fh );
-#else
-	puts("markt!");
-#endif
-}
-
-#if GEMSTUFF
-void zahl(short nr, short wert) /* 5-stellige Zahl, rechtsbündig, ohne führende Nullen */
-{
-	short i,a,b;
-	char *adr;
-
-	adr=*(char **)(a_sta+24*nr+12)+11;
-
-	for ( b=i=0,a=10000; i<5; i++,a/=10 )
-	{
-		*adr++=48+wert/a-16*(wert<a && i<4 && !b);
-		b|=wert/a;
-		wert%=a;
-	}
-}
-#endif
-
-/********************* Von Markt aufzurufende Routinen ***********************/
-void fturm(void)  /* Förderturm bauen */
+/**
+ * Förderturm bauen
+ */
+void fturm(void)
 {
 	short x,y,yy,i,t;
 
@@ -739,57 +647,12 @@ void fturm(void)  /* Förderturm bauen */
 	}
 	while ( i<40 );
 	y=yy;
-	clr( x-29*n,y-70,30,70 );
+	clr_bg( x-29*n,y-70,30,70 );
 	color( 1 );
 	draw( ft[n][t].x=x,ft[n][t].y=y,turm );
 	show();
 }
 
-void anbau(void)  /* Anbauen */
-{
-	short s;
-	char a[3];
-
-	color(1);
-	vsf_interior( handle,2 );
-	vsf_style( handle,9 );
-	v_gtext( handle,280,375," Anbauen: " );
-	v_gtext( handle,220,395," Verbleibende Steine: 20 ");
-	s=20;
-	graf_mouse(6,0);
-
-	do
-	{
-		maus();
-		if ( bt && (n? mx>624-bg[0] : mx<bg[0]+15 ) && my>155 )
-		{
-			hide();
-			if ( !( loc(mx,my) || loc(mx+1,my+1) || loc(mx-1,my-1) ) &&
-			                ( loc(mx+3,my-1)||loc(mx+3,my+1)||loc(mx-3,my-1)||loc(mx-3,my+1)||
-			                  loc(mx+1,my+2)||loc(mx-1,my+2)||loc(mx+1,my-2)||loc(mx-1,my-2) ))
-			{
-				vswr_mode( handle,4 );
-				xy[0]=mx-2;
-				xy[1]=my-1;
-				xy[2]=mx+2;
-				xy[3]=my+1;
-				v_bar( handle,xy );
-				vswr_mode( handle,1 );
-				s--;
-				a[0]=48+s/10;
-				a[1]=48+s%10;
-				a[2]=0;
-				v_gtext( handle,396,395,a );
-			}
-			show();
-		}
-	}
-	while ( s>0 && bt<2 );
-
-// FIXME	for ( s=360;s<400;s++ ) movmem( buf+s*80+26,scr+s*80+26,28 );
-
-	graf_mouse(0,0);
-}
 
 /*************************** Audienz beim König ******************************/
 char kna[]="Der König meint:             \n'",

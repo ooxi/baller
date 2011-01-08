@@ -858,7 +858,7 @@ int loc(int x, int y)  /* Ermittelt, ob Punkt gesetzt ist */
 #else
 	a = scr_getpixel(x,y);
 	// printf("loc %i %i = 0x%x\n", x,y, a);
-	return  ((a&0xff) == 0xff);
+	return  ((a&0xff) != 0xff);
 #endif
 }
 
