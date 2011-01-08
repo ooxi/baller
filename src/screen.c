@@ -49,6 +49,8 @@ void scr_init(void)
 		exit(-1);
 	}
 
+	SDL_WM_SetCaption("Ballerburg SDL", "Ballerburg");
+
 	bg_color = SDL_MapRGB(surf->format,0xe0,0xf0,0xff);
 
 	SDLGui_Init();
@@ -81,7 +83,21 @@ int form_alert(int type, char *text)
 
 void v_gtext(int handle, int x, int y, char *text)
 {
+	SDL_Rect rect;
+
 	printf("v_gtext: %s\n", text);
+
+	y -= 12;
+
+	rect.x = x;
+	rect.y = y;
+	rect.w = strlen(text)*8;
+	rect.h = 16;
+	SDL_FillRect(surf, &rect, SDL_MapRGB(surf->format,0xff,0xff,0xff));
+
+	SDLGui_Text(x, y, text);
+
+	SDL_UpdateRects(surf, 1, &rect);
 }
 
 void v_circle(int handle, int x, int y, int w)

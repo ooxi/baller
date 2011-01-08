@@ -49,13 +49,13 @@ static short wi, pv;    /* Winkel und Pulver */
 // #define WINK TBD
 // #define PULV TBD
 
-char dlg_winkel[4];
-char dlg_pulver[3];
+static char dlg_winkel[4];
+static char dlg_pulver[3];
 
 static SGOBJ cannoneerdlg[] =
 {
-	{ SGBOX, 0, 0, 0,0, 36,14, NULL },
-	{ SGTEXT, 0, 0, 15,1, 6,1, "Kanone" },
+	{ SGBOX, 0, 0, 0,0, 42,15, NULL },
+	{ SGTEXT, 0, 0, 18,1, 6,1, "Kanone" },
 
 	{ SGTEXT, 0, 0, 2,3, 7,1, "Winkel:" },
 	{ SGBUTTON, SG_EXIT, 0, 12,3, 4,1, "\x04\04" },   // 2 arrows left
@@ -71,11 +71,11 @@ static SGOBJ cannoneerdlg[] =
 	{ SGBUTTON, SG_EXIT, 0, 26,5, 3,1, "\x03" },      // Arrow right
 	{ SGBUTTON, SG_EXIT, 0, 30,5, 4,1, "\x03\x03" },  // 2 arrows right
 
-	{ SGBUTTON, SG_DEFAULT, 0, 27,10, 8,1, "OK" },
-	{ SGBUTTON, SG_CANCEL, 0, 27,12, 8,1, "Cancel" },
+	{ SGBUTTON, SG_DEFAULT, 0, 33,11, 8,1, "OK" },
+	{ SGBUTTON, SG_CANCEL, 0, 33,13, 8,1, "Cancel" },
 
-	{ SGBOX, 0, 0, 2,7, 24,6, NULL },
-	{ SGUSER, 0, 0, 2,7, 24,6, (void*)draw_cannoneer },
+	{ SGBOX, 0, 0, 2,7, 30,7, NULL },
+	{ SGUSER, 0, 0, 2,7, 30,7, (void*)draw_cannoneer },
 
 	{ -1, 0, 0, 0,0, 0,0, NULL }
 };
@@ -104,7 +104,7 @@ static void draw_cannoneer(int x, int y, int w, int h)
 	SDL_FillRect(surf, &rect, SDL_MapRGB(surf->format,0xff,0xff,0xff));
 
 	xk = x + w / 2;
-	yk = y + h / 2 + 32;
+	yk = y + h / 2 + 40;
 
 	/* Draw the cannoneer man */
 	color(1);

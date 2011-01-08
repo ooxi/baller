@@ -16,7 +16,7 @@ const char SDLGui_fileid[] = "sdlgui.c : " __DATE__ " " __TIME__;
 #include "sdlgui.h"
 #include "baller1.h"
 
-#include "font10x16.h"
+#include "font8x16.h"
 
 
 static SDL_Surface *pSdlGuiScrn;            /* Pointer to the actual main SDL screen surface */
@@ -85,7 +85,7 @@ int SDLGui_Init(void)
 
 	/* Initialize the font graphics: */
 //	pSmallFontGfx = SDLGui_LoadXBM(font5x8_width, font5x8_height, font5x8_bits);
-	pBigFontGfx = SDLGui_LoadXBM(font10x16_width, font10x16_height, font10x16_bits);
+	pBigFontGfx = SDLGui_LoadXBM(font8x16_width, font8x16_height, font8x16_bits);
 	if (/*pSmallFontGfx == NULL ||*/ pBigFontGfx == NULL)
 	{
 		fprintf(stderr, "Error: Can not init font graphics!\n");
