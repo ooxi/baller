@@ -35,6 +35,7 @@
 #include "baller2.h"
 #include "ballergui.h"
 #include "screen.h"
+#include "market.h"
 
 #define Min(a,b)  ((a)<(b)?(a):(b))
 #define Max(a,b)  ((a)>(b)?(a):(b))
@@ -205,7 +206,7 @@ void z_txt(short a)
 		txt[0]=32;
 		if (a<10) txt[1]=32;
 	}
-	for (a=0;a<3;a++) txt[a]=txt[a]==48? 79: txt[a]==49? 108: txt[a];
+	//for (a=0;a<3;a++) txt[a]=txt[a]==48? 79: txt[a]==49? 108: txt[a];
 }
 
 
