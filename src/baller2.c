@@ -329,7 +329,8 @@ void schuss(int k)
 					}
 				if ( ox>wx[n]-11 && ox<wx[n]+11 && oy>wy[n]-16 && oy<wy[n] && wx[n]>-1)
 				{
-					clr( wx[n]-10,wy[n]-15,20,15 );
+					/* Windfahne getroffen */
+					clr_bg(wx[n]-10, wy[n]-15, 20, 15);
 					wx[n]=-1;
 				}
 				if ( drin( bg[21],bg[22],30,25,0,(int)ox,(int)oy ) )
