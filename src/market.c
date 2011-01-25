@@ -70,7 +70,7 @@ static char dlg_kugelpreis[6];
 
 static SGOBJ marktdlg[] =
 {
-	{ SGBOX, 0, 0, 0,0, 44,20, NULL },
+	{ SGBOX, 0, 0, 0,0, 44,18, NULL },
 
 	{ SGBOX, 0, 0, 1,1, 42,7, NULL },
 	{ SGTEXT, 0, 0, 18,1, 8,1, "Du hast:" },
@@ -94,7 +94,7 @@ static SGOBJ marktdlg[] =
 	{ SGBUTTON, SG_EXIT, 0, 36,6, 1,1, "\x04" },    // Arrow left
 	{ SGBUTTON, SG_EXIT, 0, 41,6, 1,1, "\x03" },    // Arrow right
 
-	{ SGBOX, 0, 0, 1,9, 42,7, NULL },
+	{ SGBOX, 0, 0, 1,9, 42,6, NULL },
 	{ SGTEXT, 0, 0, 18,9, 8,1, "Markt:" },
 
 	{ SGTEXT, 0, 0, 2,11, 10,1, "Anbauen:" },
@@ -110,7 +110,7 @@ static SGOBJ marktdlg[] =
 	{ SGTEXT, 0, 0, 14,13, 5,1, dlg_pulverpreis },
 	{ SGTEXT, 0, 0, 37,13, 5,1, dlg_kugelpreis },
 
-	{ SGBUTTON, SG_DEFAULT, 0, 16,18, 12,1, "Fertig" },
+	{ SGBUTTON, SG_DEFAULT, 0, 16,16, 12,1, "Fertig" },
 
 	{ -1, 0, 0, 0,0, 0,0, NULL }
 };
