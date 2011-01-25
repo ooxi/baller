@@ -239,7 +239,7 @@ int ein_zug(void)
 {
 	short i = 0, fl, a;
 
-	puts("ein zug ...");
+	// puts("ein zug ...");
 
 	n=zug&1;
 	fn();
@@ -257,7 +257,7 @@ int ein_zug(void)
 			if ( event() ) return(0);
 		}
 		while (!bt && !(mod&(2-n)));
-//printf("ein zug %i %i %i\n", bt, mod, a);
+		//printf("ein zug %i %i %i\n", bt, mod, a);
 		menu(0);
 		bg=burgen[bur[n]];
 
@@ -286,13 +286,11 @@ int ein_zug(void)
 			{
 				bing();
 				DlgAlert_Notice("Dein Pulver reicht nicht!", "Abbruch");
-				exit(0);
 			}
 			else if ( !ku[n] )
 			{
 				bing();
 				DlgAlert_Notice("Du hast keine Kugeln mehr!", "Abbruch");
-				exit(0);
 			}
 			else fl=sch_obj(i);
 		}
@@ -462,13 +460,16 @@ void werdran(char c)
 #if GEMSTUFF
 	short *a;
 	char *ad;
-	short i;
+#else
+	char ad[8];
 #endif
+	int i;
 	short x, y, w, h, c1, s1, c2, s2;
 	double wk,wl;
 
+	/* Anzahl der Spielrunden ausgeben */
 	z_txt(zug/2+1);
-	v_gtext(handle,332,395,txt);
+	v_gtext(handle, 332, 395+16, txt);
 
 #if GEMSTUFF
 	a=(short *)(a_dra+16);
@@ -499,9 +500,23 @@ void werdran(char c)
 
 		objc_draw( a_dra,0,4,0,0,640,400 );
 #else
-		// FIXME:
-		x = 5+(629-80)*n; y = 410;
-		w = 40; h = 60;
+		x = 5+(629-104)*n; y = 410;
+		w = 104; h = 48;
+
+		/* Wind ausgeben: */
+		ad[0] = ad[5] = 4+28*!wnd-(wnd>0);
+		i = wnd<0? -wnd:wnd;
+		ad[1] = ad[4] = ' ';
+		ad[2] = 48+i/10;
+		ad[3] = 48+i%10;
+		ad[6] = 0;
+		if ( wx[n]<0 )
+		{
+			ad[0]=ad[5]=32;
+			ad[2]=ad[3]='?';
+		}
+		v_gtext(handle, x+4, y+h+12, "Wind:");
+		v_gtext(handle, x+52, y+h+12, ad);
 #endif
 		c=wnd>0? 1:-1;
 		wk=c*wnd/15.0;
@@ -551,7 +566,7 @@ void werdran(char c)
 #if GEMSTUFF
 		clr( a[0],a[1],a[2],a[3] );
 #else
-		clr(5+(629-80)*(n^1),410, 60,60);
+		clr(5+(629-104)*n,410, 104,48+16);
 #endif
 		show();
 	}

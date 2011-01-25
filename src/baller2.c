@@ -485,7 +485,7 @@ void bild(void)
 
 	burg(0);
 	burg(1);
-	v_gtext(handle,276,395," Runde     ");
+	v_gtext(handle, 276, 395+16, " Runde     ");
 	show();
 }
 

@@ -26,6 +26,7 @@
 
 
 SDL_Surface *surf;
+SDL_Surface *panelbg;
 Uint32 the_color, fill_color;
 Uint32 bg_color;
 
@@ -55,11 +56,16 @@ void scr_init(void)
 
 	SDLGui_Init();
 	SDLGui_SetScreen(surf);
+
+	// panelbg = SDL_LoadBMP("panel.bmp");
 }
 
 void scr_clear(void)
 {
 	SDL_Rect rect;
+	Uint32 white;
+
+	white = SDL_MapRGB(surf->format,0xff,0xff,0xff);
 
 	rect.x = 0;
 	rect.y = 0;
@@ -67,12 +73,34 @@ void scr_clear(void)
 	rect.h = 400;
 	SDL_FillRect(surf, &rect, bg_color);
 
-	rect.x = 0;
-	rect.y = 400;
-	rect.w = 640;
-	rect.h = 80;
-	SDL_FillRect(surf, &rect, SDL_MapRGB(surf->format,192,192,192));
+	if (panelbg)
+	{
+		SDL_Rect srect;
+		srect.x = srect.y = 0;
+		srect.w = rect.w = panelbg->w;
+		srect.h = rect.h = panelbg->h;
+		rect.y = 400;
+		for (rect.x = 0; rect.x < surf->w; rect.x += panelbg->w)
+		{
+			SDL_BlitSurface(panelbg, &srect, surf, &rect);
+		}
+	}
+	else
+	{
+		rect.x = 0;
+		rect.y = 400;
+		rect.w = 640;
+		rect.h = 80;
+		SDL_FillRect(surf, &rect, SDL_MapRGB(surf->format,192,192,192));
+	}
 
+	rect.x = 5; rect.y = 410;
+	rect.w = 104; rect.h = 48+16;
+	SDL_FillRect(surf, &rect, white);
+
+	rect.x = 5+(629-104); rect.y = 410;
+	rect.w = 104; rect.h = 48+16;
+	SDL_FillRect(surf, &rect, white);
 }
 
 int form_alert(int type, char *text)
@@ -85,7 +113,7 @@ void v_gtext(int handle, int x, int y, char *text)
 {
 	SDL_Rect rect;
 
-	printf("v_gtext: %s\n", text);
+	// printf("v_gtext: %s\n", text);
 
 	y -= 12;
 
