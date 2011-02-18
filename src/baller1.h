@@ -1,7 +1,7 @@
 /*
     baller1.h - prototypes and definitions for baller1.c
 
-    Copyright (C) 2010  Thomas Huth
+    Copyright (C) 2010, 2011  Thomas Huth
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -26,8 +26,8 @@ extern short handle, mx,my,bt,dum,m_buf[8], xy[100],
 	wx[2],wy[2],ws,wc,
 	*bg, zug,n,oldn, p[6],
 	fx,fy,fw,fh,
-	ftx,fty,ftw,fth,
 	f_h, *burgen[20],b_anz;
+extern int ftx, fty, ftw, fth;
 //extern int scr, a_men,a_inf,a_sch,a_brg,a_nam,a_dra,a_sta,a_sie;
 extern int f;
 extern char mod, wnd, end, an_erl,

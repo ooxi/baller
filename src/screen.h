@@ -1,7 +1,7 @@
 /*
     screen.h - prototypes and definitions for screen.c
 
-    Copyright (C) 2010  Thomas Huth
+    Copyright (C) 2010, 2011  Thomas Huth
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -48,6 +48,8 @@ int scr_getpixel(int x, int y);
 void scr_color(int c);
 void scr_fillcolor(int c);
 void color(int a);
+void scr_init_done_button(int *bx, int *by, int *bw, int *bh);
+void scr_draw_done_button(int selected);
 
 int DlgAlert_Notice(const char *text, const char *button);
 int DlgAlert_Query(const char *text, const char *button1, const char *button2);

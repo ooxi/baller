@@ -73,5 +73,6 @@ extern void SDLGui_Text(int x, int y, const char *txt);
 extern void SDLGui_DrawDialog(const SGOBJ *dlg);
 extern int SDLGui_DoDialog(SGOBJ *dlg, SDL_Event *pEventOut);
 extern void SDLGui_CenterDlg(SGOBJ *dlg);
+void SDLGui_DrawButton(const SGOBJ *bdlg, int objnum);
 
 #endif

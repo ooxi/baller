@@ -1,7 +1,7 @@
 /*
     screen.c - Screen functions for Ballerburg
 
-    Copyright (C) 2010  Thomas Huth
+    Copyright (C) 2010, 2011  Thomas Huth
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -30,6 +30,12 @@ Uint32 the_color, fill_color;
 Uint32 bg_color;
 
 int fill_style, fill_interior;
+
+static SGOBJ donebuttondlg[] =
+{
+	{ SGBOX, 0, 0, 36,29, 8,1, NULL },
+	{ SGBUTTON, SG_EXIT, 0, 0,0, 8,1, "Fertig" }
+};
 
 
 void scr_init(void)
@@ -355,4 +361,30 @@ void color(int c)
 		the_color = 0x000000ff;
 	else
 		the_color = (bg_color<<8) | 0x0ff;
+}
+
+
+void scr_init_done_button(int *bx, int *by, int *bw, int *bh)
+{
+	int fontw, fonth;
+
+	/* Calculate the "Done" button coordinates */
+	SDLGui_GetFontSize(&fontw, &fonth);
+	*bx = donebuttondlg[0].x * fontw;
+	*by = donebuttondlg[0].y * fonth;
+	*bw = donebuttondlg[0].w * fontw;
+	*bh = donebuttondlg[0].h * fonth;
+
+}
+
+void scr_draw_done_button(int selected)
+{
+	if (selected)
+		donebuttondlg[1].state |= SG_SELECTED;
+	else
+		donebuttondlg[1].state &= ~SG_SELECTED;
+
+	SDLGui_DrawButton(donebuttondlg, 1);
+
+	SDL_UpdateRect(surf, 0,0, 0,0);
 }

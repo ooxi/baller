@@ -2,7 +2,7 @@
     baller2.c
 
     Copyright (C) 1987, 1989  Eckhard Kruse
-    Copyright (C) 2010  Thomas Huth
+    Copyright (C) 2010, 2011  Thomas Huth
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -486,6 +486,9 @@ void bild(void)
 	burg(0);
 	burg(1);
 	v_gtext(handle, 276, 395+16, " Runde     ");
+
+	scr_draw_done_button(0);
+
 	show();
 }
 

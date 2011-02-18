@@ -29,7 +29,7 @@ static int current_object = 0;				/* Current selected object */
 /**
  * Load an 1 plane XBM into a 8 planes SDL_Surface.
  */
-static SDL_Surface *SDLGui_LoadXBM(int w, int h, const Uint8 *pXbmBits)
+static SDL_Surface *SDLGui_LoadXBM(int w, int h, const void *pXbmBits)
 {
 	SDL_Surface *bitmap;
 	Uint8 *dstbits;
@@ -325,7 +325,7 @@ static void SDLGui_DrawBox(const SGOBJ *bdlg, int objnum)
 /**
  * Draw a normal button.
  */
-static void SDLGui_DrawButton(const SGOBJ *bdlg, int objnum)
+void SDLGui_DrawButton(const SGOBJ *bdlg, int objnum)
 {
 	int x,y;
 

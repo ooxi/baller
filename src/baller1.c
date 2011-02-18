@@ -2,7 +2,7 @@
     baller1.c
 
     Copyright (C) 1987, 1989  Eckhard Kruse
-    Copyright (C) 2010  Thomas Huth
+    Copyright (C) 2010, 2011  Thomas Huth
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -56,9 +56,9 @@ short handle, mx,my,bt,dum,m_buf[8], xy[100],
 	wx[2],wy[2],ws,wc,
 	*bg, zug,n,oldn, p[6],  t_gew[6][10], max_rund,
 	fx,fy,fw,fh,
-	ftx,fty,ftw,fth,
 	*burgen[20],b_anz;
-void *buf, *bur_ad;
+int ftx, fty, ftw, fth;     /* Koordinaten von "Fertig" */
+void *bur_ad;
 int   scr, a_opt, a_ein;
 #if GEMSTUFF
 int a_men,a_inf,a_sch,a_brg,a_nam,a_dra;
@@ -88,6 +88,7 @@ int main(int argc, char **argv)
 	scr=Logbase();
 #else
 	scr_init();
+	scr_init_done_button(&ftx, &fty, &ftw, &fth);
 #endif
 
 //	m_laden("BALLER.MUS"); /* Laden der Musikdatei mit Funktion aus MUSIK.C */
@@ -116,12 +117,11 @@ int main(int argc, char **argv)
 	*(short *)(a_com+CTS2*24+34)=1;
 #endif
 
-	buf=malloc(42000); /* Speicher für Burgdaten und zweiten Schirm holen */
-	if (!buf) {
+	bur_ad = malloc(16000); /* Speicher für Burgdaten */
+	if (!bur_ad) {
 		printf("Zu wenig Speicher!\n");
 		exit(-1);
 	}
-	bur_ad=buf+32000;
 	an_erl=1;
 	mxin=3;
 	max_rund=32767;
@@ -171,7 +171,9 @@ void tabelle(void)
 	for (i=0;i<6;i++) v_gtext(handle,80,110+i*24,t_na[i]);
 	vsf_interior(handle,2);
 	vsf_style(handle,2);
-	for (i=0;i<6;i++) for (j=0;j<10;j++)
+	for (i=0;i<6;i++)
+	{
+		for (j=0;j<10;j++)
 		{
 			z_txt(t_gew[i][j]);
 			if (j==9 && !t_gew[i][6] )
@@ -183,6 +185,7 @@ void tabelle(void)
 			v_gtext(handle,176+i*72,110+j*24+8*(j>5),txt);
 			if (i==j) box(152+i*72,92+j*24,224+i*72,116+j*24, 1 /*FIXME*/);
 		}
+	}
 	v_gtext(handle,64,262,"\344  Spiele");
 	v_gtext(handle,64,286,"\344gewonnen");
 	v_gtext(handle,64,310,"\344verloren");
@@ -268,7 +271,17 @@ int ein_zug(void)
 			show();
 			fl=1+(i<0);
 		}
-		else if ( mx>ftx && mx<ftx+ftw && my>fty && my<fty+fth ) fl=2;
+		else if (mx > ftx && mx < ftx+ftw && my > fty && my < fty+fth)
+		{
+			/* "Fertig"-Knopf wurde gedrueckt */
+			scr_draw_done_button(1);
+			do
+			{
+				event();
+			} while (bt);
+			scr_draw_done_button(0);
+			fl=2;
+		}
 		else
 		{
 			for ( i=0;i<10;i++ )
