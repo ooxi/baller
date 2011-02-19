@@ -1,0 +1,64 @@
+
+		  ==========================
+		  =     Ballerburg SDL     =
+		  ==========================
+
+	    Copyright (C) 1987, 1989  Eckhard Kruse
+	    Copyright (C) 2010, 2011  Thomas Huth
+
+
+	  Für meine Schwester Martina Huth - ich werde
+	nie die vielen schönen Stunden vergessen, die wir
+	  mit diesem Spiel in unserer Kindheit hatten.
+
+
+ 1) Lizenz
+ ---------
+
+Dieses Programm ist freie Software. Sie können es unter den Bedingungen
+der GNU General Public License, wie von der Free Software Foundation
+veröffentlicht, weitergeben und/oder modifizieren, entweder gemäß
+Version 3 der Lizenz oder (nach Ihrer Option) jeder späteren Version.
+
+Die Veröffentlichung dieses Programms erfolgt in der Hoffnung, dass es
+Ihnen von Nutzen sein wird, aber OHNE IRGENDEINE GARANTIE, sogar ohne
+die implizite Garantie der MARKTREIFE oder der VERWENDBARKEIT FÜR EINEN
+BESTIMMTEN ZWECK. Details finden Sie in der GNU General Public License.
+
+Sie sollten ein Exemplar der GNU General Public License zusammen mit
+diesem Programm erhalten haben. Falls nicht, siehe kann die Lizenz
+unter <http://www.gnu.org/licenses/> eingesehen werden.
+
+
+ 2) Was ist Ballerburg?
+ ----------------------
+
+Ballerburg ist ein klassisches Burgenkampfspiel, bei dem sich zwei
+durch einen Berg getrennte Burgen mit ihren Kanonen gegenseitig
+bekämpfen müssen. 
+Ballerburg wurde 1987 von Eckhard Kruse für den damals topaktuellen
+16/32-Bit Computer Atari ST entwickelt. Fast ein viertel Jahrhundert
+später liegt mit Ballerburg SDL nun die Anpassung des alten Sourcecodes,
+welcher von Eckhard Kruse freundlicherweise frei gegeben wurde, an
+GNU/Linux und andere Systeme mit SDL-Unterstützung vor.
+
+
+ 3) Compilieren des Sourcecodes
+ ------------------------------
+
+Zum Compilieren wird der GCC C-Compiler, CMake und folgende Bibliotheken
+benötigt:
+
+- SDL Version 1.2 (http://www.libsdl.org/)
+- SDL_gfx Version 2.0 (http://www.ferzkopp.net/)
+
+
+ 4) Spielstart
+ -------------
+
+Zur Zeit gibt es noch keine automatische Möglichkeit, das Spiel
+systemweit zu installieren. Um das Spiel zu starten muss deshalb in den
+"src" Ordner gewechselt werden, um von dort aus das "ballerburg"
+Programm zu starten.
+Für den genauen Spielablauf bitte die orginale Spielanleitung unter
+doc/de/anleitung.txt lesen!
