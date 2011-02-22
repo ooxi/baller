@@ -2,8 +2,8 @@
 # CMake build file for Ballerburg
 # ###############################
 
-cmake_minimum_required (VERSION 2.6 FATAL_ERROR)
-project (Ballerburg)
+cmake_minimum_required (VERSION 2.8 FATAL_ERROR)
+project (Ballerburg C)
 
 set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake")
 
@@ -24,11 +24,8 @@ endif(NOT CMAKE_BUILD_TYPE)
 # ####################
 
 find_package(SDL REQUIRED)
-if(NOT SDL_FOUND)
-	message(FATAL_ERROR "SDL library not found!")
-endif(NOT SDL_FOUND)
-
-find_package(Math)
+find_package(SDL_gfx REQUIRED)
+find_package(Math REQUIRED)
 
 
 # ###############
