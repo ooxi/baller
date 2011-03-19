@@ -33,6 +33,7 @@
 #include "baller1.h"
 #include "baller2.h"
 #include "screen.h"
+#include "psg.h"
 #include "market.h"
 
 #define Min(a,b)  ((a)<(b)?(a):(b))
@@ -422,17 +423,19 @@ int kugel(int x, int y)
 	return(1);
 }
 
-void baller(char r)
-{
-#if GEMSTUFF
-	static char s_bal[]={ 0,0,1,15,6,31,9,0,11,0,12,50,13,0,7,192,8,16,255,0 };
 
-	s_bal[5]=r;
+void baller(unsigned char r)
+{
+	static unsigned char s_bal[] =
+	{
+		0,0, 1,15, 6,31, 9,0, 11,0, 12,50,
+		13,0, 7,192, 8,16, 255,0
+	};
+
+	s_bal[5] = r;
 	Dosound( s_bal );
-#else
-	// printf("BALLER!\n");
-	SDL_Delay(20);
-#endif
+
+	SDL_Delay(10);
 }
 
 

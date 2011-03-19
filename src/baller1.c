@@ -35,6 +35,7 @@
 #include "baller2.h"
 #include "ballergui.h"
 #include "screen.h"
+#include "psg.h"
 #include "market.h"
 
 #define Min(a,b)  ((a)<(b)?(a):(b))
@@ -134,6 +135,8 @@ int main(int argc, char **argv)
 
 //	v_show_c( handle,0 );
 //	graf_mouse( 0,0 );
+
+	psg_audio_init();
 
 	l_nam = nsp1;
 	r_nam = nsp2;

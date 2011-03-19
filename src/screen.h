@@ -38,7 +38,6 @@ void vst_height(short handle, short height, short *v1, short *v2, short *v3,shor
 void vswr_mode(short handle, short val);
 void vst_color(short handle, short val);
 void movmem(void *src, void *dst, int size);
-void Giaccess(int a, int b);
 
 
 void scr_init(void);

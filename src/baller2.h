@@ -26,7 +26,7 @@ void z_pk(void);
 void schuss(int k);
 void expls(int x, int y, int w, int h, int d);
 int kugel(int x, int y);
-void baller(char r);
+void baller(unsigned char r);
 void bild(void);
 void burg(int nn);
 void init_ka(int k, int xr);

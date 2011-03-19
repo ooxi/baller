@@ -135,11 +135,6 @@ void movmem(void *src, void *dst, int size)
 	memmove(dst, src, size);
 }
 
-void Giaccess(int a, int b)
-{
-	// printf("Giaccess %i %i\n", a, b);
-}
-
 void vswr_mode(short handle, short val)
 {
 	//printf("vswr_mode %i\n", val);
