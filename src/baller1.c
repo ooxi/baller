@@ -345,7 +345,8 @@ int ein_zug(void)
 		menu(1);
 		do
 			if ( event() ) return(0);
-		while ( !bt || end );
+		while ( !bt /*|| end*/ );
+		neues();
 		menu(0);
 	}
 	return(1);
@@ -383,17 +384,10 @@ void rechnen(void)
 /******************************* Spielende ***********************************/
 void ende(void)
 {
-	char s1[80],s2[80],s3[80],a;
-#if GEMSTUFF
-	char b,c;
-	int sav_ssp;
+	char s1[80], s2[80], s3[80];
+	int a, b;
+	int i;
 
-	form_center( a_sie,&fx,&fy,&fw,&fh );
-	*(short *)(a_sie+18)=30;
-	*(char **)(a_sie+24*SG1+12)=s1;
-	*(char **)(a_sie+24*SG2+12)=s2;
-	*(char **)(a_sie+24*SG3+12)=s3;
-#endif
 	strcpy( s1,"!! ");
 	strcat( s1, end&2? l_nam:r_nam );
 	strcat( s1," hat gewonnen !!" );
@@ -424,8 +418,6 @@ void ende(void)
 		strcpy( s2,"( Die maximale Rundenzahl ist erreicht.");
 		strcat( s3," befindet sich in der schlechteren Lage. )" );
 	}
-#if GEMSTUFF
-	objc_draw( a_sie,0,7,0,0,640,400 );
 
 	for (a=0;a<6 && strncmp(t_na[a],l_nam,7);a++);
 	for (b=0;b<6 && strncmp(t_na[b],r_nam,7);b++);
@@ -433,6 +425,7 @@ void ende(void)
 	{
 		if (~end&2)
 		{
+			int c;
 			c=a;
 			a=b;
 			b=c;
@@ -442,20 +435,36 @@ void ende(void)
 		t_gew[a][9]=100*++t_gew[a][7]/++t_gew[a][6];
 		t_gew[b][9]=100*t_gew[b][7]/++t_gew[b][6];
 	}
-	hide();
-	sav_ssp=Super(0);
-	m_musik();
-	Super(sav_ssp);
-	show();  /* Musik... */
-	Giaccess( 0,138 );
-	Giaccess( 0,139 );
-	Giaccess( 0,140 );
-#else
+
+	for (i = 0; i < 8; i++)
+	{
+		short xy[4];
+		if (i!=7)
+			scr_color((i*32)<<16);
+		else
+			scr_color(0xffffff);
+		xy[0] = 40 + i*8;
+		xy[1] = 80 + i*8;
+		xy[2] = 600 - i*8;
+		xy[3] = 320 - i*8;
+		v_bar(handle, xy);
+	}
+
 	printf("Ende : %s\n", s1);
 	printf("Ende : %s\n", s2);
 	printf("Ende : %s\n", s3);
-	exit(0);
-#endif
+
+	v_gtext(handle, 140, 170, s1);
+	v_gtext(handle, 140, 210, s2);
+	v_gtext(handle, 140, 230, s3);
+
+	//m_musik();
+
+	/*
+	Giaccess( 0,138 );
+	Giaccess( 0,139 );
+	Giaccess( 0,140 );
+	*/
 }
 
 
