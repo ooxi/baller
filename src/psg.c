@@ -468,12 +468,12 @@ void psg_audio_init(void)
 	psg_init(1, 16, 44100);
 
 	/* Set up SDL audio: */
-	desiredAudioSpec.freq = 44100;
+	desiredAudioSpec.freq = 22050;
 	desiredAudioSpec.format = AUDIO_S16SYS;		/* 16-Bit signed */
 	desiredAudioSpec.channels = 2;			/* stereo */
 	desiredAudioSpec.callback = Audio_CallBack;
 	desiredAudioSpec.userdata = NULL;
-	desiredAudioSpec.samples = 1024;	/* buffer size in samples */
+	desiredAudioSpec.samples = 512;			/* buffer size in samples */
 
 	if (SDL_OpenAudio(&desiredAudioSpec, NULL))	/* Open audio device */
 	{
@@ -481,8 +481,6 @@ void psg_audio_init(void)
 		SDL_QuitSubSystem(SDL_INIT_AUDIO);
 		return;
 	}
-
-	// SoundBufferSize = desiredAudioSpec.size;	/* May be different than the requested one! */
 
 	SDL_PauseAudio(0);
 }
