@@ -221,14 +221,8 @@ static void zahl(short nr, short wert)
 void markt(void)
 {
 	short a,k,ko,t;
-#if GEMSTUFF
-	form_center( a_sta,&fx,&fy,&fw,&fh );
-	sav_scr();
-	form_dial( 1,mx,my,30,20,fx,fy,fw,fh );
-#else
-	SDLGui_CenterDlg(marktdlg);
 
-#endif
+	SDLGui_CenterDlg(marktdlg);
 
 	for (a = 0; a < 6; a++)
 	{
@@ -288,16 +282,8 @@ void markt(void)
 				marktdlg[SM1 + a].type = SGBUTTON;
 			}
 		}
-#if GEMSTUFF
-		objc_draw( a_sta,0,5,0,0,640,400 );
 
-		a=form_do( a_sta,0 );
-		if ( a>=0 ) *(short *)(a_sta+24*a+10)=0;
-#else
-fprintf(stderr,"pulver = %i kugeln = %i\n", pu[n], ku[n]);
 		a = SDLGui_DoDialog(marktdlg, NULL);
-fprintf(stderr,"... a = %i\n", a);
-#endif
 
 		if (a == SHK)
 		{
@@ -334,11 +320,5 @@ fprintf(stderr,"... a = %i\n", a);
 	}
 	while (a != FERTIG);
 
-#if GEMSTUFF
-	lod_scr();
-	drw_all();
-	form_dial( 2,mx,my,30,20,fx,fy,fw,fh );
-#else
 	SDL_UpdateRect(surf, 0,0, 0,0);
-#endif
 }
