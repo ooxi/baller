@@ -4,6 +4,8 @@
 
 #include "baller1.h"
 #include "ballergui.h"
+#include "screen.h"
+#include "settings.h"
 
 
 #if GEMSTUFF
@@ -176,13 +178,39 @@ event()
 
 #else
 
-int event(void)
+static int gui_handle_keys(SDL_Event *event)
 {
-	// printf("event...\n");
+	switch (event->key.keysym.sym)
+	{
+	 case SDLK_ESCAPE:
+		settings();
+		break;
+	 case SDLK_f:
+		SDL_WM_ToggleFullScreen(surf);
+		break;
+	 case SDLK_q:
+		return DlgAlert_Query("Ballerburg beenden?", "Ja", "Nein");
+	 default:
+		break;
+	}
 
+	return 0;
+}
+
+
+int event(int wait)
+{
+	int ev_avail;
 	SDL_Event event;
 
-	if (SDL_WaitEvent(&event))
+	// printf("event(%i)\n", wait);
+
+	if (wait)
+		ev_avail = SDL_WaitEvent(&event);
+	else
+		ev_avail = SDL_PollEvent(&event);
+
+	while (ev_avail)
 	{
 		// printf("EVENT = %i\n", event.type);
 		switch(event.type)
@@ -214,8 +242,12 @@ int event(void)
 				bt &= ~2;
 			}
 			break;
+		 case SDL_KEYUP:
+			return gui_handle_keys(&event);
 		}
-	} 
+
+		ev_avail = SDL_PollEvent(&event);
+	}
 
 	return 0;
 }

@@ -163,7 +163,6 @@ int sch_obj(short k)
 	aw=*(char **)(a_sch+24*WINK+12);
 	ap=*(char **)(a_sch+24*PULV+12);
 #else
-	puts("sch_obj");
 	dlg_winkel[0] = dlg_pulver[0] = 0;
 	aw = dlg_winkel;
 	ap = dlg_pulver;

@@ -70,7 +70,7 @@ int f;
 char  mod, wnd, end, txt[4], an_erl, mxin, au_kap,
 	cw[2]={2,2}, cx[2]={1,1};
 
-char cn[7][8]={ "Tölpel","Dummel","Brubbel","Wusel","Brösel","Toffel","Rüpel" };
+//char cn[7][8]={ "Tölpel","Dummel","Brubbel","Wusel","Brösel","Toffel","Rüpel" };
 char t_na[6][8]={ "Tölpel","Dummel","Brubbel","Wusel","Brösel","Toffel" };
 
 char nsp1[22]="Hugo",nsp2[22]="Emil";
@@ -260,7 +260,8 @@ int ein_zug(void)
 		menu(1);
 		do
 		{
-			if ( event() ) return(0);
+			if (event(!(mod&(2-n))) != 0)
+				return(0);
 		}
 		while (!bt && !(mod&(2-n)));
 		//printf("ein zug %i %i %i\n", bt, mod, a);
@@ -280,7 +281,7 @@ int ein_zug(void)
 			scr_draw_done_button(1);
 			do
 			{
-				event();
+				event(1);
 			} while (bt);
 			scr_draw_done_button(0);
 			fl=2;
@@ -344,7 +345,8 @@ int ein_zug(void)
 		ende();
 		menu(1);
 		do
-			if ( event() ) return(0);
+			if (event(1) != 0)
+				return 0;
 		while ( !bt /*|| end*/ );
 		neues();
 		menu(0);
@@ -621,7 +623,7 @@ void fahne(void)
 int t_load(void)
 {
 #if 1
-	printf("t_load does not work yet\n");
+	//printf("t_load does not work yet\n");
 #else
 	FILE *f_h;
 
@@ -648,7 +650,7 @@ int t_load(void)
 int t_save(void)
 {
 #if 1
-	printf("t_save not implemented yet\n");
+	//printf("t_save not implemented yet\n");
 #else
 	if ( (f_h=Fcreate( "baller.tab",0 ))<0 ) return(1);
 	Fwrite(f_h,1,&an_erl);
@@ -711,7 +713,7 @@ void burgen_laden(void)
 	short *a,j;
 	FILE *f_h;
 
-	printf("burgen_laden\n");
+	// printf("burgen_laden\n");
 
 	a=(short *)bur_ad;
 

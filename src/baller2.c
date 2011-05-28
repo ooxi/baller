@@ -282,6 +282,7 @@ void schuss(int k)
 		color(1);
 		kugel( (int)x,(int)y );
 		SDL_Delay(8);
+		SDL_PumpEvents();
 #endif
 		a=1000+2*y;
 		if ( a<30 ) a=30;
