@@ -1,2 +1,2 @@
 
-void settings(void);
+int settings(void);

@@ -24,13 +24,13 @@ extern double vvx,vvy;
 extern short handle, mx,my,bt,dum,m_buf[8], xy[100],
 	bur[2],bx[2],by[2], ge[2],pu[2],ku[2],vo[2],st[2],kn[2],
 	wx[2],wy[2],ws,wc,
-	*bg, zug,n,oldn, p[6],
+	*bg, zug,n,oldn, p[6], max_rund,
 	fx,fy,fw,fh,
 	f_h, *burgen[20],b_anz;
 extern int ftx, fty, ftw, fth;
 //extern int scr, a_men,a_inf,a_sch,a_brg,a_nam,a_dra,a_sta,a_sie;
 extern int f;
-extern char mod, wnd, end, an_erl,
+extern char mod, wnd, end, an_erl, au_kap,
 	cw[2],cx[2],
 	nsp1[],nsp2[];
 

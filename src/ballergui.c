@@ -183,7 +183,7 @@ static int gui_handle_keys(SDL_Event *event)
 	switch (event->key.keysym.sym)
 	{
 	 case SDLK_ESCAPE:
-		settings();
+		return settings();
 		break;
 	 case SDLK_f:
 		SDL_WM_ToggleFullScreen(surf);

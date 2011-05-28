@@ -67,7 +67,7 @@ int a_sta,a_sie,a_com,a_re1,a_re2,a_re3;
 #endif
 char *l_nam, *r_nam;
 int f;
-char  mod, wnd, end, txt[4], an_erl, mxin, au_kap,
+char  mod, wnd, end, txt[4], an_erl, au_kap,
 	cw[2]={2,2}, cx[2]={1,1};
 
 //char cn[7][8]={ "Tölpel","Dummel","Brubbel","Wusel","Brösel","Toffel","Rüpel" };
@@ -124,7 +124,7 @@ int main(int argc, char **argv)
 		exit(-1);
 	}
 	an_erl=1;
-	mxin=3;
+	// mxin=3;
 	max_rund=32767;
 	au_kap=1;
 	t_load();

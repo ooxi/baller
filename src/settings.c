@@ -40,11 +40,21 @@
 #define P2_COMPLEV2	21
 #define P2_COMPLEV3	22
 #define P2_COMPLEV4	23
+#define ROUNDS_20	25
+#define ROUNDS_50	26
+#define ROUNDS_100	27
+#define ROUNDS_NOLIMIT	28
+#define GIVEUPALLOWED	29
+#define REPAIRALLOWED	30
+#define NEWGAME		31
+#define CONTINUE	32
+#define QUITGAME	33
+
 
 static SGOBJ settingsdlg[] =
 {
-	{ SGBOX, 0, 0, 0,0, 68,25, NULL },
-	{ SGTEXT, 0, 0, 26,1, 13,1, "Einstellungen" },
+	{ SGBOX, 0, 0, 0,0, 67,21, NULL },
+	{ SGTEXT, 0, 0, 27,1, 13,1, "Einstellungen" },
 
 	{ SGBOX, 0, 0, 1,3, 32,10, NULL },
 	{ SGTEXT, 0, 0, 12,4, 9,1, "Spieler 1" },
@@ -70,7 +80,18 @@ static SGOBJ settingsdlg[] =
 	{ SGRADIOBUT, 0, 0, 60,10, 3,1, "3" },
 	{ SGRADIOBUT, 0, 0, 60,11, 3,1, "4" },
 
-	{ SGBUTTON, SG_DEFAULT, 0, 33,22, 8,1, "OK" },
+	{ SGTEXT, 0, 0, 3,14, 20,1, "Maximale Rundenzahl:" },
+	{ SGRADIOBUT, 0, 0, 25,14, 4,1, "20" },
+	{ SGRADIOBUT, 0, 0, 31,14, 4,1, "50" },
+	{ SGRADIOBUT, 0, 0, 37,14, 5,1, "100" },
+	{ SGRADIOBUT, 0, SG_SELECTED, 44,14, 12,1, "unbegrenzt" },
+
+	{ SGCHECKBOX, 0, SG_SELECTED, 3,16, 26,1, "König kann kapitulieren" },
+	{ SGCHECKBOX, 0, SG_SELECTED, 36,16, 22,1, "Anbauen ist erlaubt" },
+
+	{ SGBUTTON, 0, 0, 2,19, 20,1, "Neues Spiel" },
+	{ SGBUTTON, SG_DEFAULT, 0, 24,19, 19,1, "Weiterspielen" },
+	{ SGBUTTON, 0, 0, 45,19, 20,1, "Programm beenden" },
 
 	{ -1, 0, 0, 0,0, 0,0, NULL }
 };
@@ -79,13 +100,14 @@ static SGOBJ settingsdlg[] =
 /**
  * Kanonenobjektbaum, Wahl von Winkel und Pulver
  */
-void settings(void)
+int settings(void)
 {
 	int i;
+	int retbut;
 
 	SDLGui_CenterDlg(settingsdlg);
 
-	SDLGui_DoDialog(settingsdlg, NULL);
+	retbut = SDLGui_DoDialog(settingsdlg, NULL);
 
 	SDL_UpdateRect(surf, 0,0, 0,0);
 
@@ -107,7 +129,8 @@ void settings(void)
 	/* Computer 1 strategy */
 	for (i = P1_COMPLEV1; i <= P1_COMPLEV4; i++) {
 		if (settingsdlg[i].state & SG_SELECTED) {
-			cw[0] = i - P1_COMPLEV1 + 1;
+			// FIXME: What's the difference between cx and cw?
+			cx[0] = cw[0] = i - P1_COMPLEV1 + 1;
 			break;
 		}
 	}
@@ -115,9 +138,38 @@ void settings(void)
 	/* Computer 2 strategy */
 	for (i = P2_COMPLEV1; i <= P2_COMPLEV4; i++) {
 		if (settingsdlg[i].state & SG_SELECTED) {
-			cw[1] = i - P2_COMPLEV1 + 1;
+			cx[1] = cw[1] = i - P2_COMPLEV1 + 1;
 			break;
 		}
 	}
 
+	/* Max. amount of rounds */
+	if (settingsdlg[ROUNDS_20].state & SG_SELECTED)
+		max_rund = 20;
+	else if (settingsdlg[ROUNDS_50].state & SG_SELECTED)
+		max_rund = 50;
+	else if (settingsdlg[ROUNDS_100].state & SG_SELECTED)
+		max_rund = 100;
+	else if (settingsdlg[ROUNDS_NOLIMIT].state & SG_SELECTED)
+		max_rund = 32767;
+
+	/* Is the king allowed to give up? */
+	au_kap = settingsdlg[GIVEUPALLOWED].state & SG_SELECTED;
+
+	/* Is repairing allowed? */
+	an_erl = settingsdlg[REPAIRALLOWED].state & SG_SELECTED;
+
+	/* New game? */
+	if (retbut == NEWGAME)
+	{
+		neues();
+		werdran(1);
+	}
+	/* Quit game? */
+	else if (retbut == QUITGAME || retbut == SDLGUI_QUIT)
+	{
+		return DlgAlert_Query("Ballerburg beenden?", "Ja", "Nein");
+	}
+
+	return 0;
 }
