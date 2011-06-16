@@ -86,12 +86,26 @@ void scr_clear(void)
 		SDL_FillRect(surf, &rect, SDL_MapRGB(surf->format,8+i/2,32+i,8+i/2));
 	}
 
+	/* Left vane box: */
 	rect.x = 5; rect.y = 410;
 	rect.w = 104; rect.h = 48+16;
+	for (i = 1; i < 5; i++)
+	{
+		rectangleRGBA(surf, rect.x-i, rect.y-i,
+			rect.x+rect.w-1+i, rect.y+rect.h-1+i,
+			0xe0-i*0x38, 0xf0-i*0x20, 0xe0-i*0x38, 0xc0);
+	}
 	SDL_FillRect(surf, &rect, white);
 
+	/* Right vane box: */
 	rect.x = 5+(629-104); rect.y = 410;
 	rect.w = 104; rect.h = 48+16;
+	for (i = 1; i < 5; i++)
+	{
+		rectangleRGBA(surf, rect.x-i, rect.y-i,
+			rect.x+rect.w-1+i, rect.y+rect.h-1+i,
+			0xf0-i*0x38, 0xf0-i*0x20, 0xf0-i*0x38, 0xa0);
+	}
 	SDL_FillRect(surf, &rect, white);
 }
 
