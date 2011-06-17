@@ -93,7 +93,7 @@ void scr_clear(void)
 	{
 		rectangleRGBA(surf, rect.x-i, rect.y-i,
 			rect.x+rect.w-1+i, rect.y+rect.h-1+i,
-			0xe0-i*0x38, 0xf0-i*0x20, 0xe0-i*0x38, 0xc0);
+			0xf0, 0xff, 0xf0, 0xff-i*0x3c);
 	}
 	SDL_FillRect(surf, &rect, white);
 
@@ -104,7 +104,7 @@ void scr_clear(void)
 	{
 		rectangleRGBA(surf, rect.x-i, rect.y-i,
 			rect.x+rect.w-1+i, rect.y+rect.h-1+i,
-			0xf0-i*0x38, 0xf0-i*0x20, 0xf0-i*0x38, 0xa0);
+			0xf0, 0xff, 0xf0, 0xff-i*0x3c);
 	}
 	SDL_FillRect(surf, &rect, white);
 }
