@@ -23,6 +23,7 @@
 
 #include "ballergui.h"
 #include "baller1.h"
+#include "baller2.h"
 #include "sdlgui.h"
 #include "screen.h"
 #include "settings.h"
@@ -98,7 +99,7 @@ static SGOBJ settingsdlg[] =
 
 
 /**
- * Kanonenobjektbaum, Wahl von Winkel und Pulver
+ * Settings dialog
  */
 int settings(void)
 {
@@ -162,8 +163,7 @@ int settings(void)
 	/* New game? */
 	if (retbut == NEWGAME)
 	{
-		neues();
-		werdran(1);
+		dlg_new_game();
 	}
 	/* Quit game? */
 	else if (retbut == QUITGAME || retbut == SDLGUI_QUIT)
@@ -172,4 +172,152 @@ int settings(void)
 	}
 
 	return 0;
+}
+
+
+/* ---------------------------------------------------------------- */
+
+static void draw_castle1(int x, int y, int w, int h);
+static void draw_castle2(int x, int y, int w, int h);
+
+#define NEW_P1_PREV	3
+#define NEW_P1_NEXT	4
+#define NEW_P2_PREV	6
+#define NEW_P2_NEXT	7
+#define NEW_OK		8
+#define NEW_ABORT	9
+
+static SGOBJ newgamedlg[] =
+{
+	{ SGBOX, 0, 0, 0,0, 52,18, NULL },
+	{ SGTEXT, 0, 0, 20,1, 12,1, "Neues Spiel" },
+
+	{ SGTEXT, 0, 0, 8,3, 23,1, "Spieler 1" },
+	{ SGBUTTON, SG_EXIT, 0, 2,14, 11,1, "\x04" },     // Arrow left
+	{ SGBUTTON, SG_EXIT, 0, 14,14, 11,1, "\x03" },    // Arrow right
+
+	{ SGTEXT, 0, 0, 33,3, 23,1, "Spieler 2" },
+	{ SGBUTTON, SG_EXIT, 0, 27,14, 11,1, "\x04" },    // Arrow left
+	{ SGBUTTON, SG_EXIT, 0, 39,14, 11,1, "\x03" },    // Arrow right
+
+	{ SGBUTTON, SG_DEFAULT, 0, 16,16, 8,1, "OK" },
+	{ SGBUTTON, SG_CANCEL, 0, 28,16, 8,1, "Cancel" },
+
+	{ SGBOX, 0, 0, 2,5, 23,8, NULL },
+	{ SGUSER, 0, 0, 2,5, 23,8, (void*)draw_castle1 },
+
+	{ SGBOX, 0, 0, 27,5, 23,8, NULL },
+	{ SGUSER, 0, 0, 27,5, 23,8, (void*)draw_castle2 },
+
+	{ -1, 0, 0, 0,0, 0,0, NULL }
+};
+
+
+/**
+ * Draw castle
+ */
+static void draw_castle(int n, int x, int y, int w, int h)
+{
+	SDL_Rect rect;
+	short oy0,oy1;
+
+	rect.x = x + 1;
+	rect.y = y + 1;
+	rect.w = w - 2;
+	rect.h = h - 2;
+	SDL_FillRect(surf, &rect, SDL_MapRGB(surf->format,0xff,0xff,0xff));
+
+
+	oy0 = by[0];
+	oy1 = by[1];
+
+	bx[0]=x;
+	by[0]=y+h;
+	bx[1]=x+w;
+	by[1]=y+h;
+
+	burg(n+1);
+
+	by[0]=oy0;
+	by[1]=oy1;
+}
+
+
+static void draw_castle1(int x, int y, int w, int h)
+{
+	draw_castle(1, x, y, w, h);
+}
+
+static void draw_castle2(int x, int y, int w, int h)
+{
+	draw_castle(2, x, y, w, h);
+}
+
+
+/**
+ * Dialog for "new game"
+ */
+void dlg_new_game(void)
+{
+
+	int retbut;
+	short ob0, ob1, ol[8];
+
+	/* Sichern der alten Werte */
+	ob0 = bur[0];
+	ob1 = bur[1];
+	ol[0]=ge[0];
+	ol[1]=ge[1];
+	ol[2]=pu[0];
+	ol[3]=pu[1];
+	ol[4]=ku[0];
+	ol[5]=ku[1];
+	ol[6]=vo[0];
+	ol[7]=vo[1];
+
+	SDLGui_CenterDlg(newgamedlg);
+
+	do
+	{
+		retbut = SDLGui_DoDialog(newgamedlg, NULL);
+		switch (retbut)
+		{
+		case NEW_P1_PREV:
+			bur[0] = (bur[0] - 1 + b_anz) % b_anz;
+			break;
+		case NEW_P1_NEXT:
+			bur[0] = (bur[0] + 1 + b_anz) % b_anz;
+			break;
+		case NEW_P2_PREV:
+			bur[1] = (bur[1] - 1 + b_anz) % b_anz;
+			break;
+		case NEW_P2_NEXT:
+			bur[1] = (bur[1] + 1 + b_anz) % b_anz;
+			break;
+		}
+	}
+	while (retbut != NEW_OK && retbut != NEW_ABORT);
+
+	ge[0]=ol[0];
+	ge[1]=ol[1];
+	pu[0]=ol[2];
+	pu[1]=ol[3];
+	ku[0]=ol[4];
+	ku[1]=ol[5];
+	vo[0]=ol[6];
+	vo[1]=ol[7];
+	fn();
+
+	if (retbut == NEW_OK)
+	{
+		neues();
+		werdran(1);
+	}
+	else /* if (retbut == NEW_ABORT) */
+	{
+		bur[0]=ob0;
+		bur[1]=ob1;
+	}
+
+	SDL_UpdateRect(surf, 0,0, 0,0);
 }

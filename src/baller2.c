@@ -38,14 +38,8 @@
 
 #define Min(a,b)  ((a)<(b)?(a):(b))
 #define Max(a,b)  ((a)>(b)?(a):(b))
-#define maus()    /*graf_mkstate(&mx,&my,&bt,&dum)*/
 #define hide()    /*graf_mouse(256,0)*/
 #define show()    /*graf_mouse(257,0)*/
-#define menu(a)   /*menu_bar(a_men,a)*/
-#define sav_scr() /*hide();movmem(scr,buf,32000);show()*/
-#define lod_scr() /*hide();movmem(buf,scr,32000);show()*/
-#define bing()    printf("\007");
-#define fn()      f=1-2*(n&1);
 
 
 void expls(int x, int y, int w, int h, int d);

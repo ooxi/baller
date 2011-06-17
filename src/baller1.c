@@ -48,7 +48,6 @@
 #define lod_scr() /* hide();movmem(buf,scr,32000);show() */
 
 #define bing()    printf("\007");
-#define fn()      f=1-2*(n&1);
 
 
 double vvx,vvy;
@@ -56,7 +55,6 @@ short handle, mx,my,bt,dum,m_buf[8], xy[100],
 	bur[2],bx[2],by[2], ge[2],pu[2],ku[2],vo[2],st[2],kn[2],
 	wx[2],wy[2],ws,wc,
 	*bg, zug,n,oldn, p[6],  t_gew[6][10], max_rund,
-	fx,fy,fw,fh,
 	*burgen[20],b_anz;
 int ftx, fty, ftw, fth;     /* Koordinaten von "Fertig" */
 void *bur_ad;
@@ -733,107 +731,6 @@ void burgen_laden(void)
 	}
 
 	fclose(f_h);
-}
-
-
-/********************* Neues Spiel: Auswahl der Burgen ***********************/
-int bur_obj(void)
-{
-	short i,ob0,ob1,oy0,oy1, x,y,w,h, ol[8];
-
-	oy0=by[0];
-	oy1=by[1];
-	ob0=bur[0];
-	ob1=bur[1];
-
-#if GEMSTUFF
-	*(int *)(a_brg+24*BSP1+12)=l_nam;
-	*(int *)(a_brg+24*BSP2+12)=r_nam;
-	form_center( a_brg,&fx,&fy,&fw,&fh );
-#else
-	puts("bur_obj form center");
-#endif
-
-#if GEMSTUFF
-	w=*(short *)(a_brg+24*BK1+20);
-	h=*(short *)(a_brg+24*BK1+22);
-	objc_offset( a_brg,BK1,&x,&y );
-	bx[0]=x;
-	by[0]=y+h;
-	objc_offset( a_brg,BK2,&x,&y );
-#else
-	puts("obj offset");
-	x=y=w=h=10;
-#endif
-	bx[1]=x+w;
-	by[1]=y+h;
-
-	sav_scr();
-#if GEMSTUFF
-	form_dial( 1,70,20,30,20,fx,fy,fw,fh );
-	objc_draw( a_brg,0,5,0,0,640,400 );
-#else
-	puts("for dial draw");
-#endif
-	ol[0]=ge[0];
-	ol[1]=ge[1];
-	ol[2]=pu[0];
-	ol[3]=pu[1]; /* Sichern der alten*/
-	ol[4]=ku[0];
-	ol[5]=ku[1];
-	ol[6]=vo[0];
-	ol[7]=vo[1]; /* Werte */
-	burg(2);
-	burg(3);
-
-	do
-	{
-		ge[0]=ge[1]=pu[0]=pu[1]=ku[0]=ku[1]=9999;
-#if GEMSTUFF
-		i=form_do( a_brg,0 );
-		*(short *)(a_brg+24*i+10)=0;
-#else
-		puts("form do");
-		i = BOK;
-#endif
-		if ( i==BL1 || i==BR1 )
-		{
-			bur[0]=(bur[0]+1-2*(i==BL1)+b_anz)%b_anz;
-			clr( bx[0],y,w,h );
-			burg(2);
-		}
-		if ( i==BL2 || i==BR2 )
-		{
-			bur[1]=(bur[1]+1-2*(i==BL2)+b_anz)%b_anz;
-			clr( bx[1]-w,y,w,h );
-			burg(3);
-		}
-	}
-	while ( i!=BOK && i!=BAB );
-	ge[0]=ol[0];
-	ge[1]=ol[1];
-	pu[0]=ol[2];
-	pu[1]=ol[3];
-	ku[0]=ol[4];
-	ku[1]=ol[5];
-	vo[0]=ol[6];
-	vo[1]=ol[7];
-
-	lod_scr();
-#if GEMSTUFF
-	form_dial( 2,70,20,30,20,fx,fy,fw,fh );
-#else
-	puts("form dial");
-#endif
-	fn();
-	by[0]=oy0;
-	by[1]=oy1;
-	if ( i==BAB )
-	{
-		bur[0]=ob0;
-		bur[1]=ob1;
-	}
-	return( i==BOK );
 }
 
 

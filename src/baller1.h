@@ -28,7 +28,6 @@ extern short handle, mx,my,bt,dum,m_buf[8], xy[100],
 	fx,fy,fw,fh,
 	f_h, *burgen[20],b_anz;
 extern int ftx, fty, ftw, fth;
-//extern int scr, a_men,a_inf,a_sch,a_brg,a_nam,a_dra,a_sta,a_sie;
 extern int f;
 extern char mod, wnd, end, an_erl, au_kap,
 	cw[2],cx[2],
@@ -46,7 +45,7 @@ typedef struct
 } ft_t;
 extern ft_t ft[2][5];
 
-
+#define fn()      f=1-2*(n&1)
 
 int main(int argc, char **argv);
 void tabelle(void);
@@ -61,7 +60,6 @@ void fahne(void);
 int t_load(void);
 int t_save(void);
 void burgen_laden(void);
-int bur_obj(void);
 int obj_do(int adr);
 void gem_init(void);
 int loc(int x, int y);
