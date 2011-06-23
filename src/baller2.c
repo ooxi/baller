@@ -263,11 +263,7 @@ void schuss(int k)
 		y-=vy;
 		vy-=G;
 		vx+=(wnd/2-vx)/5000;
-#if GEMSTUFF
-		kugel( (int)ox,(int)oy );
-		if ( kugel( (int)x,(int)y ) )
-			v=loc((int)x,(int)y)& loc((int)x-1,(int)y+1)& loc((int)x+1,(int)y+2);
-#else
+
 		color(0);
 		kugel( (int)ox,(int)oy );
 		if ( x>=3 && x<=637 && y>= 3 && y <= 397) {
@@ -277,7 +273,7 @@ void schuss(int k)
 		kugel( (int)x,(int)y );
 		SDL_Delay(8);
 		SDL_PumpEvents();
-#endif
+
 		a=1000+2*y;
 		if ( a<30 ) a=30;
 		Giaccess( 10,137 );

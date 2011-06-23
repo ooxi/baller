@@ -30,7 +30,6 @@
 #include <stdlib.h>
 #include <math.h>
 
-#include "baller.h"
 #include "baller1.h"
 #include "baller2.h"
 #include "ballergui.h"
@@ -59,10 +58,6 @@ short handle, mx,my,bt,dum,m_buf[8], xy[100],
 int ftx, fty, ftw, fth;     /* Koordinaten von "Fertig" */
 void *bur_ad;
 int   scr, a_opt, a_ein;
-#if GEMSTUFF
-int a_men,a_inf,a_sch,a_brg,a_nam,a_dra;
-int a_sta,a_sie,a_com,a_re1,a_re2,a_re3;
-#endif
 char *l_nam, *r_nam;
 int f;
 char  mod, wnd, end, txt[4], an_erl, au_kap,
@@ -80,44 +75,14 @@ ft_t ft[2][5];
 /*****************************************************************************/
 int main(int argc, char **argv)
 {
-	// short i;
-
-#if GEMSTUFF
-	gem_init();
-	scr=Logbase();
-#else
 	scr_init();
 	scr_init_done_button(&ftx, &fty, &ftw, &fth);
-#endif
 
 //	m_laden("BALLER.MUS"); /* Laden der Musikdatei mit Funktion aus MUSIK.C */
 
-#if GEMSTUFF
-	if ( !rsrc_load( "BALLER.RSC" ) ) exit( form_alert(1,"[1][BALLER.RSC l‰ﬂt sich nicht|laden.][Abbruch]") );
-	rsrc_gaddr( 0,MENUE,&a_men  );
-	rsrc_gaddr( 0,INFOTREE,&a_inf );
-	rsrc_gaddr( 0,SCHUSS,&a_sch );
-	rsrc_gaddr( 0,BURG,&a_brg );
-	rsrc_gaddr( 0,NAMEN,&a_nam  );
-	rsrc_gaddr( 0,DRAN,&a_dra );
-	rsrc_gaddr( 0,STATUS,&a_sta );
-	rsrc_gaddr( 0,SIEGER,&a_sie );
-	rsrc_gaddr( 0,COMPUTER,&a_com);
-	rsrc_gaddr( 0,REGEL1,&a_re1 );
-	rsrc_gaddr( 0,REGEL2,&a_re2 );
-	rsrc_gaddr( 0,REGEL3,&a_re3 );
-	rsrc_gaddr( 0,OPTION,&a_opt );
-	rsrc_gaddr( 0,EINTRAG,&a_ein );
-
-	for ( i=0;i<6;i++ ) *(short *)(a_men+(ACC1+i)*24+10)=8;
-	*(short *)(a_com+CN1*24+58)=1;
-	*(short *)(a_com+CN2*24+58)=1;
-	*(short *)(a_com+CTS1*24+34)=1;
-	*(short *)(a_com+CTS2*24+34)=1;
-#endif
-
 	bur_ad = malloc(16000); /* Speicher f¸r Burgdaten */
-	if (!bur_ad) {
+	if (!bur_ad)
+	{
 		printf("Zu wenig Speicher!\n");
 		exit(-1);
 	}
@@ -127,12 +92,6 @@ int main(int argc, char **argv)
 	au_kap=1;
 	t_load();
 	burgen_laden();
-
-//	menu_bar(a_men,1);
-	menu(0);
-
-//	v_show_c( handle,0 );
-//	graf_mouse( 0,0 );
 
 	psg_audio_init();
 
@@ -145,10 +104,6 @@ int main(int argc, char **argv)
 	while ( ein_zug() );
 
 	t_save();
-//	menu_bar(a_men,0);
-	menu(1);
-//	v_clsvwk( handle );
-//	appl_exit();
 
 	return 0;
 }
@@ -450,10 +405,6 @@ void ende(void)
 		v_bar(handle, xy);
 	}
 
-	printf("Ende : %s\n", s1);
-	printf("Ende : %s\n", s2);
-	printf("Ende : %s\n", s3);
-
 	v_gtext(handle, 140, 170, s1);
 	v_gtext(handle, 140, 210, s2);
 	v_gtext(handle, 140, 230, s3);
@@ -482,12 +433,7 @@ void m_wait(void)
 /** Anzeige des Spielers, der am Zug ist, sowie Darstellung der Windfahnen ***/
 void werdran(char c)
 {
-#if GEMSTUFF
-	short *a;
-	char *ad;
-#else
 	char ad[8];
-#endif
 	int i;
 	short x, y, w, h, c1, s1, c2, s2;
 	double wk,wl;
@@ -496,35 +442,8 @@ void werdran(char c)
 	z_txt(zug/2+1);
 	v_gtext(handle, 332, 395+16, txt);
 
-#if GEMSTUFF
-	a=(short *)(a_dra+16);
-#endif
 	if ( c )
 	{
-#if GEMSTUFF
-		a[0]=5+(629-a[2])*n;
-		a[1]=25;
-		*(int *)(a_dra+DNAM*24+12)=n? r_nam:l_nam;
-		ad=*(char **)(a_dra+DWIN*24+12);
-		ad[0]=ad[5]=4+28*!wnd-(wnd>0);
-		i=wnd<0? -wnd:wnd;
-		ad[2]=48+i/10;
-		ad[3]=48+i%10;
-		if ( wx[n]<0 )
-		{
-			ad[0]=ad[5]=32;
-			ad[2]=ad[3]='?';
-		}
-
-		objc_offset( a_dra,DOK,&ftx,&fty );
-		ftw=*(short *)(a_dra+DOK*24+20);
-		fth=*(short *)(a_dra+DOK*24+22);
-		objc_offset( a_dra,DWBX,&x,&y );
-		w=*(short *)(a_dra+DWBX*24+20);
-		h=*(short *)(a_dra+DWBX*24+22);
-
-		objc_draw( a_dra,0,4,0,0,640,400 );
-#else
 		x = 5+(629-104)*n; y = 410;
 		w = 104; h = 48;
 
@@ -542,7 +461,7 @@ void werdran(char c)
 		}
 		v_gtext(handle, x+4, y+h+12, "Wind:");
 		v_gtext(handle, x+52, y+h+12, ad);
-#endif
+
 		c=wnd>0? 1:-1;
 		wk=c*wnd/15.0;
 		wl=wk*.82;
@@ -588,11 +507,7 @@ void werdran(char c)
 	else
 	{
 		hide();
-#if GEMSTUFF
-		clr( a[0],a[1],a[2],a[3] );
-#else
 		clr(5+(629-104)*n,410, 104,48+16);
-#endif
 		show();
 	}
 }
@@ -734,72 +649,14 @@ void burgen_laden(void)
 }
 
 
-/************** Darstellung und Verwaltung eines Objektbaumes ****************/
-int obj_do(int adr)
-{
-	int a = 0;
-#if GEMSTUFF
-	short x=20,fl=0;
-
-	if (adr==a_nam)
-	{
-		fl=NSP1;
-		x=80;
-	}
-	if (adr==a_opt)
-	{
-		fl=MAX_XX;
-		x=80;
-	}
-	if (adr==a_com) x=150;
-	if (adr==a_ein)
-	{
-		fl=EI_N1;
-		x=260;
-	}
-
-	form_center( adr,&fx,&fy,&fw,&fh );
-	sav_scr();
-	form_dial( 1,x,20,30,20,fx,fy,fw,fh );
-	objc_draw( adr,0,5,0,0,640,400 );
-	a=form_do( adr,fl );
-	*(short *)(adr+24*a+10)=0;
-	lod_scr();
-	form_dial( 2,x,20,30,20,fx,fy,fw,fh );
-#else
-	puts("obj_do!");
-#endif
-	return(a);
-}
-
-/*********************** Elementare  Grafikbefehle ***************************/
-#if 0
-gem_init() /* ÷ffnen der Workstation... */
-{
-	short i, work_in[11], work_out[57];
-
-	appl_init();
-	handle=graf_handle( &i, &i, &i, &i );
-	for ( i=0; i<10; i++ )  work_in[i]=1;
-	work_in[10]=2;
-	v_opnvwk( work_in, &handle, work_out );
-	v_clrwk( handle );
-}
-#endif
-
-
-int loc(int x, int y)  /* Ermittelt, ob Punkt gesetzt ist */
+/* Ermittelt, ob Punkt gesetzt ist */
+int loc(int x, int y)
 {
 	int a;
-#if GEMSTUFF
-	short b;
-	v_get_pixel(handle,x,y,&a,&b);
-	return((int)a);
-#else
+
 	a = scr_getpixel(x,y);
 	// printf("loc %i %i = 0x%x\n", x,y, a);
 	return  ((a&0xff) != 0xff);
-#endif
 }
 
 void line(short x1, short y1, short x2, short y2) /* Zeichnet eine Linie */

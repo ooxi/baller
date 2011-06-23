@@ -108,7 +108,6 @@ static void draw_cannoneer(int x, int y, int w, int h)
 
 	/* Draw the cannoneer man */
 	color(1);
-	//v_circle( handle,xk-88*f,yk-60,15 );
 	filledCircleColor(surf, xk-88*f, yk-60, 15, 0x000000ff);
 
 	i=0;
@@ -124,9 +123,7 @@ static void draw_cannoneer(int x, int y, int w, int h)
 	v_fillarea( handle,i/2-1,xy );
 
 	/* Draw the cannon */
-	// clr( xk-55,yk-76,110,90 );
 	color( 1 );
-	//v_circle( handle,xk,yk,15 );
 	filledCircleColor(surf, xk, yk, 15, 0x000000ff);
 
 	s=sin(wi/P57);
@@ -159,25 +156,11 @@ int sch_obj(short k)
 	short i = 0;
 	char *aw,*ap;
 
-#if GEMSTUFF
-	aw=*(char **)(a_sch+24*WINK+12);
-	ap=*(char **)(a_sch+24*PULV+12);
-#else
 	dlg_winkel[0] = dlg_pulver[0] = 0;
 	aw = dlg_winkel;
 	ap = dlg_pulver;
-#endif
 	*(ap+2)=0;
 
-#if GEMSTUFF
-	form_center( a_sch,&fx,&fy,&fw,&fh );
-	objc_offset( a_sch,WINK,&xw,&yw );
-	objc_offset( a_sch,PULV,&xp,&yp );
-	objc_offset( a_sch,KAST,&xk,&yk );
-	xk+=105+f*36;
-	yk+=102;
-	form_dial(1, ka[n][k].x+10*f,ka[n][k].y-10,20,14,fx,fy,fw,fh );
-#endif
 	SDLGui_CenterDlg(cannoneerdlg);
 
 	wi=ka[n][k].w;
@@ -208,12 +191,7 @@ int sch_obj(short k)
 			*(ap+1)=0;
 		}
 
-#if GEMSTUFF
-		i=form_do( a_sch,0 );
-		if ( i>=0 ) *(short *)(a_sch+24*i+10)=0;
-#else
 		i = SDLGui_DoDialog(cannoneerdlg, NULL);
-#endif
 
 		wi-=10*(i==WL2)-10*(i==WR2)+(i==WL1)-(i==WR1);
 		if ( wi<0 ) wi=0;
@@ -224,11 +202,7 @@ int sch_obj(short k)
 	}
 	while (i != SOK && i != SAB);
 
-#if GEMSTUFF
-	form_dial(2, ka[n][k].x+10*f,ka[n][k].y-10,20,14,fx,fy,fw,fh );
-#else
 	SDL_UpdateRect(surf, 0,0, 0,0);
-#endif
 
 	ka[n][k].w=wi;
 	ka[n][k].p=pv;
