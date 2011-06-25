@@ -318,6 +318,6 @@ void Paths_Init(const char *argv0)
 
 	free(psExecDir);
 
-	fprintf(stderr, " WorkingDir = %s\n DataDir = %s\n UserHomeDir = %s\n ProgHomeDir = %s\n",
-	        sWorkingDir, sDataDir, sUserHomeDir, sProgHomeDir);
+	/*fprintf(stderr, " WorkingDir = %s\n DataDir = %s\n UserHomeDir = %s\n ProgHomeDir = %s\n",
+	        sWorkingDir, sDataDir, sUserHomeDir, sProgHomeDir);*/
 }
