@@ -20,6 +20,33 @@ endif(NOT CMAKE_BUILD_TYPE)
 
 
 # ####################
+# Paths configuration:
+# ####################
+
+if(NOT BINDIR)
+	set(BINDIR bin)
+endif()
+
+if(NOT DATADIR)
+	set(DATADIR share/ballerburg)
+endif()
+
+if(NOT BIN2DATADIR)
+	set(BIN2DATADIR "../share/ballerburg"
+	    CACHE STRING "Relative path from bindir to datadir")
+	mark_as_advanced(BIN2DATADIR)
+endif()
+
+if(NOT MANDIR)
+	set(MANDIR share/man/man1)
+endif()
+
+if(NOT DOCDIR)
+	set(DOCDIR share/doc/ballerburg)
+endif()
+
+
+# ####################
 # Check for libraries:
 # ####################
 
@@ -43,7 +70,8 @@ endif(CMAKE_COMPILER_IS_GNUCC)
 # Create config.h and recurse into subdirs:
 # #########################################
 
-# configure_file(${CMAKE_SOURCE_DIR}/cmake/config-cmake.h
-#                ${CMAKE_BINARY_DIR}/config.h)
+configure_file(${CMAKE_SOURCE_DIR}/cmake/config-cmake.h
+               ${CMAKE_BINARY_DIR}/config.h)
 
 add_subdirectory(src)
+add_subdirectory(doc)

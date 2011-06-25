@@ -36,6 +36,7 @@
 #include "screen.h"
 #include "psg.h"
 #include "market.h"
+#include "paths.h"
 
 #define Min(a,b)  ((a)<(b)?(a):(b))
 #define Max(a,b)  ((a)>(b)?(a):(b))
@@ -75,12 +76,14 @@ ft_t ft[2][5];
 /*****************************************************************************/
 int main(int argc, char **argv)
 {
+	Paths_Init(argv[0]);
+
 	scr_init();
 	scr_init_done_button(&ftx, &fty, &ftw, &fth);
 
 //	m_laden("BALLER.MUS"); /* Laden der Musikdatei mit Funktion aus MUSIK.C */
 
-	bur_ad = malloc(16000); /* Speicher für Burgdaten */
+	bur_ad = malloc(32000); /* Speicher für Burgdaten */
 	if (!bur_ad)
 	{
 		printf("Zu wenig Speicher!\n");
@@ -625,18 +628,31 @@ void burgen_laden(void)
 {
 	short *a,j;
 	FILE *f_h;
+	char *dat_name;
 
-	// printf("burgen_laden\n");
-
-	a=(short *)bur_ad;
-
-	f_h = fopen( "baller.dat", "rb");
-	if (!f_h) {
-		perror("Kann 'baller.dat' nicht finden: ");
+	dat_name = malloc(FILENAME_MAX);
+	if (!dat_name)
+	{
+		perror("burgen_laden");
 		exit(-1);
 	}
+	snprintf(dat_name, FILENAME_MAX, "%s/baller.dat",
+	         Paths_GetDataDir());
 
-	b_anz=0;
+	f_h = fopen(dat_name, "rb");
+	free(dat_name); dat_name = NULL;
+	if (!f_h) {
+		/* Try to open in current directory instead */
+		f_h = fopen( "baller.dat", "rb");
+		if (!f_h) {
+			perror("Kann 'baller.dat' nicht finden: ");
+			exit(-1);
+		}
+	}
+
+	a = (short *)bur_ad;
+	b_anz = 0;
+
 	while ( (j=rdzahl(f_h))!=-999 )
 	{
 		burgen[b_anz++]=a;
