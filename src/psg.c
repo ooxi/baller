@@ -414,7 +414,7 @@ static void Audio_CallBack(void *userdata, Uint8 *stream, int len)
 }
 
 
-void Giaccess(unsigned int data, unsigned int reg)
+unsigned int Giaccess(unsigned int data, unsigned int reg)
 {
 	if (reg & 0x80)
 	{
@@ -422,6 +422,11 @@ void Giaccess(unsigned int data, unsigned int reg)
 		psg_update_values(&psg_struct);
 		if ((reg&0x0f) == 13)
 			tdata.env_period = 0;
+		return 0;
+	}
+	else
+	{
+		return psg_struct.regs[reg&0x0f];
 	}
 }
 

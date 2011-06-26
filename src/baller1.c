@@ -18,12 +18,12 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-/*****************************************************************************
- *                           B a l l e r b u r g          Modul 1            *
- * Dies ist der Hauptteil von Ballerburg. Die Routinen dieses Teils dienen   *
- * im großen und ganzen der Steuerung des Programmes, dem Aufruf der Objekt- *
- * bäume, sowie der Ausführung elementarer Grafikoperationen.                *
- *****************************************************************************/
+/**********************************************************************
+ *                  B a l l e r b u r g          Modul 1              *
+ * Dies ist der Hauptteil von Ballerburg. Die Routinen dieses Teils   *
+ * dienen im großen und ganzen der Steuerung des Programmes, sowie    *
+ * der Ausführung elementarer Grafikoperationen.                      *
+ **********************************************************************/
 
 #include <string.h>
 #include <stdio.h>
@@ -36,6 +36,7 @@
 #include "screen.h"
 #include "psg.h"
 #include "market.h"
+#include "music.h"
 #include "paths.h"
 
 #define Min(a,b)  ((a)<(b)?(a):(b))
@@ -81,7 +82,7 @@ int main(int argc, char **argv)
 	scr_init();
 	scr_init_done_button(&ftx, &fty, &ftw, &fth);
 
-//	m_laden("BALLER.MUS"); /* Laden der Musikdatei mit Funktion aus MUSIK.C */
+	m_laden("baller.mus");  /* Laden der Musikdatei mit Funktion aus music.c */
 
 	bur_ad = malloc(32000); /* Speicher für Burgdaten */
 	if (!bur_ad)
@@ -300,10 +301,11 @@ int ein_zug(void)
 	{
 		ende();
 		menu(1);
-		do
+		while (!bt)
+		{
 			if (event(1) != 0)
 				return 0;
-		while ( !bt /*|| end*/ );
+		}
 		neues();
 		menu(0);
 	}
@@ -412,24 +414,28 @@ void ende(void)
 	v_gtext(handle, 140, 210, s2);
 	v_gtext(handle, 140, 230, s3);
 
-	//m_musik();
+	bt = 0;
 
-	/*
+	m_musik();
+
 	Giaccess( 0,138 );
 	Giaccess( 0,139 );
 	Giaccess( 0,140 );
-	*/
 }
 
 
-/* Die Routine m_wait() wird von m_musik() nach jedem 1/96 Takt aufgerufen.  */
-/* In diesem Fall macht sie nichts anderes als die eigentliche Warteschleife */
-/* aufzurufen. In eigenen Programmen könnten Sie hier während der Musik zu-  */
-/* sätzliche Aktionen ablaufen lassen. */
-void m_wait(void)
+/**
+ * Die Routine m_wait() wird von m_musik() nach jedem 1/96 Takt
+ * aufgerufen.
+ * In diesem Fall macht sie nichts anderes als die eigentliche
+ * Warteschleife aufzurufen. In eigenen Programmen könnten Sie hier
+ * während der Musik zusätzliche Aktionen ablaufen lassen.
+ */
+int m_wait(void)
 {
-	// m_wloop();
-	SDL_Delay(10);
+	m_wloop();
+
+	return (event(0) != 0 || bt);
 }
 
 

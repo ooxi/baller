@@ -54,7 +54,7 @@ void neues(void);
 int ein_zug(void);
 void rechnen(void);
 void ende(void);
-void m_wait(void);
+int m_wait(void);
 void werdran(char c);
 void fahne(void);
 int t_load(void);
