@@ -12,6 +12,7 @@ include(CheckFunctionExists)
 include(CheckCCompilerFlag)
 include(DistClean)
 
+
 # Set build type to "Release" if user did not specify any build type yet
 # Other possible values: Debug, Release, RelWithDebInfo and MinSizeRel
 if(NOT CMAKE_BUILD_TYPE)
@@ -75,3 +76,7 @@ configure_file(${CMAKE_SOURCE_DIR}/cmake/config-cmake.h
 
 add_subdirectory(src)
 add_subdirectory(doc)
+
+
+add_custom_target(uninstall
+    COMMAND ${CMAKE_COMMAND} -P ${CMAKE_SOURCE_DIR}/cmake/Uninstall.cmake)
