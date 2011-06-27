@@ -22,7 +22,7 @@
  *                         B a l l e r b u r g               Modul 2         *
  * Dies ist der zweite Teil des Ballerburg Sourcecode. Hier werden die       *
  * Computer gesteuert und der Flug der Kugel dargestellt. Außerdem sind      *
- * alle Routinen in Zusammenhang mit dem Markt sowie dem König beinhaltet.   *
+ * alle Routinen in Zusammenhang mit dem König beinhaltet.                   *
  *****************************************************************************/
 
 #include <string.h>

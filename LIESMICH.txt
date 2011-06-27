@@ -1,7 +1,7 @@
 
-		  ==========================
-		  =     Ballerburg SDL     =
-		  ==========================
+		  ===========================
+		  =   Ballerburg SDL v0.1   =
+		  ===========================
 
 	    Copyright (C) 1987, 1989  Eckhard Kruse
 	    Copyright (C) 2010, 2011  Thomas Huth
@@ -38,27 +38,43 @@ durch einen Berg getrennte Burgen mit ihren Kanonen gegenseitig
 bekämpfen müssen. 
 Ballerburg wurde 1987 von Eckhard Kruse für den damals topaktuellen
 16/32-Bit Computer Atari ST entwickelt. Fast ein viertel Jahrhundert
-später liegt mit Ballerburg SDL nun die Anpassung des alten Sourcecodes,
-welcher von Eckhard Kruse freundlicherweise frei gegeben wurde, an
-GNU/Linux und andere Systeme mit SDL-Unterstützung vor.
+später liegt mit "Ballerburg SDL" nun die Anpassung des alten Source-
+codes, welcher von Eckhard Kruse freundlicherweise frei gegeben wurde,
+an GNU/Linux und andere Systeme mit SDL-Unterstützung vor.
 
 
  3) Compilieren des Sourcecodes
  ------------------------------
 
 Zum Compilieren wird der GCC C-Compiler, CMake und folgende Bibliotheken
-benötigt:
+(inklusive Header / Development-Paketen) benötigt:
 
 - SDL Version 1.2 (http://www.libsdl.org/)
 - SDL_gfx Version 2.0 (http://www.ferzkopp.net/)
+
+Vor dem ersten Compilieren muss "cmake" mit dem Pfad zu den Sourcen als
+Parameter aufgerufen werden. Alternativ kann das "configure"-Script
+oder ein Tool wie "cmake-gui" benutzt werden.
+
+Nach dem Konfigurationsvorgang kann der Sourcecode mittels Aufruf von
+"make" compiliert und anschließen mittels "make install" installiert
+werden.
 
 
  4) Spielstart
  -------------
 
-Zur Zeit gibt es noch keine automatische Möglichkeit, das Spiel
-systemweit zu installieren. Um das Spiel zu starten muss deshalb in den
-"src" Ordner gewechselt werden, um von dort aus das "ballerburg"
-Programm zu starten.
-Für den genauen Spielablauf bitte die orginale Spielanleitung unter
-doc/de/anleitung.txt lesen!
+Zum Starten des Spiels muss man das "ballerburg" Programm starten.
+Der Spielablauf sollte weitgehen selbsterklärend sein, notfalls gibt
+es im doc-Verzeichnis auch die Anleitung des orginalen Ballerburgs
+(Datei "anleitung.txt").
+
+
+ 5) Kontakt
+
+Bei Fragen, Anregung, Patches oder Kritik bitte eine Mail an folgende
+Adresse schreiben:
+
+	huth @ users.berlios.de
+
+Und nun viel Spaß mit Ballerburg!
