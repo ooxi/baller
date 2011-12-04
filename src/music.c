@@ -108,7 +108,11 @@ void m_laden(char * string)
 		}
 	}
 
-	fread(buffer, 16, 1, f_handle);
+	if (fread(buffer, 16, 1, f_handle) != 1)
+	{
+		perror("Failed to read music file");
+		return;
+	}
 	for (i = 0; i < 16/2; i++)
 	{
 		buffer[i] = SDL_SwapBE16(buffer[i]);
@@ -127,19 +131,31 @@ void m_laden(char * string)
 	/* Reserviere Speicherbereich der Größe (w_len*2)*(max_tkt+2) und lösch ihn. */
 	takte=( unsigned short *)calloc( w_len*2, max_tkt+2+2 );
 
-	fread(buffer, 1, 36, f_handle);
+	if (fread(buffer, 1, 36, f_handle) != 36)
+	{
+		perror("Failed to read music file");
+		return;
+	}
 	for (i = 0; i < 36/2; i++)
 	{
 		buffer[i] = SDL_SwapBE16(buffer[i]);
 	}
 
-	fread(liste, 1, (max_abl+1)<<3, f_handle);
+	if (fread(liste, (max_abl+1)<<3, 1, f_handle) != 1)
+	{
+		perror("Failed to read music file");
+		return;
+	}
 	for (i = 0; i < ((max_abl+1)<<3)/2; i++)
 	{
 		liste[i] = SDL_SwapBE16(liste[i]);
 	}
 
-	fread(&takte[100], 2, (max_tkt+1)*w_len, f_handle);
+	if (fread(&takte[100], (max_tkt+1)*w_len, 2, f_handle) != 2)
+	{
+		perror("Failed to read music file");
+		return;
+	}
 	for (i = 0; i < (max_tkt+1)*w_len; i++)
 	{
 		takte[100+i] = SDL_SwapBE16(takte[100+i]);

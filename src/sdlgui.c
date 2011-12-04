@@ -439,7 +439,7 @@ static void SDLGui_DrawScrollbar(const SGOBJ *bdlg, int objnum)
  */
 static void SDLGui_DrawPopupButton(const SGOBJ *pdlg, int objnum)
 {
-	int x, y, w, h;
+	int x, y, w;
 	const char *downstr = "\x02";
 
 	SDLGui_DrawBox(pdlg, objnum);
@@ -447,7 +447,7 @@ static void SDLGui_DrawPopupButton(const SGOBJ *pdlg, int objnum)
 	x = (pdlg[0].x + pdlg[objnum].x) * sdlgui_fontwidth;
 	y = (pdlg[0].y + pdlg[objnum].y) * sdlgui_fontheight;
 	w = pdlg[objnum].w*sdlgui_fontwidth;
-	h = pdlg[objnum].h*sdlgui_fontheight;
+	//h = pdlg[objnum].h*sdlgui_fontheight;
 
 	SDLGui_Text(x, y, pdlg[objnum].txt);
 	SDLGui_Text(x+w-sdlgui_fontwidth, y, downstr);

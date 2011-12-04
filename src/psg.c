@@ -314,14 +314,10 @@ static void psg_update_values(psg *psg)
 static
 int16_t _get_one_sample(void)
 {
-	int i, count, tvol;
+	int i;
 	int32_t tmp;
-	double tmp2;
 
 	tmp = 0;
-	tmp2 = 0;
-	tvol = 0;
-	count = 0;
 
 	for(i=0; i<3; i++)
 	{
