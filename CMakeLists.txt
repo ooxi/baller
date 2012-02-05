@@ -38,6 +38,12 @@ if(NOT BIN2DATADIR)
 	mark_as_advanced(BIN2DATADIR)
 endif()
 
+if(NOT BIN2LOCALEDIR)
+	set(BIN2LOCALEDIR "../share/locale"
+	    CACHE STRING "Relative path from bindir to locale directory")
+	mark_as_advanced(BIN2LOCALEDIR)
+endif()
+
 if(NOT MANDIR)
 	set(MANDIR share/man/man1)
 endif()
@@ -54,6 +60,11 @@ endif()
 find_package(SDL REQUIRED)
 find_package(SDL_gfx REQUIRED)
 find_package(Math REQUIRED)
+
+find_package(Gettext)
+if(GETTEXT_FOUND)
+	set(HAVE_GETTEXT 1)
+endif(GETTEXT_FOUND)
 
 
 # ###############

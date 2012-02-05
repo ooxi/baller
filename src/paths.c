@@ -32,6 +32,7 @@ const char Paths_fileid[] = "Ballerburg paths.c : " __DATE__ " " __TIME__;
 
 static char sWorkingDir[FILENAME_MAX];    /* Working directory */
 static char sDataDir[FILENAME_MAX];       /* Directory where data files can be found */
+static char sLocaleDir[FILENAME_MAX];     /* Directory where locale files can be found */
 static char sUserHomeDir[FILENAME_MAX];   /* User's home directory ($HOME) */
 static char sProgHomeDir[FILENAME_MAX];   /* Program's home directory ($HOME/.config/ballerburg/) */
 
@@ -50,6 +51,14 @@ const char *Paths_GetWorkingDir(void)
 const char *Paths_GetDataDir(void)
 {
 	return sDataDir;
+}
+
+/**
+ * Return pointer to data directory string
+ */
+const char *Paths_GetLocaleDir(void)
+{
+	return sLocaleDir;
 }
 
 /**
@@ -256,20 +265,21 @@ static void Paths_InitHomeDirs(void)
 /**
  * Initialize the data directory string
  */
-static void Paths_InitDataDir(const char *psExecDir)
+static void Paths_InitPackageDir(char *psPkgDir, const char *psRelPath,
+                                 const char *psExecDir)
 {
 	char *pTempName;
 
 	if (psExecDir && strlen(psExecDir) > 0)
 	{
-		snprintf(sDataDir, sizeof(sDataDir), "%s%c%s",
-		         psExecDir, PATHSEP, BIN2DATADIR);
+		snprintf(psPkgDir, FILENAME_MAX, "%s%c%s",
+		         psExecDir, PATHSEP, psRelPath);
 	}
 	else
 	{
-		/* bindir could not be determined, let's assume datadir is
+		/* bindir could not be determined, let's assume the destination dir is
 		 * relative to current working directory... */
-		strcpy(sDataDir, BIN2DATADIR);
+		strcpy(psPkgDir, psRelPath);
 	}
 
 	pTempName = malloc(FILENAME_MAX);
@@ -279,9 +289,9 @@ static void Paths_InitDataDir(const char *psExecDir)
 		return;
 	}
 
-	if (realpath(sDataDir, pTempName) != NULL)
+	if (realpath(psPkgDir, pTempName) != NULL)
 	{
-		strncpy(sDataDir, pTempName, FILENAME_MAX);
+		strncpy(psPkgDir, pTempName, FILENAME_MAX);
 	}
 
 	free(pTempName);
@@ -313,8 +323,9 @@ void Paths_Init(const char *argv0)
 	/* Get the directory where the executable resides */
 	psExecDir = Paths_InitExecDir(argv0);
 
-	/* Now create the datadir path name from the bindir path name: */
-	Paths_InitDataDir(psExecDir);
+	/* Now create the package path names from the bindir path name: */
+	Paths_InitPackageDir(sDataDir, BIN2DATADIR, psExecDir);
+	Paths_InitPackageDir(sLocaleDir, BIN2LOCALEDIR, psExecDir);
 
 	free(psExecDir);
 

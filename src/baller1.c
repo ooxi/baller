@@ -2,7 +2,7 @@
     baller1.c
 
     Copyright (C) 1987, 1989  Eckhard Kruse
-    Copyright (C) 2010, 2011  Thomas Huth
+    Copyright (C) 2010, 2012  Thomas Huth
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -38,6 +38,7 @@
 #include "market.h"
 #include "music.h"
 #include "paths.h"
+#include "i18n.h"
 
 #define Min(a,b)  ((a)<(b)?(a):(b))
 #define Max(a,b)  ((a)>(b)?(a):(b))
@@ -74,10 +75,22 @@ ka_t ka[2][10];
 ft_t ft[2][5];
 
 
+/**
+ * Initialize internationalization support
+ */
+static void i18n_init(void)
+{
+	setlocale(LC_ALL, "");
+	bindtextdomain("ballerburg", Paths_GetLocaleDir());
+	textdomain("ballerburg");
+}
+
+
 /*****************************************************************************/
 int main(int argc, char **argv)
 {
 	Paths_Init(argv[0]);
+	i18n_init();
 
 	scr_init();
 	scr_init_done_button(&ftx, &fty, &ftw, &fth);
@@ -87,7 +100,7 @@ int main(int argc, char **argv)
 	bur_ad = malloc(32000); /* Speicher für Burgdaten */
 	if (!bur_ad)
 	{
-		printf("Zu wenig Speicher!\n");
+		puts(_("Not enough memory for loading the castles."));
 		exit(-1);
 	}
 	an_erl=1;
