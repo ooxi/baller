@@ -80,9 +80,11 @@ ft_t ft[2][5];
  */
 static void i18n_init(void)
 {
+#if HAVE_LIBINTL_H
 	setlocale(LC_ALL, "");
 	bindtextdomain("ballerburg", Paths_GetLocaleDir());
 	textdomain("ballerburg");
+#endif
 }
 
 

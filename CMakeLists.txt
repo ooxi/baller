@@ -60,11 +60,14 @@ endif()
 find_package(SDL REQUIRED)
 find_package(SDL_gfx REQUIRED)
 find_package(Math REQUIRED)
-
 find_package(Gettext)
-if(GETTEXT_FOUND)
-	set(HAVE_GETTEXT 1)
-endif(GETTEXT_FOUND)
+
+
+# ###########################
+# Check for optional headers:
+# ###########################
+
+check_include_files(libintl.h HAVE_LIBINTL_H)
 
 
 # ###############

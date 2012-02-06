@@ -6,5 +6,5 @@
 /* Relative path from bindir to localedir */
 #define BIN2LOCALEDIR "@BIN2LOCALEDIR@"
 
-/* Define if you have the gettext tools and library installed */
-#cmakedefine HAVE_GETTEXT 1
+/* Define if you have the libintl.h header file */
+#cmakedefine HAVE_LIBINTL_H 1
