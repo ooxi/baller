@@ -13,6 +13,7 @@ const char SDLGui_fileid[] = "sdlgui.c : " __DATE__ " " __TIME__;
 #include <string.h>
 #include <stdbool.h>
 
+#include "i18n.h"
 #include "sdlgui.h"
 #include "baller1.h"
 

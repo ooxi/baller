@@ -21,6 +21,7 @@
 #include <SDL.h>
 #include <SDL_gfxPrimitives.h>
 
+#include "i18n.h"
 #include "screen.h"
 #include "sdlgui.h"
 
@@ -34,7 +35,7 @@ int fill_style, fill_interior;
 static SGOBJ donebuttondlg[] =
 {
 	{ SGBOX, 0, 0, 36,29, 8,1, NULL },
-	{ SGBUTTON, SG_EXIT, 0, 0,0, 8,1, "Fertig" }
+	{ SGBUTTON, SG_EXIT, 0, 0,0, 8,1, N_("Done") }
 };
 
 

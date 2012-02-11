@@ -30,6 +30,7 @@
 #include <stdlib.h>
 #include <math.h>
 
+#include "i18n.h"
 #include "baller1.h"
 #include "baller2.h"
 #include "screen.h"
@@ -479,7 +480,7 @@ void bild(void)
 
 	burg(0);
 	burg(1);
-	v_gtext(handle, 276, 395+16, " Runde     ");
+	v_gtext(handle, 276, 395+16, _(" Round     "));
 
 	scr_draw_done_button(0);
 
@@ -652,24 +653,24 @@ void fturm(void)
 }
 
 
-/*************************** Audienz beim König ******************************/
-char kna[]="Der König meint:             \n'",
-     kne[]="Demütig zur Kenntnis genommen",
-     kn0[]="Naja...\n Nun gut...\n Weiter so...",
-     kn1[]="Ich bin zufrieden\n mit Ihren Leistungen!",
-     kn2[]="Hervorragend,\n Weiter so!",
-     kn3[]="Vielleicht sollten Sie mal\n die Steuern senken...",
-     kn4[]="Wenn Sie so weiter machen\n werde ich Sie entlassen!",
-     kn5[]="Vielleicht mal 'nen\n Förderturm kaufen...",
-     kn6[]="Sie sollten sich\n gefälligst mehr Mühe\n geben!",
-     kn7[]="Sie brauchen nicht\n jede Runde zu kommen.",
-     kn8[]="Wissen Sie eigentlich,\n daß Sie mich bereits\n xxmal besucht haben?",
-     kn9[]="Und Sie sind sich sicher,\n daß Sie auch ohne eine\n Windfahne zurecht kommen?",
-     kn10[]="Schön, Sie zu sehen...",
-     kn11[]="Was soll ich denn in\n so einer frühen Phase\n schon sagen?",
-     kn12[]="Sie sollten mehr Geld\n verdienen, Fördertürme bauen\n und den Gegner besiegen.",
-     kn13[]="Ich habe Ihnen nichts\n neues zu sagen.",
-     kn14[]="Find' ich nett, daß\n Sie mich mal besuchen!";
+/* ************************ Audience with the king ************************* */
+char kna[] = N_("The king says:             \n'"),
+     kne[] = N_("Humbly acknowledged"),
+     kn0[] = N_("Well...\n alright...\n Carry on..."),
+     kn1[] = N_("We are satisfied\n with your performance!"),
+     kn2[] = N_("Excellent,\n keep at it!"),
+     kn3[] = N_("Maybe you ought to\n lower Our taxes..."),
+     kn4[] = N_("If you keep this up,\n We shall discharge you!"),
+     kn5[] = N_("Why don't you buy\n a shaft tower..."),
+     kn6[] = N_("You ought to\n kindly make more of\n an effort!"),
+     kn7[] = N_("You don't need to visit Us\n in each round."),
+     kn8[] = N_("Are you aware\n that you have already visited Us\n xx times thus far?"),
+     kn9[] = N_("So, are you certain\n that you will manage\n without a weather vane?"),
+     kn10[] = N_("Nice to see you..."),
+     kn11[] = N_("What are We supposed\n to say in such an\n early phase?"),
+     kn12[] = N_("You ought to earn more money,\n build more shaft towers,\n and vanquish the opponent."),
+     kn13[] = N_("We do not have anything new\n to say to you."),
+     kn14[] = N_("We are pleased for you\n to come around and visit Us.");
 
 void koenig(void)
 {
@@ -681,7 +682,7 @@ void koenig(void)
 	for ( j=t=0;j<5;j++ )  t+=ft[n][j].x>-1;
 
 	if ( !(rand()%20) || kn[n]&16 || (kn[n]&15)>9 )
-		DlgAlert_Notice("Der König hat keine Lust,\ndich zu sprechen.", "Schade");
+		DlgAlert_Notice(_("The king is not in the mood\nto talk to you."), _("Too bad."));
 	else
 	{
 		kn8[46]=kn[n]>2559? 48+kn[n]/2560:32;

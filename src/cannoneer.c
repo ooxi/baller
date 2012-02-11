@@ -22,6 +22,7 @@
 #include <SDL.h>
 #include <SDL_gfxPrimitives.h>
 
+#include "i18n.h"
 #include "ballergui.h"
 #include "baller1.h"
 #include "sdlgui.h"
@@ -55,16 +56,16 @@ static char dlg_pulver[3];
 static SGOBJ cannoneerdlg[] =
 {
 	{ SGBOX, 0, 0, 0,0, 42,15, NULL },
-	{ SGTEXT, 0, 0, 18,1, 6,1, "Kanone" },
+	{ SGTEXT, 0, 0, 18,1, 6,1, N_("Cannon") },
 
-	{ SGTEXT, 0, 0, 2,3, 7,1, "Winkel:" },
+	{ SGTEXT, 0, 0, 2,3, 7,1, N_("Angle:") },
 	{ SGBUTTON, SG_EXIT, 0, 12,3, 4,1, "\x04\04" },   // 2 arrows left
 	{ SGBUTTON, SG_EXIT, 0, 17,3, 3,1, "\x04" },      // Arrow left
 	{ SGTEXT, 0, 0, 22,3, 4,1, dlg_winkel },
 	{ SGBUTTON, SG_EXIT, 0, 26,3, 3,1, "\x03" },      // Arrow right
 	{ SGBUTTON, SG_EXIT, 0, 30,3, 4,1, "\x03\x03" },  // 2 arrows right
 
-	{ SGTEXT, 0, 0, 2,5, 7,1, "Pulver:" },
+	{ SGTEXT, 0, 0, 2,5, 7,1, N_("Gunpowder:") },
 	{ SGBUTTON, SG_EXIT, 0, 12,5, 4,1, "\x04\04" },   // 2 arrows left
 	{ SGBUTTON, SG_EXIT, 0, 17,5, 3,1, "\x04" },      // Arrow left
 	{ SGTEXT, 0, 0, 22,5, 4,1, dlg_pulver },

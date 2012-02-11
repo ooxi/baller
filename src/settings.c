@@ -21,6 +21,7 @@
 #include <SDL.h>
 #include <SDL_gfxPrimitives.h>
 
+#include "i18n.h"
 #include "ballergui.h"
 #include "baller1.h"
 #include "baller2.h"
@@ -55,44 +56,44 @@
 static SGOBJ settingsdlg[] =
 {
 	{ SGBOX, 0, 0, 0,0, 67,21, NULL },
-	{ SGTEXT, 0, 0, 27,1, 13,1, "Einstellungen" },
+	{ SGTEXT, 0, 0, 27,1, 13,1, N_("Settings") },
 
 	{ SGBOX, 0, 0, 1,3, 32,10, NULL },
-	{ SGTEXT, 0, 0, 12,4, 9,1, "Spieler 1" },
-	{ SGTEXT, 0, 0, 3,6, 5,1, "Name:" },
+	{ SGTEXT, 0, 0, 12,4, 9,1, N_("Player 1") },
+	{ SGTEXT, 0, 0, 3,6, 5,1, N_("Name:") },
 	{ SGEDITFIELD, 0, 0, 9,6, 22,1, nsp1 },
-	{ SGRADIOBUT, 0, SG_SELECTED, 3,8, 8,1, "Mensch" },
-	{ SGRADIOBUT, 0, 0, 13,8, 10,1, "Computer" },
-	{ SGTEXT, 0, 0, 3,10, 15,1, "Computerstärke:" },
+	{ SGRADIOBUT, 0, SG_SELECTED, 3,8, 8,1, N_("Human") },
+	{ SGRADIOBUT, 0, 0, 13,8, 10,1, N_("Computer") },
+	{ SGTEXT, 0, 0, 3,10, 15,1, N_("AI strength:") },
 	{ SGRADIOBUT, 0, 0, 22,10, 3,1, "1" },
 	{ SGRADIOBUT, 0, SG_SELECTED, 22,11, 3,1, "2" },
 	{ SGRADIOBUT, 0, 0, 28,10, 3,1, "3" },
 	{ SGRADIOBUT, 0, 0, 28,11, 3,1, "4" },
 
 	{ SGBOX, 0, 0, 34,3, 32,10, NULL },
-	{ SGTEXT, 0, 0, 45,4, 9,1, "Spieler 2" },
-	{ SGTEXT, 0, 0, 36,6, 5,1, "Name:" },
+	{ SGTEXT, 0, 0, 45,4, 9,1, N_("Player 2") },
+	{ SGTEXT, 0, 0, 36,6, 5,1, N_("Name:") },
 	{ SGEDITFIELD, 0, 0, 42,6, 22,1, nsp2 },
-	{ SGRADIOBUT, 0, SG_SELECTED, 36,8, 8,1, "Mensch" },
-	{ SGRADIOBUT, 0, 0, 46,8, 10,1, "Computer" },
-	{ SGTEXT, 0, 0, 36,10, 15,1, "Computerstärke:" },
+	{ SGRADIOBUT, 0, SG_SELECTED, 36,8, 8,1, N_("Human") },
+	{ SGRADIOBUT, 0, 0, 46,8, 10,1, N_("Computer") },
+	{ SGTEXT, 0, 0, 36,10, 15,1, N_("AI strength:") },
 	{ SGRADIOBUT, 0, 0, 55,10, 3,1, "1" },
 	{ SGRADIOBUT, 0, SG_SELECTED, 55,11, 3,1, "2" },
 	{ SGRADIOBUT, 0, 0, 60,10, 3,1, "3" },
 	{ SGRADIOBUT, 0, 0, 60,11, 3,1, "4" },
 
-	{ SGTEXT, 0, 0, 3,14, 20,1, "Maximale Rundenzahl:" },
+	{ SGTEXT, 0, 0, 3,14, 20,1, N_("Maximum rounds:") },
 	{ SGRADIOBUT, 0, 0, 25,14, 4,1, "20" },
 	{ SGRADIOBUT, 0, 0, 31,14, 4,1, "50" },
 	{ SGRADIOBUT, 0, 0, 37,14, 5,1, "100" },
-	{ SGRADIOBUT, 0, SG_SELECTED, 44,14, 12,1, "unbegrenzt" },
+	{ SGRADIOBUT, 0, SG_SELECTED, 44,14, 12,1, N_("unlimited") },
 
-	{ SGCHECKBOX, 0, SG_SELECTED, 3,16, 26,1, "König kann kapitulieren" },
-	{ SGCHECKBOX, 0, SG_SELECTED, 36,16, 22,1, "Anbauen ist erlaubt" },
+	{ SGCHECKBOX, 0, SG_SELECTED, 3,16, 26,1, N_("King may capitulate") },
+	{ SGCHECKBOX, 0, SG_SELECTED, 36,16, 22,1, N_("Players may build") },
 
-	{ SGBUTTON, 0, 0, 2,19, 20,1, "Neues Spiel" },
-	{ SGBUTTON, SG_DEFAULT, 0, 24,19, 19,1, "Weiterspielen" },
-	{ SGBUTTON, 0, 0, 45,19, 20,1, "Programm beenden" },
+	{ SGBUTTON, 0, 0, 2,19, 20,1, N_("New game") },
+	{ SGBUTTON, SG_DEFAULT, 0, 24,19, 19,1, N_("Continue game") },
+	{ SGBUTTON, 0, 0, 45,19, 20,1, N_("Exit program") },
 
 	{ -1, 0, 0, 0,0, 0,0, NULL }
 };
@@ -168,7 +169,7 @@ int settings(void)
 	/* Quit game? */
 	else if (retbut == QUITGAME || retbut == SDLGUI_QUIT)
 	{
-		return DlgAlert_Query("Ballerburg beenden?", "Ja", "Nein");
+		return DlgAlert_Query(_("Quit Ballerburg?"), _("Yes"), _("No"));
 	}
 
 	return 0;
@@ -190,13 +191,13 @@ static void draw_castle2(int x, int y, int w, int h);
 static SGOBJ newgamedlg[] =
 {
 	{ SGBOX, 0, 0, 0,0, 52,18, NULL },
-	{ SGTEXT, 0, 0, 20,1, 12,1, "Neues Spiel" },
+	{ SGTEXT, 0, 0, 20,1, 12,1, N_("New game") },
 
-	{ SGTEXT, 0, 0, 8,3, 23,1, "Spieler 1" },
+	{ SGTEXT, 0, 0, 8,3, 23,1, N_("Player 1") },
 	{ SGBUTTON, SG_EXIT, 0, 2,14, 11,1, "\x04" },     // Arrow left
 	{ SGBUTTON, SG_EXIT, 0, 14,14, 11,1, "\x03" },    // Arrow right
 
-	{ SGTEXT, 0, 0, 33,3, 23,1, "Spieler 2" },
+	{ SGTEXT, 0, 0, 33,3, 23,1, N_("Player 2") },
 	{ SGBUTTON, SG_EXIT, 0, 27,14, 11,1, "\x04" },    // Arrow left
 	{ SGBUTTON, SG_EXIT, 0, 39,14, 11,1, "\x03" },    // Arrow right
 

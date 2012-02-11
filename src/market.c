@@ -24,6 +24,7 @@
 #include <stdlib.h>
 #include <math.h>
 
+#include "i18n.h"
 #include "baller1.h"
 #include "baller2.h"
 #include "ballergui.h"
@@ -73,16 +74,16 @@ static SGOBJ marktdlg[] =
 	{ SGBOX, 0, 0, 0,0, 44,18, NULL },
 
 	{ SGBOX, 0, 0, 1,1, 42,7, NULL },
-	{ SGTEXT, 0, 0, 18,1, 8,1, "Du hast:" },
+	{ SGTEXT, 0, 0, 18,1, 8,1, N_("You have:") },
 
-	{ SGTEXT, 0, 0, 2,3, 10,1, "Geld:" },
-	{ SGTEXT, 0, 0, 23,3, 12,1, "Fördertürme:" },
-	{ SGTEXT, 0, 0, 2,4, 10,1, "Geschütze:" },
-	{ SGTEXT, 0, 0, 23,4, 12,1, "Windfahne:" },
-	{ SGTEXT, 0, 0, 2,5, 10,1, "Pulver:" },
-	{ SGTEXT, 0, 0, 23,5, 12,1, "Kugeln:" },
-	{ SGTEXT, 0, 0, 2,6, 10,1, "Volk:" },
-	{ SGTEXT, 0, 0, 23,6, 12,1, "Steuern in %" },
+	{ SGTEXT, 0, 0, 2,3, 10,1, N_("Funds:") },
+	{ SGTEXT, 0, 0, 23,3, 12,1, N_("Shaft towers:") },
+	{ SGTEXT, 0, 0, 2,4, 10,1, N_("Cannons:") },
+	{ SGTEXT, 0, 0, 23,4, 12,1, N_("Weather vane:") },
+	{ SGTEXT, 0, 0, 2,5, 10,1, N_("Gunpowder:") },
+	{ SGTEXT, 0, 0, 23,5, 12,1, N_("Cannonballs:") },
+	{ SGTEXT, 0, 0, 2,6, 10,1, N_("Population:") },
+	{ SGTEXT, 0, 0, 23,6, 12,1, N_("Taxes in %") },
 	{ SGTEXT, 0, 0, 14,3, 5,1, dlg_geld },
 	{ SGTEXT, 0, 0, 37,3, 5,1, dlg_ftuerme },
 	{ SGTEXT, 0, 0, 14,4, 5,1, dlg_geschuetze },
@@ -95,14 +96,14 @@ static SGOBJ marktdlg[] =
 	{ SGBUTTON, SG_EXIT, 0, 41,6, 1,1, "\x03" },    // Arrow right
 
 	{ SGBOX, 0, 0, 1,9, 42,6, NULL },
-	{ SGTEXT, 0, 0, 18,9, 8,1, "Markt:" },
+	{ SGTEXT, 0, 0, 18,9, 8,1, N_("Market:") },
 
-	{ SGTEXT, 0, 0, 2,11, 10,1, "Anbauen:" },
-	{ SGTEXT, 0, 0, 23,11, 12,1, "Förderturm:" },
-	{ SGTEXT, 0, 0, 2,12, 10,1, "Geschütz:" },
-	{ SGTEXT, 0, 0, 23,12, 12,1, "Windfahne:" },
-	{ SGTEXT, 0, 0, 2,13, 10,1, "30 Pulver:" },
-	{ SGTEXT, 0, 0, 23,13, 12,1, "2 Kugeln:" },
+	{ SGTEXT, 0, 0, 2,11, 10,1, N_("Lay bricks:") },
+	{ SGTEXT, 0, 0, 23,11, 12,1, N_("Shaft tower:") },
+	{ SGTEXT, 0, 0, 2,12, 10,1, N_("Cannon:") },
+	{ SGTEXT, 0, 0, 23,12, 12,1, N_("Weather vane:") },
+	{ SGTEXT, 0, 0, 2,13, 10,1, N_("Powder x30:") },
+	{ SGTEXT, 0, 0, 23,13, 12,1, N_("2 cannonballs:") },
 	{ SGTEXT, 0, 0, 14,11, 5,1, dlg_anbauenpreis },
 	{ SGTEXT, 0, 0, 37,11, 5,1, dlg_fturmpreis },
 	{ SGTEXT, 0, 0, 14,12, 5,1, dlg_geschuetzpreis },
@@ -110,7 +111,7 @@ static SGOBJ marktdlg[] =
 	{ SGTEXT, 0, 0, 14,13, 5,1, dlg_pulverpreis },
 	{ SGTEXT, 0, 0, 37,13, 5,1, dlg_kugelpreis },
 
-	{ SGBUTTON, SG_DEFAULT, 0, 16,16, 12,1, "Fertig" },
+	{ SGBUTTON, SG_DEFAULT, 0, 16,16, 12,1, N_("Done") },
 
 	{ -1, 0, 0, 0,0, 0,0, NULL }
 };
@@ -149,8 +150,8 @@ static void anbau(void)
 	color(1);
 	vsf_interior( handle,2 );
 	vsf_style( handle,9 );
-	v_gtext( handle,280,375," Anbauen: " );
-	v_gtext( handle,220,395," Verbleibende Steine: 20 ");
+	v_gtext(handle, 280, 375, N_(" Build: "));
+	v_gtext(handle, 220, 395, N_(" Blocks left: 20 "));
 	s=20;
 	// graf_mouse(6,0);
 	scr_color(0x909080);

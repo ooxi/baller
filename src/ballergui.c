@@ -20,6 +20,7 @@
 #include <stdio.h>
 #include <SDL.h>
 
+#include "i18n.h"
 #include "baller1.h"
 #include "ballergui.h"
 #include "screen.h"
@@ -37,7 +38,7 @@ static int gui_handle_keys(SDL_Event *event)
 		SDL_WM_ToggleFullScreen(surf);
 		break;
 	 case SDLK_q:
-		return DlgAlert_Query("Ballerburg beenden?", "Ja", "Nein");
+		return DlgAlert_Query(_("Quit Ballerburg?"), _("Yes"), _("No"));
 	 default:
 		break;
 	}

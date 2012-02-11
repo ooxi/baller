@@ -66,10 +66,10 @@ int f;
 char  mod, wnd, end, txt[4], an_erl, au_kap,
 	cw[2]={2,2}, cx[2]={1,1};
 
-//char cn[7][8]={ "Tölpel","Dummel","Brubbel","Wusel","Brösel","Toffel","Rüpel" };
-char t_na[6][8]={ "Tölpel","Dummel","Brubbel","Wusel","Brösel","Toffel" };
+//char cn[7][8]={ "Oaf","Yokel","Boor","Doofus","Fumbler","Geezer","Ruffian" };
+char t_na[6][8]={ N_("Oaf"), N_("Yokel"), N_("Boor"), N_("Doofus"), N_("Fumbler"), N_("Geezer") };
 
-char nsp1[22]="Hugo",nsp2[22]="Emil";
+char nsp1[22] = "William", nsp2[22] = "Frederick";
 
 ka_t ka[2][10];
 ft_t ft[2][5];
@@ -161,14 +161,14 @@ void tabelle(void)
 			if (i==j) box(152+i*72,92+j*24,224+i*72,116+j*24, 1 /*FIXME*/);
 		}
 	}
-	v_gtext(handle,64,262,"\344  Spiele");
-	v_gtext(handle,64,286,"\344gewonnen");
-	v_gtext(handle,64,310,"\344verloren");
-	v_gtext(handle,64,334,"Siege in%");
+	v_gtext(handle,64,262, _("Total games"));
+	v_gtext(handle,64,286, _("Total won"));
+	v_gtext(handle,64,310, _("Total lost"));
+	v_gtext(handle,64,334, _("Victories in%"));
 	line(56,59,144,84);
 	vst_height(handle,4,&i,&i,&i,&i);
-	v_gtext(handle,60,81,"VERLOREN");
-	v_gtext(handle,92,66,"GEWONNEN");
+	v_gtext(handle,60,81, _("LOST"));
+	v_gtext(handle,92,66, _("WON"));
 	vst_height(handle,13,&i,&i,&i,&i);
 	show();
 }
@@ -274,12 +274,12 @@ int ein_zug(void)
 			else if ( pu[n]<5 )
 			{
 				bing();
-				DlgAlert_Notice("Dein Pulver reicht nicht!", "Abbruch");
+				DlgAlert_Notice(_("You don't have enough gunpowder."), _("Cancel"));
 			}
 			else if ( !ku[n] )
 			{
 				bing();
-				DlgAlert_Notice("Du hast keine Kugeln mehr!", "Abbruch");
+				DlgAlert_Notice(_("You don't have any cannonballs left."), _("Cancel"));
 			}
 			else fl=sch_obj(i);
 		}
@@ -363,35 +363,35 @@ void ende(void)
 	int a, b;
 	int i;
 
-	strcpy( s1,"!! ");
-	strcat( s1, end&2? l_nam:r_nam );
-	strcat( s1," hat gewonnen !!" );
+	strcpy(s1,"!! ");
+	strcat(s1, end&2? l_nam:r_nam);
+	strcat(s1, _(" has won !!"));
 	s2[0]=0;
 	if (~end&64) strcpy(s2,"( ");
 	strcat( s2, end&2? r_nam:l_nam );
 	if ( (end&240)<48 )
 	{
 		a=s2[strlen(s2)-1];
-		strcat( s2, a=='s' || a=='S'? "' ":"s " );
+		strcat( s2, a=='s' || a=='S'? "' ":"'s " );
 	}
 	switch ( end&240 )
 	{
 	case 16:
-		strcat( s2,"König wurde getroffen," );
-		strcpy( s3,"  daraufhin ergab sich dessen Volk. )" );
-		break;
+		strcat(s2, _("king was hit,"));
+		strcpy(s3, _("and upon hearing this, the people capitulated. )"));
+	break;
 	case 32:
-		strcat( s2,"König hat aufgrund der" );
-		strcpy( s3,"  aussichtslosen Lage kapituliert. )" );
+		strcat(s2, _("The king has capitulated"));
+		strcpy(s3, _("  because of the hopeless situation. )"));
 		break;
 	case 48:
-		strcat( s2," hat kein Volk mehr. )" );
+		strcat(s2, _(" has no folk left. )"));
 		s3[0]=0;
 		break;
 	case 64:
-		strcpy( s3,s2 );
-		strcpy( s2,"( Die maximale Rundenzahl ist erreicht.");
-		strcat( s3," befindet sich in der schlechteren Lage. )" );
+		strcpy(s3, s2);
+		strcpy(s2, _("( The set limit of maximum rounds has been reached."));
+		strcat(s3, _(" is worse off. )"));
 	}
 
 	for (a=0;a<6 && strncmp(t_na[a],l_nam,7);a++);
@@ -666,7 +666,7 @@ void burgen_laden(void)
 		/* Try to open in current directory instead */
 		f_h = fopen( "baller.dat", "rb");
 		if (!f_h) {
-			perror("Kann 'baller.dat' nicht finden: ");
+			perror("'baller.dat'");
 			exit(-1);
 		}
 	}
