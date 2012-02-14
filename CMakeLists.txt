@@ -3,7 +3,8 @@
 # ###############################
 
 cmake_minimum_required (VERSION 2.8 FATAL_ERROR)
-project (Ballerburg C)
+project (ballerburg C)
+set(VERSION 0.25)
 
 set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake")
 
@@ -36,6 +37,10 @@ if(NOT BIN2DATADIR)
 	set(BIN2DATADIR "../share/ballerburg"
 	    CACHE STRING "Relative path from bindir to datadir")
 	mark_as_advanced(BIN2DATADIR)
+endif()
+
+if(NOT LOCALEDIR)
+	set(LOCALEDIR share/locale)
 endif()
 
 if(NOT BIN2LOCALEDIR)
@@ -90,7 +95,7 @@ configure_file(${CMAKE_SOURCE_DIR}/cmake/config-cmake.h
 
 add_subdirectory(src)
 add_subdirectory(doc)
-
+add_subdirectory(po)
 
 add_custom_target(uninstall
     COMMAND ${CMAKE_COMMAND} -P ${CMAKE_SOURCE_DIR}/cmake/Uninstall.cmake)
