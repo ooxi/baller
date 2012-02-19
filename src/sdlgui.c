@@ -221,7 +221,7 @@ static void SDLGui_DrawText(const SGOBJ *tdlg, int objnum)
 	int x, y;
 	x = (tdlg[0].x+tdlg[objnum].x)*sdlgui_fontwidth;
 	y = (tdlg[0].y+tdlg[objnum].y)*sdlgui_fontheight;
-	SDLGui_Text(x, y, tdlg[objnum].txt);
+	SDLGui_Text(x, y, _(tdlg[objnum].txt));
 }
 
 
@@ -340,7 +340,7 @@ void SDLGui_DrawButton(const SGOBJ *bdlg, int objnum)
 		x+=1;
 		y+=1;
 	}
-	SDLGui_Text(x, y, bdlg[objnum].txt);
+	SDLGui_Text(x, y, _(bdlg[objnum].txt));
 }
 
 
@@ -363,7 +363,7 @@ static void SDLGui_DrawRadioButton(const SGOBJ *rdlg, int objnum)
 	str[1]=' ';
 	strcpy(&str[2], rdlg[objnum].txt);
 
-	SDLGui_Text(x, y, str);
+	SDLGui_Text(x, y, _(str));
 }
 
 
@@ -386,7 +386,7 @@ static void SDLGui_DrawCheckBox(const SGOBJ *cdlg, int objnum)
 	str[1]=' ';
 	strcpy(&str[2], cdlg[objnum].txt);
 
-	SDLGui_Text(x, y, str);
+	SDLGui_Text(x, y, _(str));
 }
 
 
