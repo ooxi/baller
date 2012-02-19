@@ -195,7 +195,7 @@ int DlgAlert_Query(const char *text, const char *button1,
 	/* Show "cancel" button: */
 	alertdlg[DLGALERT_CANCEL].type = SGBUTTON;
 	alertdlg[DLGALERT_CANCEL].txt = (char *)button2;
-	alertdlg[DLGALERT_OK].w = strlen(button2) + 2;
+	alertdlg[DLGALERT_CANCEL].w = strlen(button2) + 2;
 	alertdlg[DLGALERT_CANCEL].h = 1;
 
 	/* Adjust buttons positions: */
