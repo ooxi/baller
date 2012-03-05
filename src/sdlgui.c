@@ -24,9 +24,10 @@ static SDL_Surface *pSdlGuiScrn;            /* Pointer to the actual main SDL sc
 //static SDL_Surface *pSmallFontGfx = NULL;   /* The small font graphics */
 static SDL_Surface *pBigFontGfx = NULL;     /* The big font graphics */
 static SDL_Surface *pFontGfx = NULL;        /* The actual font graphics */
-static int current_object = 0;				/* Current selected object */
+static int current_object = 0;              /* Current selected object */
+static bool has_utf8;
 
-/*-----------------------------------------------------------------------*/
+
 /**
  * Load an 1 plane XBM into a 8 planes SDL_Surface.
  */
@@ -76,6 +77,8 @@ static SDL_Surface *SDLGui_LoadXBM(int w, int h, const void *pXbmBits)
  */
 int SDLGui_Init(void)
 {
+	char *lang;
+
 	SDL_Color blackWhiteColors[2] = {{255, 255, 255, 0}, {0, 0, 0, 0}};
 
 	if (/*pSmallFontGfx &&*/ pBigFontGfx)
@@ -100,6 +103,14 @@ int SDLGui_Init(void)
 	/* Set font color 0 as transparent: */
 	//SDL_SetColorKey(pSmallFontGfx, (SDL_SRCCOLORKEY|SDL_RLEACCEL), 0);
 	SDL_SetColorKey(pBigFontGfx, (SDL_SRCCOLORKEY|SDL_RLEACCEL), 0);
+
+	/* Check for UTF-8 locale */
+	lang = getenv("LANG");
+	if (lang != NULL)
+	{
+		has_utf8 = (strstr(lang, "utf-8") != NULL)
+			   || (strstr(lang, "UTF-8") != NULL);
+	}
 
 	return 0;
 }
@@ -186,28 +197,58 @@ void SDLGui_CenterDlg(SGOBJ *dlg)
 }
 
 
-/*-----------------------------------------------------------------------*/
+/**
+ * Convert UTF-8 character to our internal Latin1 representation and
+ * increase the string index.
+ */
+static char SDLGui_Utf8ToLatin1(const char *txt, int *i)
+{
+	unsigned char c;
+
+	c = txt[*i];
+	*i += 1;
+	if (c < 0x80 || !has_utf8)
+	{
+		return c;
+	}
+
+	/* Quick and dirty convertion for latin1 characters only... */
+	if ((c & 0xc0) == 0xc0)
+	{
+		c = c << 6;
+		c |= (txt[*i] & 0x7f);
+		*i += 1;
+	}
+	else
+	{
+		printf("Unsupported character '%c' (0x%x)\n", c, c);
+	}
+
+	return c;
+}
+
 /**
  * Draw a text string.
  */
 void SDLGui_Text(int x, int y, const char *txt)
 {
-	int i;
+	int i, p;
 	unsigned char c;
 	SDL_Rect sr, dr;
 
-	for (i=0; txt[i]!=0; i++)
+	sr.w = dr.w = sdlgui_fontwidth;
+	sr.h = dr.h = sdlgui_fontheight;
+
+	i = p = 0;
+	while (txt[i] != 0)
 	{
-		c = txt[i];
-		sr.x=sdlgui_fontwidth*(c%16);
-		sr.y=sdlgui_fontheight*(c/16);
-		sr.w=sdlgui_fontwidth;
-		sr.h=sdlgui_fontheight;
-		dr.x=x+i*sdlgui_fontwidth;
-		dr.y=y;
-		dr.w=sdlgui_fontwidth;
-		dr.h=sdlgui_fontheight;
+		c = SDLGui_Utf8ToLatin1(txt, &i);
+		sr.x = sdlgui_fontwidth * (c % 16);
+		sr.y = sdlgui_fontheight * (c / 16);
+		dr.x = x + p * sdlgui_fontwidth;
+		dr.y = y;
 		SDL_BlitSurface(pFontGfx, &sr, pSdlGuiScrn, &dr);
+		p += 1;
 	}
 }
 
@@ -329,18 +370,21 @@ static void SDLGui_DrawBox(const SGOBJ *bdlg, int objnum)
 void SDLGui_DrawButton(const SGOBJ *bdlg, int objnum)
 {
 	int x,y;
+	char *txt = _(bdlg[objnum].txt);
 
 	SDLGui_DrawBox(bdlg, objnum);
 
-	x = (bdlg[0].x + bdlg[objnum].x + (bdlg[objnum].w-strlen(bdlg[objnum].txt))/2) * sdlgui_fontwidth;
-	y = (bdlg[0].y + bdlg[objnum].y + (bdlg[objnum].h-1)/2) * sdlgui_fontheight;
+	x = (bdlg[0].x + bdlg[objnum].x + (bdlg[objnum].w-strlen(txt))/2)
+	    * sdlgui_fontwidth;
+	y = (bdlg[0].y + bdlg[objnum].y + (bdlg[objnum].h-1)/2)
+	    * sdlgui_fontheight;
 
 	if (bdlg[objnum].state & SG_SELECTED)
 	{
 		x+=1;
 		y+=1;
 	}
-	SDLGui_Text(x, y, _(bdlg[objnum].txt));
+	SDLGui_Text(x, y, txt);
 }
 
 
