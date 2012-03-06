@@ -123,7 +123,7 @@ static SGOBJ marktdlg[] =
 static void anbau(void)
 {
 	short s;
-	char a[3];
+	char brickstr[80];
 	SDL_Surface *pBgSurface;
 	SDL_Rect rect, bgrect;
 
@@ -150,10 +150,11 @@ static void anbau(void)
 	color(1);
 	vsf_interior( handle,2 );
 	vsf_style( handle,9 );
-	v_gtext(handle, 280, 375, N_(" Build: "));
-	v_gtext(handle, 220, 395, N_(" Blocks left: 20 "));
+	v_gtext(handle, 280, 375, _(" Lay bricks: "));
+	sprintf(brickstr,  _(" Bricks left: %02d "), 20);
+	v_gtext(handle, 220, 393, brickstr);
 	s=20;
-	// graf_mouse(6,0);
+
 	scr_color(0x909080);
 
 	do
@@ -163,7 +164,6 @@ static void anbau(void)
 
 		if ( bt && (n? mx>624-bg[0] : mx<bg[0]+15 ) && my>155 )
 		{
-			// hide();
 			if ( !( loc(mx,my) || loc(mx+1,my+1) || loc(mx-1,my-1) ) &&
 			                ( loc(mx+3,my-1)||loc(mx+3,my+1)||loc(mx-3,my-1)||loc(mx-3,my+1)||
 			                  loc(mx+1,my+2)||loc(mx-1,my+2)||loc(mx+1,my-2)||loc(mx-1,my-2) ))
@@ -176,12 +176,9 @@ static void anbau(void)
 				v_bar( handle,xy );
 				vswr_mode( handle,1 );
 				s--;
-				a[0]=48+s/10;
-				a[1]=48+s%10;
-				a[2]=0;
-				v_gtext( handle,396,395,a );
+				sprintf(brickstr,  _(" Bricks left: %02d "), s);
+				v_gtext(handle, 220, 393, brickstr);
 			}
-			// show();
 		}
 	}
 	while ( s>0 && bt<2 );
@@ -192,8 +189,6 @@ static void anbau(void)
 		SDL_BlitSurface(pBgSurface, &bgrect, surf,  &rect);
 		SDL_FreeSurface(pBgSurface);
 	}
-
-	// graf_mouse(0,0);
 }
 
 

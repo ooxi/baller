@@ -290,12 +290,12 @@ msgid "Done"
 msgstr "Fertig"
 
 #: /home/thomas/devel/ballerburg/main/po/../src/market.c:153
-msgid " Build: "
+msgid " Lay bricks: "
 msgstr " Anbauen: "
 
 #: /home/thomas/devel/ballerburg/main/po/../src/market.c:154
-msgid " Blocks left: 20 "
-msgstr " Verbleibende Steine: 20 "
+msgid " Bricks left: %02d "
+msgstr " Verbleibende Steine: %02d "
 
 #: /home/thomas/devel/ballerburg/main/po/../src/settings.c:59
 msgid "Settings"
