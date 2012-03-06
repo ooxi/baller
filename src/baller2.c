@@ -654,7 +654,8 @@ void fturm(void)
 
 
 /* ************************ Audience with the king ************************* */
-char kna[] = N_("The king says:             \n'"),
+const char
+     kna[] = N_("The king says:             \n'"),
      kne[] = N_("Humbly acknowledged"),
      kn0[] = N_("Well...\n alright...\n Carry on..."),
      kn1[] = N_("We are satisfied\n with your performance!"),
@@ -664,7 +665,7 @@ char kna[] = N_("The king says:             \n'"),
      kn5[] = N_("Why don't you buy\n a shaft tower..."),
      kn6[] = N_("You ought to\n kindly make more of\n an effort!"),
      kn7[] = N_("You don't need to visit Us\n in each round."),
-     kn8[] = N_("Are you aware\n that you have already visited Us\n xx times thus far?"),
+     kn8[] = N_("Are you aware\n that you have already visited Us\n %d times thus far?"),
      kn9[] = N_("So, are you certain\n that you will manage\n without a weather vane?"),
      kn10[] = N_("Nice to see you..."),
      kn11[] = N_("What are We supposed\n to say in such an\n early phase?"),
@@ -674,9 +675,12 @@ char kna[] = N_("The king says:             \n'"),
 
 void koenig(void)
 {
-	char a[300],*s[20],k,t;
+	char a[300];
+	static char kn_visited[80];
+	const char *s[20];
+	char k, t;
 	int i, j;
-	static char *ltz[2];
+	static const char *ltz[2];
 
 	for ( j=k=0;j<10;j++ ) k+=ka[n][j].x>-1;
 	for ( j=t=0;j<5;j++ )  t+=ft[n][j].x>-1;
@@ -685,43 +689,49 @@ void koenig(void)
 		DlgAlert_Notice(_("The king is not in the mood\nto talk to you."), _("Too bad."));
 	else
 	{
-		kn8[46]=kn[n]>2559? 48+kn[n]/2560:32;
-		kn8[47]=48+kn[n]%2560/256;
+		sprintf(kn_visited, _(kn8), kn[n]/256);
 
 		j=rand();
 		i=2;
-		s[0]=j&1? kn0:kn10;
-		s[1]=j&2? kn12:kn6;
-		if ( j&4 ) s[i++]=kn14;
+		s[0]=j&1 ? _(kn0) : _(kn10);
+		s[1]=j&2 ? _(kn12) : _(kn6);
+		if ( j&4 ) s[i++] = _(kn14);
 
-		if ( ge[n]>p[1]&&t<3 ) s[i++]=kn5;
-		if ( (st[n]>40 && vo[n]<bg[40]) || st[n]>70 ) s[i++]=kn3;
-		if ( wx[n]<0 ) s[i++]=kn9;
-		if ( ge[n]>bg[37]&&vo[n]>bg[40]&&k>1 ) s[1]=t<2? kn1:kn2;
-		if ( t>2 ) s[i++]=kn2;
-		if ( k<1 && ge[n]<p[2] ) s[i++]=kn4;
-		if ( (kn[n]&15)>4 )
+		if (ge[n] > p[1] && t < 3)
+			s[i++] = _(kn5);
+		if ((st[n] > 40 && vo[n] < bg[40]) || st[n] > 70)
+			s[i++] = _(kn3);
+		if (wx[n] < 0)
+			s[i++] = _(kn9);
+		if (ge[n] > bg[37] && vo[n] > bg[40] && k > 1)
+			s[1] = t<2 ? _(kn1) : _(kn2);
+		if (t > 2)
+			s[i++] = _(kn2);
+		if (k < 1 && ge[n] < p[2])
+			s[i++] = _(kn4);
+		if ((kn[n]&15) > 4)
 		{
-			s[i++]=kn7; s[i++]=kn7; s[i++]=kn7;
+			s[i++] = _(kn7); s[i++] = _(kn7); s[i++] = _(kn7);
 		}
-		if ( (kn[n]&15)>6 || (!(rand()&7) && kn[n]>2048) )
+		if ((kn[n]&15) > 6 || (!(rand()&7) && kn[n] > 2048))
 		{
-			s[i++]=kn8; s[i++]=kn8;
+			s[i++] = kn_visited; s[i++] = kn_visited;
 		}
-		if ( zug<4 ) s[1]=s[2]=s[(i=4)-1]=kn11;
+		if (zug < 4)
+			s[1] = s[2] = s[(i=4)-1] = _(kn11);
+
 		do
-			if ( s[j=rand()%i]==ltz[n] )
+			if (s[j=rand()%i] == ltz[n])
 			{
-				s[i++]=kn13;
-				s[i++]=kn13;
+				s[i++] = _(kn13);
+				s[i++] = _(kn13);
 			}
-		while ( s[j]==ltz[n] );
+		while (s[j] == ltz[n]);
 
-		strcpy(a, kna);
+		strcpy(a, _(kna));
 		strcat(a, ltz[n]=s[j]);
 		strcat(a, "'");
-		// strcat( a,kne );
-		DlgAlert_Notice(a, kne);
+		DlgAlert_Notice(a, _(kne));
 	}
 	kn[n]|=16;
 	kn[n]+=256;

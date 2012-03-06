@@ -160,13 +160,13 @@ msgid "You don't need to visit Us\n in each round."
 msgstr "Sie brauchen nicht\n jede Runde zu kommen."
 
 #: /home/thomas/devel/ballerburg/main/po/../src/baller2.c:667
-msgid "Are you aware\n that you have already visited Us\n xx times thus far?"
-msgstr "Wissen Sie eigentlich,\n daﬂ Sie mich bereits\n xxmal besucht haben?"
+msgid "Are you aware\n that you have already visited Us\n %d times thus far?"
+msgstr "Wissen Sie eigentlich,\n dass Sie mich bereits\n %d mal besucht haben?"
 
 #: /home/thomas/devel/ballerburg/main/po/../src/baller2.c:668
 msgid "So, are you certain\n that you will manage\n"
 " without a weather vane?"
-msgstr "Und Sie sind sich sicher,\n daﬂ Sie auch ohne eine\n"
+msgstr "Und Sie sind sich sicher,\n dass Sie auch ohne eine\n"
 " Windfahne zurecht kommen?"
 
 #: /home/thomas/devel/ballerburg/main/po/../src/baller2.c:669
@@ -189,7 +189,7 @@ msgstr "Ich habe Ihnen nichts\n neues zu sagen."
 
 #: /home/thomas/devel/ballerburg/main/po/../src/baller2.c:673
 msgid "We are pleased for you\n to come around and visit Us."
-msgstr "Find' ich nett, daﬂ\n Sie mich mal besuchen!"
+msgstr "Find' ich nett, dass\n Sie mich mal besuchen!"
 
 #: /home/thomas/devel/ballerburg/main/po/../src/baller2.c:685
 msgid "The king is not in the mood\nto talk to you."
