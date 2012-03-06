@@ -109,7 +109,13 @@ int SDLGui_Init(void)
 	if (lang != NULL)
 	{
 		has_utf8 = (strstr(lang, "utf-8") != NULL)
-			   || (strstr(lang, "UTF-8") != NULL);
+			   || (strstr(lang, "UTF-8") != NULL)
+			   || (strstr(lang, "utf8") != NULL)
+			   || (strstr(lang, "UTF8") != NULL);
+	}
+	else
+	{
+		has_utf8 = false;
 	}
 
 	return 0;
