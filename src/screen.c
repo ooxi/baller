@@ -126,11 +126,29 @@ void v_gtext(int handle, int x, int y, char *text)
 
 	rect.x = x;
 	rect.y = y;
-	rect.w = strlen(text)*8;
-	rect.h = 16;
+	rect.w = strlen(text) * sdlgui_fontwidth;
+	rect.h = sdlgui_fontheight;
 	SDL_FillRect(surf, &rect, SDL_MapRGB(surf->format,0xff,0xff,0xff));
 
 	SDLGui_Text(x, y, text);
+
+	SDL_UpdateRects(surf, 1, &rect);
+}
+
+/**
+ * Draw centered text
+ */
+void scr_ctr_text(int cx, int y, char *text)
+{
+	SDL_Rect rect;
+
+	rect.w = strlen(text) * sdlgui_fontwidth;
+	rect.h = sdlgui_fontheight;
+	rect.x = cx - rect.w / 2;
+	rect.y = y;
+	SDL_FillRect(surf, &rect, SDL_MapRGB(surf->format,0xff,0xff,0xff));
+
+	SDLGui_Text(rect.x, rect.y, text);
 
 	SDL_UpdateRects(surf, 1, &rect);
 }

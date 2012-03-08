@@ -150,9 +150,9 @@ static void anbau(void)
 	color(1);
 	vsf_interior( handle,2 );
 	vsf_style( handle,9 );
-	v_gtext(handle, 280, 375, _(" Lay bricks: "));
+	scr_ctr_text(320, 365, _(" Lay bricks: "));
 	sprintf(brickstr,  _(" Bricks left: %02d "), 20);
-	v_gtext(handle, 220, 393, brickstr);
+	scr_ctr_text(320, 382, brickstr);
 	s=20;
 
 	scr_color(0x909080);
@@ -177,7 +177,7 @@ static void anbau(void)
 				vswr_mode( handle,1 );
 				s--;
 				sprintf(brickstr,  _(" Bricks left: %02d "), s);
-				v_gtext(handle, 220, 393, brickstr);
+				scr_ctr_text(320, 382, brickstr);
 			}
 		}
 	}
