@@ -190,25 +190,25 @@ static void draw_castle2(int x, int y, int w, int h);
 
 static SGOBJ newgamedlg[] =
 {
-	{ SGBOX, 0, 0, 0,0, 52,18, NULL },
-	{ SGTEXT, 0, 0, 20,1, 12,1, N_("New game") },
+	{ SGBOX, 0, 0, 0,0, 58,20, NULL },
+	{ SGTEXT, 0, 0, 24,1, 12,1, N_("New game") },
 
-	{ SGTEXT, 0, 0, 8,3, 23,1, N_("Player 1") },
-	{ SGBUTTON, SG_EXIT, 0, 2,14, 11,1, "\x04" },     // Arrow left
-	{ SGBUTTON, SG_EXIT, 0, 14,14, 11,1, "\x03" },    // Arrow right
+	{ SGTEXT, 0, 0, 9,3, 23,1, N_("Player 1") },
+	{ SGBUTTON, SG_EXIT, 0, 2,16, 12,1, "\x04" },     // Arrow left
+	{ SGBUTTON, SG_EXIT, 0, 16,16, 12,1, "\x03" },    // Arrow right
 
-	{ SGTEXT, 0, 0, 33,3, 23,1, N_("Player 2") },
-	{ SGBUTTON, SG_EXIT, 0, 27,14, 11,1, "\x04" },    // Arrow left
-	{ SGBUTTON, SG_EXIT, 0, 39,14, 11,1, "\x03" },    // Arrow right
+	{ SGTEXT, 0, 0, 37,3, 23,1, N_("Player 2") },
+	{ SGBUTTON, SG_EXIT, 0, 30,16, 12,1, "\x04" },    // Arrow left
+	{ SGBUTTON, SG_EXIT, 0, 44,16, 12,1, "\x03" },    // Arrow right
 
-	{ SGBUTTON, SG_DEFAULT, 0, 16,16, 8,1, "OK" },
-	{ SGBUTTON, SG_CANCEL, 0, 28,16, 8,1, "Cancel" },
+	{ SGBUTTON, SG_DEFAULT, 0, 19,18, 8,1, "OK" },
+	{ SGBUTTON, SG_CANCEL, 0, 31,18, 8,1, "Cancel" },
 
-	{ SGBOX, 0, 0, 2,5, 23,8, NULL },
-	{ SGUSER, 0, 0, 2,5, 23,8, (void*)draw_castle1 },
+	{ SGBOX, 0, 0, 2,5, 26,10, NULL },
+	{ SGUSER, 0, 0, 2,5, 26,10, (void*)draw_castle1 },
 
-	{ SGBOX, 0, 0, 27,5, 23,8, NULL },
-	{ SGUSER, 0, 0, 27,5, 23,8, (void*)draw_castle2 },
+	{ SGBOX, 0, 0, 30,5, 26,10, NULL },
+	{ SGUSER, 0, 0, 30,5, 26,10, (void*)draw_castle2 },
 
 	{ -1, 0, 0, 0,0, 0,0, NULL }
 };
