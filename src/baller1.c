@@ -29,6 +29,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
+#include <locale.h>
 
 #include "baller1.h"
 #include "baller2.h"
@@ -57,7 +58,7 @@ short handle, mx,my,bt,dum,m_buf[8], xy[100],
 	bur[2],bx[2],by[2], ge[2],pu[2],ku[2],vo[2],st[2],kn[2],
 	wx[2],wy[2],ws,wc,
 	*bg, zug,n,oldn, p[6],  t_gew[6][10], max_rund,
-	*burgen[20],b_anz;
+	*burgen[30], b_anz;
 int ftx, fty, ftw, fth;     /* Koordinaten von "Fertig" */
 void *bur_ad;
 int   scr, a_opt, a_ein;
@@ -613,6 +614,7 @@ static char zeichen(FILE *f_h)
 	if (fread(&a, 1, 1, f_h) != 1)
 	{
 		perror("zeichen");
+		exit(-1);
 	}
 
 	return a;
@@ -674,7 +676,8 @@ void burgen_laden(void)
 	a = (short *)bur_ad;
 	b_anz = 0;
 
-	while ( (j=rdzahl(f_h))!=-999 )
+	while ((j=rdzahl(f_h)) != -999
+	       && b_anz < sizeof(burgen)/sizeof(burgen[0]))
 	{
 		burgen[b_anz++]=a;
 		*a++=j;

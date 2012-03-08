@@ -26,7 +26,7 @@ extern short handle, mx,my,bt,dum,m_buf[8], xy[100],
 	wx[2],wy[2],ws,wc,
 	*bg, zug,n,oldn, p[6], max_rund,
 	fx,fy,fw,fh,
-	f_h, *burgen[20],b_anz;
+	f_h, *burgen[], b_anz;
 extern int ftx, fty, ftw, fth;
 extern int f;
 extern char mod, wnd, end, an_erl, au_kap,
