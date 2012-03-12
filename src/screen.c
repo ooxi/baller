@@ -168,12 +168,6 @@ void v_circle(int handle, int x, int y, int w)
 	SDL_UpdateRects(surf, 1, &rect);
 }
 
-void movmem(void *src, void *dst, int size)
-{
-	// printf("movmem: %p -> %p\n", src, dst);
-	memmove(dst, src, size);
-}
-
 void vswr_mode(short handle, short val)
 {
 	//printf("vswr_mode %i\n", val);

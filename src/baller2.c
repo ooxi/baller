@@ -384,7 +384,7 @@ void expls(int x, int y, int w, int h, int d)
 		int fire_col;
 
 		v_pline( handle,2,xy );
-		movmem( xy+4,xy,120 );
+		memmove(xy, xy+4, 120);
 		for ( j=28;j<32; )
 		{
 			xy[j++]=x-w+w*(rand()&511)/256;

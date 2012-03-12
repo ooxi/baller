@@ -37,7 +37,6 @@ void vsf_style(short handle, short val);
 void vst_height(short handle, short height, short *v1, short *v2, short *v3,short *v4);
 void vswr_mode(short handle, short val);
 void vst_color(short handle, short val);
-void movmem(void *src, void *dst, int size);
 
 
 void scr_init(void);

@@ -47,8 +47,6 @@
 #define menu(a)   /* wind_update(3-a) */
 #define hide()    /* graf_mouse(256,0) */
 #define show()    /* graf_mouse(257,0) */
-#define sav_scr() /* hide();movmem(scr,buf,32000);show() */
-#define lod_scr() /* hide();movmem(buf,scr,32000);show() */
 
 #define bing()    printf("\007");
 
