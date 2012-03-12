@@ -416,3 +416,18 @@ void scr_draw_done_button(int selected)
 
 	SDL_UpdateRect(surf, 0,0, 0,0);
 }
+
+
+/**
+ * Draws a fast cannonball
+ */
+void scr_cannonball(int x, int y)
+{
+	lineColor(surf, x-2,y-2,x+1,y-2, the_color);
+	lineColor(surf, x-3,y-1,x+2,y-1, the_color);
+	lineColor(surf, x-3,y  ,x+2,y  , the_color);
+	lineColor(surf, x-3,y+1,x+2,y+1, the_color);
+	lineColor(surf, x-2,y+2,x+1,y+2, the_color);
+
+	SDL_UpdateRect(surf, x-3, y-3, 6, 6);
+}

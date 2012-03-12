@@ -406,13 +406,12 @@ void expls(int x, int y, int w, int h, int d)
 
 int kugel(int x, int y)
 {
-	if ( x<3 || x>637 || y<23 ) return(0);
-	line( x-2,y-2,x+1,y-2 );
-	line( x-3,y-1,x+2,y-1 );
-	line( x-3,y  ,x+2,y   );
-	line( x-3,y+1,x+2,y+1 );
-	line( x-2,y+2,x+1,y+2 );
-	return(1);
+	if (x < 3 || x > 637 || y < 3 || y > 397)
+		return 0;
+
+	scr_cannonball(x, y);
+
+	return 1;
 }
 
 
