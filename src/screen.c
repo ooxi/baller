@@ -25,6 +25,8 @@
 #include "screen.h"
 #include "sdlgui.h"
 
+#define min(a,b) ((a)<(b)?(a):(b))
+#define max(a,b) ((a)>(b)?(a):(b))
 
 SDL_Surface *surf;
 Uint32 the_color, fill_color;
@@ -155,11 +157,15 @@ void scr_ctr_text(int cx, int y, char *text)
 
 void v_circle(int handle, int x, int y, int w)
 {
-	//printf("v_circle: %i %i %i\n", x,y,w);
+	SDL_Rect rect;
 
 	filledCircleColor(surf, x, y, w, the_color);
 
-	SDL_UpdateRect(surf, 0,0, 640,480);
+	rect.x = max(x-w, 0);
+	rect.y = max(y-w, 0);
+	rect.w = min(2*w, 640-x+w);
+	rect.h = min(2*w, 480-y+w);
+	SDL_UpdateRects(surf, 1, &rect);
 }
 
 void movmem(void *src, void *dst, int size)
@@ -221,8 +227,6 @@ void v_bar(short handle, short *xy)
 	SDL_Rect rect;
 	Uint8 r, g, b;
 
-	//printf("v_bar %i,%i -> %i,%i\n", xy[0], xy[1], xy[2], xy[3]);
-
 	r = the_color >> 24;
 	g = the_color >> 16;
 	b = the_color >> 8;
@@ -234,7 +238,7 @@ void v_bar(short handle, short *xy)
 	SDL_FillRect(surf, &rect, SDL_MapRGB(surf->format,r,g,b));
 	rectangleColor(surf, xy[0], xy[1], xy[2], xy[3], the_color);
 
-	SDL_UpdateRect(surf, 0,0, 640,480);
+	SDL_UpdateRects(surf, 1, &rect);
 }
 
 
