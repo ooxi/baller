@@ -21,10 +21,6 @@
 
 extern SDL_Surface *surf;
 
-
-#define graf_mouse(a,b)
-extern int form_alert(int type, char *text);
-
 void v_pline(short handle, short num, short xy[]);
 void v_fillarea(short handle, short num, short xy[]);
 void v_circle(int handle, int x, int y, int w);
@@ -32,7 +28,7 @@ void v_bar(short handle, short *xy);
 void clr(short x, short y, short w, short h);
 void clr_bg(short x, short y, short w, short h);
 void vsf_interior(short handle, short val);
-void v_gtext(int handle, int x, int y, char *text);
+void v_gtext(int handle, int x, int y, const char *text);
 void vsf_style(short handle, short val);
 void vst_height(short handle, short height, short *v1, short *v2, short *v3,short *v4);
 void vswr_mode(short handle, short val);

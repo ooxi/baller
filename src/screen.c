@@ -112,13 +112,7 @@ void scr_clear(void)
 	SDL_FillRect(surf, &rect, white);
 }
 
-int form_alert(int type, char *text)
-{
-	printf("Alert: %s\n", text);
-	return 0;
-}
-
-void v_gtext(int handle, int x, int y, char *text)
+void v_gtext(int handle, int x, int y, const char *text)
 {
 	SDL_Rect rect;
 
