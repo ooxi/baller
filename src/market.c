@@ -124,28 +124,10 @@ static void anbau(void)
 {
 	short s;
 	char brickstr[80];
-	SDL_Surface *pBgSurface;
-	SDL_Rect rect, bgrect;
+	void *savearea;
 
 	/* Save background */
-	rect.x = 220;
-	rect.y = 375-12;
-	rect.w = 25*8;
-	rect.h = 38;
-	bgrect.x = bgrect.y = 0;
-	bgrect.w = rect.w;
-	bgrect.h = rect.h;
-	pBgSurface = SDL_CreateRGBSurface(SDL_SWSURFACE, 25*8, 38, surf->format->BitsPerPixel,
-	                                  surf->format->Rmask, surf->format->Gmask,
-	                                  surf->format->Bmask, surf->format->Amask);
-	if (pBgSurface != NULL)
-	{
-		SDL_BlitSurface(surf, &rect, pBgSurface, &bgrect);
-	}
-	else
-	{
-		fprintf(stderr, "anbau: CreateRGBSurface failed: %s\n", SDL_GetError());
-	}
+	savearea = scr_save_bg(220, 375-12, 25*8, 38);
 
 	color(1);
 	vsf_interior( handle,2 );
@@ -184,11 +166,7 @@ static void anbau(void)
 	while ( s>0 && bt<2 );
 
 	/* Restore background */
-	if (pBgSurface)
-	{
-		SDL_BlitSurface(pBgSurface, &bgrect, surf,  &rect);
-		SDL_FreeSurface(pBgSurface);
-	}
+	scr_restore_bg(savearea);
 }
 
 

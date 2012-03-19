@@ -423,3 +423,64 @@ void scr_cannonball(int x, int y)
 
 	SDL_UpdateRect(surf, x-3, y-3, 6, 6);
 }
+
+
+/**
+ * Stores information about saved background area
+ */
+struct savebg
+{
+	SDL_Rect rect;
+	SDL_Rect bgrect;
+	SDL_Surface *bgsurf;
+};
+
+/**
+ * Save a part of the background of the screen
+ */
+void *scr_save_bg(int x, int y, int w, int h)
+{
+	struct savebg *s;
+
+	s = malloc(sizeof(struct savebg));
+	if (!s)
+		return NULL;
+
+	s->rect.x = x; s->rect.y = y;
+	s->rect.w = w; s->rect.h = h;
+	s->bgrect.x = s->bgrect.y = 0;
+	s->bgrect.w = s->rect.w;
+	s->bgrect.h = s->rect.h;
+	s->bgsurf = SDL_CreateRGBSurface(SDL_SWSURFACE, w, h, surf->format->BitsPerPixel,
+	                              surf->format->Rmask, surf->format->Gmask,
+	                              surf->format->Bmask, surf->format->Amask);
+	if (s->bgsurf != NULL)
+	{
+		/* Save background */
+		SDL_BlitSurface(surf, &s->rect, s->bgsurf, &s->bgrect);
+	}
+	else
+	{
+		fprintf(stderr, "scr_save_bg: CreateRGBSurface failed: %s\n",
+		        SDL_GetError());
+	}
+
+	return s;
+}
+
+/**
+ * Restore part of the background
+ */
+void scr_restore_bg(void *ps)
+{
+	struct savebg *s = ps;
+
+	/* Restore background */
+	if (s != NULL && s->bgsurf != NULL)
+	{
+		SDL_BlitSurface(s->bgsurf, &s->bgrect, surf,  &s->rect);
+		SDL_FreeSurface(s->bgsurf);
+	}
+
+	SDL_UpdateRects(surf, 1, &s->rect);
+}
