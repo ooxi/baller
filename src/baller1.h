@@ -32,6 +32,7 @@ extern int f;
 extern char mod, wnd, end, an_erl, au_kap,
 	cw[2],cx[2],
 	nsp1[],nsp2[];
+extern const char *cn[7];
 
 typedef struct
 {

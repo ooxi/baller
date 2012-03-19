@@ -65,8 +65,11 @@ int f;
 char  mod, wnd, end, txt[4], an_erl, au_kap,
 	cw[2]={2,2}, cx[2]={1,1};
 
-//char cn[7][8]={ "Oaf","Yokel","Boor","Doofus","Fumbler","Geezer","Ruffian" };
-char t_na[6][8]={ N_("Oaf"), N_("Yokel"), N_("Boor"), N_("Doofus"), N_("Fumbler"), N_("Geezer") };
+/* Computer player names (i.e. the strategies) */
+const char *cn[7] = {
+	N_("Oaf"), N_("Yokel"), N_("Boor"), N_("Doofus"),
+	N_("Fumbler"), N_("Geezer"), N_("Ruffian")
+};
 
 char nsp1[22] = "William", nsp2[22] = "Frederick";
 
@@ -131,7 +134,10 @@ int main(int argc, char **argv)
 void tabelle(void)
 {
 	short i,j;
-	hide();
+	void *save_area;
+
+	save_area = scr_save_bg(53, 55, 640-53*2+1, 400-55*2+1);
+
 	vsf_interior(handle,0);
 	box(53,56,587,343,1);
 	box(55,58,585,341,1);
@@ -141,8 +147,8 @@ void tabelle(void)
 	line(56,84,584,84);
 	for (i=92;i<240;i+=24) line(56,i,584,i);
 	for (i=244;i<340;i+=24) line(56,i,584,i);
-	for (i=0;i<6;i++) v_gtext(handle,160+i*72,78,t_na[i]);
-	for (i=0;i<6;i++) v_gtext(handle,80,110+i*24,t_na[i]);
+	for (i=0;i<6;i++) v_gtext(handle,160+i*72,78, cn[i]);
+	for (i=0;i<6;i++) v_gtext(handle,80,110+i*24, cn[i]);
 	vsf_interior(handle,2);
 	vsf_style(handle,2);
 	for (i=0;i<6;i++)
@@ -169,7 +175,11 @@ void tabelle(void)
 	v_gtext(handle,60,81, _("LOST"));
 	v_gtext(handle,92,66, _("WON"));
 	vst_height(handle,13,&i,&i,&i,&i);
-	show();
+
+	while (bt == 0 && event(1) == 0);
+	while (bt != 0 && event(1) == 0);
+
+	scr_restore_bg(save_area);
 }
 
 
@@ -393,8 +403,8 @@ void ende(void)
 		strcat(s3, _(" is worse off. )"));
 	}
 
-	for (a=0;a<6 && strncmp(t_na[a],l_nam,7);a++);
-	for (b=0;b<6 && strncmp(t_na[b],r_nam,7);b++);
+	for (a=0; a<6 && strncmp(cn[a], l_nam,7); a++);
+	for (b=0; b<6 && strncmp(cn[b], r_nam,7); b++);
 	if (a<6 && b<6 && a!=b)
 	{
 		if (~end&2)
@@ -574,7 +584,7 @@ int t_load(void)
 	fread(&mxin, 1, 1, f_h);
 	fread(**(int **)(a_opt+MAX_XX*24+12), 1, 3, f_h);
 	fread(&max_rund, 2, 1, f_h);
-	fread(t_na, 1, 48, f_h);
+	//fread(t_na, 1, 48, f_h);
 	fread(t_gew, 1, 120, f_h);
 
 	fclose(f_h);
@@ -594,7 +604,7 @@ int t_save(void)
 	Fwrite(f_h,1,&mxin);
 	Fwrite(f_h,3,**(int **)(a_opt+MAX_XX*24+12) );
 	Fwrite(f_h,2,&max_rund);
-	Fwrite(f_h,48,t_na);
+	//Fwrite(f_h,48,t_na);
 	Fwrite(f_h,120,t_gew);
 	Fclose(f_h);
 #endif
