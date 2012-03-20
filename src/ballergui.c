@@ -37,6 +37,9 @@ static int gui_handle_keys(SDL_Event *event)
 	 case SDLK_f:
 		SDL_WM_ToggleFullScreen(surf);
 		break;
+	 case SDLK_t:
+		tabelle();
+		break;
 	 case SDLK_q:
 		return DlgAlert_Query(_("Quit Ballerburg?"), _("Yes"), _("No"));
 	 default:
