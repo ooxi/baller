@@ -119,8 +119,8 @@ msgid " Round     "
 msgstr " Vuoro     "
 
 #: /home/thomas/devel/ballerburg/main/po/../src/baller2.c:658
-msgid "The king says:             \n'"
-msgstr "Kuningas lausui:              \n'"
+msgid "The king says:"
+msgstr "Kuningas lausui:"
 
 #: /home/thomas/devel/ballerburg/main/po/../src/baller2.c:659
 msgid "Humbly acknowledged"

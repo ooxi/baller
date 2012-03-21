@@ -124,12 +124,8 @@ msgid " Round     "
 msgstr " Runde     "
 
 #: /home/thomas/devel/ballerburg/main/po/../src/baller2.c:657
-msgid ""
-"The king says:             \n"
-"'"
-msgstr ""
-"Der König meint:             \n"
-"'"
+msgid "The king says:"
+msgstr "Der König meint:"
 
 #: /home/thomas/devel/ballerburg/main/po/../src/baller2.c:658
 msgid "Humbly acknowledged"

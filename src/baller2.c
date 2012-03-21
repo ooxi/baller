@@ -654,7 +654,7 @@ void fturm(void)
 
 /* ************************ Audience with the king ************************* */
 const char
-     kna[] = N_("The king says:             \n'"),
+     kna[] = N_("The king says:"),
      kne[] = N_("Humbly acknowledged"),
      kn0[] = N_("Well...\n alright...\n Carry on..."),
      kn1[] = N_("We are satisfied\n with your performance!"),
@@ -726,10 +726,9 @@ void koenig(void)
 				s[i++] = _(kn13);
 			}
 		while (s[j] == ltz[n]);
+		ltz[n] = s[j];
 
-		strcpy(a, _(kna));
-		strcat(a, ltz[n]=s[j]);
-		strcat(a, "'");
+		snprintf(a, sizeof(a), "%s\n'%s'",  _(kna), s[j]);
 		DlgAlert_Notice(a, _(kne));
 	}
 	kn[n]|=16;

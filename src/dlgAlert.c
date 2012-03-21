@@ -66,7 +66,7 @@ static int DlgAlert_FormatTextToBox(char *text, int max_width, int *text_width)
 	llb = text-1;       /* pointer to last line break */
 	txtend = text + txtlen;
 
-	if (txtlen <= max_width)
+	if (txtlen <= max_width && strchr(text, '\n') == NULL)
 	{
 		*text_width = txtlen;
 		return lines;
