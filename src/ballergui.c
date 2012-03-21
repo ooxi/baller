@@ -27,9 +27,9 @@
 #include "settings.h"
 
 
-static int gui_handle_keys(SDL_Event *event)
+static int gui_handle_keys(SDL_Event *ev)
 {
-	switch (event->key.keysym.sym)
+	switch (ev->key.keysym.sym)
 	{
 	 case SDLK_ESCAPE:
 		return settings();
@@ -53,52 +53,52 @@ static int gui_handle_keys(SDL_Event *event)
 int event(int wait)
 {
 	int ev_avail;
-	SDL_Event event;
+	SDL_Event ev;
 
 	// printf("event(%i)\n", wait);
 
 	if (wait)
-		ev_avail = SDL_WaitEvent(&event);
+		ev_avail = SDL_WaitEvent(&ev);
 	else
-		ev_avail = SDL_PollEvent(&event);
+		ev_avail = SDL_PollEvent(&ev);
 
 	while (ev_avail)
 	{
-		// printf("EVENT = %i\n", event.type);
-		switch(event.type)
+		// printf("EVENT = %i\n", ev.type);
+		switch(ev.type)
 		{
 		 case SDL_QUIT:
 			printf("Leaving Ballerburg...\n");
 			return 1;
 		 case SDL_MOUSEMOTION:               /* Read/Update internal mouse position */
-			mx = event.motion.x;
-			my = event.motion.y;
+			mx = ev.motion.x;
+			my = ev.motion.y;
 			break;
 		 case SDL_MOUSEBUTTONDOWN:
-			if (event.button.button == SDL_BUTTON_LEFT)
+			if (ev.button.button == SDL_BUTTON_LEFT)
 			{
 				bt |= 1;
 			}
-			else if (event.button.button == SDL_BUTTON_RIGHT)
+			else if (ev.button.button == SDL_BUTTON_RIGHT)
 			{
 				bt |= 2;
 			}
 			break;
 		 case SDL_MOUSEBUTTONUP:
-			if (event.button.button == SDL_BUTTON_LEFT)
+			if (ev.button.button == SDL_BUTTON_LEFT)
 			{
 				bt &= ~1;
 			}
-			else if (event.button.button == SDL_BUTTON_RIGHT)
+			else if (ev.button.button == SDL_BUTTON_RIGHT)
 			{
 				bt &= ~2;
 			}
 			break;
 		 case SDL_KEYUP:
-			return gui_handle_keys(&event);
+			return gui_handle_keys(&ev);
 		}
 
-		ev_avail = SDL_PollEvent(&event);
+		ev_avail = SDL_PollEvent(&ev);
 	}
 
 	return 0;
