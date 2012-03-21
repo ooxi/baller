@@ -46,6 +46,9 @@ enum
 #define SGARROWDOWN              2
 #define SGFOLDER                 5
 
+#define SGARROWLEFTSTR      "\x04"
+#define SGARROWRIGHTSTR     "\x03"
+
 /* Return codes: */
 #define SDLGUI_ERROR         -1
 #define SDLGUI_QUIT          -2

@@ -30,70 +30,86 @@
 #include "settings.h"
 
 
-#define P1_HUMAN	6
-#define P1_COMPUTER	7
-#define P1_COMPLEV1	9
-#define P1_COMPLEV2	10
-#define P1_COMPLEV3	11
-#define P1_COMPLEV4	12
-#define P2_HUMAN	17
-#define P2_COMPUTER	18
-#define P2_COMPLEV1	20
-#define P2_COMPLEV2	21
-#define P2_COMPLEV3	22
-#define P2_COMPLEV4	23
-#define ROUNDS_20	25
-#define ROUNDS_50	26
-#define ROUNDS_100	27
-#define ROUNDS_NOLIMIT	28
-#define GIVEUPALLOWED	29
-#define REPAIRALLOWED	30
-#define NEWGAME		31
-#define CONTINUE	32
-#define QUITGAME	33
+#define P1_HUMAN		6
+#define P1_COMPUTER		7
+#define P1_AISTRATEGYLEFT	10
+#define P1_AISTRATEGYSTR	11
+#define P1_AISTRATEGYRIGHT	12
+#define P1_AISTRENGTHLEFT	15
+#define P1_AISTRENGTHSTR	16
+#define P1_AISTRENGTHRIGHT	17
+#define P2_HUMAN		22
+#define P2_COMPUTER		23
+#define P2_AISTRATEGYLEFT	26
+#define P2_AISTRATEGYSTR	27
+#define P2_AISTRATEGYRIGHT	28
+#define P2_AISTRENGTHLEFT	31
+#define P2_AISTRENGTHSTR	32
+#define P2_AISTRENGTHRIGHT	33
+#define ROUNDS_20	35
+#define ROUNDS_50	36
+#define ROUNDS_100	37
+#define ROUNDS_NOLIMIT	38
+#define GIVEUPALLOWED	39
+#define REPAIRALLOWED	40
+#define NEWGAME		41
+#define CONTINUE	42
+#define QUITGAME	43
 
+static char dlg_p1level[2] = "2";
+static char dlg_p2level[2] = "3";
 
 static SGOBJ settingsdlg[] =
 {
-	{ SGBOX, 0, 0, 0,0, 67,21, NULL },
+	{ SGBOX, 0, 0, 0,0, 71,22, NULL },
 	{ SGTEXT, 0, 0, 27,1, 13,1, N_("Settings") },
 
-	{ SGBOX, 0, 0, 1,3, 32,10, NULL },
+	{ SGBOX, 0, 0, 1,3, 34,11, NULL },
 	{ SGTEXT, 0, 0, 12,4, 9,1, N_("Player 1") },
 	{ SGTEXT, 0, 0, 3,6, 5,1, N_("Name:") },
 	{ SGEDITFIELD, 0, 0, 9,6, 22,1, nsp1 },
 	{ SGRADIOBUT, 0, SG_SELECTED, 3,8, 8,1, N_("Human") },
-	{ SGRADIOBUT, 0, 0, 13,8, 10,1, N_("Computer") },
-	{ SGTEXT, 0, 0, 3,10, 15,1, N_("AI strength:") },
-	{ SGRADIOBUT, 0, 0, 22,10, 3,1, "1" },
-	{ SGRADIOBUT, 0, SG_SELECTED, 22,11, 3,1, "2" },
-	{ SGRADIOBUT, 0, 0, 28,10, 3,1, "3" },
-	{ SGRADIOBUT, 0, 0, 28,11, 3,1, "4" },
+	{ SGRADIOBUT, 0, 0, 15,8, 10,1, N_("Computer") },
+	{ SGTEXT, 0, 0, 3,10, 15,1, N_("AI strategy:") },
+	{ SGBOX, 0, 0, 19,10, 15,1, NULL },
+	{ SGBUTTON, SG_EXIT, 0, 19,10, 2,1, SGARROWLEFTSTR },
+	{ SGTEXT, 0, 0, 22,10, 8,1, NULL },
+	{ SGBUTTON, SG_EXIT, 0, 32,10, 2,1, SGARROWRIGHTSTR },
+	{ SGTEXT, 0, 0, 3,12, 15,1, N_("AI strength:") },
+	{ SGBOX, 0, 0, 23,12, 7,1, NULL },
+	{ SGBUTTON, SG_EXIT, 0, 23,12, 2,1, SGARROWLEFTSTR },
+	{ SGTEXT, 0, 0, 26,12, 1,1, dlg_p1level },
+	{ SGBUTTON, SG_EXIT, 0, 28,12, 2,1, SGARROWRIGHTSTR },
 
-	{ SGBOX, 0, 0, 34,3, 32,10, NULL },
-	{ SGTEXT, 0, 0, 45,4, 9,1, N_("Player 2") },
-	{ SGTEXT, 0, 0, 36,6, 5,1, N_("Name:") },
-	{ SGEDITFIELD, 0, 0, 42,6, 22,1, nsp2 },
-	{ SGRADIOBUT, 0, SG_SELECTED, 36,8, 8,1, N_("Human") },
-	{ SGRADIOBUT, 0, 0, 46,8, 10,1, N_("Computer") },
-	{ SGTEXT, 0, 0, 36,10, 15,1, N_("AI strength:") },
-	{ SGRADIOBUT, 0, 0, 55,10, 3,1, "1" },
-	{ SGRADIOBUT, 0, SG_SELECTED, 55,11, 3,1, "2" },
-	{ SGRADIOBUT, 0, 0, 60,10, 3,1, "3" },
-	{ SGRADIOBUT, 0, 0, 60,11, 3,1, "4" },
+	{ SGBOX, 0, 0, 36,3, 34,11, NULL },
+	{ SGTEXT, 0, 0, 47,4, 9,1, N_("Player 2") },
+	{ SGTEXT, 0, 0, 38,6, 5,1, N_("Name:") },
+	{ SGEDITFIELD, 0, 0, 44,6, 22,1, nsp2 },
+	{ SGRADIOBUT, 0, SG_SELECTED, 38,8, 8,1, N_("Human") },
+	{ SGRADIOBUT, 0, 0, 50,8, 10,1, N_("Computer") },
+	{ SGTEXT, 0, 0, 38,10, 15,1, N_("AI strategy:") },
+	{ SGBOX, 0, 0, 54,10, 15,1, NULL },
+	{ SGBUTTON, SG_EXIT, 0, 54,10, 2,1, SGARROWLEFTSTR },
+	{ SGTEXT, 0, 0, 57,10, 8,1, NULL },
+	{ SGBUTTON, SG_EXIT, 0, 67,10, 2,1, SGARROWRIGHTSTR },
+	{ SGTEXT, 0, 0, 38,12, 15,1, N_("AI strength:") },
+	{ SGBOX, 0, 0, 58,12, 7,1, NULL },
+	{ SGBUTTON, SG_EXIT, 0, 58,12, 2,1, SGARROWLEFTSTR },
+	{ SGTEXT, 0, 0, 61,12, 1,1, dlg_p2level },
+	{ SGBUTTON, SG_EXIT, 0, 63,12, 2,1, SGARROWRIGHTSTR },
 
-	{ SGTEXT, 0, 0, 3,14, 20,1, N_("Maximum rounds:") },
-	{ SGRADIOBUT, 0, 0, 25,14, 4,1, "20" },
-	{ SGRADIOBUT, 0, 0, 31,14, 4,1, "50" },
-	{ SGRADIOBUT, 0, 0, 37,14, 5,1, "100" },
-	{ SGRADIOBUT, 0, SG_SELECTED, 44,14, 12,1, N_("unlimited") },
+	{ SGTEXT, 0, 0, 3,15, 20,1, N_("Maximum rounds:") },
+	{ SGRADIOBUT, 0, 0, 25,15, 4,1, "20" },
+	{ SGRADIOBUT, 0, 0, 31,15, 4,1, "50" },
+	{ SGRADIOBUT, 0, 0, 37,15, 5,1, "100" },
+	{ SGRADIOBUT, 0, SG_SELECTED, 44,15, 12,1, N_("unlimited") },
 
-	{ SGCHECKBOX, 0, SG_SELECTED, 3,16, 26,1, N_("King may capitulate") },
-	{ SGCHECKBOX, 0, SG_SELECTED, 36,16, 22,1, N_("Players may build") },
+	{ SGCHECKBOX, 0, SG_SELECTED, 3,17, 26,1, N_("King may capitulate") },
+	{ SGCHECKBOX, 0, SG_SELECTED, 36,17, 22,1, N_("Players may build") },
 
-	{ SGBUTTON, 0, 0, 2,19, 20,1, N_("New game") },
-	{ SGBUTTON, SG_DEFAULT, 0, 24,19, 19,1, N_("Continue game") },
-	{ SGBUTTON, 0, 0, 45,19, 20,1, N_("Exit program") },
+	{ SGBUTTON, 0, 0, 2,20, 20,1, N_("New game") },
+	{ SGBUTTON, SG_DEFAULT, 0, 24,20, 19,1, N_("Continue game") },
+	{ SGBUTTON, 0, 0, 45,20, 20,1, N_("Exit program") },
 
 	{ -1, 0, 0, 0,0, 0,0, NULL }
 };
@@ -104,12 +120,56 @@ static SGOBJ settingsdlg[] =
  */
 int settings(void)
 {
-	int i;
 	int retbut;
+	int done = 0;
 
 	SDLGui_CenterDlg(settingsdlg);
 
-	retbut = SDLGui_DoDialog(settingsdlg, NULL);
+	do
+	{
+		settingsdlg[P1_AISTRATEGYSTR].txt = (char *)cn[(unsigned)cw[0]];
+		settingsdlg[P2_AISTRATEGYSTR].txt = (char *)cn[(unsigned)cw[1]];
+		dlg_p1level[0] = '1' + cx[0];
+		dlg_p2level[0] = '1' + cx[1];
+		retbut = SDLGui_DoDialog(settingsdlg, NULL);
+		switch (retbut)
+		{
+		 case P1_AISTRATEGYLEFT:
+			if (cw[0] > 0)
+				cw[0] -= 1;
+			break;
+		 case P1_AISTRATEGYRIGHT:
+			if (cw[0] < 6)
+				cw[0] += 1;
+			break;
+		 case P1_AISTRENGTHLEFT:
+			if (cx[0] > 0)
+				cx[0] -= 1;
+			break;
+		 case P1_AISTRENGTHRIGHT:
+			if (cx[0] < 3)
+				cx[0] += 1;
+			break;
+		 case P2_AISTRATEGYLEFT:
+			if (cw[1] > 0)
+				cw[1] -= 1;
+			break;
+		 case P2_AISTRATEGYRIGHT:
+			if (cw[1] < 6)
+				cw[1] += 1;
+			break;
+		 case P2_AISTRENGTHLEFT:
+			if (cx[1] > 0)
+				cx[1] -= 1;
+			break;
+		 case P2_AISTRENGTHRIGHT:
+			if (cx[1] < 3)
+				cx[1] += 1;
+			break;
+		 default:
+		 	done = 1;
+		}
+	} while (!done);
 
 	SDL_UpdateRect(surf, 0,0, 0,0);
 
@@ -126,23 +186,6 @@ int settings(void)
 			mod = 2;	/* Computer vs. human */
 		else
 			mod = 3;	/* Computer vs. computer */
-	}
-
-	/* Computer 1 strategy */
-	for (i = P1_COMPLEV1; i <= P1_COMPLEV4; i++) {
-		if (settingsdlg[i].state & SG_SELECTED) {
-			// FIXME: What's the difference between cx and cw?
-			cx[0] = cw[0] = i - P1_COMPLEV1 + 1;
-			break;
-		}
-	}
-
-	/* Computer 2 strategy */
-	for (i = P2_COMPLEV1; i <= P2_COMPLEV4; i++) {
-		if (settingsdlg[i].state & SG_SELECTED) {
-			cx[1] = cw[1] = i - P2_COMPLEV1 + 1;
-			break;
-		}
 	}
 
 	/* Max. amount of rounds */
