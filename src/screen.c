@@ -134,7 +134,7 @@ void v_gtext(int handle, int x, int y, const char *text)
 /**
  * Draw centered text
  */
-void scr_ctr_text(int cx, int y, char *text)
+void scr_ctr_text(int cx, int y, const char *text)
 {
 	SDL_Rect rect;
 

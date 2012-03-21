@@ -17,7 +17,7 @@
     along with this program. If not, see <http://www.gnu.org/licenses/>.
 */
 
-void m_laden(char * string);
+void m_laden(const char * string);
 void m_musik(void);
 void m_wloop(void);
 void s_note(unsigned int wert);

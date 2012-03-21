@@ -79,7 +79,7 @@ char  st_ton[] =
 } ;
 
 /******************** Laden und Speicher reservieren *************************/
-void m_laden(char * string)
+void m_laden(const char * string)
 {
 	FILE *f_handle;
 	int i;
