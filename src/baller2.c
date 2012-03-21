@@ -315,7 +315,7 @@ void schuss(int k)
 						if ( drin( a,v,30,37,-2,(int)ox,(int)oy ) )
 						{
 							expls((a=ft[n][j].x-29*n)+15,(v=ft[n][j].y-40)+20,15,20,120);
-							clr( a,v,30,40 );
+							clr_bg( a,v,30,40 );
 							ft[n][j].x=-1;
 						}
 						c=4;
