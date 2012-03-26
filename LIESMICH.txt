@@ -1,10 +1,10 @@
 
 		  ===========================
-		  =   Ballerburg SDL v0.1   =
+		  =   Ballerburg SDL v0.25  =
 		  ===========================
 
 	    Copyright (C) 1987, 1989  Eckhard Kruse
-	    Copyright (C) 2010, 2011  Thomas Huth
+	    Copyright (C) 2010, 2012  Thomas Huth
 
 
 	  Für meine Schwester Martina Huth - ich werde
@@ -37,7 +37,7 @@ Ballerburg ist ein klassisches Burgenkampfspiel, bei dem sich zwei
 durch einen Berg getrennte Burgen mit ihren Kanonen gegenseitig
 bekämpfen müssen. 
 Ballerburg wurde 1987 von Eckhard Kruse für den damals topaktuellen
-16/32-Bit Computer Atari ST entwickelt. Fast ein viertel Jahrhundert
+16/32-Bit Computer Atari ST entwickelt. Jetzt, ein viertel Jahrhundert
 später liegt mit "Ballerburg SDL" nun die Anpassung des alten Source-
 codes, welcher von Eckhard Kruse freundlicherweise frei gegeben wurde,
 an GNU/Linux und andere Systeme mit SDL-Unterstützung vor.
@@ -67,14 +67,16 @@ werden.
 Zum Starten des Spiels muss man das "ballerburg" Programm starten.
 Der Spielablauf sollte weitgehen selbsterklärend sein, notfalls gibt
 es im doc-Verzeichnis auch die Anleitung des orginalen Ballerburgs
-(Datei "anleitung.txt").
+(Datei "anleitung.txt"). Über die ESC-Taste erreicht man das Hauptmenü
+zum Einstellen der Spieler und um ein neues Spiel zu starten.
 
 
  5) Kontakt
+ ----------
 
 Bei Fragen, Anregung, Patches oder Kritik bitte eine Mail an folgende
 Adresse schreiben:
 
-	huth @ users.berlios.de
+	huth at tuxfamily.org
 
 Und nun viel Spaß mit Ballerburg!
