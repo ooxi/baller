@@ -1,0 +1,20 @@
+
+People who contributed to Ballerburg SDL:
+
+- Thomas Huth <huth at tuxfamily.org> : Main developer of Ballerburg SDL,
+  adapted the old Ballerburg sources to recent systems, maintains the
+  Ballerburg SDL project.
+
+- Eero Tamminen : Finnish translations
+
+- Jens Ropers : Most of the English translations
+
+
+Ballerburg SDL uses source code from other projects which we would like to
+acknowledge here:
+
+- Eckhard Kruse : Wrote the original Ballerburg game for the Atari ST.
+
+- Stefan Berndtsson : The original version of the PSG soundchip emulation.
+
+- Kolja Koischwitz : Designed some additional castles (used in Ballerburg^2)
