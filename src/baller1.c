@@ -73,7 +73,7 @@ const char *cn[7] = {
 	N_("Fumbler"), N_("Geezer"), N_("Ruffian")
 };
 
-char nsp1[22] = "William", nsp2[22] = "Frederick";
+char nsp1[22], nsp2[22];	/* Names of the players */
 
 ka_t ka[2][10];
 ft_t ft[2][5];
@@ -118,6 +118,8 @@ int main(int argc, char **argv)
 
 	psg_audio_init();
 
+	strcpy(nsp1, _("William"));
+	strcpy(nsp2, _("Frederick"));
 	l_nam = nsp1;
 	r_nam = nsp2;
 

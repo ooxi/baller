@@ -1,15 +1,13 @@
 # German translations for Ballerburg package
-# German messages for Ballerburg.
-# Copyright (C) 2012 THE Ballerburg'S COPYRIGHT HOLDER
+# Copyright (C) 2012 Thomas Huth <huth(at)tuxfamily.org>
 # This file is distributed under the same license as the ballerburg package.
-# Thomas Huth <huth(at)tuxfamily.org>, 2012.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: ballerburg 0.25\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-03-21 18:41+0100\n"
-"PO-Revision-Date: 2012-03-21 18:52+0100\n"
+"POT-Creation-Date: 2012-04-26 20:00+0100\n"
+"PO-Revision-Date: 2012-04-26 20:05+0100\n"
 "Last-Translator: Thomas Huth <huth(at)tuxfamily.org>\n"
 "Language-Team: German\n"
 "Language: de\n"
@@ -50,72 +48,80 @@ msgstr "Rüpel"
 msgid "Not enough memory for loading the castles."
 msgstr "Nicht genug Speicher um die Burgen zu laden."
 
-#: /home/thomas/devel/ballerburg/main/po/../src/baller1.c:171
+#: /home/thomas/devel/ballerburg/main/po/../src/baller1.c:121
+msgid "William"
+msgstr "Wilhelm"
+
+#: /home/thomas/devel/ballerburg/main/po/../src/baller1.c:122
+msgid "Frederick"
+msgstr "Friedrich"
+
+#: /home/thomas/devel/ballerburg/main/po/../src/baller1.c:173
 msgid "Total games"
 msgstr "Spiele gesamt"
 
-#: /home/thomas/devel/ballerburg/main/po/../src/baller1.c:172
+#: /home/thomas/devel/ballerburg/main/po/../src/baller1.c:174
 msgid "Total won"
 msgstr "Gesamt gewonnen"
 
-#: /home/thomas/devel/ballerburg/main/po/../src/baller1.c:173
+#: /home/thomas/devel/ballerburg/main/po/../src/baller1.c:175
 msgid "Total lost"
 msgstr "Gesamt verloren"
 
-#: /home/thomas/devel/ballerburg/main/po/../src/baller1.c:174
+#: /home/thomas/devel/ballerburg/main/po/../src/baller1.c:176
 msgid "Victories in%"
 msgstr "Siege"
 
-#: /home/thomas/devel/ballerburg/main/po/../src/baller1.c:177
+#: /home/thomas/devel/ballerburg/main/po/../src/baller1.c:179
 msgid "LOST"
 msgstr "VERLOREN"
 
-#: /home/thomas/devel/ballerburg/main/po/../src/baller1.c:178
+#: /home/thomas/devel/ballerburg/main/po/../src/baller1.c:180
 msgid "WON"
 msgstr "GEWONNEN"
 
-#: /home/thomas/devel/ballerburg/main/po/../src/baller1.c:288
+#: /home/thomas/devel/ballerburg/main/po/../src/baller1.c:290
 msgid "You don't have enough gunpowder."
 msgstr "Dein Pulver reicht nicht!"
 
-#: /home/thomas/devel/ballerburg/main/po/../src/baller1.c:288
-#: /home/thomas/devel/ballerburg/main/po/../src/baller1.c:293
+#: /home/thomas/devel/ballerburg/main/po/../src/baller1.c:290
+#: /home/thomas/devel/ballerburg/main/po/../src/baller1.c:295
 msgid "Cancel"
 msgstr "Abbruch"
 
-#: /home/thomas/devel/ballerburg/main/po/../src/baller1.c:293
+#: /home/thomas/devel/ballerburg/main/po/../src/baller1.c:295
 msgid "You don't have any cannonballs left."
 msgstr "Du hast keine Kugeln mehr!"
 
-#: /home/thomas/devel/ballerburg/main/po/../src/baller1.c:379
+#: /home/thomas/devel/ballerburg/main/po/../src/baller1.c:381
 msgid " has won !!"
 msgstr " hat gewonnen !!"
 
-#: /home/thomas/devel/ballerburg/main/po/../src/baller1.c:391
+#: /home/thomas/devel/ballerburg/main/po/../src/baller1.c:393
 msgid "king was hit,"
 msgstr "König wurde getroffen,"
 
-#: /home/thomas/devel/ballerburg/main/po/../src/baller1.c:392
+#: /home/thomas/devel/ballerburg/main/po/../src/baller1.c:394
 msgid "and upon hearing this, the people capitulated. )"
 msgstr "  daraufhin ergab sich dessen Volk. )"
 
-#: /home/thomas/devel/ballerburg/main/po/../src/baller1.c:395
+#: /home/thomas/devel/ballerburg/main/po/../src/baller1.c:397
 msgid "The king has capitulated"
 msgstr "König hat aufgrund der"
 
-#: /home/thomas/devel/ballerburg/main/po/../src/baller1.c:396
+#: /home/thomas/devel/ballerburg/main/po/../src/baller1.c:398
 msgid "  because of the hopeless situation. )"
 msgstr "  aussichtslosen Lage kapituliert. )"
 
-#: /home/thomas/devel/ballerburg/main/po/../src/baller1.c:399
+#: /home/thomas/devel/ballerburg/main/po/../src/baller1.c:401
 msgid " has no folk left. )"
 msgstr " hat kein Volk mehr. )"
 
-#: /home/thomas/devel/ballerburg/main/po/../src/baller1.c:404
+#: /home/thomas/devel/ballerburg/main/po/../src/baller1.c:406
 msgid "( The set limit of maximum rounds has been reached."
 msgstr "( Die maximale Rundenzahl ist erreicht."
 
-#: /home/thomas/devel/ballerburg/main/po/../src/baller1.c:405
+#: /home/thomas/devel/ballerburg/main/po/../src/baller1.c:407
 msgid " is worse off. )"
 msgstr " befindet sich in der schlechteren Lage. )"
 
