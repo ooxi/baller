@@ -1,0 +1,317 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+ "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<head>
+<title>Manual for Ballerburg SDL</title>
+<meta name="description" content="Manual forBallerburg SDL." />
+<meta name="author" content="Thomas Huth" />
+<meta name="copyright" content="Thomas Huth" />
+<meta name="robots" content="index,follow" />
+<meta name="date" content="2012-04-25" />
+</head>
+
+<body>
+
+<h1>Manual for Ballerburg SDL</h1>
+
+<h2>1. Objective of the game</h2>
+<p>
+Ballerburg is about two lords of castles pitted against each other, with 
+the goal of defeating the opponent through targeted cannon shots.
+Players are able to obtain money from mining after buying shaft towers and
+from their people by levying taxes, and with these funds players may
+purchase e.g. new guns and ammunition.
+</p>
+
+<h2>2. Game modes</h2>
+<p>
+There are different playing modes  available in the game's  settings menu,  
+which can be brought up by pressing escape. Ordinarily, the game is played
+between two human players.  Another option is for  one player to fight the
+computer.  The computer can be  set to be the player on  the left or right 
+hand  side  of the  screen.  It is  also  possible  to  let  two computer-
+controlled  players battle  each other.  Since  it is  possible  to change 
+playing modes mid-game,  one can for example momentarily  let the computer 
+shoot for  one's own side,  or, if you're  battling  a computer-controlled 
+player and the situation's dire, you might for instance momentarily switch 
+modes to  human vs. human and weaken the  opponent by making bad decisions 
+for him.
+</p>
+
+<h2>3. Player names and computer-controlled player</h2>
+<p>
+In the settings menu you can change the name of the human player. The name
+for the computer-controlled player can be changed under the label 'AI strategy'.
+Both settings can also safely be changed while a game is already running.
+The first player is always on the left side of the screen, and the second
+player is on the right side.
+The name of the computer-controlled player also stand for a certain strategy.
+The numbers next to 'AI strength' control the shooting accuracy of the computer
+players. The highest value 4 here means that almost every shot will hit its
+goal. 
+The AI strategies differentiate into the priorities of the targets, i.e. some
+computer players shoot always at the cannons (if available), while some others
+rather try to hit the money of the opponent.
+</p>
+<table>
+ <tr>
+  <td>Oaf :</td>
+  <td>No special target, just tries to hit the castle somewhere.</td>
+ </tr>
+ <tr>
+  <td>Yokel :</td>
+  <td>First the money, then gunpowder/cannonballs, then the king</td>
+ </tr>
+ <tr>
+  <td>Boor :</td>
+  <td>First the money, then cannons, then the king</td>
+ </tr>
+ <tr>
+  <td>Doofus :</td>
+  <td>Money, gunpowder, cannonballs, shaft towers, cannons, king:
+      Everything with the same probability</td>
+ </tr>
+ <tr>
+  <td>Fumbler :</td>
+  <td>First cannons, then the king</td>
+ </tr>
+ <tr>
+  <td>Geezer :</td>
+  <td>First the shaft towers, then cannons, then the king</td>
+ </tr>
+ <tr>
+  <td>Ruffian :</td>
+  <td>Aims only at the king</td>
+ </tr>
+</table>
+
+<p>
+Note that only Doofus, Fumbler, Geezer and Ruffian are able to buy shaft towers.
+</p>
+
+<h2>4. New game, choosing the castles</h2>
+<p>
+By clicking 'New game' in the settings menu, you can choose new castles for
+both sides and then start the new game by clicking 'OK'.
+Unless you've already extended the file with the castles, 'BALLER.DAT', you can
+decide between 9 different standard castles here.
+If both players are on the same skill level, you should of course select the
+same castles here, because the different castles have quite different strengths.
+If you choose smaller castles, the game normally won't last as long as with
+the bigger castles.
+</p>
+<p>
+Here are now the values of the 9 standard castles:
+</p>
+<table border="1">
+ <tr>
+  <th> Cannons </th><th> Money </th><th> Gunpowder </th>
+  <th> Cannonballs </th><th> People </th>
+ </tr>
+ <tr> <td>2</td> <td>400</td> <td>180</td> <td>12</td> <td>200</td> </tr>
+ <tr> <td>5</td> <td>500</td> <td>180</td> <td>12</td> <td>270</td> </tr>
+ <tr> <td>5</td> <td>500</td> <td>150</td> <td>14</td> <td>270</td> </tr>
+ <tr> <td>6</td> <td>500</td> <td>190</td> <td>12</td> <td>300</td> </tr>
+ <tr> <td>3</td> <td>500</td> <td>120</td> <td>6 </td> <td>220</td> </tr>
+ <tr> <td>4</td> <td>500</td> <td>120</td> <td>10</td> <td>240</td> </tr>
+ <tr> <td>6</td> <td>800</td> <td>120</td> <td>12</td> <td>500</td> </tr>
+ <tr> <td>3</td> <td>500</td> <td>120</td> <td>9 </td> <td>500</td> </tr>
+ <tr> <td>1</td> <td>1000</td> <td>120</td> <td>12</td> <td>300</td> </tr>
+</table>
+
+
+<h2>5. The battlefield: The mountain and the castles</h2>
+<p>
+After you've started a new game, the castles and the hill will be drawn on
+the screen. Both, the position of the castles and the shape and height of the
+mountain are random (within certain limits).
+The castles consist of the following parts:
+</p>
+<ul>
+ <li>the walls and the roofs</li>
+ <li>the throne room</li>
+ <li>the various cannons</li>
+ <li>the powder magazine (one barrel contains 30 units of powder)</li>
+ <li>the cannonball magazine</li>
+ <li>the treasure chamber (one bag contains 150 units of money)</li>
+ <li>the vane (only the vane of the active player is hoisted)</li>
+</ul>
+<p>
+The active wind information indicates the active player. If the player still
+has a vane, a zoomed version of the vane will be shown in the box at the
+bottom of the screen together with the strength and direction of the wind.
+</p>
+
+<h2>6. Course of the game</h2>
+<p>
+After starting the game, the players take their turns until one of them wins.
+Within a turn, the player can do several things: After clicking on either the
+powder magazine, the cannonballs magazine or the treasure chamber, the
+properties of the player will be displayed along with the market where the
+player can buy various things. More on this topic can be found in the next
+chapter. By clicking on the throne room, the king will comment on your latest
+progress.
+</p>
+<p>
+The round can be completed by two possibilities: In case you don't have a
+cannon anymore, or you don't have enough powder or cannonballs or just don't
+like to shoot, you can simply click on 'Done' at the bottom of the screen.
+In all other cases you should choose the cannon that you want to shoot with,
+select the angle and powder and then click 'OK' to fire a cannonball.
+More on shooting can be found in chapter 8.
+</p>
+
+<h2>7. Your properties and the market</h2>
+<p>
+When clicking on one of the three magazines, you get the properties and market
+dialog which is described here now:
+In the section titled with 'You have' your properties and the amount of your
+people are listed. By clicking on the corresponding arrows, you can also
+adjust the taxes here that you demand from your people.
+Higher taxes mean more money per subject. But beware, when you raise the taxes,
+some of your people might leave your kingdom. On the other side, lowering the
+taxes might render your kingdom more attractive again, so that a certain
+amount of people might immigrate again.
+But like in real life, there are no exact values for the amount of immigrants,
+emmigrants and the amount of money you earn, they fluctuate within certain
+ranges.
+And be warned: If you raise the taxes too much, your income declines again
+&ndash; which people are really interested in generating earnings if they
+have to give everything away again?
+</p>
+<p>
+The second part of the dialog is used for the market. Here you can buy certain
+things and repair your castle. You can trigger one of the actions by clicking
+on the price of the corresponding entry.
+However, this is only possible if the entry is active. In case it is inactive,
+you either do not have enough money or one of the following reasons occured:
+</p>
+<ul>
+ <li>You can have only one vane. If you already have one, the entry for a new
+     vane is disabled.</li>
+ <li>You can not have more cannons than you had at the beginning of the game.
+     In case you built additional walls at the places that are used for the
+     cannons, you even can not fill these places with cannons anymore.</li>
+ <li>You can own five shaft towers at maximum. Depending on the size of your
+     castle, this limit might even be smaller because you are only allowed
+     to built shaft towers on your side of the montain &ndash; and a bigger
+     castle means a smaller montain.</li>
+</ul>
+
+<p>
+Please also note that you can not buy more cannonballs and gunpowder than you
+can store in your magazines. If you try to buy more, you still have to pay
+the money, but you can not store the bought goods!
+The treasure chamber behaves in a similar way: If it is completely filled,
+all additional earned money will be discarded.
+</p>
+<p>
+Buying a shaft tower is long-term capital investment.
+For each shaft tower, you earn approximately between 40 and 70 money units each
+round.
+</p>
+<p>
+Now a word about laying bricks: When you choose this menu entry, you get 20
+bricks (the remeaining are shown at the bottom of the screen) which you have
+to lay immediately. Please note that you can only extend the existing walls of
+your castle, i.e. you can not lay the bricks somewhere up in the air.
+Furthermore, don't even think of laying the bricks at your opponents castle,
+e.g. to block the other's cannons &ndash; of course this is forbidden, you
+are only allowed to extend your own castle.
+</p>
+<p>
+Please also note that the prices at the market are varying each round.
+Goods that are very cheap in one round might become expensive in the next one.
+(I won't tell more about the price system here, so you can be surprised again
+and again how expensive those shaft towers can be when you just thought that
+you were ready to buy one...)
+</p>
+
+<h2>8. Shooting</h2>
+<p>
+After clicking on one of the cannons, you have to adjust the angle and the
+powder. By clicking on the single arrows, you adjust the values with single
+steps, and by clicking on the double arrows you adjust the powder by three
+units and the angle by 10 degrees.
+Powder can be selected from 5 units up to 20 units (unless you have less than
+20 powder units in your magazine, then the maximum limit will be adjusted
+accordingly). 
+Using 5 powder units or something similar is hardly of any use &ndash; unless
+you would like to destroy your own shaft towers!?!
+</p>
+<p>
+The angle can be adjusted in the range of 0 up to 180 degrees. Angles above
+90 degrees (or even 80 degrees if you've got very strong opposing wind) are also
+only useful for self-destructive players.
+</p>
+<p>
+When you are satisfied with your settings (did you take the wind into account,
+too?), then you should press 'OK' to fire your cannonball.
+</p>
+
+<h2>9. Striking</h2>
+<p>
+After the information about how fire your cannonballs, here are now some words
+about what you can hit with them:
+In most cases the cannonballs only hits the mountain or the walls of the
+opponent's castle. The effect is not too exciting: The cannonballs creates
+a crater with a size proportional to the impact velocity.
+In case you hit the castle, there is also the chance that you killed some of
+the opponents people.
+</p>
+<p>
+Striking a cannon is more exciting already: It is then destroyed with a big
+explosion. The same applies to the vane.
+If you hit the cannonball magazine or the treasure chamber, a certain amount
+of the content will be destroyed. In case you hit the powder magazine, the
+whole stock of powder will explode. And if you hit the king, you can
+congratulate yourself &ndash; in this case you've won the game!
+</p>
+<p>
+The fine are of shooting is to destroy the shaft towers. This is a very
+difficult task. First, they are located right behind the montain anyway, so
+that you need a big angle and a lot of powder to hit them. But additionally
+you often have to hit them multiple times until they explode.
+Here's a little hint: If you hit the towers from the side instead from the
+top, chances are higher that they will be destroyed.
+</p>
+
+<h2>10. Game options</h2>
+<p>
+In case two players are playing at the same level, there can be a dead-lock
+situation where none of the two players manages to hit the opponents king.
+Especially when both players have a lot of people, shaft towers and lay a lot
+of bricks, it can happen that you get almost unbeatable, so that these games
+might last forever.
+</p>
+<p>
+To avoid such neverending games, there are some options in the settings menu
+which can be used to limit the duration of a party:
+</p>
+<ul>
+ <li>You can prohibit the possibility to lay bricks..</li>
+ <li>You can set a maximum number of rounds (or play without limit).
+     Once the maximum number of rounds has been reached, the party is stopped
+     automatically. The player who is in the better situation will win the game.
+     The decision is made according to the total value of available cannons,
+     shaft towers, money, powder, cannonballs, vane and people.</li>
+ <li>You can choose whether the king is allowed to capitulate in hopeless
+     situations.</li>
+</ul>
+
+<h2>11. The end of the game</h2>
+<p>
+How can a game end? In the most likely case, one of the two kings gets hit
+by a cannonball. There is also the possibility that one of the kings surrenders.
+However, this is only the case if you do not have any cannons left, your 
+treasure room is almost empty and your amount of people is also very low &ndash;
+so it is very unlikely that you can buy a new cannon in the near future.
+Finally there is the possibility that you run out of people. But this case
+only happens if you're imposing too high taxes for several rounds, so that all
+your people emigrate.
+</p>
+
+</body>
+</html>
