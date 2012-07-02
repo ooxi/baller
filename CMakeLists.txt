@@ -80,9 +80,16 @@ check_include_files(libintl.h HAVE_LIBINTL_H)
 # ###############
 
 if(CMAKE_COMPILER_IS_GNUCC)
-        set(CMAKE_C_FLAGS "-Wall -Wmissing-prototypes -Wstrict-prototypes ${CMAKE_C_FLAGS}")
-        set(CMAKE_C_FLAGS "-fsigned-char ${CMAKE_C_FLAGS}")
-        # set(CMAKE_C_FLAGS "-Werror ${CMAKE_C_FLAGS}")
+	set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fsigned-char -Wall")
+	set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wextra -Wno-unused-parameter")
+	set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wmissing-prototypes -Wstrict-prototypes")
+	set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wbad-function-cast")
+	set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wformat-security -Wpointer-arith")
+	#set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wcast-qual -Wshadow")
+	#set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Werror")
+	if (CMAKE_BUILD_TYPE STREQUAL "Debug")
+		set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -D_FORTIFY_SOURCE=2")
+	endif(CMAKE_BUILD_TYPE STREQUAL "Debug")
 endif(CMAKE_COMPILER_IS_GNUCC)
 
 

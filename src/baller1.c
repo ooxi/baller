@@ -426,15 +426,15 @@ void ende(void)
 
 	for (i = 0; i < 8; i++)
 	{
-		short xy[4];
+		short rxy[4];
 		if (i!=7)
 			scr_color((i*32)<<16);
 		else
 			scr_color(0xffffff);
-		xy[0] = 40 + i*8;
-		xy[1] = 80 + i*8;
-		xy[2] = 600 - i*8;
-		xy[3] = 320 - i*8;
+		rxy[0] = 40 + i*8;
+		rxy[1] = 80 + i*8;
+		rxy[2] = 600 - i*8;
+		rxy[3] = 320 - i*8;
 		v_bar(handle, xy);
 	}
 
@@ -689,7 +689,7 @@ void burgen_laden(void)
 	b_anz = 0;
 
 	while ((j=rdzahl(f_h)) != -999
-	       && b_anz < sizeof(burgen)/sizeof(burgen[0]))
+	       && b_anz < (int)(sizeof(burgen)/sizeof(burgen[0])))
 	{
 		burgen[b_anz++]=a;
 		*a++=j;
