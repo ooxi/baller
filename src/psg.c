@@ -427,7 +427,7 @@ unsigned int Giaccess(unsigned int data, unsigned int reg)
 }
 
 
-void Dosound(unsigned char *buf)
+void Dosound(const unsigned char *buf)
 {
 	int i = 0;
 	while (buf[i] != 0xff)

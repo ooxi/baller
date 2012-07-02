@@ -66,6 +66,6 @@ int psg_create_samples(void *buffer, psg *psgstruct, int samples);
 
 void psg_audio_init(void);
 unsigned int Giaccess(unsigned int data, unsigned int reg);
-void Dosound(unsigned char *buf);
+void Dosound(const unsigned char *buf);
 
 #endif /* PSG_H */
