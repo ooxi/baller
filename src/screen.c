@@ -169,7 +169,11 @@ void vswr_mode(short handle, short val)
 
 static void update_fill_color(void)
 {
-	if (fill_interior == 1)
+	if (fill_interior == 0)
+	{
+		fill_color = 0xffffffff;
+	}
+	else if (fill_interior == 1)
 	{
 		fill_color = 0x000000ff;
 	}
@@ -177,6 +181,7 @@ static void update_fill_color(void)
 	{
 		switch (fill_style)
 		{
+		case 1:  fill_color = 0xc0b0a0ff; break;   // Table color
 		case 2:  fill_color = 0x602060ff; break;   // King color
 		case 9:  fill_color = 0x909080ff; break;   // Wall color
 		case 11:  fill_color = 0xc04020ff; break;  // Roof color
@@ -215,9 +220,9 @@ void v_bar(short handle, short *xy)
 	SDL_Rect rect;
 	Uint8 r, g, b;
 
-	r = the_color >> 24;
-	g = the_color >> 16;
-	b = the_color >> 8;
+	r = fill_color >> 24;
+	g = fill_color >> 16;
+	b = fill_color >> 8;
 
 	rect.x = xy[0];
 	rect.y = xy[1];

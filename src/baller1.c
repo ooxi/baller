@@ -149,10 +149,10 @@ void tabelle(void)
 	line(56,84,584,84);
 	for (i=92;i<240;i+=24) line(56,i,584,i);
 	for (i=244;i<340;i+=24) line(56,i,584,i);
-	for (i=0;i<6;i++) v_gtext(handle,160+i*72,78, cn[i]);
-	for (i=0;i<6;i++) v_gtext(handle,80,110+i*24, cn[i]);
+	for (i=0;i<6;i++) v_gtext(handle,160+i*72,78, _(cn[i]));
+	for (i=0;i<6;i++) v_gtext(handle,80,110+i*24, _(cn[i]));
 	vsf_interior(handle,2);
-	vsf_style(handle,2);
+	vsf_style(handle, 1);
 	for (i=0;i<6;i++)
 	{
 		for (j=0;j<10;j++)
@@ -168,14 +168,14 @@ void tabelle(void)
 			if (i==j) box(152+i*72,92+j*24,224+i*72,116+j*24, 1 /*FIXME*/);
 		}
 	}
-	v_gtext(handle,64,262, _("Total games"));
+	v_gtext(handle,64,262, _("Games"));
 	v_gtext(handle,64,286, _("Total won"));
 	v_gtext(handle,64,310, _("Total lost"));
-	v_gtext(handle,64,334, _("Victories in%"));
+	v_gtext(handle,64,334, _("Won in %"));
 	line(56,59,144,84);
 	vst_height(handle,4,&i,&i,&i,&i);
-	v_gtext(handle,60,81, _("LOST"));
-	v_gtext(handle,92,66, _("WON"));
+	v_gtext(handle, 72, 80, "-");
+	v_gtext(handle, 124, 72, "+");
 	vst_height(handle,13,&i,&i,&i,&i);
 
 	while (bt == 0 && event(1) == 0);
@@ -422,13 +422,14 @@ void ende(void)
 		t_gew[b][9]=100*t_gew[b][7]/++t_gew[b][6];
 	}
 
+	scr_color(0x00800000);
 	for (i = 0; i < 8; i++)
 	{
 		short rxy[4];
 		if (i!=7)
-			scr_color((i*32)<<16);
+			scr_fillcolor((i*32)<<16);
 		else
-			scr_color(0xffffff);
+			scr_fillcolor(0xffffff);
 		rxy[0] = 40 + i*8;
 		rxy[1] = 80 + i*8;
 		rxy[2] = 600 - i*8;

@@ -59,28 +59,20 @@ msgid "Frederick"
 msgstr "Reetu"
 
 #: /home/eero/work/ballerburg/po/../src/baller1.c:173
-msgid "Total games"
-msgstr "Kaikki pelit"
+msgid "Games"
+msgstr "Pelit"
 
 #: /home/eero/work/ballerburg/po/../src/baller1.c:174
 msgid "Total won"
-msgstr "Kaikki voitetut"
+msgstr "Voitetut"
 
 #: /home/eero/work/ballerburg/po/../src/baller1.c:175
 msgid "Total lost"
-msgstr "Kaikki hävityt"
+msgstr "Hävityt"
 
 #: /home/eero/work/ballerburg/po/../src/baller1.c:176
-msgid "Victories in%"
+msgid "Won in %"
 msgstr "Voitto-%"
-
-#: /home/eero/work/ballerburg/po/../src/baller1.c:179
-msgid "LOST"
-msgstr "VOITOT"
-
-#: /home/eero/work/ballerburg/po/../src/baller1.c:180
-msgid "WON"
-msgstr "HÄVIÖT"
 
 #: /home/eero/work/ballerburg/po/../src/baller1.c:290
 msgid "You don't have enough gunpowder."

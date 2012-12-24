@@ -57,28 +57,20 @@ msgid "Frederick"
 msgstr "Friedrich"
 
 #: /home/thomas/devel/ballerburg/main/po/../src/baller1.c:173
-msgid "Total games"
-msgstr "Spiele gesamt"
+msgid "Games"
+msgstr "Spiele"
 
 #: /home/thomas/devel/ballerburg/main/po/../src/baller1.c:174
 msgid "Total won"
-msgstr "Gesamt gewonnen"
+msgstr "Gewonnen"
 
 #: /home/thomas/devel/ballerburg/main/po/../src/baller1.c:175
 msgid "Total lost"
-msgstr "Gesamt verloren"
+msgstr "Verloren"
 
 #: /home/thomas/devel/ballerburg/main/po/../src/baller1.c:176
-msgid "Victories in%"
-msgstr "Siege"
-
-#: /home/thomas/devel/ballerburg/main/po/../src/baller1.c:179
-msgid "LOST"
-msgstr "VERLOREN"
-
-#: /home/thomas/devel/ballerburg/main/po/../src/baller1.c:180
-msgid "WON"
-msgstr "GEWONNEN"
+msgid "Won in %"
+msgstr "Siege %"
 
 #: /home/thomas/devel/ballerburg/main/po/../src/baller1.c:290
 msgid "You don't have enough gunpowder."
