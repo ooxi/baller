@@ -43,7 +43,6 @@
 
 #define Min(a,b)  ((a)<(b)?(a):(b))
 #define Max(a,b)  ((a)>(b)?(a):(b))
-#define maus()    /* graf_mkstate(&mx,&my,&bt,&dum) */
 #define menu(a)   /* wind_update(3-a) */
 #define hide()    /* graf_mouse(256,0) */
 #define show()    /* graf_mouse(257,0) */
@@ -51,12 +50,11 @@
 #define bing()    printf("\007");
 
 
-double vvx,vvy;
 short handle, mx,my,bt,dum,m_buf[8], xy[100],
 	bur[2],bx[2],by[2], ge[2],pu[2],ku[2],vo[2],st[2],kn[2],
-	wx[2],wy[2],ws,wc,
-	*bg, zug,n,oldn, p[6],  t_gew[6][10], max_rund,
+	wx[2],wy[2], *bg, zug,n, p[6], max_rund,
 	*burgen[30], b_anz;
+static short ws, wc, t_gew[6][10];
 int ftx, fty, ftw, fth;     /* Koordinaten von "Fertig" */
 void *bur_ad;
 int   scr, a_opt, a_ein;

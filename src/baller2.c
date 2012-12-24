@@ -67,6 +67,9 @@ short trohn[]={ -2,2,2, 8,3,5,12,8,12,12,16,12,17,14,15,
 int zx,zy;  /* Koordinaten des Zieles */
 short *bh;
 
+static double vvx,vvy;
+
+
 int comp(void)  /* Führt einen Zug des Computers durch */
 {
 	char wd;
@@ -230,6 +233,7 @@ void schuss(int k)
 	double ox = 0.0, oy = 0.0;
 	double vx, vy;
 	short v,c,a, j;
+	short oldn;
 
 	hide();
 	pu[n]-=ka[n][k].p;
@@ -491,6 +495,7 @@ void bild(void)
 void burg(int nn)
 {
 	short i,xr;
+	short oldn;
 
 	oldn=n;
 	n=nn;
