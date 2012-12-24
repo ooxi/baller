@@ -30,6 +30,8 @@
 
 static int gui_handle_keys(SDL_Event *ev)
 {
+	static bool in_table = false;
+
 	switch (ev->key.keysym.sym)
 	{
 	 case SDLK_ESCAPE:
@@ -39,7 +41,11 @@ static int gui_handle_keys(SDL_Event *ev)
 		SDL_WM_ToggleFullScreen(surf);
 		break;
 	 case SDLK_t:
+		if (in_table)
+			break;
+		in_table = true;
 		tabelle();
+		in_table = false;
 		break;
 	 case SDLK_q:
 		return DlgAlert_Query(_("Quit Ballerburg?"), _("Yes"), _("No"));
