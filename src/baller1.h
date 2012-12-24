@@ -26,10 +26,11 @@ extern short handle, mx,my,bt,dum,m_buf[8], xy[100],
 	fx,fy,fw,fh,
 	*burgen[], b_anz;
 extern int ftx, fty, ftw, fth;
+extern const char *l_nam, *r_nam;
 extern int f;
 extern char mod, wnd, end, an_erl, au_kap,
-	cw[2],cx[2],
 	nsp1[],nsp2[];
+extern int cw[2],cx[2];
 extern const char *cn[7];
 
 typedef struct

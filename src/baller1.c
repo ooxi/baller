@@ -58,12 +58,12 @@ static short ws, wc, t_gew[6][10];
 int ftx, fty, ftw, fth;     /* Koordinaten von "Fertig" */
 void *bur_ad;
 int   scr, a_opt, a_ein;
-char *l_nam, *r_nam;
+const char *l_nam, *r_nam;
 int f;
 char  mod, wnd, end, txt[4], an_erl, au_kap;
 
-char cw[2] = {2,2};		/* Computer strategy */
-char cx[2] = {1,1};		/* Computer strength */
+int cw[2] = { 2, 2 };		/* Computer strategy */
+int cx[2] = { 1, 1 };		/* Computer strength */
 
 /* Computer player names (i.e. the strategies) */
 const char *cn[7] = {

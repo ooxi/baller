@@ -127,8 +127,8 @@ int settings(void)
 
 	do
 	{
-		settingsdlg[P1_AISTRATEGYSTR].txt = (char *)cn[(unsigned)cw[0]];
-		settingsdlg[P2_AISTRATEGYSTR].txt = (char *)cn[(unsigned)cw[1]];
+		settingsdlg[P1_AISTRATEGYSTR].txt = (char *)cn[cw[0]];
+		settingsdlg[P2_AISTRATEGYSTR].txt = (char *)cn[cw[1]];
 		dlg_p1level[0] = '1' + cx[0];
 		dlg_p2level[0] = '1' + cx[1];
 		retbut = SDLGui_DoDialog(settingsdlg, NULL);
@@ -187,6 +187,14 @@ int settings(void)
 		else
 			mod = 3;	/* Computer vs. computer */
 	}
+	if (mod < 2)
+		l_nam = nsp1;
+	else
+		l_nam = cn[cw[0]];
+	if (mod & 1)
+		r_nam = cn[cw[1]];
+	else
+		r_nam = nsp2;
 
 	/* Max. amount of rounds */
 	if (settingsdlg[ROUNDS_20].state & SG_SELECTED)
