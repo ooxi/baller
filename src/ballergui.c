@@ -17,6 +17,7 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+#include <stdbool.h>
 #include <stdio.h>
 #include <SDL.h>
 
@@ -54,8 +55,12 @@ int event(int wait)
 {
 	int ev_avail;
 	SDL_Event ev;
+	static bool quitflag = false;
 
 	// printf("event(%i)\n", wait);
+
+	if (quitflag)
+		return 1;
 
 	if (wait)
 		ev_avail = SDL_WaitEvent(&ev);
@@ -69,6 +74,7 @@ int event(int wait)
 		{
 		 case SDL_QUIT:
 			printf("Leaving Ballerburg...\n");
+			quitflag = true;
 			return 1;
 		 case SDL_MOUSEMOTION:               /* Read/Update internal mouse position */
 			mx = ev.motion.x;
@@ -95,7 +101,11 @@ int event(int wait)
 			}
 			break;
 		 case SDL_KEYUP:
-			return gui_handle_keys(&ev);
+			if (gui_handle_keys(&ev)) {
+				quitflag = true;
+				return 1;
+			}
+			break;
 		}
 
 		ev_avail = SDL_PollEvent(&ev);
