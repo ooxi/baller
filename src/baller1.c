@@ -435,7 +435,7 @@ void ende(void)
 		rxy[1] = 80 + i*8;
 		rxy[2] = 600 - i*8;
 		rxy[3] = 320 - i*8;
-		v_bar(handle, xy);
+		v_bar(handle, rxy);
 	}
 
 	v_gtext(handle, 140, 170, s1);
