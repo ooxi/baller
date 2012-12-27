@@ -375,11 +375,11 @@ void ende(void)
 	int i;
 
 	strcpy(s1,"!! ");
-	strcat(s1, end&2? l_nam:r_nam);
+	strcat(s1, end&2 ? _(l_nam) : _(r_nam));
 	strcat(s1, _(" has won !!"));
 	s2[0]=0;
 	if (~end&64) strcpy(s2,"( ");
-	strcat( s2, end&2? r_nam:l_nam );
+	strcat( s2, end&2 ? _(r_nam) : _(l_nam));
 	if ( (end&240)<48 )
 	{
 		a=s2[strlen(s2)-1];
