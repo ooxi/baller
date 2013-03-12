@@ -57,7 +57,6 @@ short handle, mx,my,bt,dum,m_buf[8], xy[100],
 static short ws, wc, t_gew[6][10];
 int ftx, fty, ftw, fth;     /* Koordinaten von "Fertig" */
 void *bur_ad;
-int   scr, a_opt, a_ein;
 const char *l_nam, *r_nam;
 int f;
 char  mod, wnd, end, txt[4], an_erl, au_kap;
@@ -107,8 +106,8 @@ int main(int argc, char **argv)
 		puts(_("Not enough memory for loading the castles."));
 		exit(-1);
 	}
+
 	an_erl=1;
-	// mxin=3;
 	max_rund=32767;
 	au_kap=1;
 	t_load();
@@ -584,10 +583,7 @@ int t_load(void)
 	}
 	fread(&an_erl, 1, 1, f_h);
 	fread(&au_kap, 1, 1, f_h);
-	fread(&mxin, 1, 1, f_h);
-	fread(**(int **)(a_opt+MAX_XX*24+12), 1, 3, f_h);
 	fread(&max_rund, 2, 1, f_h);
-	//fread(t_na, 1, 48, f_h);
 	fread(t_gew, 1, 120, f_h);
 
 	fclose(f_h);
@@ -601,15 +597,19 @@ int t_save(void)
 #if 1
 	//printf("t_save not implemented yet\n");
 #else
-	if ( (f_h=Fcreate( "baller.tab",0 ))<0 ) return(1);
-	Fwrite(f_h,1,&an_erl);
-	Fwrite(f_h,1,&au_kap);
-	Fwrite(f_h,1,&mxin);
-	Fwrite(f_h,3,**(int **)(a_opt+MAX_XX*24+12) );
-	Fwrite(f_h,2,&max_rund);
-	//Fwrite(f_h,48,t_na);
-	Fwrite(f_h,120,t_gew);
-	Fclose(f_h);
+	FILE *f_h;
+
+	f_h = fopen("baller.tab", "wb");
+	if (!f_h) {
+		perror("t_save");
+		return 1;
+	}
+	fwrite(&an_erl, 1, 1, f_h);
+	fwrite(&au_kap, 1, 1, f_h);
+	fwrite(&max_rund, 2, 1, f_h);
+	fwrite(t_gew, 1, 120, f_h);
+
+	fclose(f_h);
 #endif
 	return(0);
 }
