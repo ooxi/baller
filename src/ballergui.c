@@ -1,7 +1,7 @@
 /*
     ballergui.c - GUI related functions for Ballerburg
 
-    Copyright (C) 2010, 2011  Thomas Huth
+    Copyright (C) 2010, 2013  Thomas Huth
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -80,7 +80,6 @@ int event(int wait, int allow_dlgs)
 		switch(ev.type)
 		{
 		 case SDL_QUIT:
-			printf("Leaving Ballerburg...\n");
 			quitflag = true;
 			return 1;
 		 case SDL_MOUSEMOTION:               /* Read/Update internal mouse position */
