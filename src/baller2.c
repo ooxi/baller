@@ -292,6 +292,8 @@ void schuss(int k)
 	kugel( (int)x,(int)y );
 	vswr_mode( handle,1 );
 
+	draw(ka[n][k].x+20*n, ka[n][k].y, kanon);
+
 	oldn=n;
 	if ( !v ) for ( c=0;c<4;c++ )    /* Einschlag der Kugel */
 		{
