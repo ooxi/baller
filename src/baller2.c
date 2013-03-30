@@ -287,10 +287,11 @@ void schuss(int k)
 		Giaccess( a>>8,131 );
 		if ( c ) c--;
 	}
+
+	color( 0 );
 	kugel( (int)x,(int)y );
 	vswr_mode( handle,1 );
 
-	color( 0 );
 	oldn=n;
 	if ( !v ) for ( c=0;c<4;c++ )    /* Einschlag der Kugel */
 		{
