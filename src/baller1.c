@@ -184,8 +184,8 @@ void tabelle(void)
 	v_gtext(handle, 36, 80, "-");
 	v_gtext(handle, 88, 72, "+");
 
-	while (bt == 0 && event(1) == 0);
-	while (bt != 0 && event(1) == 0);
+	while (bt == 0 && event(1, 0) == 0);
+	while (bt != 0 && event(1, 0) == 0);
 
 	scr_restore_bg(save_area);
 }
@@ -248,7 +248,7 @@ int ein_zug(void)
 		menu(1);
 		do
 		{
-			if (event(!(mod&(2-n))) != 0)
+			if (event(!(mod&(2-n)), 1) != 0)
 				return(0);
 		}
 		while (!bt && !(mod&(2-n)));
@@ -269,7 +269,7 @@ int ein_zug(void)
 			scr_draw_done_button(1);
 			do
 			{
-				event(1);
+				event(1, 0);
 			} while (bt);
 			scr_draw_done_button(0);
 			fl=2;
@@ -333,7 +333,7 @@ int ein_zug(void)
 		menu(1);
 		while (!bt)
 		{
-			if (event(1) != 0)
+			if (event(1, 0) != 0)
 				return 0;
 		}
 		neues();
@@ -469,7 +469,7 @@ int m_wait(void)
 {
 	m_wloop();
 
-	return (event(0) != 0 || bt);
+	return (event(0, 0) != 0 || bt);
 }
 
 

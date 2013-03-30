@@ -28,20 +28,21 @@
 #include "settings.h"
 
 
-static int gui_handle_keys(SDL_Event *ev)
+static int gui_handle_keys(SDL_Event *ev, int allow_dlgs)
 {
 	static bool in_table = false;
 
 	switch (ev->key.keysym.sym)
 	{
 	 case SDLK_ESCAPE:
-		return settings();
+		if (allow_dlgs)
+			return settings();
 		break;
 	 case SDLK_f:
 		SDL_WM_ToggleFullScreen(surf);
 		break;
 	 case SDLK_t:
-		if (in_table)
+		if (in_table || !allow_dlgs)
 			break;
 		in_table = true;
 		tabelle();
@@ -57,7 +58,7 @@ static int gui_handle_keys(SDL_Event *ev)
 }
 
 
-int event(int wait)
+int event(int wait, int allow_dlgs)
 {
 	int ev_avail;
 	SDL_Event ev;
@@ -107,7 +108,7 @@ int event(int wait)
 			}
 			break;
 		 case SDL_KEYUP:
-			if (gui_handle_keys(&ev)) {
+			if (gui_handle_keys(&ev, allow_dlgs)) {
 				quitflag = true;
 				return 1;
 			}
