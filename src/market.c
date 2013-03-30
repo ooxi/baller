@@ -2,7 +2,7 @@
     market.c
 
     Copyright (C) 1987, 1989  Eckhard Kruse
-    Copyright (C) 2010  Thomas Huth
+    Copyright (C) 2010, 2013  Thomas Huth
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -150,13 +150,11 @@ static void anbau(void)
 			                ( loc(mx+3,my-1)||loc(mx+3,my+1)||loc(mx-3,my-1)||loc(mx-3,my+1)||
 			                  loc(mx+1,my+2)||loc(mx-1,my+2)||loc(mx+1,my-2)||loc(mx-1,my-2) ))
 			{
-				vswr_mode( handle,4 );
 				xy[0]=mx-2;
 				xy[1]=my-1;
 				xy[2]=mx+2;
 				xy[3]=my+1;
 				v_bar( handle,xy );
-				vswr_mode( handle,1 );
 				s--;
 				sprintf(brickstr,  _(" Bricks left: %02d "), s);
 				scr_ctr_text(320, 382, brickstr);

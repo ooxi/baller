@@ -1,7 +1,7 @@
 /*
     screen.c - Screen functions for Ballerburg
 
-    Copyright (C) 2010, 2011  Thomas Huth
+    Copyright (C) 2010, 2013  Thomas Huth
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -162,11 +162,6 @@ void v_circle(int handle, int x, int y, int w)
 	SDL_UpdateRects(surf, 1, &rect);
 }
 
-void vswr_mode(short handle, short val)
-{
-	//printf("vswr_mode %i\n", val);
-}
-
 static void update_fill_color(void)
 {
 	if (fill_interior == 0)
@@ -203,11 +198,6 @@ void vsf_interior(short handle, short val)
 {
 	fill_interior = val;
 	update_fill_color();
-}
-
-void vst_color(short handle, short val)
-{
-	//printf("vst_color %i\n", val);
 }
 
 void v_bar(short handle, short *xy)

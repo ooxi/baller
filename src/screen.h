@@ -1,7 +1,7 @@
 /*
     screen.h - prototypes and definitions for screen.c
 
-    Copyright (C) 2010, 2011  Thomas Huth
+    Copyright (C) 2010, 2013  Thomas Huth
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -30,9 +30,6 @@ void clr_bg(short x, short y, short w, short h);
 void vsf_interior(short handle, short val);
 void v_gtext(int handle, int x, int y, const char *text);
 void vsf_style(short handle, short val);
-void vswr_mode(short handle, short val);
-void vst_color(short handle, short val);
-
 
 void scr_init(void);
 void scr_clear(void);

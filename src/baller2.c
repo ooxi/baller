@@ -2,7 +2,7 @@
     baller2.c
 
     Copyright (C) 1987, 1989  Eckhard Kruse
-    Copyright (C) 2010, 2011  Thomas Huth
+    Copyright (C) 2010, 2013  Thomas Huth
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -254,11 +254,9 @@ void schuss(int k)
 	}
 
 	color(1);
-	vswr_mode( handle,3 );
-
 	baller(0);
-
 	kugel( (int)x,(int)y );
+
 	v=1;
 	while ( x>3 && x<637 && y<396 &&  ( v || c ) ) /* Flugschleife */
 	{
@@ -290,7 +288,6 @@ void schuss(int k)
 
 	color( 0 );
 	kugel( (int)x,(int)y );
-	vswr_mode( handle,1 );
 
 	draw(ka[n][k].x+20*n, ka[n][k].y, kanon);
 
@@ -511,9 +508,7 @@ void burg(int nn)
 	vo[n]=bg[40];
 
 	color(1);
-	vswr_mode( handle,4 );
 	draw( xr,by[n], &bg[45] );
-	vswr_mode( handle,1 );
 	clr( xr+f*bg[21]-n*30,by[n]-bg[22]-25,30,25 );
 	color(1);
 	draw( xr+f*bg[21],by[n]-bg[22], trohn );
