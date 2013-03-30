@@ -2,7 +2,7 @@
     baller1.c
 
     Copyright (C) 1987, 1989  Eckhard Kruse
-    Copyright (C) 2010, 2012  Thomas Huth
+    Copyright (C) 2010, 2013  Thomas Huth
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by

@@ -1,10 +1,10 @@
 
-		 ===========================
-		 =   Ballerburg SDL v0.25  =
-		 ===========================
+		 ==========================
+		 =   Ballerburg SDL v1.0  =
+		 ==========================
 
 	    Copyright (C) 1987, 1989  Eckhard Kruse
-	    Copyright (C) 2010, 2012  Thomas Huth
+	    Copyright (C) 2010, 2013  Thomas Huth
 
 
 	   For my sister Martina Huth - I will never
@@ -67,8 +67,9 @@ if everything worked fine, install the program with "make install".
 To run the game, simply execute the "ballerburg" program from the folder where
 you've installed the game into. The game itself should be self-explanatory 
 most of the time, for the details please have a look at the manual in the doc
-directory. Please press the ESC key to enter the main menu (for setting up
-various game options or for starting a new game).
+directory. Please press the "ESC" key to enter the main menu (for setting up
+various game options or for starting a new game). Press "f" to toggle between
+windowed and fullscreen mode. The key "q" is used for leaving the game.
 
 
  5) Contact

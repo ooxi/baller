@@ -1,10 +1,10 @@
 
-		  ===========================
-		  =   Ballerburg SDL v0.25  =
-		  ===========================
+		  ==========================
+		  =   Ballerburg SDL v1.0  =
+		  ==========================
 
 	    Copyright (C) 1987, 1989  Eckhard Kruse
-	    Copyright (C) 2010, 2012  Thomas Huth
+	    Copyright (C) 2010, 2013  Thomas Huth
 
 
 	  Für meine Schwester Martina Huth - ich werde
@@ -67,8 +67,10 @@ werden.
 Zum Starten des Spiels muss man das "ballerburg" Programm starten.
 Der Spielablauf sollte weitgehen selbsterklärend sein, notfalls gibt
 es im doc-Verzeichnis auch die Anleitung des orginalen Ballerburgs
-(Datei "anleitung.txt"). Über die ESC-Taste erreicht man das Hauptmenü
-zum Einstellen der Spieler und um ein neues Spiel zu starten.
+(Datei "anleitung.html"). Über die "ESC"-Taste erreicht man das Hauptmenü
+zum Einstellen der Spieler und um ein neues Spiel zu starten. Mittels der
+"f"-Taste kann zwischen dem Fenster- und Vollbildmodus gewechselt werden,
+und mit "q" kann das Spiel beendet werden.
 
 
  5) Kontakt

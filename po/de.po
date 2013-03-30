@@ -4,7 +4,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: ballerburg 0.25\n"
+"Project-Id-Version: ballerburg 1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-04-26 20:00+0100\n"
 "PO-Revision-Date: 2012-04-26 20:05+0100\n"
