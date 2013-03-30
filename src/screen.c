@@ -205,11 +205,6 @@ void vsf_interior(short handle, short val)
 	update_fill_color();
 }
 
-void vst_height(short handle, short height, short *val1, short *val2, short *val3, short *val4)
-{
-	//printf("vst_height %i\n", height);
-}
-
 void vst_color(short handle, short val)
 {
 	//printf("vst_color %i\n", val);
