@@ -47,8 +47,6 @@
 #define hide()    /* graf_mouse(256,0) */
 #define show()    /* graf_mouse(257,0) */
 
-#define bing()    printf("\007");
-
 #define COMP_NUM  7
 
 short handle, mx,my,bt,dum,m_buf[8], xy[100],
@@ -203,7 +201,6 @@ void z_txt(short a)
 		txt[0]=32;
 		if (a<10) txt[1]=32;
 	}
-	//for (a=0;a<3;a++) txt[a]=txt[a]==48? 79: txt[a]==49? 108: txt[a];
 }
 
 
@@ -284,20 +281,19 @@ int ein_zug(void)
 				                ka[n][i].y>=my && ka[n][i].y-14<=my ) break;
 			if ( i>9 )
 			{
-				if ( drin( bg[25],bg[26],bg[31],bg[32],0,mx,my ) ||
-				                drin( bg[27],bg[28],bg[33],bg[34],0,mx,my ) ||
-				                drin( bg[29],bg[30],bg[35],bg[36],0,mx,my ) ) markt();
-				else if ( drin( bg[21],bg[22],30,25,0,mx,my ) ) koenig();
-				else bing();
+				if (drin( bg[25],bg[26],bg[31],bg[32],0,mx,my)
+				    || drin( bg[27],bg[28],bg[33],bg[34],0,mx,my)
+				    || drin( bg[29],bg[30],bg[35],bg[36],0,mx,my))
+					markt();
+				else if (drin( bg[21],bg[22],30,25,0,mx,my))
+					koenig();
 			}
-			else if ( pu[n]<5 )
+			else if (pu[n] < 5)
 			{
-				bing();
 				DlgAlert_Notice(_("You don't have enough gunpowder."), _("Cancel"));
 			}
-			else if ( !ku[n] )
+			else if (ku[n] == 0)
 			{
-				bing();
 				DlgAlert_Notice(_("You don't have any cannonballs left."), _("Cancel"));
 			}
 			else fl=sch_obj(i);
