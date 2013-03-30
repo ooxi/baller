@@ -49,12 +49,13 @@
 
 #define bing()    printf("\007");
 
+#define COMP_NUM  7
 
 short handle, mx,my,bt,dum,m_buf[8], xy[100],
 	bur[2],bx[2],by[2], ge[2],pu[2],ku[2],vo[2],st[2],kn[2],
 	wx[2],wy[2], *bg, zug,n, p[6], max_rund,
 	*burgen[30], b_anz;
-static short ws, wc, t_gew[6][10];
+static short ws, wc, t_gew[COMP_NUM][COMP_NUM+4];
 int ftx, fty, ftw, fth;     /* Koordinaten von "Fertig" */
 void *bur_ad;
 const char *l_nam, *r_nam;
@@ -65,7 +66,7 @@ int cw[2] = { 2, 2 };		/* Computer strategy */
 int cx[2] = { 1, 1 };		/* Computer strength */
 
 /* Computer player names (i.e. the strategies) */
-const char *cn[7] = {
+const char *cn[COMP_NUM] = {
 	N_("Oaf"), N_("Yokel"), N_("Boor"), N_("Doofus"),
 	N_("Fumbler"), N_("Geezer"), N_("Ruffian")
 };
@@ -137,45 +138,53 @@ void tabelle(void)
 	short i,j;
 	void *save_area;
 
-	save_area = scr_save_bg(53, 55, 640-53*2+1, 400-55*2+1);
+	save_area = scr_save_bg(17, 55, 640-17*2+1, 400-55*2+24+1);
 
 	vsf_interior(handle,0);
-	box(53,56,587,343,1);
-	box(55,58,585,341,1);
-	box(56,59,584,340,1);
-	line(144,59,144,340);
-	for (i=152;i<584;i+=72) line(i,59,i,340);
-	line(56,84,584,84);
-	for (i=92;i<240;i+=24) line(56,i,584,i);
-	for (i=244;i<340;i+=24) line(56,i,584,i);
-	for (i=0;i<6;i++) v_gtext(handle,160+i*72,78, _(cn[i]));
-	for (i=0;i<6;i++) v_gtext(handle,80,110+i*24, _(cn[i]));
+	box(17,56, 623,367, 1);
+	box(19,58, 621,365, 1);
+	box(20,59, 620,364, 1);
+	line(108,59, 108,364);
+
+	for (i = 116; i < 584; i += 72)
+		line(i,59,i,364);
+	line(20,84, 620,84);
+	for (i = 92; i < 264; i += 24)
+		line(20,i, 620,i);
+	for (i = 268; i < 364; i += 24)
+		line(20,i, 620,i);
+	for (i = 0; i < COMP_NUM; i++)
+		v_gtext(handle, 124+i*72, 78, _(cn[i]));
+	for (i = 0; i < COMP_NUM; i++)
+		v_gtext(handle, 36, 110+i*24, _(cn[i]));
+
 	vsf_interior(handle,2);
 	vsf_style(handle, 1);
-	for (i=0;i<6;i++)
+	for (i = 0; i < COMP_NUM; i++)
 	{
-		for (j=0;j<10;j++)
+		for (j = 0; j < COMP_NUM+4; j++)
 		{
 			z_txt(t_gew[i][j]);
-			if (j==9 && !t_gew[i][6] )
+			if (j == COMP_NUM+3 && !t_gew[i][COMP_NUM])
 			{
 				txt[0]=32;
 				txt[1]='-';
 				txt[2]=0;
 			}
-			v_gtext(handle,176+i*72,110+j*24+8*(j>5),txt);
-			if (i==j) box(152+i*72,92+j*24,224+i*72,116+j*24, 1 /*FIXME*/);
+			v_gtext(handle, 140+i*72, 110+j*24+8*(j>=COMP_NUM), txt);
+			if (i == j)
+				box(116+i*72, 92+j*24, 188+i*72, 116+j*24, 1);
 		}
 	}
-	v_gtext(handle,64,262, _("Games"));
-	v_gtext(handle,64,286, _("Total won"));
-	v_gtext(handle,64,310, _("Total lost"));
-	v_gtext(handle,64,334, _("Won in %"));
-	line(56,59,144,84);
-	vst_height(handle,4,&i,&i,&i,&i);
-	v_gtext(handle, 72, 80, "-");
-	v_gtext(handle, 124, 72, "+");
-	vst_height(handle,13,&i,&i,&i,&i);
+
+	v_gtext(handle, 28, 286, _("Games"));
+	v_gtext(handle, 28, 310, _("Total won"));
+	v_gtext(handle, 28, 334, _("Total lost"));
+	v_gtext(handle, 28, 358, _("Won in %"));
+
+	line(20, 59, 108, 84);
+	v_gtext(handle, 36, 80, "-");
+	v_gtext(handle, 88, 72, "+");
 
 	while (bt == 0 && event(1) == 0);
 	while (bt != 0 && event(1) == 0);
@@ -404,9 +413,9 @@ void ende(void)
 		strcat(s3, _(" is worse off. )"));
 	}
 
-	for (a=0; a<6 && strncmp(cn[a], l_nam,7); a++);
-	for (b=0; b<6 && strncmp(cn[b], r_nam,7); b++);
-	if (a<6 && b<6 && a!=b)
+	for (a = 0; a < COMP_NUM && strncmp(cn[a], l_nam, 7); a++);
+	for (b = 0; b < COMP_NUM && strncmp(cn[b], r_nam, 7); b++);
+	if (a < COMP_NUM && b < COMP_NUM && a != b)
 	{
 		if (~end&2)
 		{
@@ -416,9 +425,12 @@ void ende(void)
 			b=c;
 		}
 		t_gew[a][b]++;
-		t_gew[b][8]++;
-		t_gew[a][9]=100*++t_gew[a][7]/++t_gew[a][6];
-		t_gew[b][9]=100*t_gew[b][7]/++t_gew[b][6];
+		t_gew[b][a]++;
+		t_gew[b][COMP_NUM+2]++;
+		t_gew[a][COMP_NUM+3] = 100 * ++t_gew[a][COMP_NUM+1]
+		                       / ++t_gew[a][COMP_NUM];
+		t_gew[b][COMP_NUM+3] = 100 * t_gew[b][COMP_NUM+1]
+		                       / ++t_gew[b][COMP_NUM];
 	}
 
 	scr_color(0x00800000);
@@ -584,7 +596,7 @@ int t_load(void)
 	fread(&an_erl, 1, 1, f_h);
 	fread(&au_kap, 1, 1, f_h);
 	fread(&max_rund, 2, 1, f_h);
-	fread(t_gew, 1, 120, f_h);
+	fread(t_gew, 1, sizeof(t_gew), f_h);
 
 	fclose(f_h);
 #endif
@@ -607,7 +619,7 @@ int t_save(void)
 	fwrite(&an_erl, 1, 1, f_h);
 	fwrite(&au_kap, 1, 1, f_h);
 	fwrite(&max_rund, 2, 1, f_h);
-	fwrite(t_gew, 1, 120, f_h);
+	fwrite(t_gew, 1, sizeof(t_gew), f_h);
 
 	fclose(f_h);
 #endif
