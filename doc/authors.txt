@@ -9,6 +9,8 @@ People who contributed to Ballerburg SDL:
 
 - Jens Ropers : Most of the English translations
 
+- Andrea Musuruane : Italian translations
+
 
 Ballerburg SDL uses source code from other projects which we would like to
 acknowledge here:

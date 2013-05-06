@@ -1,0 +1,439 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: ballerburg 1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-05-06 10:46+0200\n"
+"PO-Revision-Date: 2013-05-06 15:12+0100\n"
+"Last-Translator: Andrea Musuruane <musuruan@gmail.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=ISO-8859-1\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.5\n"
+
+#: /home/andrea/devel/ballerburg-1.0/po/../src/baller1.c:68
+msgid "Oaf"
+msgstr "Goffo"
+
+#: /home/andrea/devel/ballerburg-1.0/po/../src/baller1.c:68
+msgid "Yokel"
+msgstr "Bifolco"
+
+#: /home/andrea/devel/ballerburg-1.0/po/../src/baller1.c:68
+msgid "Boor"
+msgstr "Cafone"
+
+#: /home/andrea/devel/ballerburg-1.0/po/../src/baller1.c:68
+msgid "Doofus"
+msgstr "Stupido"
+
+#: /home/andrea/devel/ballerburg-1.0/po/../src/baller1.c:69
+msgid "Fumbler"
+msgstr "Pasticcione"
+
+#: /home/andrea/devel/ballerburg-1.0/po/../src/baller1.c:69
+msgid "Geezer"
+msgstr "Vecchio"
+
+#: /home/andrea/devel/ballerburg-1.0/po/../src/baller1.c:69
+msgid "Ruffian"
+msgstr "Farabutto"
+
+#: /home/andrea/devel/ballerburg-1.0/po/../src/baller1.c:105
+msgid "Not enough memory for loading the castles."
+msgstr "Memoria insufficiente per caricare i castelli."
+
+#: /home/andrea/devel/ballerburg-1.0/po/../src/baller1.c:117
+msgid "William"
+msgstr "William"
+
+#: /home/andrea/devel/ballerburg-1.0/po/../src/baller1.c:118
+msgid "Frederick"
+msgstr "Frederick"
+
+#: /home/andrea/devel/ballerburg-1.0/po/../src/baller1.c:178
+msgid "Games"
+msgstr "Partite"
+
+#: /home/andrea/devel/ballerburg-1.0/po/../src/baller1.c:179
+msgid "Total won"
+msgstr "Totale vinte"
+
+#: /home/andrea/devel/ballerburg-1.0/po/../src/baller1.c:180
+msgid "Total lost"
+msgstr "Totale perse"
+
+#: /home/andrea/devel/ballerburg-1.0/po/../src/baller1.c:181
+msgid "Won in %"
+msgstr "Vittorie in %"
+
+#: /home/andrea/devel/ballerburg-1.0/po/../src/baller1.c:293
+msgid "You don't have enough gunpowder."
+msgstr "Non hai abbastanza polvere da sparo."
+
+#: /home/andrea/devel/ballerburg-1.0/po/../src/baller1.c:293
+#: /home/andrea/devel/ballerburg-1.0/po/../src/baller1.c:297
+msgid "Cancel"
+msgstr "Annulla"
+
+#: /home/andrea/devel/ballerburg-1.0/po/../src/baller1.c:297
+msgid "You don't have any cannonballs left."
+msgstr "Non hai abbastanza palle di cannone."
+
+#: /home/andrea/devel/ballerburg-1.0/po/../src/baller1.c:383
+msgid " has won !!"
+msgstr " ha vinto!!"
+
+#: /home/andrea/devel/ballerburg-1.0/po/../src/baller1.c:395
+msgid "king was hit,"
+msgstr "il Re è stato colpito,"
+
+#: /home/andrea/devel/ballerburg-1.0/po/../src/baller1.c:396
+msgid "and upon hearing this, the people capitulated. )"
+msgstr "e dopo aver sentito questo, il popolo capitolò. )"
+
+#: /home/andrea/devel/ballerburg-1.0/po/../src/baller1.c:399
+msgid "The king has capitulated"
+msgstr "Il Re ha capitolato"
+
+#: /home/andrea/devel/ballerburg-1.0/po/../src/baller1.c:400
+msgid "  because of the hopeless situation. )"
+msgstr "  a causa della situazione disperata. )"
+
+#: /home/andrea/devel/ballerburg-1.0/po/../src/baller1.c:403
+msgid " has no folk left. )"
+msgstr " non ha più sudditi. )"
+
+#: /home/andrea/devel/ballerburg-1.0/po/../src/baller1.c:408
+msgid "( The set limit of maximum rounds has been reached."
+msgstr "(E' stato raggiunto il limite massimo di turni impostato."
+
+#: /home/andrea/devel/ballerburg-1.0/po/../src/baller1.c:409
+msgid " is worse off. )"
+msgstr " sta peggio. )"
+
+#: /home/andrea/devel/ballerburg-1.0/po/../src/baller2.c:486
+msgid " Round     "
+msgstr " Turno     "
+
+#: /home/andrea/devel/ballerburg-1.0/po/../src/baller2.c:660
+msgid "The king says:"
+msgstr "Il Re dice:"
+
+#: /home/andrea/devel/ballerburg-1.0/po/../src/baller2.c:661
+msgid "Humbly acknowledged"
+msgstr "Ammesso con umiltà"
+
+#: /home/andrea/devel/ballerburg-1.0/po/../src/baller2.c:662
+msgid ""
+"Well...\n"
+" alright...\n"
+" Carry on..."
+msgstr ""
+"Beh...\n"
+" va bene...\n"
+" Prosegui..."
+
+#: /home/andrea/devel/ballerburg-1.0/po/../src/baller2.c:663
+msgid ""
+"We are satisfied\n"
+" with your performance!"
+msgstr ""
+"Siamo soddisfatti\n"
+" del tuo rendimento!"
+
+#: /home/andrea/devel/ballerburg-1.0/po/../src/baller2.c:664
+msgid ""
+"Excellent,\n"
+" keep at it!"
+msgstr ""
+"Eccellente,\n"
+" continua a farlo!"
+
+#: /home/andrea/devel/ballerburg-1.0/po/../src/baller2.c:665
+msgid ""
+"Maybe you ought to\n"
+" lower Our taxes..."
+msgstr ""
+"Forse dovresti\n"
+" abbassare le nostre tasse..."
+
+#: /home/andrea/devel/ballerburg-1.0/po/../src/baller2.c:666
+msgid ""
+"If you keep this up,\n"
+" We shall discharge you!"
+msgstr ""
+"Se continui così,\n"
+" dovremo congedarti!"
+
+#: /home/andrea/devel/ballerburg-1.0/po/../src/baller2.c:667
+msgid ""
+"Why don't you buy\n"
+" a shaft tower..."
+msgstr ""
+"Perché non compri\n"
+" un castelletto?"
+
+#: /home/andrea/devel/ballerburg-1.0/po/../src/baller2.c:668
+msgid ""
+"You ought to\n"
+" kindly make more of\n"
+" an effort!"
+msgstr ""
+"Cortesemente\n"
+" dovresti fare più\n"
+" di uno sforzo!"
+
+#: /home/andrea/devel/ballerburg-1.0/po/../src/baller2.c:669
+msgid ""
+"You don't need to visit Us\n"
+" in each round."
+msgstr ""
+"Non devi venire a trovarci\n"
+" ad ogni turno."
+
+#: /home/andrea/devel/ballerburg-1.0/po/../src/baller2.c:670
+#, c-format
+msgid ""
+"Are you aware\n"
+" that you have already visited Us\n"
+" %d times thus far?"
+msgstr ""
+"Sei consapevole\n"
+" che sei già venuto a trovarci\n"
+" %d volte fino ad ora?"
+
+#: /home/andrea/devel/ballerburg-1.0/po/../src/baller2.c:671
+msgid ""
+"So, are you certain\n"
+" that you will manage\n"
+" without a weather vane?"
+msgstr ""
+"Allora, sei certo\n"
+" di gestirlo\n"
+" senza una banderuola?"
+
+#: /home/andrea/devel/ballerburg-1.0/po/../src/baller2.c:672
+msgid "Nice to see you..."
+msgstr "Piacere di vederti..."
+
+#: /home/andrea/devel/ballerburg-1.0/po/../src/baller2.c:673
+msgid ""
+"What are We supposed\n"
+" to say in such an\n"
+" early phase?"
+msgstr ""
+"Cosa dovremmo\n"
+" dire in una fase\n"
+" così precoce?"
+
+#: /home/andrea/devel/ballerburg-1.0/po/../src/baller2.c:674
+msgid ""
+"You ought to earn more money,\n"
+" build more shaft towers,\n"
+" and vanquish the opponent."
+msgstr ""
+"Dovresti guadagnare più soldi,\n"
+" costruire più castelletti,\n"
+" e sconfiggere l'avversario."
+
+#: /home/andrea/devel/ballerburg-1.0/po/../src/baller2.c:675
+msgid ""
+"We do not have anything new\n"
+" to say to you."
+msgstr ""
+"Non abbiamo nulla di nuovo\n"
+" da dirti."
+
+#: /home/andrea/devel/ballerburg-1.0/po/../src/baller2.c:676
+msgid ""
+"We are pleased for you\n"
+" to come around and visit Us."
+msgstr ""
+"Siamo contenti che\n"
+" tu sia venuto a trovarci."
+
+#: /home/andrea/devel/ballerburg-1.0/po/../src/baller2.c:691
+msgid ""
+"The king is not in the mood\n"
+"to talk to you."
+msgstr ""
+"Il Re non è in vena \n"
+"di parlare con te."
+
+#: /home/andrea/devel/ballerburg-1.0/po/../src/baller2.c:691
+msgid "Too bad."
+msgstr "Peccato."
+
+#: /home/andrea/devel/ballerburg-1.0/po/../src/ballergui.c:52
+#: /home/andrea/devel/ballerburg-1.0/po/../src/settings.c:223
+msgid "Quit Ballerburg?"
+msgstr "Esci da Ballerburg?"
+
+#: /home/andrea/devel/ballerburg-1.0/po/../src/ballergui.c:52
+#: /home/andrea/devel/ballerburg-1.0/po/../src/settings.c:223
+msgid "Yes"
+msgstr "Sì"
+
+#: /home/andrea/devel/ballerburg-1.0/po/../src/ballergui.c:52
+#: /home/andrea/devel/ballerburg-1.0/po/../src/settings.c:223
+msgid "No"
+msgstr "No"
+
+#: /home/andrea/devel/ballerburg-1.0/po/../src/cannoneer.c:59
+msgid "Cannon"
+msgstr "Cannone"
+
+#: /home/andrea/devel/ballerburg-1.0/po/../src/cannoneer.c:61
+msgid "Angle:"
+msgstr "Angolo:"
+
+#: /home/andrea/devel/ballerburg-1.0/po/../src/cannoneer.c:68
+#: /home/andrea/devel/ballerburg-1.0/po/../src/market.c:83
+msgid "Gunpowder:"
+msgstr "Polvere da sparo:"
+
+#: /home/andrea/devel/ballerburg-1.0/po/../src/market.c:77
+msgid "You have:"
+msgstr "Hai:"
+
+#: /home/andrea/devel/ballerburg-1.0/po/../src/market.c:79
+msgid "Funds:"
+msgstr "Capitale:"
+
+#: /home/andrea/devel/ballerburg-1.0/po/../src/market.c:80
+msgid "Shaft towers:"
+msgstr "Castelletti:"
+
+#: /home/andrea/devel/ballerburg-1.0/po/../src/market.c:81
+msgid "Cannons:"
+msgstr "Cannoni:"
+
+#: /home/andrea/devel/ballerburg-1.0/po/../src/market.c:82
+#: /home/andrea/devel/ballerburg-1.0/po/../src/market.c:104
+msgid "Weather vane:"
+msgstr "Banderuola:"
+
+#: /home/andrea/devel/ballerburg-1.0/po/../src/market.c:84
+msgid "Cannonballs:"
+msgstr "Palle di cannone:"
+
+#: /home/andrea/devel/ballerburg-1.0/po/../src/market.c:85
+msgid "Population:"
+msgstr "Popolazione:"
+
+#: /home/andrea/devel/ballerburg-1.0/po/../src/market.c:86
+msgid "Taxes in %"
+msgstr "Tasse in %"
+
+#: /home/andrea/devel/ballerburg-1.0/po/../src/market.c:99
+msgid "Market:"
+msgstr "Mercato:"
+
+#: /home/andrea/devel/ballerburg-1.0/po/../src/market.c:101
+msgid "Lay bricks:"
+msgstr "Posare i mattoni:"
+
+#: /home/andrea/devel/ballerburg-1.0/po/../src/market.c:102
+msgid "Shaft tower:"
+msgstr "Castelletto:"
+
+#: /home/andrea/devel/ballerburg-1.0/po/../src/market.c:103
+msgid "Cannon:"
+msgstr "Cannone:"
+
+#: /home/andrea/devel/ballerburg-1.0/po/../src/market.c:105
+msgid "Powder x30:"
+msgstr "Polvere x30:"
+
+#: /home/andrea/devel/ballerburg-1.0/po/../src/market.c:106
+msgid "2 cannonballs:"
+msgstr "2 palle di cannone:"
+
+#: /home/andrea/devel/ballerburg-1.0/po/../src/market.c:114
+#: /home/andrea/devel/ballerburg-1.0/po/../src/screen.c:40
+msgid "Done"
+msgstr "Fatto"
+
+#: /home/andrea/devel/ballerburg-1.0/po/../src/market.c:135
+msgid " Lay bricks: "
+msgstr " Disponi i mattoni: "
+
+#: /home/andrea/devel/ballerburg-1.0/po/../src/market.c:136
+#: /home/andrea/devel/ballerburg-1.0/po/../src/market.c:159
+#, c-format
+msgid " Bricks left: %02d "
+msgstr " Mattoni rimasti: %02d "
+
+#: /home/andrea/devel/ballerburg-1.0/po/../src/settings.c:65
+msgid "Settings"
+msgstr "Impostazioni"
+
+#: /home/andrea/devel/ballerburg-1.0/po/../src/settings.c:68
+#: /home/andrea/devel/ballerburg-1.0/po/../src/settings.c:247
+msgid "Player 1"
+msgstr "Giocatore 1"
+
+#: /home/andrea/devel/ballerburg-1.0/po/../src/settings.c:69
+#: /home/andrea/devel/ballerburg-1.0/po/../src/settings.c:86
+msgid "Name:"
+msgstr "Nome:"
+
+#: /home/andrea/devel/ballerburg-1.0/po/../src/settings.c:71
+#: /home/andrea/devel/ballerburg-1.0/po/../src/settings.c:88
+msgid "Human"
+msgstr "Umano"
+
+#: /home/andrea/devel/ballerburg-1.0/po/../src/settings.c:72
+#: /home/andrea/devel/ballerburg-1.0/po/../src/settings.c:89
+msgid "Computer"
+msgstr "Computer"
+
+#: /home/andrea/devel/ballerburg-1.0/po/../src/settings.c:73
+#: /home/andrea/devel/ballerburg-1.0/po/../src/settings.c:90
+msgid "AI strategy:"
+msgstr "Strategia IA:"
+
+#: /home/andrea/devel/ballerburg-1.0/po/../src/settings.c:78
+#: /home/andrea/devel/ballerburg-1.0/po/../src/settings.c:95
+msgid "AI strength:"
+msgstr "Forza IA:"
+
+#: /home/andrea/devel/ballerburg-1.0/po/../src/settings.c:85
+#: /home/andrea/devel/ballerburg-1.0/po/../src/settings.c:251
+msgid "Player 2"
+msgstr "Giocatore 2"
+
+#: /home/andrea/devel/ballerburg-1.0/po/../src/settings.c:101
+msgid "Maximum rounds:"
+msgstr "Numero di turni:"
+
+#: /home/andrea/devel/ballerburg-1.0/po/../src/settings.c:105
+msgid "unlimited"
+msgstr "illimitato"
+
+#: /home/andrea/devel/ballerburg-1.0/po/../src/settings.c:107
+msgid "King may capitulate"
+msgstr "Il Re può capitolare"
+
+#: /home/andrea/devel/ballerburg-1.0/po/../src/settings.c:108
+msgid "Players may build"
+msgstr "I giocatori possono costruire"
+
+#: /home/andrea/devel/ballerburg-1.0/po/../src/settings.c:110
+#: /home/andrea/devel/ballerburg-1.0/po/../src/settings.c:245
+msgid "New game"
+msgstr "Nuova partita"
+
+#: /home/andrea/devel/ballerburg-1.0/po/../src/settings.c:111
+msgid "Continue game"
+msgstr "Continua partita"
+
+#: /home/andrea/devel/ballerburg-1.0/po/../src/settings.c:112
+msgid "Exit program"
+msgstr "Esci dal programma"
