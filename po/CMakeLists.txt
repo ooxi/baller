@@ -13,7 +13,8 @@ if (GETTEXT_FOUND)
 				--package-name=${CMAKE_PROJECT_NAME}
 				-o ${CMAKE_CURRENT_BINARY_DIR}/${CMAKE_PROJECT_NAME}.pot
 				${CMAKE_CURRENT_SOURCE_DIR}/../src/*.c
-		COMMAND sed -i 	s/charset=CHARSET/charset=ISO-8859-1/ 
+		COMMAND sed -i	-e s/charset=CHARSET/charset=ISO-8859-1/
+				-e s%"${CMAKE_CURRENT_SOURCE_DIR}/../"%%g
 				${CMAKE_PROJECT_NAME}.pot
 		DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/../src/*.c
 		)
