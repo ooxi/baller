@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ballerburg 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-11 19:20+0300\n"
+"POT-Creation-Date: 2013-05-10 22:40+0200\n"
 "PO-Revision-Date: 2012-03-08 22:12+0100\n"
 "Last-Translator: Eero Tamminen\n"
 "Language-Team: Finnish\n"
@@ -18,120 +18,134 @@ msgstr ""
 "Content-Type: text/plain; charset=ISO-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: /home/eero/work/ballerburg/po/../src/baller1.c:72
+#: src/baller1.c:68
 msgid "Oaf"
 msgstr "Ääliö"
 
-#: /home/eero/work/ballerburg/po/../src/baller1.c:72
+#: src/baller1.c:68
 msgid "Yokel"
 msgstr "Juntti"
 
-#: /home/eero/work/ballerburg/po/../src/baller1.c:72
+#: src/baller1.c:68
 msgid "Boor"
 msgstr "Moukka"
 
-#: /home/eero/work/ballerburg/po/../src/baller1.c:72
+#: src/baller1.c:68
 msgid "Doofus"
 msgstr "Tahvo"
 
-#: /home/eero/work/ballerburg/po/../src/baller1.c:73
+#: src/baller1.c:69
 msgid "Fumbler"
 msgstr "Tumpelo"
 
-#: /home/eero/work/ballerburg/po/../src/baller1.c:73
+#: src/baller1.c:69
 msgid "Geezer"
 msgstr "Hyypiö"
 
-#: /home/eero/work/ballerburg/po/../src/baller1.c:73
+#: src/baller1.c:69
 msgid "Ruffian"
 msgstr "Lurjus"
 
-#: /home/eero/work/ballerburg/po/../src/baller1.c:109
+#: src/baller1.c:105
 msgid "Not enough memory for loading the castles."
 msgstr "Muisti ei riitä linnojen lataukseen!"
 
-#: /home/eero/work/ballerburg/po/../src/baller1.c:121
+#: src/baller1.c:117
 msgid "William"
 msgstr "Viljami"
 
-#: /home/eero/work/ballerburg/po/../src/baller1.c:122
+#: src/baller1.c:118
 msgid "Frederick"
 msgstr "Reetu"
 
-#: /home/eero/work/ballerburg/po/../src/baller1.c:173
+#: src/baller1.c:178
 msgid "Games"
 msgstr "Pelit"
 
-#: /home/eero/work/ballerburg/po/../src/baller1.c:174
+#: src/baller1.c:179
 msgid "Total won"
 msgstr "Voitetut"
 
-#: /home/eero/work/ballerburg/po/../src/baller1.c:175
+#: src/baller1.c:180
 msgid "Total lost"
 msgstr "Hävityt"
 
-#: /home/eero/work/ballerburg/po/../src/baller1.c:176
+#: src/baller1.c:181
 msgid "Won in %"
 msgstr "Voitto-%"
 
-#: /home/eero/work/ballerburg/po/../src/baller1.c:290
+#: src/baller1.c:294
 msgid "You don't have enough gunpowder."
 msgstr "Ei tarpeeksi ruutia!"
 
-#: /home/eero/work/ballerburg/po/../src/baller1.c:290
-#: /home/eero/work/ballerburg/po/../src/baller1.c:295
+#: src/baller1.c:294 src/baller1.c:298
 msgid "Cancel"
 msgstr "Peru"
 
-#: /home/eero/work/ballerburg/po/../src/baller1.c:295
+#: src/baller1.c:298
 msgid "You don't have any cannonballs left."
 msgstr "Ei tykinkuulia!"
 
-#: /home/eero/work/ballerburg/po/../src/baller1.c:381
-msgid " has won !!"
-msgstr " on voittanut !!"
+#: src/baller1.c:384
+#, c-format
+msgid "!! %s has won !!"
+msgstr "!! %s on voittanut !!"
 
-#: /home/eero/work/ballerburg/po/../src/baller1.c:393
-msgid "king was hit,"
-msgstr "Kuninkaaseen osui, ja"
+#: src/baller1.c:397
+#, c-format
+msgid "( %s' king was hit,"
+msgstr "( %s: Kuninkaaseen osui, ja"
 
-#: /home/eero/work/ballerburg/po/../src/baller1.c:394
+#: src/baller1.c:399
+#, c-format
+msgid "( %s's king was hit,"
+msgstr "( %s: Kuninkaaseen osui, ja"
+
+#: src/baller1.c:400
 msgid "and upon hearing this, the people capitulated. )"
 msgstr "sen kuultuaan hänen alamaisensa antautuivat. )"
 
-#: /home/eero/work/ballerburg/po/../src/baller1.c:397
-msgid "The king has capitulated"
-msgstr "Tässä tilanteessa Kuningas"
+#: src/baller1.c:404
+#, c-format
+msgid "( %s' king has capitulated"
+msgstr "( %s: Tässä tilanteessa Kuningas"
 
-#: /home/eero/work/ballerburg/po/../src/baller1.c:398
+#: src/baller1.c:407
+#, c-format
+msgid "( %s's king has capitulated"
+msgstr "( %s: Tässä tilanteessa Kuningas"
+
+#: src/baller1.c:409
 msgid "  because of the hopeless situation. )"
 msgstr "  ei voinut muuta kuin antautua. )"
 
-#: /home/eero/work/ballerburg/po/../src/baller1.c:401
-msgid " has no folk left. )"
-msgstr " kaikki alamaiset katosivat. )"
+#: src/baller1.c:412
+#, c-format
+msgid "( %s has no folk left. )"
+msgstr "( %s kaikki alamaiset katosivat. )"
 
-#: /home/eero/work/ballerburg/po/../src/baller1.c:406
-msgid "( The set limit of maximum rounds has been reached."
+#: src/baller1.c:416
+msgid "( The limit of maximum rounds has been reached."
 msgstr "( Kaikki kierrokset on käyty."
 
-#: /home/eero/work/ballerburg/po/../src/baller1.c:407
-msgid " is worse off. )"
-msgstr " oli huonommassa asemassa. )"
+#: src/baller1.c:417
+#, c-format
+msgid "%s is worse off. )"
+msgstr "%s oli huonommassa asemassa. )"
 
-#: /home/eero/work/ballerburg/po/../src/baller2.c:482
+#: src/baller2.c:486
 msgid " Round     "
 msgstr " Vuoro     "
 
-#: /home/eero/work/ballerburg/po/../src/baller2.c:657
+#: src/baller2.c:660
 msgid "The king says:"
 msgstr "Kuningas lausui:"
 
-#: /home/eero/work/ballerburg/po/../src/baller2.c:658
+#: src/baller2.c:661
 msgid "Humbly acknowledged"
 msgstr "Nöyrästi huomioitu"
 
-#: /home/eero/work/ballerburg/po/../src/baller2.c:659
+#: src/baller2.c:662
 msgid ""
 "Well...\n"
 " alright...\n"
@@ -141,7 +155,7 @@ msgstr ""
 " No, niin...\n"
 " Jatkakaa..."
 
-#: /home/eero/work/ballerburg/po/../src/baller2.c:660
+#: src/baller2.c:663
 msgid ""
 "We are satisfied\n"
 " with your performance!"
@@ -149,7 +163,7 @@ msgstr ""
 "Olemme tyytyväisiä\n"
 " saavutuksiinne!"
 
-#: /home/eero/work/ballerburg/po/../src/baller2.c:661
+#: src/baller2.c:664
 msgid ""
 "Excellent,\n"
 " keep at it!"
@@ -157,7 +171,7 @@ msgstr ""
 "Erinomaista,\n"
 " jatkakaa toki!"
 
-#: /home/eero/work/ballerburg/po/../src/baller2.c:662
+#: src/baller2.c:665
 msgid ""
 "Maybe you ought to\n"
 " lower Our taxes..."
@@ -165,7 +179,7 @@ msgstr ""
 "Ehkäpä teidän pitäisi\n"
 " alentaa verojamme..."
 
-#: /home/eero/work/ballerburg/po/../src/baller2.c:663
+#: src/baller2.c:666
 msgid ""
 "If you keep this up,\n"
 " We shall discharge you!"
@@ -173,7 +187,7 @@ msgstr ""
 "Jatkakaa samalla tavalla\n"
 " ja lennätte pihalle!"
 
-#: /home/eero/work/ballerburg/po/../src/baller2.c:664
+#: src/baller2.c:667
 msgid ""
 "Why don't you buy\n"
 " a shaft tower..."
@@ -181,7 +195,7 @@ msgstr ""
 "Ettekö ostaisi\n"
 " akselitornia..."
 
-#: /home/eero/work/ballerburg/po/../src/baller2.c:665
+#: src/baller2.c:668
 msgid ""
 "You ought to\n"
 " kindly make more of\n"
@@ -191,7 +205,7 @@ msgstr ""
 " ystävällisesti tehdä\n"
 " itsekin jotain!"
 
-#: /home/eero/work/ballerburg/po/../src/baller2.c:666
+#: src/baller2.c:669
 msgid ""
 "You don't need to visit Us\n"
 " in each round."
@@ -199,7 +213,7 @@ msgstr ""
 "Miksi vaivaatte\n"
 " meitä jatkuvasti?"
 
-#: /home/eero/work/ballerburg/po/../src/baller2.c:667
+#: src/baller2.c:670
 #, c-format
 msgid ""
 "Are you aware\n"
@@ -210,7 +224,7 @@ msgstr ""
 " olette pyytänyt\n"
 " audienssiamme %d kertaa?"
 
-#: /home/eero/work/ballerburg/po/../src/baller2.c:668
+#: src/baller2.c:671
 msgid ""
 "So, are you certain\n"
 " that you will manage\n"
@@ -219,11 +233,11 @@ msgstr ""
 "Niin, selviättekö varmasti\n"
 " ilman tuuliviiriä?"
 
-#: /home/eero/work/ballerburg/po/../src/baller2.c:669
+#: src/baller2.c:672
 msgid "Nice to see you..."
 msgstr "Mukava nähdä teitä taas..."
 
-#: /home/eero/work/ballerburg/po/../src/baller2.c:670
+#: src/baller2.c:673
 msgid ""
 "What are We supposed\n"
 " to say in such an\n"
@@ -233,7 +247,7 @@ msgstr ""
 " sanoa näin\n"
 " aikaisessa vaiheessa?"
 
-#: /home/eero/work/ballerburg/po/../src/baller2.c:671
+#: src/baller2.c:674
 msgid ""
 "You ought to earn more money,\n"
 " build more shaft towers,\n"
@@ -243,7 +257,7 @@ msgstr ""
 "rakentaa akselitorneja,\n"
 " ja kukistakaa kilpailijanne."
 
-#: /home/eero/work/ballerburg/po/../src/baller2.c:672
+#: src/baller2.c:675
 msgid ""
 "We do not have anything new\n"
 " to say to you."
@@ -251,7 +265,7 @@ msgstr ""
 "Meillä ei ole teille mitään\n"
 " uutta sanottavaa."
 
-#: /home/eero/work/ballerburg/po/../src/baller2.c:673
+#: src/baller2.c:676
 msgid ""
 "We are pleased for you\n"
 " to come around and visit Us."
@@ -259,7 +273,7 @@ msgstr ""
 "Olipa ystävällistä, että\n"
 " tulitte luoksemme."
 
-#: /home/eero/work/ballerburg/po/../src/baller2.c:688
+#: src/baller2.c:691
 msgid ""
 "The king is not in the mood\n"
 "to talk to you."
@@ -267,175 +281,159 @@ msgstr ""
 "Kuningas ei ole\n"
 "keskustelutuulella."
 
-#: /home/eero/work/ballerburg/po/../src/baller2.c:688
+#: src/baller2.c:691
 msgid "Too bad."
 msgstr "Harmi."
 
-#: /home/eero/work/ballerburg/po/../src/ballergui.c:44
-#: /home/eero/work/ballerburg/po/../src/settings.c:215
+#: src/ballergui.c:52 src/settings.c:223
 msgid "Quit Ballerburg?"
 msgstr "Lopetetaanko Ballerburg?"
 
-#: /home/eero/work/ballerburg/po/../src/ballergui.c:44
-#: /home/eero/work/ballerburg/po/../src/settings.c:215
+#: src/ballergui.c:52 src/settings.c:223
 msgid "Yes"
 msgstr "Kyllä"
 
-#: /home/eero/work/ballerburg/po/../src/ballergui.c:44
-#: /home/eero/work/ballerburg/po/../src/settings.c:215
+#: src/ballergui.c:52 src/settings.c:223
 msgid "No"
 msgstr "Ei"
 
-#: /home/eero/work/ballerburg/po/../src/cannoneer.c:59
+#: src/cannoneer.c:59
 msgid "Cannon"
 msgstr "Kanuuna"
 
-#: /home/eero/work/ballerburg/po/../src/cannoneer.c:61
+#: src/cannoneer.c:61
 msgid "Angle:"
 msgstr "Kulma:"
 
-#: /home/eero/work/ballerburg/po/../src/cannoneer.c:68
-#: /home/eero/work/ballerburg/po/../src/market.c:83
+#: src/cannoneer.c:68 src/market.c:83
 msgid "Gunpowder:"
 msgstr "Ruuti:"
 
-#: /home/eero/work/ballerburg/po/../src/market.c:77
+#: src/market.c:77
 msgid "You have:"
 msgstr "Sinulla on:"
 
-#: /home/eero/work/ballerburg/po/../src/market.c:79
+#: src/market.c:79
 msgid "Funds:"
 msgstr "Varoja:"
 
-#: /home/eero/work/ballerburg/po/../src/market.c:80
+#: src/market.c:80
 msgid "Shaft towers:"
 msgstr "Akselitorneja:"
 
-#: /home/eero/work/ballerburg/po/../src/market.c:81
+#: src/market.c:81
 msgid "Cannons:"
 msgstr "Kanuunoita:"
 
-#: /home/eero/work/ballerburg/po/../src/market.c:82
-#: /home/eero/work/ballerburg/po/../src/market.c:104
+#: src/market.c:82 src/market.c:104
 msgid "Weather vane:"
 msgstr "Tuuliviirejä:"
 
-#: /home/eero/work/ballerburg/po/../src/market.c:84
+#: src/market.c:84
 msgid "Cannonballs:"
 msgstr "Kanuunankuulia:"
 
-#: /home/eero/work/ballerburg/po/../src/market.c:85
+#: src/market.c:85
 msgid "Population:"
 msgstr "Väestö:"
 
-#: /home/eero/work/ballerburg/po/../src/market.c:86
+#: src/market.c:86
 msgid "Taxes in %"
 msgstr "Vero-%"
 
-#: /home/eero/work/ballerburg/po/../src/market.c:99
+#: src/market.c:99
 msgid "Market:"
 msgstr "Markkinat:"
 
-#: /home/eero/work/ballerburg/po/../src/market.c:101
+#: src/market.c:101
 msgid "Lay bricks:"
 msgstr "Rakenna:"
 
-#: /home/eero/work/ballerburg/po/../src/market.c:102
+#: src/market.c:102
 msgid "Shaft tower:"
 msgstr "Akselitorni:"
 
-#: /home/eero/work/ballerburg/po/../src/market.c:103
+#: src/market.c:103
 msgid "Cannon:"
 msgstr "Kanuuna:"
 
-#: /home/eero/work/ballerburg/po/../src/market.c:105
+#: src/market.c:105
 msgid "Powder x30:"
 msgstr "Ruutia x30:"
 
-#: /home/eero/work/ballerburg/po/../src/market.c:106
+#: src/market.c:106
 msgid "2 cannonballs:"
 msgstr "2 kanuunankuulaa:"
 
-#: /home/eero/work/ballerburg/po/../src/market.c:114
-#: /home/eero/work/ballerburg/po/../src/screen.c:40
+#: src/market.c:114 src/screen.c:40
 msgid "Done"
 msgstr "Valmis"
 
-#: /home/eero/work/ballerburg/po/../src/market.c:135
+#: src/market.c:135
 msgid " Lay bricks: "
 msgstr " Rakenna: "
 
-#: /home/eero/work/ballerburg/po/../src/market.c:136
-#: /home/eero/work/ballerburg/po/../src/market.c:161
+#: src/market.c:136 src/market.c:159
 #, c-format
 msgid " Bricks left: %02d "
 msgstr " Tiiliä jäljellä: %02d "
 
-#: /home/eero/work/ballerburg/po/../src/settings.c:65
+#: src/settings.c:65
 msgid "Settings"
 msgstr "Asetukset"
 
-#: /home/eero/work/ballerburg/po/../src/settings.c:68
-#: /home/eero/work/ballerburg/po/../src/settings.c:239
+#: src/settings.c:68 src/settings.c:247
 msgid "Player 1"
 msgstr "Pelaaja 1"
 
-#: /home/eero/work/ballerburg/po/../src/settings.c:69
-#: /home/eero/work/ballerburg/po/../src/settings.c:86
+#: src/settings.c:69 src/settings.c:86
 msgid "Name:"
 msgstr "Nimi:"
 
-#: /home/eero/work/ballerburg/po/../src/settings.c:71
-#: /home/eero/work/ballerburg/po/../src/settings.c:88
+#: src/settings.c:71 src/settings.c:88
 msgid "Human"
 msgstr "Ihminen"
 
-#: /home/eero/work/ballerburg/po/../src/settings.c:72
-#: /home/eero/work/ballerburg/po/../src/settings.c:89
+#: src/settings.c:72 src/settings.c:89
 msgid "Computer"
 msgstr "Tietokone"
 
-#: /home/eero/work/ballerburg/po/../src/settings.c:73
-#: /home/eero/work/ballerburg/po/../src/settings.c:90
-#, fuzzy
+#: src/settings.c:73 src/settings.c:90
 msgid "AI strategy:"
-msgstr "Tekoälykkyys:"
+msgstr "Strategia:"
 
-#: /home/eero/work/ballerburg/po/../src/settings.c:78
-#: /home/eero/work/ballerburg/po/../src/settings.c:95
+#: src/settings.c:78 src/settings.c:95
 msgid "AI strength:"
 msgstr "Tekoälykkyys:"
 
-#: /home/eero/work/ballerburg/po/../src/settings.c:85
-#: /home/eero/work/ballerburg/po/../src/settings.c:243
+#: src/settings.c:85 src/settings.c:251
 msgid "Player 2"
 msgstr "Pelaaja 2"
 
-#: /home/eero/work/ballerburg/po/../src/settings.c:101
+#: src/settings.c:101
 msgid "Maximum rounds:"
 msgstr "Kierroksia enintään:"
 
-#: /home/eero/work/ballerburg/po/../src/settings.c:105
+#: src/settings.c:105
 msgid "unlimited"
 msgstr "rajoittamaton"
 
-#: /home/eero/work/ballerburg/po/../src/settings.c:107
+#: src/settings.c:107
 msgid "King may capitulate"
 msgstr "Kuningas voi antautua"
 
-#: /home/eero/work/ballerburg/po/../src/settings.c:108
+#: src/settings.c:108
 msgid "Players may build"
 msgstr "Pelaajat voivat rakentaa"
 
-#: /home/eero/work/ballerburg/po/../src/settings.c:110
-#: /home/eero/work/ballerburg/po/../src/settings.c:237
+#: src/settings.c:110 src/settings.c:245
 msgid "New game"
 msgstr "Uusi peli"
 
-#: /home/eero/work/ballerburg/po/../src/settings.c:111
+#: src/settings.c:111
 msgid "Continue game"
 msgstr "Jatka peliä"
 
-#: /home/eero/work/ballerburg/po/../src/settings.c:112
+#: src/settings.c:112
 msgid "Exit program"
 msgstr "Lopeta ohjelma"

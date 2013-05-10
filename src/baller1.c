@@ -377,36 +377,43 @@ void ende(void)
 	char s1[80], s2[80], s3[80];
 	int a, b;
 	int i;
+	const char *loser;
+	int with_s = 0;
 
-	strcpy(s1,"!! ");
-	strcat(s1, end&2 ? _(l_nam) : _(r_nam));
-	strcat(s1, _(" has won !!"));
-	s2[0]=0;
-	if (~end&64) strcpy(s2,"( ");
-	strcat( s2, end&2 ? _(r_nam) : _(l_nam));
-	if ( (end&240)<48 )
+	snprintf(s1, sizeof(s1), _("!! %s has won !!"),
+	         end&2 ? _(l_nam) : _(r_nam));
+	loser = (end&2) ? _(r_nam) : _(l_nam);
+	if ((end&240) < 48)
 	{
-		a=s2[strlen(s2)-1];
-		strcat( s2, a=='s' || a=='S'? "' ":"'s " );
+		a = loser[strlen(loser)-1];
+		with_s = (a=='s' || a=='S');
 	}
+
 	switch ( end&240 )
 	{
 	case 16:
-		strcat(s2, _("king was hit,"));
+		if (with_s)
+			snprintf(s2, sizeof(s2), _("( %s' king was hit,"), loser);
+		else
+			snprintf(s2, sizeof(s2), _("( %s's king was hit,"), loser);
 		strcpy(s3, _("and upon hearing this, the people capitulated. )"));
-	break;
+		break;
 	case 32:
-		strcat(s2, _("The king has capitulated"));
+		if (with_s)
+			snprintf(s2, sizeof(s2), _("( %s' king has capitulated"),
+			         loser);
+		else
+			snprintf(s2, sizeof(s2), _("( %s's king has capitulated"),
+			         loser);
 		strcpy(s3, _("  because of the hopeless situation. )"));
 		break;
 	case 48:
-		strcat(s2, _(" has no folk left. )"));
+		snprintf(s2, sizeof(s2), _("( %s has no folk left. )"), loser);
 		s3[0]=0;
 		break;
 	case 64:
-		strcpy(s3, s2);
-		strcpy(s2, _("( The set limit of maximum rounds has been reached."));
-		strcat(s3, _(" is worse off. )"));
+		strcpy(s2, _("( The limit of maximum rounds has been reached."));
+		snprintf(s3, sizeof(s3), _("%s is worse off. )"), loser);
 	}
 
 	for (a = 0; a < COMP_NUM && strncmp(cn[a], l_nam, 7); a++);

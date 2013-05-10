@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ballerburg 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-04-26 20:00+0100\n"
+"POT-Creation-Date: 2013-05-10 22:34+0200\n"
 "PO-Revision-Date: 2012-04-26 20:05+0100\n"
 "Last-Translator: Thomas Huth <huth(at)tuxfamily.org>\n"
 "Language-Team: German\n"
@@ -16,120 +16,127 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: /home/thomas/devel/ballerburg/main/po/../src/baller1.c:72
+#: src/baller1.c:68
 msgid "Oaf"
 msgstr "Tölpel"
 
-#: /home/thomas/devel/ballerburg/main/po/../src/baller1.c:72
+#: src/baller1.c:68
 msgid "Yokel"
 msgstr "Dummel"
 
-#: /home/thomas/devel/ballerburg/main/po/../src/baller1.c:72
+#: src/baller1.c:68
 msgid "Boor"
 msgstr "Brubbel"
 
-#: /home/thomas/devel/ballerburg/main/po/../src/baller1.c:72
+#: src/baller1.c:68
 msgid "Doofus"
 msgstr "Wusel"
 
-#: /home/thomas/devel/ballerburg/main/po/../src/baller1.c:73
+#: src/baller1.c:69
 msgid "Fumbler"
 msgstr "Brösel"
 
-#: /home/thomas/devel/ballerburg/main/po/../src/baller1.c:73
+#: src/baller1.c:69
 msgid "Geezer"
 msgstr "Toffel"
 
-#: /home/thomas/devel/ballerburg/main/po/../src/baller1.c:73
+#: src/baller1.c:69
 msgid "Ruffian"
 msgstr "Rüpel"
 
-#: /home/thomas/devel/ballerburg/main/po/../src/baller1.c:109
+#: src/baller1.c:105
 msgid "Not enough memory for loading the castles."
 msgstr "Nicht genug Speicher um die Burgen zu laden."
 
-#: /home/thomas/devel/ballerburg/main/po/../src/baller1.c:121
+#: src/baller1.c:117
 msgid "William"
 msgstr "Wilhelm"
 
-#: /home/thomas/devel/ballerburg/main/po/../src/baller1.c:122
+#: src/baller1.c:118
 msgid "Frederick"
 msgstr "Friedrich"
 
-#: /home/thomas/devel/ballerburg/main/po/../src/baller1.c:173
+#: src/baller1.c:178
 msgid "Games"
 msgstr "Spiele"
 
-#: /home/thomas/devel/ballerburg/main/po/../src/baller1.c:174
+#: src/baller1.c:179
 msgid "Total won"
 msgstr "Gewonnen"
 
-#: /home/thomas/devel/ballerburg/main/po/../src/baller1.c:175
+#: src/baller1.c:180
 msgid "Total lost"
 msgstr "Verloren"
 
-#: /home/thomas/devel/ballerburg/main/po/../src/baller1.c:176
+#: src/baller1.c:181
 msgid "Won in %"
 msgstr "Siege %"
 
-#: /home/thomas/devel/ballerburg/main/po/../src/baller1.c:290
+#: src/baller1.c:294
 msgid "You don't have enough gunpowder."
 msgstr "Dein Pulver reicht nicht!"
 
-#: /home/thomas/devel/ballerburg/main/po/../src/baller1.c:290
-#: /home/thomas/devel/ballerburg/main/po/../src/baller1.c:295
+#: src/baller1.c:294 src/baller1.c:298
 msgid "Cancel"
 msgstr "Abbruch"
 
-#: /home/thomas/devel/ballerburg/main/po/../src/baller1.c:295
+#: src/baller1.c:298
 msgid "You don't have any cannonballs left."
 msgstr "Du hast keine Kugeln mehr!"
 
-#: /home/thomas/devel/ballerburg/main/po/../src/baller1.c:381
-msgid " has won !!"
-msgstr " hat gewonnen !!"
+#: src/baller1.c:384
+msgid "!! %s has won !!"
+msgstr "!! %s hat gewonnen !!"
 
-#: /home/thomas/devel/ballerburg/main/po/../src/baller1.c:393
-msgid "king was hit,"
-msgstr "König wurde getroffen,"
+#: src/baller1.c:397
+msgid "( %s' king was hit,"
+msgstr "( %s' König wurde getroffen,"
 
-#: /home/thomas/devel/ballerburg/main/po/../src/baller1.c:394
+#: src/baller1.c:399
+msgid "( %s's king was hit,"
+msgstr "( %ss König wurde getroffen,"
+
+#: src/baller1.c:400
 msgid "and upon hearing this, the people capitulated. )"
 msgstr "  daraufhin ergab sich dessen Volk. )"
 
-#: /home/thomas/devel/ballerburg/main/po/../src/baller1.c:397
-msgid "The king has capitulated"
-msgstr "König hat aufgrund der"
+#: src/baller1.c:404
+msgid "( %s' king has capitulated"
+msgstr "( %s' König hat aufgrund der"
 
-#: /home/thomas/devel/ballerburg/main/po/../src/baller1.c:398
+#: src/baller1.c:407
+msgid "( %s's king has capitulated"
+msgstr "( %ss König hat aufgrund der"
+
+#: src/baller1.c:409
 msgid "  because of the hopeless situation. )"
 msgstr "  aussichtslosen Lage kapituliert. )"
 
-#: /home/thomas/devel/ballerburg/main/po/../src/baller1.c:401
-msgid " has no folk left. )"
-msgstr " hat kein Volk mehr. )"
+#: src/baller1.c:412
+msgid "( %s has no folk left. )"
+msgstr "( %s hat kein Volk mehr. )"
 
-#: /home/thomas/devel/ballerburg/main/po/../src/baller1.c:406
-msgid "( The set limit of maximum rounds has been reached."
+#: src/baller1.c:416
+msgid "( The limit of maximum rounds has been reached."
 msgstr "( Die maximale Rundenzahl ist erreicht."
 
-#: /home/thomas/devel/ballerburg/main/po/../src/baller1.c:407
-msgid " is worse off. )"
-msgstr " befindet sich in der schlechteren Lage. )"
+#: src/baller1.c:417
+msgid "%s is worse off. )"
+msgstr "%s befindet sich in der schlechteren Lage. )"
 
-#: /home/thomas/devel/ballerburg/main/po/../src/baller2.c:482
+#: src/baller2.c:486
 msgid " Round     "
 msgstr " Runde     "
 
-#: /home/thomas/devel/ballerburg/main/po/../src/baller2.c:657
+#: src/baller2.c:660
 msgid "The king says:"
 msgstr "Der König meint:"
 
-#: /home/thomas/devel/ballerburg/main/po/../src/baller2.c:658
+#: src/baller2.c:661
 msgid "Humbly acknowledged"
 msgstr "Demütig zur Kenntnis genommen"
 
-#: /home/thomas/devel/ballerburg/main/po/../src/baller2.c:659
+#: src/baller2.c:662
 msgid ""
 "Well...\n"
 " alright...\n"
@@ -139,7 +146,7 @@ msgstr ""
 " Nun gut...\n"
 " Weiter so..."
 
-#: /home/thomas/devel/ballerburg/main/po/../src/baller2.c:660
+#: src/baller2.c:663
 msgid ""
 "We are satisfied\n"
 " with your performance!"
@@ -147,7 +154,7 @@ msgstr ""
 "Ich bin zufrieden\n"
 " mit Ihren Leistungen!"
 
-#: /home/thomas/devel/ballerburg/main/po/../src/baller2.c:661
+#: src/baller2.c:664
 msgid ""
 "Excellent,\n"
 " keep at it!"
@@ -155,7 +162,7 @@ msgstr ""
 "Hervorragend,\n"
 " weiter so!"
 
-#: /home/thomas/devel/ballerburg/main/po/../src/baller2.c:662
+#: src/baller2.c:665
 msgid ""
 "Maybe you ought to\n"
 " lower Our taxes..."
@@ -163,7 +170,7 @@ msgstr ""
 "Vielleicht sollten Sie mal\n"
 " die Steuern senken..."
 
-#: /home/thomas/devel/ballerburg/main/po/../src/baller2.c:663
+#: src/baller2.c:666
 msgid ""
 "If you keep this up,\n"
 " We shall discharge you!"
@@ -171,7 +178,7 @@ msgstr ""
 "Wenn Sie so weiter machen\n"
 " werde ich Sie entlassen!"
 
-#: /home/thomas/devel/ballerburg/main/po/../src/baller2.c:664
+#: src/baller2.c:667
 msgid ""
 "Why don't you buy\n"
 " a shaft tower..."
@@ -179,7 +186,7 @@ msgstr ""
 "Vielleicht mal 'nen\n"
 " Förderturm kaufen..."
 
-#: /home/thomas/devel/ballerburg/main/po/../src/baller2.c:665
+#: src/baller2.c:668
 msgid ""
 "You ought to\n"
 " kindly make more of\n"
@@ -189,7 +196,7 @@ msgstr ""
 " gefälligst mehr Mühe\n"
 " geben!"
 
-#: /home/thomas/devel/ballerburg/main/po/../src/baller2.c:666
+#: src/baller2.c:669
 msgid ""
 "You don't need to visit Us\n"
 " in each round."
@@ -197,7 +204,7 @@ msgstr ""
 "Sie brauchen nicht\n"
 " jede Runde zu kommen."
 
-#: /home/thomas/devel/ballerburg/main/po/../src/baller2.c:667
+#: src/baller2.c:670
 #, c-format
 msgid ""
 "Are you aware\n"
@@ -208,7 +215,7 @@ msgstr ""
 " dass Sie mich bereits\n"
 " %d mal besucht haben?"
 
-#: /home/thomas/devel/ballerburg/main/po/../src/baller2.c:668
+#: src/baller2.c:671
 msgid ""
 "So, are you certain\n"
 " that you will manage\n"
@@ -218,11 +225,11 @@ msgstr ""
 " dass Sie auch ohne eine\n"
 " Windfahne zurecht kommen?"
 
-#: /home/thomas/devel/ballerburg/main/po/../src/baller2.c:669
+#: src/baller2.c:672
 msgid "Nice to see you..."
 msgstr "Schön, Sie zu sehen..."
 
-#: /home/thomas/devel/ballerburg/main/po/../src/baller2.c:670
+#: src/baller2.c:673
 msgid ""
 "What are We supposed\n"
 " to say in such an\n"
@@ -232,7 +239,7 @@ msgstr ""
 " so einer frühen Phase\n"
 " schon sagen?"
 
-#: /home/thomas/devel/ballerburg/main/po/../src/baller2.c:671
+#: src/baller2.c:674
 msgid ""
 "You ought to earn more money,\n"
 " build more shaft towers,\n"
@@ -242,7 +249,7 @@ msgstr ""
 " verdienen, Fördertürme bauen\n"
 " und den Gegner besiegen."
 
-#: /home/thomas/devel/ballerburg/main/po/../src/baller2.c:672
+#: src/baller2.c:675
 msgid ""
 "We do not have anything new\n"
 " to say to you."
@@ -250,7 +257,7 @@ msgstr ""
 "Ich habe Ihnen nichts\n"
 " neues zu sagen."
 
-#: /home/thomas/devel/ballerburg/main/po/../src/baller2.c:673
+#: src/baller2.c:676
 msgid ""
 "We are pleased for you\n"
 " to come around and visit Us."
@@ -258,7 +265,7 @@ msgstr ""
 "Find' ich nett, dass\n"
 " Sie mich mal besuchen!"
 
-#: /home/thomas/devel/ballerburg/main/po/../src/baller2.c:688
+#: src/baller2.c:691
 msgid ""
 "The king is not in the mood\n"
 "to talk to you."
@@ -266,174 +273,159 @@ msgstr ""
 "Der König hat keine Lust,\n"
 "dich zu sprechen."
 
-#: /home/thomas/devel/ballerburg/main/po/../src/baller2.c:688
+#: src/baller2.c:691
 msgid "Too bad."
 msgstr "Schade"
 
-#: /home/thomas/devel/ballerburg/main/po/../src/ballergui.c:44
-#: /home/thomas/devel/ballerburg/main/po/../src/settings.c:215
+#: src/ballergui.c:52 src/settings.c:223
 msgid "Quit Ballerburg?"
 msgstr "Ballerburg beenden?"
 
-#: /home/thomas/devel/ballerburg/main/po/../src/ballergui.c:44
-#: /home/thomas/devel/ballerburg/main/po/../src/settings.c:215
+#: src/ballergui.c:52 src/settings.c:223
 msgid "Yes"
 msgstr "Ja"
 
-#: /home/thomas/devel/ballerburg/main/po/../src/ballergui.c:44
-#: /home/thomas/devel/ballerburg/main/po/../src/settings.c:215
+#: src/ballergui.c:52 src/settings.c:223
 msgid "No"
 msgstr "Nein"
 
-#: /home/thomas/devel/ballerburg/main/po/../src/cannoneer.c:59
+#: src/cannoneer.c:59
 msgid "Cannon"
 msgstr "Kanone"
 
-#: /home/thomas/devel/ballerburg/main/po/../src/cannoneer.c:61
+#: src/cannoneer.c:61
 msgid "Angle:"
 msgstr "Winkel:"
 
-#: /home/thomas/devel/ballerburg/main/po/../src/cannoneer.c:68
-#: /home/thomas/devel/ballerburg/main/po/../src/market.c:83
+#: src/cannoneer.c:68 src/market.c:83
 msgid "Gunpowder:"
 msgstr "Pulver:"
 
-#: /home/thomas/devel/ballerburg/main/po/../src/market.c:77
+#: src/market.c:77
 msgid "You have:"
 msgstr "Du hast:"
 
-#: /home/thomas/devel/ballerburg/main/po/../src/market.c:79
+#: src/market.c:79
 msgid "Funds:"
 msgstr "Geld:"
 
-#: /home/thomas/devel/ballerburg/main/po/../src/market.c:80
+#: src/market.c:80
 msgid "Shaft towers:"
 msgstr "Fördertürme:"
 
-#: /home/thomas/devel/ballerburg/main/po/../src/market.c:81
+#: src/market.c:81
 msgid "Cannons:"
 msgstr "Geschütze:"
 
-#: /home/thomas/devel/ballerburg/main/po/../src/market.c:82
-#: /home/thomas/devel/ballerburg/main/po/../src/market.c:104
+#: src/market.c:82 src/market.c:104
 msgid "Weather vane:"
 msgstr "Windfahne:"
 
-#: /home/thomas/devel/ballerburg/main/po/../src/market.c:84
+#: src/market.c:84
 msgid "Cannonballs:"
 msgstr "Kugeln:"
 
-#: /home/thomas/devel/ballerburg/main/po/../src/market.c:85
+#: src/market.c:85
 msgid "Population:"
 msgstr "Volk:"
 
-#: /home/thomas/devel/ballerburg/main/po/../src/market.c:86
+#: src/market.c:86
 msgid "Taxes in %"
 msgstr "Steuern in %"
 
-#: /home/thomas/devel/ballerburg/main/po/../src/market.c:99
+#: src/market.c:99
 msgid "Market:"
 msgstr "Markt:"
 
-#: /home/thomas/devel/ballerburg/main/po/../src/market.c:101
+#: src/market.c:101
 msgid "Lay bricks:"
 msgstr "Anbauen:"
 
-#: /home/thomas/devel/ballerburg/main/po/../src/market.c:102
+#: src/market.c:102
 msgid "Shaft tower:"
 msgstr "Förderturm:"
 
-#: /home/thomas/devel/ballerburg/main/po/../src/market.c:103
+#: src/market.c:103
 msgid "Cannon:"
 msgstr "Geschütz:"
 
-#: /home/thomas/devel/ballerburg/main/po/../src/market.c:105
+#: src/market.c:105
 msgid "Powder x30:"
 msgstr "30 Pulver:"
 
-#: /home/thomas/devel/ballerburg/main/po/../src/market.c:106
+#: src/market.c:106
 msgid "2 cannonballs:"
 msgstr "2 Kugeln:"
 
-#: /home/thomas/devel/ballerburg/main/po/../src/market.c:114
-#: /home/thomas/devel/ballerburg/main/po/../src/screen.c:40
+#: src/market.c:114 src/screen.c:40
 msgid "Done"
 msgstr "Fertig"
 
-#: /home/thomas/devel/ballerburg/main/po/../src/market.c:135
+#: src/market.c:135
 msgid " Lay bricks: "
 msgstr " Anbauen: "
 
-#: /home/thomas/devel/ballerburg/main/po/../src/market.c:136
-#: /home/thomas/devel/ballerburg/main/po/../src/market.c:161
+#: src/market.c:136 src/market.c:159
 #, c-format
 msgid " Bricks left: %02d "
 msgstr " Verbleibende Steine: %02d "
 
-#: /home/thomas/devel/ballerburg/main/po/../src/settings.c:65
+#: src/settings.c:65
 msgid "Settings"
 msgstr "Einstellungen"
 
-#: /home/thomas/devel/ballerburg/main/po/../src/settings.c:68
-#: /home/thomas/devel/ballerburg/main/po/../src/settings.c:239
+#: src/settings.c:68 src/settings.c:247
 msgid "Player 1"
 msgstr "Spieler 1"
 
-#: /home/thomas/devel/ballerburg/main/po/../src/settings.c:69
-#: /home/thomas/devel/ballerburg/main/po/../src/settings.c:86
+#: src/settings.c:69 src/settings.c:86
 msgid "Name:"
 msgstr "Name:"
 
-#: /home/thomas/devel/ballerburg/main/po/../src/settings.c:71
-#: /home/thomas/devel/ballerburg/main/po/../src/settings.c:88
+#: src/settings.c:71 src/settings.c:88
 msgid "Human"
 msgstr "Mensch"
 
-#: /home/thomas/devel/ballerburg/main/po/../src/settings.c:72
-#: /home/thomas/devel/ballerburg/main/po/../src/settings.c:89
+#: src/settings.c:72 src/settings.c:89
 msgid "Computer"
 msgstr "Computer"
 
-#: /home/thomas/devel/ballerburg/main/po/../src/settings.c:73
-#: /home/thomas/devel/ballerburg/main/po/../src/settings.c:90
+#: src/settings.c:73 src/settings.c:90
 msgid "AI strategy:"
 msgstr "KI Strategie:"
 
-#: /home/thomas/devel/ballerburg/main/po/../src/settings.c:78
-#: /home/thomas/devel/ballerburg/main/po/../src/settings.c:95
+#: src/settings.c:78 src/settings.c:95
 msgid "AI strength:"
 msgstr "KI Stärke:"
 
-#: /home/thomas/devel/ballerburg/main/po/../src/settings.c:85
-#: /home/thomas/devel/ballerburg/main/po/../src/settings.c:243
+#: src/settings.c:85 src/settings.c:251
 msgid "Player 2"
 msgstr "Spieler 2"
 
-#: /home/thomas/devel/ballerburg/main/po/../src/settings.c:101
+#: src/settings.c:101
 msgid "Maximum rounds:"
 msgstr "Maximale Rundenzahl:"
 
-#: /home/thomas/devel/ballerburg/main/po/../src/settings.c:105
+#: src/settings.c:105
 msgid "unlimited"
 msgstr "unbegrenzt"
 
-#: /home/thomas/devel/ballerburg/main/po/../src/settings.c:107
+#: src/settings.c:107
 msgid "King may capitulate"
 msgstr "König kann kapitulieren"
 
-#: /home/thomas/devel/ballerburg/main/po/../src/settings.c:108
+#: src/settings.c:108
 msgid "Players may build"
 msgstr "Anbauen ist erlaubt"
 
-#: /home/thomas/devel/ballerburg/main/po/../src/settings.c:110
-#: /home/thomas/devel/ballerburg/main/po/../src/settings.c:237
+#: src/settings.c:110 src/settings.c:245
 msgid "New game"
 msgstr "Neues Spiel"
 
-#: /home/thomas/devel/ballerburg/main/po/../src/settings.c:111
+#: src/settings.c:111
 msgid "Continue game"
 msgstr "Weiterspielen"
 
-#: /home/thomas/devel/ballerburg/main/po/../src/settings.c:112
+#: src/settings.c:112
 msgid "Exit program"
 msgstr "Programm beenden"
