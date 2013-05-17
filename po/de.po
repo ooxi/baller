@@ -4,8 +4,8 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: ballerburg 1.0\n"
-"Report-Msgid-Bugs-To: \n"
+"Project-Id-Version: ballerburg 1.0.1\n"
+"Report-Msgid-Bugs-To: Thomas Huth\n"
 "POT-Creation-Date: 2013-05-10 22:34+0200\n"
 "PO-Revision-Date: 2012-04-26 20:05+0100\n"
 "Last-Translator: Thomas Huth <huth(at)tuxfamily.org>\n"

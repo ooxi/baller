@@ -4,7 +4,7 @@
 
 cmake_minimum_required (VERSION 2.8 FATAL_ERROR)
 project (ballerburg C)
-set(VERSION 1.0)
+set(VERSION 1.0.1)
 
 set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake")
 

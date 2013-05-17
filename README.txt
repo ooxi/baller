@@ -1,7 +1,7 @@
 
-		 ==========================
-		 =   Ballerburg SDL v1.0  =
-		 ==========================
+		============================
+		=   Ballerburg SDL v1.0.1  =
+		============================
 
 	    Copyright (C) 1987, 1989  Eckhard Kruse
 	    Copyright (C) 2010, 2013  Thomas Huth
