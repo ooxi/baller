@@ -306,7 +306,7 @@ msgstr "Angolo:"
 
 #: src/cannoneer.c:68 src/market.c:83
 msgid "Gunpowder:"
-msgstr "Polvere da sparo:"
+msgstr "Polvere:"
 
 #: src/market.c:77
 msgid "You have:"
