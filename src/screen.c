@@ -52,7 +52,7 @@ void scr_init(void)
 		exit(-1);
 	}
 
-	surf = SDL_SetVideoMode(640, 480, 32, SDL_SWSURFACE|SDL_HWPALETTE);
+	surf = SDL_SetVideoMode(640, 480, 32, SDL_SWSURFACE);
 	if (!surf)
 	{
 		fprintf(stderr, "Could not initialize the SDL library:\n %s\n",
