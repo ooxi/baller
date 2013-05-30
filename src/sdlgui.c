@@ -12,6 +12,8 @@ const char SDLGui_fileid[] = "sdlgui.c : " __DATE__ " " __TIME__;
 #include <ctype.h>
 #include <string.h>
 #include <stdbool.h>
+#include <stdlib.h>
+#include <stdio.h>
 
 #include "i18n.h"
 #include "sdlgui.h"
@@ -1033,4 +1035,3 @@ int SDLGui_DoDialog(SGOBJ *dlg, SDL_Event *pEventOut)
 
 	return retbutton;
 }
-
