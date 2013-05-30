@@ -18,6 +18,7 @@ const char DlgAlert_fileid[] = "dlgAlert.c : " __DATE__ " " __TIME__;
 
 #include <string.h>
 #include <stdbool.h>
+#include <stdlib.h>
 
 #include "sdlgui.h"
 #include "screen.h"
