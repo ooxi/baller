@@ -1,0 +1,453 @@
+# Dutch translations for ballerburg.
+# Copyright (C) 2013 Guus Sliepen
+# This file is distributed under the same license as the ballerburg package.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: ballerburg 1.0.1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-10-05 22:31+0200\n"
+"PO-Revision-Date: 2013-10-05 22:35+-2--\n"
+"Last-Translator: Guus Sliepen <guus@debian.org>\n"
+"Language-Team: Dutch <nl@li.org>\n"
+"Language: nl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: src/baller1.c:68
+msgid "Oaf"
+msgstr "Pummel"
+
+#: src/baller1.c:68
+msgid "Yokel"
+msgstr "Kinkel"
+
+#: src/baller1.c:68
+msgid "Boor"
+msgstr "Lummel"
+
+#: src/baller1.c:68
+msgid "Doofus"
+msgstr "Vlegel"
+
+#: src/baller1.c:69
+msgid "Fumbler"
+msgstr "Lomperd"
+
+#: src/baller1.c:69
+msgid "Geezer"
+msgstr "Gozer"
+
+#: src/baller1.c:69
+msgid "Ruffian"
+msgstr "Schurk"
+
+#: src/baller1.c:105
+msgid "Not enough memory for loading the castles."
+msgstr "Niet genoeg geheugen voor het laden van de kastelen."
+
+#: src/baller1.c:117
+msgid "William"
+msgstr "Willem"
+
+#: src/baller1.c:118
+msgid "Frederick"
+msgstr "Frederik"
+
+#: src/baller1.c:178
+msgid "Games"
+msgstr "Spellen"
+
+#: src/baller1.c:179
+msgid "Total won"
+msgstr "Totaal gewonnen"
+
+#: src/baller1.c:180
+msgid "Total lost"
+msgstr "Totaal verloren"
+
+#: src/baller1.c:181
+msgid "Won in %"
+msgstr "Won in %"
+
+#: src/baller1.c:293
+msgid "You don't have enough gunpowder."
+msgstr "Je hebt niet genoeg buskruit."
+
+#: src/baller1.c:293
+#: src/baller1.c:297
+msgid "Cancel"
+msgstr "Afbreken"
+
+#: src/baller1.c:297
+msgid "You don't have any cannonballs left."
+msgstr "Je hebt geen kanonskogels meer."
+
+#: src/baller1.c:383
+#, c-format
+msgid "!! %s has won !!"
+msgstr "!! %s heeft gewonnen !!"
+
+#: src/baller1.c:396
+#, c-format
+msgid "( %s' king was hit,"
+msgstr "( %s' koning was geraakt,"
+
+#: src/baller1.c:398
+#, c-format
+msgid "( %s's king was hit,"
+msgstr "( %s's koning was geraakt,"
+
+#: src/baller1.c:399
+msgid "and upon hearing this, the people capitulated. )"
+msgstr "en na dit vernomen te hebben, gaf het volk zich over. )"
+
+#: src/baller1.c:403
+#, c-format
+msgid "( %s' king has capitulated"
+msgstr "( %s' koning heeft zich overgegeven"
+
+#: src/baller1.c:406
+#, c-format
+msgid "( %s's king has capitulated"
+msgstr "( %s's koning heeft zich overgegeven"
+
+#: src/baller1.c:408
+msgid "  because of the hopeless situation. )"
+msgstr " vanwege de hopeloze situatie. )"
+
+#: src/baller1.c:411
+#, c-format
+msgid "( %s has no folk left. )"
+msgstr "( %s heeft geen volk over. )"
+
+#: src/baller1.c:415
+msgid "( The limit of maximum rounds has been reached."
+msgstr "( Het maximum aantal rondes is bereikt."
+
+#: src/baller1.c:416
+#, c-format
+msgid "%s is worse off. )"
+msgstr "%s staat er slechter voor. )"
+
+#: src/baller2.c:486
+msgid " Round     "
+msgstr " Ronde     "
+
+#: src/baller2.c:660
+msgid "The king says:"
+msgstr "De koning zegt:"
+
+#: src/baller2.c:661
+msgid "Humbly acknowledged"
+msgstr "Met welnemen ontvangen"
+
+#: src/baller2.c:662
+msgid ""
+"Well...\n"
+" alright...\n"
+" Carry on..."
+msgstr ""
+"Wel...\n"
+" vooruit...\n"
+" Ga zo door..."
+
+#: src/baller2.c:663
+msgid ""
+"We are satisfied\n"
+" with your performance!"
+msgstr ""
+"Wij zijn tevreden\n"
+" met je prestaties!"
+
+#: src/baller2.c:664
+msgid ""
+"Excellent,\n"
+" keep at it!"
+msgstr ""
+"Voortreffelijk,\n"
+" ga zo door!"
+
+#: src/baller2.c:665
+msgid ""
+"Maybe you ought to\n"
+" lower Our taxes..."
+msgstr ""
+"Misschien zou je Onze\n"
+" belasting moeten verlagen..."
+
+#: src/baller2.c:666
+msgid ""
+"If you keep this up,\n"
+" We shall discharge you!"
+msgstr ""
+"Als je zo door gaat,\n"
+" zullen Wij je ontslaan!"
+
+#: src/baller2.c:667
+msgid ""
+"Why don't you buy\n"
+" a shaft tower..."
+msgstr ""
+"Waarom koop je\n"
+" geen boortoren..."
+
+#: src/baller2.c:668
+msgid ""
+"You ought to\n"
+" kindly make more of\n"
+" an effort!"
+msgstr ""
+"Gelieve toch\n"
+" een beetje beter\n"
+" je best te doen!"
+
+#: src/baller2.c:669
+msgid ""
+"You don't need to visit Us\n"
+" in each round."
+msgstr ""
+"Je hoeft Ons echt niet\n"
+" elke ronde te bezoeken."
+
+#: src/baller2.c:670
+#, c-format
+msgid ""
+"Are you aware\n"
+" that you have already visited Us\n"
+" %d times thus far?"
+msgstr ""
+"Wist je dat\n"
+" je ons tot nu toe al reeds\n"
+" %d keer hebt bezocht?"
+
+#: src/baller2.c:671
+msgid ""
+"So, are you certain\n"
+" that you will manage\n"
+" without a weather vane?"
+msgstr ""
+"Zeg, ben je zeker\n"
+" dat je het wel redt\n"
+" zonder een windvaan?"
+
+#: src/baller2.c:672
+msgid "Nice to see you..."
+msgstr "Leuk je te zien..."
+
+#: src/baller2.c:673
+msgid ""
+"What are We supposed\n"
+" to say in such an\n"
+" early phase?"
+msgstr ""
+"Wat zouden Wij\n"
+" moeten zeggen in zo'n\n"
+" vroeg stadium?"
+
+#: src/baller2.c:674
+msgid ""
+"You ought to earn more money,\n"
+" build more shaft towers,\n"
+" and vanquish the opponent."
+msgstr ""
+"Je zou meer geld moeten verdienen,\n"
+" meer boortorens bouwen,"
+" en de vijand verslaan."
+
+#: src/baller2.c:675
+msgid ""
+"We do not have anything new\n"
+" to say to you."
+msgstr ""
+"We hebben niets nieuws\n"
+" tegen je te zeggen."
+
+#: src/baller2.c:676
+msgid ""
+"We are pleased for you\n"
+" to come around and visit Us."
+msgstr ""
+"Wij zijn blij dat je\n"
+" bij ons op visite komt."
+
+#: src/baller2.c:691
+msgid ""
+"The king is not in the mood\n"
+"to talk to you."
+msgstr ""
+"De koning is niet in de stemming\n"
+"om met je te praten."
+
+#: src/baller2.c:691
+msgid "Too bad."
+msgstr "Helaas."
+
+#: src/ballergui.c:52
+#: src/settings.c:223
+msgid "Quit Ballerburg?"
+msgstr "Ballerburg verlaten?"
+
+#: src/ballergui.c:52
+#: src/settings.c:223
+msgid "Yes"
+msgstr "Ja"
+
+#: src/ballergui.c:52
+#: src/settings.c:223
+msgid "No"
+msgstr "Nee"
+
+#: src/cannoneer.c:59
+msgid "Cannon"
+msgstr "Kanon"
+
+#: src/cannoneer.c:61
+msgid "Angle:"
+msgstr "Hoek:"
+
+#: src/cannoneer.c:68
+#: src/market.c:83
+msgid "Gunpowder:"
+msgstr "Buskruit:"
+
+#: src/market.c:77
+msgid "You have:"
+msgstr "Je hebt:"
+
+#: src/market.c:79
+msgid "Funds:"
+msgstr "Geld:"
+
+#: src/market.c:80
+msgid "Shaft towers:"
+msgstr "Boortorens:"
+
+#: src/market.c:81
+msgid "Cannons:"
+msgstr "Kanonnen:"
+
+#: src/market.c:82
+#: src/market.c:104
+msgid "Weather vane:"
+msgstr "Windvaan:"
+
+#: src/market.c:84
+msgid "Cannonballs:"
+msgstr "Kanonskogels:"
+
+#: src/market.c:85
+msgid "Population:"
+msgstr "Bevolking:"
+
+#: src/market.c:86
+msgid "Taxes in %"
+msgstr "Belasting in %"
+
+#: src/market.c:99
+msgid "Market:"
+msgstr "Markt:"
+
+#: src/market.c:101
+msgid "Lay bricks:"
+msgstr "Stenen leggen:"
+
+#: src/market.c:102
+msgid "Shaft tower:"
+msgstr "Boortoren:"
+
+#: src/market.c:103
+msgid "Cannon:"
+msgstr "Kanon:"
+
+#: src/market.c:105
+msgid "Powder x30:"
+msgstr "Kruit x30:"
+
+#: src/market.c:106
+msgid "2 cannonballs:"
+msgstr "2 kanonskogels:"
+
+#: src/market.c:114
+#: src/screen.c:40
+msgid "Done"
+msgstr "Klaar"
+
+#: src/market.c:135
+msgid " Lay bricks: "
+msgstr " Leg stenen: "
+
+#: src/market.c:136
+#: src/market.c:159
+#, c-format
+msgid " Bricks left: %02d "
+msgstr " Stenen over: %02d "
+
+#: src/settings.c:65
+msgid "Settings"
+msgstr "Instellingen"
+
+#: src/settings.c:68
+#: src/settings.c:247
+msgid "Player 1"
+msgstr "Speler 1"
+
+#: src/settings.c:69
+#: src/settings.c:86
+msgid "Name:"
+msgstr "Naam:"
+
+#: src/settings.c:71
+#: src/settings.c:88
+msgid "Human"
+msgstr "Mens"
+
+#: src/settings.c:72
+#: src/settings.c:89
+msgid "Computer"
+msgstr "Computer"
+
+#: src/settings.c:73
+#: src/settings.c:90
+msgid "AI strategy:"
+msgstr "AI strategie:"
+
+#: src/settings.c:78
+#: src/settings.c:95
+msgid "AI strength:"
+msgstr "AI sterkte:"
+
+#: src/settings.c:85
+#: src/settings.c:251
+msgid "Player 2"
+msgstr "Speler 2"
+
+#: src/settings.c:101
+msgid "Maximum rounds:"
+msgstr "Maximum aantal rondes:"
+
+#: src/settings.c:105
+msgid "unlimited"
+msgstr "ongelimiteerd"
+
+#: src/settings.c:107
+msgid "King may capitulate"
+msgstr "Koning mag zich overgeven"
+
+#: src/settings.c:108
+msgid "Players may build"
+msgstr "Spelers mogen bouwen"
+
+#: src/settings.c:110
+#: src/settings.c:245
+msgid "New game"
+msgstr "Nieuw spel"
+
+#: src/settings.c:111
+msgid "Continue game"
+msgstr "Doorgaan"
+
+#: src/settings.c:112
+msgid "Exit program"
+msgstr "Afsluiten"
