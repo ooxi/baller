@@ -50,7 +50,7 @@ if(NOT BIN2LOCALEDIR)
 endif()
 
 if(NOT MANDIR)
-	set(MANDIR share/man/man1)
+	set(MANDIR share/man/man6)
 endif()
 
 if(NOT DOCDIR)
