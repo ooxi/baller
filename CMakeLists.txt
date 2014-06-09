@@ -63,7 +63,6 @@ endif()
 # ####################
 
 find_package(SDL REQUIRED)
-find_package(SDL_gfx REQUIRED)
 find_package(Math REQUIRED)
 find_package(Gettext)
 

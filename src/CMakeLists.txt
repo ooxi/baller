@@ -6,7 +6,7 @@ include_directories(${CMAKE_BINARY_DIR} ${MATH_INCLUDE_DIR}
 
 add_executable (ballerburg baller1.c baller2.c ballergui.c cannoneer.c
 			screen.c psg.c dlgAlert.c sdlgui.c market.c
-			music.c paths.c settings.c)
+			music.c paths.c settings.c sdlgfx.c)
 
 target_link_libraries(ballerburg ${SDL_LIBRARY} ${SDLGFX_LIBRARY}
                       ${MATH_LIBRARY})

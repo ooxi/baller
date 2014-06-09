@@ -20,13 +20,13 @@
 
 #include <math.h>
 #include <SDL.h>
-#include <SDL_gfxPrimitives.h>
 
 #include "i18n.h"
 #include "ballergui.h"
 #include "baller1.h"
 #include "sdlgui.h"
 #include "screen.h"
+#include "sdlgfx.h"
 
 
 static void draw_cannoneer(int x, int y, int w, int h);

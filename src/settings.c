@@ -19,7 +19,6 @@
 
 #include <math.h>
 #include <SDL.h>
-#include <SDL_gfxPrimitives.h>
 
 #include "i18n.h"
 #include "ballergui.h"
