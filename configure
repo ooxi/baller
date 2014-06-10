@@ -16,6 +16,7 @@ print_help()
   echo "  --prefix=<path>         Set the install prefix to path"
   echo "  --enable-debug          Enable debug (non-optimized) build"
   echo "  --disable-color-make    Disable color output for Makefiles"
+  echo "  --enable-sdl2           Compile with libsdl 2.0 instead of 1.2"
   echo
   echo "Please run cmake directly for full control over the build."
   echo
@@ -50,6 +51,12 @@ do
     ;;
     --disable-color-make)
       cmake_args="$cmake_args -DCMAKE_COLOR_MAKEFILE:BOOL=0"
+    ;;
+    --enable-sdl2)
+      cmake_args="$cmake_args -DENABLE_SDL2:BOOL=1"
+    ;;
+    --disable-sdl2)
+      cmake_args="$cmake_args -DENABLE_SDL2:BOOL=0"
     ;;
     *)
       echo "Invalid argument: $preq"

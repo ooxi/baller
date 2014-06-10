@@ -62,10 +62,43 @@ endif()
 # Check for libraries:
 # ####################
 
-find_package(SDL REQUIRED)
+if(ENABLE_SDL2)
+	find_package(SDL2 REQUIRED)
+	if(NOT SDL2_FOUND)
+		message(FATAL_ERROR "SDL2 library not found!")
+	endif(NOT SDL2_FOUND)
+	set(SDL_INCLUDE_DIR ${SDL2_INCLUDE_DIR})
+	set(SDL_LIBRARY ${SDL2_LIBRARY})
+	set(SDLMAIN_LIBRARY ${SDL2MAIN_LIBRARY})
+else(ENABLE_SDL2)
+	find_package(SDL REQUIRED)
+	if(NOT SDL_FOUND)
+		message(FATAL_ERROR "SDL library not found!")
+	endif(NOT SDL_FOUND)
+endif(ENABLE_SDL2)
+
 find_package(Math REQUIRED)
 find_package(Gettext)
 
+# ################
+# CPP Definitions:
+# ################
+
+# Additional CFLAGS suggested by the SDL library:
+if(ENABLE_SDL2)
+	add_definitions(-DWITH_SDL2)
+	execute_process(COMMAND pkg-config --cflags-only-other sdl2
+			OUTPUT_VARIABLE DETECTED_SDL_CFLAGS
+			ERROR_QUIET OUTPUT_STRIP_TRAILING_WHITESPACE)
+else(ENABLE_SDL2)
+	execute_process(COMMAND pkg-config --cflags-only-other sdl
+			OUTPUT_VARIABLE DETECTED_SDL_CFLAGS
+			ERROR_QUIET OUTPUT_STRIP_TRAILING_WHITESPACE)
+endif(ENABLE_SDL2)
+if(DETECTED_SDL_CFLAGS)
+	add_definitions(${DETECTED_SDL_CFLAGS})
+	# message(STATUS "Additional CFLAGS of SDL: ${DETECTED_SDL_CFLAGS}")
+endif(DETECTED_SDL_CFLAGS)
 
 # ###########################
 # Check for optional headers:
