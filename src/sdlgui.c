@@ -18,8 +18,13 @@ const char SDLGui_fileid[] = "sdlgui.c : " __DATE__ " " __TIME__;
 #include "i18n.h"
 #include "sdlgui.h"
 #include "baller1.h"
+#include "screen.h"
 
 #include "font8x16.h"
+
+#if WITH_SDL2
+#define SDL_SRCCOLORKEY SDL_TRUE
+#endif
 
 int sdlgui_fontwidth;                       /* Width of the actual font */
 int sdlgui_fontheight;                      /* Height of the actual font */
@@ -31,6 +36,14 @@ static SDL_Surface *pFontGfx = NULL;        /* The actual font graphics */
 static int current_object = 0;              /* Current selected object */
 static bool has_utf8;
 
+#if WITH_SDL2
+static inline int SDL_SetColors(SDL_Surface *surface, SDL_Color *colors,
+                                int firstcolor, int ncolors)
+{
+	return SDL_SetPaletteColors(surface->format->palette, colors,
+	                            firstcolor, ncolors);
+}
+#endif
 
 /**
  * Load an 1 plane XBM into a 8 planes SDL_Surface.
@@ -105,8 +118,8 @@ int SDLGui_Init(void)
 	SDL_SetColors(pBigFontGfx, blackWhiteColors, 0, 2);
 
 	/* Set font color 0 as transparent: */
-	//SDL_SetColorKey(pSmallFontGfx, (SDL_SRCCOLORKEY|SDL_RLEACCEL), 0);
-	SDL_SetColorKey(pBigFontGfx, (SDL_SRCCOLORKEY|SDL_RLEACCEL), 0);
+	//SDL_SetColorKey(pSmallFontGfx, SDL_SRCCOLORKEY, 0);
+	SDL_SetColorKey(pBigFontGfx, SDL_SRCCOLORKEY, 0);
 
 	/* Check for UTF-8 locale */
 	lang = getenv("LANG");
@@ -524,10 +537,9 @@ static void SDLGui_EditField(SGOBJ *dlg, int objnum)
 	SDL_Rect rect;
 	Uint32 grey, cursorCol;
 	SDL_Event event;
+#if !WITH_SDL2
 	int nOldUnicodeMode;
-
-	/* Enable unicode translation to get proper characters with SDL_PollEvent */
-	nOldUnicodeMode = SDL_EnableUNICODE(true);
+#endif
 
 	grey = SDL_MapRGB(pSdlGuiScrn->format, 192, 192, 192);
 	cursorCol = SDL_MapRGB(pSdlGuiScrn->format, 128, 128, 128);
@@ -536,6 +548,14 @@ static void SDLGui_EditField(SGOBJ *dlg, int objnum)
 	rect.y = (dlg[0].y + dlg[objnum].y) * sdlgui_fontheight;
 	rect.w = (dlg[objnum].w + 1) * sdlgui_fontwidth - 1;
 	rect.h = dlg[objnum].h * sdlgui_fontheight;
+
+#if WITH_SDL2
+	SDL_SetTextInputRect(&rect);
+	SDL_StartTextInput();
+#else
+	/* Enable unicode translation to get proper characters with SDL_PollEvent */
+	nOldUnicodeMode = SDL_EnableUNICODE(true);
+#endif
 
 	txt = dlg[objnum].txt;
 	cursorPos = strlen(txt);
@@ -563,6 +583,16 @@ static void SDLGui_EditField(SGOBJ *dlg, int objnum)
 				 case SDL_MOUSEBUTTONDOWN:          /* Mouse pressed -> stop editing */
 					bStopEditing = true;
 					break;
+#if WITH_SDL2
+				 case SDL_TEXTINPUT:
+					if (strlen(txt) < (size_t)dlg[objnum].w)
+					{
+						memmove(&txt[cursorPos+1], &txt[cursorPos], strlen(&txt[cursorPos])+1);
+							txt[cursorPos] = event.text.text[0];
+						cursorPos += 1;
+					}
+					break;
+#endif
 				 case SDL_KEYDOWN:                  /* Key pressed */
 					switch (event.key.keysym.sym)
 					{
@@ -590,6 +620,7 @@ static void SDLGui_EditField(SGOBJ *dlg, int objnum)
 							memmove(&txt[cursorPos], &txt[cursorPos+1], strlen(&txt[cursorPos+1])+1);
 						break;
 					 default:
+#if !WITH_SDL2
 						/* If it is a "good" key then insert it into the text field */
 						if (event.key.keysym.unicode >= 32 && event.key.keysym.unicode < 128
 						        /* && event.key.keysym.unicode != PATHSEP*/)
@@ -601,6 +632,7 @@ static void SDLGui_EditField(SGOBJ *dlg, int objnum)
 								cursorPos += 1;
 							}
 						}
+#endif
 						break;
 					}
 					break;
@@ -628,7 +660,11 @@ static void SDLGui_EditField(SGOBJ *dlg, int objnum)
 	}
 	while (!bStopEditing);
 
+#if WITH_SDL2
+	SDL_StopTextInput();
+#else
 	SDL_EnableUNICODE(nOldUnicodeMode);
+#endif
 }
 
 

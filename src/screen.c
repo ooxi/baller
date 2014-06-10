@@ -30,6 +30,12 @@
 #define min(a,b) ((a)<(b)?(a):(b))
 #define max(a,b) ((a)>(b)?(a):(b))
 
+#if WITH_SDL2
+SDL_Window *sdlWindow;
+SDL_Renderer *sdlRenderer;
+SDL_Texture *sdlTexture;
+#endif
+
 SDL_Surface *surf;
 Uint32 the_color, fill_color;
 Uint32 bg_color;
@@ -52,15 +58,32 @@ void scr_init(void)
 		exit(-1);
 	}
 
+#if WITH_SDL2
+	sdlWindow = SDL_CreateWindow("Ballerburg SDL",
+	                             SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
+	                             640, 480, 0);
+	sdlRenderer = SDL_CreateRenderer(sdlWindow, -1, 0);
+	if (!sdlWindow || !sdlRenderer)
+	{
+		fprintf(stderr,"Failed to create window or renderer!\n");
+		exit(-1);
+	}
+	SDL_RenderSetLogicalSize(sdlRenderer, 640, 480);
+	surf = SDL_CreateRGBSurface(SDL_SWSURFACE, 640, 480, 32, 0x00FF0000,
+				    0x0000FF00, 0x000000FF, 0xFF000000);
+	sdlTexture = SDL_CreateTexture(sdlRenderer, SDL_PIXELFORMAT_ARGB8888,
+					SDL_TEXTUREACCESS_STREAMING, 640, 480);
+#else
 	surf = SDL_SetVideoMode(640, 480, 32, SDL_SWSURFACE);
+	SDL_WM_SetCaption("Ballerburg SDL", "Ballerburg");
+#endif
+
 	if (!surf)
 	{
 		fprintf(stderr, "Could not initialize the SDL library:\n %s\n",
 			SDL_GetError() );
 		exit(-1);
 	}
-
-	SDL_WM_SetCaption("Ballerburg SDL", "Ballerburg");
 
 	bg_color = SDL_MapRGB(surf->format,0xe0,0xf0,0xff);
 
@@ -476,3 +499,19 @@ void scr_restore_bg(void *ps)
 
 	SDL_UpdateRects(surf, 1, &s->rect);
 }
+
+#if WITH_SDL2
+void SDL_UpdateRects(SDL_Surface *screen, int numrects, SDL_Rect *rects)
+{
+	SDL_UpdateTexture(sdlTexture, NULL, screen->pixels, screen->pitch);
+	SDL_RenderClear(sdlRenderer);
+	SDL_RenderCopy(sdlRenderer, sdlTexture, NULL, NULL);
+	SDL_RenderPresent(sdlRenderer);
+}
+
+void SDL_UpdateRect(SDL_Surface *screen, Sint32 x, Sint32 y, Sint32 w, Sint32 h)
+{
+	SDL_Rect rect = { x, y, w, h };
+	SDL_UpdateRects(screen, 1, &rect);
+}
+#endif

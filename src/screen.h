@@ -47,3 +47,8 @@ void scr_restore_bg(void *ps);
 
 int DlgAlert_Notice(const char *text, const char *button);
 int DlgAlert_Query(const char *text, const char *button1, const char *button2);
+
+#if WITH_SDL2
+void SDL_UpdateRects(SDL_Surface *screen, int numrects, SDL_Rect *rects);
+void SDL_UpdateRect(SDL_Surface *screen, Sint32 x, Sint32 y, Sint32 w, Sint32 h);
+#endif
