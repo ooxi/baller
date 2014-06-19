@@ -48,6 +48,24 @@ static SGOBJ donebuttondlg[] =
 	{ SGBUTTON, SG_EXIT, 0, 0,0, 8,1, N_("Done") }
 };
 
+#if WITH_SDL2
+static int fullscreenflag = 0;
+static void scr_sdl2_init(void)
+{
+	sdlWindow = SDL_CreateWindow("Ballerburg SDL",
+	                             SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
+	                             640, 480, fullscreenflag);
+	sdlRenderer = SDL_CreateRenderer(sdlWindow, -1, 0);
+	if (!sdlWindow || !sdlRenderer)
+	{
+		fprintf(stderr,"Failed to create window or renderer!\n");
+		exit(-1);
+	}
+	SDL_RenderSetLogicalSize(sdlRenderer, 640, 480);
+	sdlTexture = SDL_CreateTexture(sdlRenderer, SDL_PIXELFORMAT_RGB888,
+					SDL_TEXTUREACCESS_STREAMING, 640, 480);
+}
+#endif
 
 void scr_init(void)
 {
@@ -59,20 +77,9 @@ void scr_init(void)
 	}
 
 #if WITH_SDL2
-	sdlWindow = SDL_CreateWindow("Ballerburg SDL",
-	                             SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
-	                             640, 480, 0);
-	sdlRenderer = SDL_CreateRenderer(sdlWindow, -1, 0);
-	if (!sdlWindow || !sdlRenderer)
-	{
-		fprintf(stderr,"Failed to create window or renderer!\n");
-		exit(-1);
-	}
-	SDL_RenderSetLogicalSize(sdlRenderer, 640, 480);
+	scr_sdl2_init();
 	surf = SDL_CreateRGBSurface(SDL_SWSURFACE, 640, 480, 32, 0x00FF0000,
-				    0x0000FF00, 0x000000FF, 0xFF000000);
-	sdlTexture = SDL_CreateTexture(sdlRenderer, SDL_PIXELFORMAT_ARGB8888,
-					SDL_TEXTUREACCESS_STREAMING, 640, 480);
+				    0x0000FF00, 0x000000FF, 0);
 #else
 	surf = SDL_SetVideoMode(640, 480, 32, SDL_SWSURFACE);
 	SDL_WM_SetCaption("Ballerburg SDL", "Ballerburg");
@@ -89,6 +96,20 @@ void scr_init(void)
 
 	SDLGui_Init();
 	SDLGui_SetScreen(surf);
+}
+
+void scr_togglefullscreen(void)
+{
+#if WITH_SDL2
+	fullscreenflag ^= SDL_WINDOW_FULLSCREEN_DESKTOP;
+	SDL_DestroyTexture(sdlTexture);
+	SDL_DestroyRenderer(sdlRenderer);
+	SDL_DestroyWindow(sdlWindow);
+	scr_sdl2_init();
+	SDL_UpdateRect(surf, 0, 0, 640, 480);
+#else
+	SDL_WM_ToggleFullScreen(surf);
+#endif
 }
 
 void scr_clear(void)

@@ -39,9 +39,7 @@ static int gui_handle_keys(SDL_Event *ev, int allow_dlgs)
 			return settings();
 		break;
 	 case SDLK_f:
-#if !WITH_SDL2
-		SDL_WM_ToggleFullScreen(surf);
-#endif
+		scr_togglefullscreen();
 		break;
 	 case SDLK_t:
 		if (in_table || !allow_dlgs)
