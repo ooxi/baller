@@ -31,16 +31,16 @@
 #define max(a,b) ((a)>(b)?(a):(b))
 
 #if WITH_SDL2
-SDL_Window *sdlWindow;
-SDL_Renderer *sdlRenderer;
-SDL_Texture *sdlTexture;
+static SDL_Window *sdlWindow;
+static SDL_Renderer *sdlRenderer;
+static SDL_Texture *sdlTexture;
 #endif
 
 SDL_Surface *surf;
-Uint32 the_color, fill_color;
-Uint32 bg_color;
+static Uint32 the_color, fill_color;
+static Uint32 bg_color;
 
-int fill_style, fill_interior;
+static int fill_style, fill_interior;
 
 static SGOBJ donebuttondlg[] =
 {
