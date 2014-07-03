@@ -509,6 +509,8 @@ void scr_restore_bg(void *ps)
 	}
 
 	SDL_UpdateRects(surf, 1, &s->rect);
+
+	free(ps);
 }
 
 #if WITH_SDL2
