@@ -142,7 +142,10 @@ static void anbau(void)
 	do
 	{
 		if (event(1, 0))
+		{
+			scr_exit();
 			exit(0);
+		}
 
 		if ( bt && (n? mx>624-bg[0] : mx<bg[0]+15 ) && my>155 )
 		{

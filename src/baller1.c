@@ -126,6 +126,8 @@ int main(int argc, char **argv)
 
 	t_save();
 
+	scr_exit();
+
 	return 0;
 }
 

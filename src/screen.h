@@ -32,6 +32,7 @@ void v_gtext(int handle, int x, int y, const char *text);
 void vsf_style(short handle, short val);
 
 void scr_init(void);
+void scr_exit(void);
 void scr_togglefullscreen(void);
 void scr_clear(void);
 void scr_line(int x1, int y1, int x2, int y2, int rgba);

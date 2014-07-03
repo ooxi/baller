@@ -98,6 +98,23 @@ void scr_init(void)
 	SDLGui_SetScreen(surf);
 }
 
+void scr_exit(void)
+{
+	SDLGui_UnInit();
+
+#if WITH_SDL2
+	if (surf)
+		SDL_FreeSurface(surf);
+	if (sdlTexture)
+		SDL_DestroyTexture(sdlTexture);
+	if (sdlRenderer)
+		SDL_DestroyRenderer(sdlRenderer);
+	if (sdlWindow)
+		SDL_DestroyWindow(sdlWindow);
+#endif
+	SDL_Quit();
+}
+
 void scr_togglefullscreen(void)
 {
 #if WITH_SDL2
