@@ -354,32 +354,7 @@ void v_pline(short handle, short num, short xy[])
 
 void scr_line(int x1, int y1, int x2, int y2, int rgb)
 {
-	int minx, miny, maxx, maxy;
-
-	if (x1 < x2)
-	{
-		minx = x1;
-		maxx = x2;
-	}
-	else
-	{
-		minx = x2;
-		maxx = x1;
-	}
-
-	if (y1 < y2)
-	{
-		miny = y1;
-		maxy = y2;
-	}
-	else
-	{
-		miny = y2;
-		maxy = y1;
-	}
-
 	lineColor(surf, x1, y1, x2, y2, (rgb<<8)|0xff);
-	SDL_UpdateRect(surf, minx, miny, maxx-minx+1, maxy-miny+1);
 }
 
 
@@ -456,8 +431,6 @@ void scr_cannonball(int x, int y)
 	lineColor(surf, x-3,y  ,x+2,y  , the_color);
 	lineColor(surf, x-3,y+1,x+2,y+1, the_color);
 	lineColor(surf, x-2,y+2,x+1,y+2, the_color);
-
-	SDL_UpdateRect(surf, x-3, y-3, 6, 6);
 }
 
 
@@ -536,3 +509,18 @@ void SDL_UpdateRect(SDL_Surface *screen, Sint32 x, Sint32 y, Sint32 w, Sint32 h)
 	SDL_UpdateRects(screen, 1, &rect);
 }
 #endif
+
+void scr_update(int x, int y, int w, int h)
+{
+	if (x >= 640 || y >= 480)
+		return;
+	if (x < 0)
+		x = 0;
+	if (y < 0)
+		y = 0;
+	if (x + w > 640)
+		w = 640 - x;
+	if (y + h > 480)
+		h = 480 - y;
+	SDL_UpdateRect(surf, x, y, w, h);
+}

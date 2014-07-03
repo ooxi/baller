@@ -256,6 +256,7 @@ void schuss(int k)
 	color(1);
 	baller(0);
 	kugel( (int)x,(int)y );
+	scr_update(x - 3, y - 3, 6, 6);
 
 	v=1;
 	while ( x>3 && x<637 && y<396 &&  ( v || c ) ) /* Flugschleife */
@@ -274,6 +275,7 @@ void schuss(int k)
 		}
 		color(1);
 		kugel( (int)x,(int)y );
+		scr_update(Min(ox, x)-3, Min(oy, y)-3, abs(ox-x)+7, abs(oy-y)+7);
 		SDL_Delay(8);
 		SDL_PumpEvents();
 
@@ -288,6 +290,7 @@ void schuss(int k)
 
 	color( 0 );
 	kugel( (int)x,(int)y );
+	scr_update(x - 3, y - 3, 6, 6);
 
 	draw(ka[n][k].x+20*n, ka[n][k].y, kanon);
 
@@ -397,6 +400,7 @@ void expls(int x, int y, int w, int h, int d)
 		fire_col = (rand()&0x3f) + 0xc0;
 		fire_col = (fire_col << 16) | ((rand()%fire_col) << 8);
 		scr_line(xy[28], xy[29], xy[30], xy[31], fire_col);
+		scr_update(x-w, y-h, w*2, h*2);
 		baller((d&31)^31);
 		SDL_Delay(10);
 	}
@@ -483,8 +487,10 @@ void bild(void)
 
 	burg(0);
 	burg(1);
-	v_gtext(handle, 276, 395+16, _(" Round     "));
 
+	scr_update(0, 0, 640, 400);
+
+	v_gtext(handle, 276, 395+16, _(" Round     "));
 	scr_draw_done_button(0);
 
 	show();

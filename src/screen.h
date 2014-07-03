@@ -45,6 +45,7 @@ void scr_ctr_text(int cx, int y, const char *text);
 void scr_cannonball(int x, int y);
 void *scr_save_bg(int x, int y, int w, int h);
 void scr_restore_bg(void *ps);
+void scr_update(int x, int y, int w, int h);
 
 int DlgAlert_Notice(const char *text, const char *button);
 int DlgAlert_Query(const char *text, const char *button1, const char *button2);
