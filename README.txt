@@ -1,10 +1,10 @@
 
 		============================
-		=   Ballerburg SDL v1.0.1  =
+		=   Ballerburg SDL v1.1.0  =
 		============================
 
 	    Copyright (C) 1987, 1989  Eckhard Kruse
-	    Copyright (C) 2010, 2013  Thomas Huth
+	    Copyright (C) 2010, 2014  Thomas Huth
 
 
 	   For my sister Martina Huth - I will never
@@ -47,11 +47,7 @@ by Eckhard Kruse to the public.
  ---------------------------
 
 For compiling the source code of Ballerburg SDL, you need the GCC C-compiler,
-CMake and the following libraries (including their headers / development
-packages):
-
-- SDL Version 1.2 (http://www.libsdl.org/)
-- SDL_gfx Version 2.0 (http://www.ferzkopp.net/)
+CMake and the SDL library (preferably version 1.2, see http://www.libsdl.org/).
 
 For configuring the build, you've got to run "cmake" first, using the path of
 the sources as parameter. Alternatively, you can also use the supplied
