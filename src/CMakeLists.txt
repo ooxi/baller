@@ -8,8 +8,7 @@ add_executable (ballerburg baller1.c baller2.c ballergui.c cannoneer.c
 			screen.c psg.c dlgAlert.c sdlgui.c market.c
 			music.c paths.c settings.c sdlgfx.c)
 
-target_link_libraries(ballerburg ${SDL_LIBRARY} ${SDLGFX_LIBRARY}
-                      ${MATH_LIBRARY})
+target_link_libraries(ballerburg ${SDL_LIBRARY} ${MATH_LIBRARY})
 
 if(SDLMAIN_LIBRARY)
 	target_link_libraries(ballerburg ${SDLMAIN_LIBRARY})
