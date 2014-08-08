@@ -1,7 +1,7 @@
 /*
     screen.c - Screen functions for Ballerburg
 
-    Copyright (C) 2010, 2013  Thomas Huth
+    Copyright (C) 2010, 2014  Thomas Huth
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -443,11 +443,11 @@ void scr_draw_done_button(int selected)
  */
 void scr_cannonball(int x, int y)
 {
-	lineColor(surf, x-2,y-2,x+1,y-2, the_color);
-	lineColor(surf, x-3,y-1,x+2,y-1, the_color);
-	lineColor(surf, x-3,y  ,x+2,y  , the_color);
-	lineColor(surf, x-3,y+1,x+2,y+1, the_color);
-	lineColor(surf, x-2,y+2,x+1,y+2, the_color);
+	lineColor(surf, x-1,y-2, x+1,y-2, the_color);
+	lineColor(surf, x-2,y-1, x+2,y-1, the_color);
+	lineColor(surf, x-2,y  , x+2,y  , the_color);
+	lineColor(surf, x-2,y+1, x+2,y+1, the_color);
+	lineColor(surf, x-1,y+2, x+1,y+2, the_color);
 }
 
 
