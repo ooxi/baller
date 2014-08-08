@@ -138,7 +138,7 @@ int comp(void)  /* Führt einen Zug des Computers durch */
 
 	y=ka[n][i].y-10-zy;
 	t=49-cx[n]*16;   /* Berechnen der Distanz */
-	x=ka[n][i].x+9+8*f-zx -t/2+rand()%t;
+	x=ka[n][i].x+10+7*f-zx -t/2+rand()%t;
 	if ( x<0 ) x=-x;
 
 	wd=n? -wnd:wnd;
@@ -241,7 +241,7 @@ void schuss(int k)
 	drw_gpk(1);
 	drw_gpk(2);
 
-	x=ka[n][k].x+9+8*f;
+	x=ka[n][k].x+10+7*f;
 	y=ka[n][k].y-10;
 	c=2;
 	vx=(.4+0.25*ka[n][k].p)*cos( ka[n][k].w/P57 )*f;
