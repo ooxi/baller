@@ -1,10 +1,10 @@
 
 		 ============================
-		 =   Ballerburg SDL v1.0.1  =
+		 =   Ballerburg SDL v1.1.0  =
 		 ============================
 
 	    Copyright (C) 1987, 1989  Eckhard Kruse
-	    Copyright (C) 2010, 2013  Thomas Huth
+	    Copyright (C) 2010, 2014  Thomas Huth
 
 
 	  Für meine Schwester Martina Huth - ich werde
@@ -46,11 +46,9 @@ an GNU/Linux und andere Systeme mit SDL-Unterstützung vor.
  3) Compilieren des Sourcecodes
  ------------------------------
 
-Zum Compilieren wird der GCC C-Compiler, CMake und folgende Bibliotheken
-(inklusive Header / Development-Paketen) benötigt:
-
-- SDL Version 1.2 (http://www.libsdl.org/)
-- SDL_gfx Version 2.0 (http://www.ferzkopp.net/)
+Zum Compilieren wird der GCC C-Compiler, CMake und die SDL Bibliothek
+(http://www.libsdl.org/ - bevorzugt Version 1.2) inklusive Header bzw.
+Development-Paket benötig.
 
 Vor dem ersten Compilieren muss "cmake" mit dem Pfad zu den Sourcen als
 Parameter aufgerufen werden. Alternativ kann das "configure"-Script
