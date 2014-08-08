@@ -2,7 +2,7 @@
     baller2.c
 
     Copyright (C) 1987, 1989  Eckhard Kruse
-    Copyright (C) 2010, 2013  Thomas Huth
+    Copyright (C) 2010, 2014  Thomas Huth
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -270,8 +270,16 @@ void schuss(int k)
 
 		color(0);
 		kugel( (int)ox,(int)oy );
-		if ( x>=3 && x<=637 && y>= 3 && y <= 397) {
-			v=!loc((int)x,(int)y) & !loc((int)x-1,(int)y+1) & !loc((int)x+1,(int)y+2);
+		if (x>=3 && x<=637 && y>= 3 && y <= 397)
+		{
+			int i;
+			v &= !loc((int)x,(int)y);
+			for (i = -1; i <= 1; i++)
+			{
+				v = v & !loc((int)x-2, (int)y+i)
+				      & !loc((int)x+2, (int)y+i)
+				      & !loc((int)x+i, (int)y+2);
+			}
 		}
 		color(1);
 		kugel( (int)x,(int)y );
