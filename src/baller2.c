@@ -293,7 +293,13 @@ void schuss(int k)
 		Giaccess( 244,135 );
 		Giaccess( a&255,130 );
 		Giaccess( a>>8,131 );
-		if ( c ) c--;
+
+		if (c > 0)
+		{
+			c--;
+			if (c == 0)
+				draw(ka[n][k].x+20*n, ka[n][k].y, kanon);
+		}
 	}
 
 	color( 0 );
