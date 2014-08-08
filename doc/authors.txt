@@ -11,6 +11,8 @@ People who contributed to Ballerburg SDL:
 
 - Andrea Musuruane : Italian translations
 
+- Guus Sliepen : Dutch translations
+
 
 Ballerburg SDL uses source code from other projects which we would like to
 acknowledge here:
@@ -20,3 +22,5 @@ acknowledge here:
 - Stefan Berndtsson : The original version of the PSG soundchip emulation.
 
 - Kolja Koischwitz : Designed some additional castles (used in Ballerburg^2)
+
+- Andreas Schiffler : SDL_gfxPrimitives (graphics primitives for SDL surfaces)
