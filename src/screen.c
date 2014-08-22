@@ -31,9 +31,17 @@
 #define max(a,b) ((a)>(b)?(a):(b))
 
 #if WITH_SDL2
+
 static SDL_Window *sdlWindow;
+
+#define USE_SDL2_RENDERER 0
+#if USE_SDL2_RENDERER
 static SDL_Renderer *sdlRenderer;
 static SDL_Texture *sdlTexture;
+#else
+static SDL_Surface *windowSurf;
+#endif
+
 #endif
 
 SDL_Surface *surf;
@@ -55,6 +63,7 @@ static void scr_sdl2_init(void)
 	sdlWindow = SDL_CreateWindow("Ballerburg SDL",
 	                             SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
 	                             640, 480, fullscreenflag);
+#if USE_SDL2_RENDERER
 	sdlRenderer = SDL_CreateRenderer(sdlWindow, -1, 0);
 	if (!sdlWindow || !sdlRenderer)
 	{
@@ -64,6 +73,9 @@ static void scr_sdl2_init(void)
 	SDL_RenderSetLogicalSize(sdlRenderer, 640, 480);
 	sdlTexture = SDL_CreateTexture(sdlRenderer, SDL_PIXELFORMAT_RGB888,
 					SDL_TEXTUREACCESS_STREAMING, 640, 480);
+#else
+	windowSurf = SDL_GetWindowSurface(sdlWindow);
+#endif
 }
 #endif
 
@@ -105,10 +117,12 @@ void scr_exit(void)
 #if WITH_SDL2
 	if (surf)
 		SDL_FreeSurface(surf);
+#if USE_SDL2_RENDERER
 	if (sdlTexture)
 		SDL_DestroyTexture(sdlTexture);
 	if (sdlRenderer)
 		SDL_DestroyRenderer(sdlRenderer);
+#endif
 	if (sdlWindow)
 		SDL_DestroyWindow(sdlWindow);
 #endif
@@ -119,8 +133,10 @@ void scr_togglefullscreen(void)
 {
 #if WITH_SDL2
 	fullscreenflag ^= SDL_WINDOW_FULLSCREEN_DESKTOP;
+#if USER_SDL2_RENDERER
 	SDL_DestroyTexture(sdlTexture);
 	SDL_DestroyRenderer(sdlRenderer);
+#endif
 	SDL_DestroyWindow(sdlWindow);
 	scr_sdl2_init();
 	SDL_UpdateRect(surf, 0, 0, 640, 480);
@@ -516,15 +532,26 @@ void scr_restore_bg(void *ps)
 #if WITH_SDL2
 void SDL_UpdateRects(SDL_Surface *screen, int numrects, SDL_Rect *rects)
 {
+#if USE_SDL2_RENDERER
 	SDL_UpdateTexture(sdlTexture, NULL, screen->pixels, screen->pitch);
 	SDL_RenderClear(sdlRenderer);
 	SDL_RenderCopy(sdlRenderer, sdlTexture, NULL, NULL);
 	SDL_RenderPresent(sdlRenderer);
+#else
+	SDL_BlitSurface(surf, rects, windowSurf, rects);
+	SDL_UpdateWindowSurfaceRects(sdlWindow, rects, numrects);
+#endif
 }
 
 void SDL_UpdateRect(SDL_Surface *screen, Sint32 x, Sint32 y, Sint32 w, Sint32 h)
 {
-	SDL_Rect rect = { x, y, w, h };
+	SDL_Rect rect;
+	if (w == 0 && h == 0) {
+		w = 640;
+		h = 480;
+	}
+	rect.x = x; rect.y = y;
+	rect.w = w; rect.h = h;
 	SDL_UpdateRects(screen, 1, &rect);
 }
 #endif
