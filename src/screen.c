@@ -132,10 +132,12 @@ void scr_exit(void)
 void scr_togglefullscreen(void)
 {
 #if WITH_SDL2
-	fullscreenflag ^= SDL_WINDOW_FULLSCREEN_DESKTOP;
 #if USER_SDL2_RENDERER
 	SDL_DestroyTexture(sdlTexture);
 	SDL_DestroyRenderer(sdlRenderer);
+	fullscreenflag ^= SDL_WINDOW_FULLSCREEN_DESKTOP;
+#else
+	fullscreenflag ^= SDL_WINDOW_FULLSCREEN;
 #endif
 	SDL_DestroyWindow(sdlWindow);
 	scr_sdl2_init();
