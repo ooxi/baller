@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ballerburg 1.0.1\n"
 "Report-Msgid-Bugs-To: Thomas Huth\n"
-"POT-Creation-Date: 2013-05-10 22:34+0200\n"
+"POT-Creation-Date: 2014-10-11 09:04+0200\n"
 "PO-Revision-Date: 2012-04-26 20:05+0100\n"
 "Last-Translator: Thomas Huth <huth(at)tuxfamily.org>\n"
 "Language-Team: German\n"
@@ -56,87 +56,98 @@ msgstr "Wilhelm"
 msgid "Frederick"
 msgstr "Friedrich"
 
-#: src/baller1.c:178
+#: src/baller1.c:180
 msgid "Games"
 msgstr "Spiele"
 
-#: src/baller1.c:179
+#: src/baller1.c:181
 msgid "Total won"
 msgstr "Gewonnen"
 
-#: src/baller1.c:180
+#: src/baller1.c:182
 msgid "Total lost"
 msgstr "Verloren"
 
-#: src/baller1.c:181
+#: src/baller1.c:183
 msgid "Won in %"
 msgstr "Siege %"
 
-#: src/baller1.c:294
+#: src/baller1.c:295
 msgid "You don't have enough gunpowder."
 msgstr "Dein Pulver reicht nicht!"
 
-#: src/baller1.c:294 src/baller1.c:298
+#: src/baller1.c:295 src/baller1.c:299
 msgid "Cancel"
 msgstr "Abbruch"
 
-#: src/baller1.c:298
+#: src/baller1.c:299
 msgid "You don't have any cannonballs left."
 msgstr "Du hast keine Kugeln mehr!"
 
-#: src/baller1.c:384
+#: src/baller1.c:385
+#, c-format
 msgid "!! %s has won !!"
 msgstr "!! %s hat gewonnen !!"
 
-#: src/baller1.c:397
+#: src/baller1.c:398
+#, c-format
 msgid "( %s' king was hit,"
 msgstr "( %s' König wurde getroffen,"
 
-#: src/baller1.c:399
+#: src/baller1.c:400
+#, c-format
 msgid "( %s's king was hit,"
 msgstr "( %ss König wurde getroffen,"
 
-#: src/baller1.c:400
+#: src/baller1.c:401
 msgid "and upon hearing this, the people capitulated. )"
 msgstr "  daraufhin ergab sich dessen Volk. )"
 
-#: src/baller1.c:404
+#: src/baller1.c:405
+#, c-format
 msgid "( %s' king has capitulated"
 msgstr "( %s' König hat aufgrund der"
 
-#: src/baller1.c:407
+#: src/baller1.c:408
+#, c-format
 msgid "( %s's king has capitulated"
 msgstr "( %ss König hat aufgrund der"
 
-#: src/baller1.c:409
+#: src/baller1.c:410
 msgid "  because of the hopeless situation. )"
 msgstr "  aussichtslosen Lage kapituliert. )"
 
-#: src/baller1.c:412
+#: src/baller1.c:413
+#, c-format
 msgid "( %s has no folk left. )"
 msgstr "( %s hat kein Volk mehr. )"
 
-#: src/baller1.c:416
+#: src/baller1.c:417
 msgid "( The limit of maximum rounds has been reached."
 msgstr "( Die maximale Rundenzahl ist erreicht."
 
-#: src/baller1.c:417
+#: src/baller1.c:418
+#, c-format
 msgid "%s is worse off. )"
 msgstr "%s befindet sich in der schlechteren Lage. )"
 
-#: src/baller2.c:486
+#: src/baller1.c:514
+msgid "Wind:"
+msgstr ""
+
+#: src/baller2.c:507
 msgid " Round     "
 msgstr " Runde     "
 
-#: src/baller2.c:660
+#: src/baller2.c:680
 msgid "The king says:"
 msgstr "Der König meint:"
 
-#: src/baller2.c:661
+#: src/baller2.c:681
 msgid "Humbly acknowledged"
 msgstr "Demütig zur Kenntnis genommen"
 
-#: src/baller2.c:662
+#: src/baller2.c:682
 msgid ""
 "Well...\n"
 " alright...\n"
@@ -146,7 +157,7 @@ msgstr ""
 " Nun gut...\n"
 " Weiter so..."
 
-#: src/baller2.c:663
+#: src/baller2.c:683
 msgid ""
 "We are satisfied\n"
 " with your performance!"
@@ -154,7 +165,7 @@ msgstr ""
 "Ich bin zufrieden\n"
 " mit Ihren Leistungen!"
 
-#: src/baller2.c:664
+#: src/baller2.c:684
 msgid ""
 "Excellent,\n"
 " keep at it!"
@@ -162,7 +173,7 @@ msgstr ""
 "Hervorragend,\n"
 " weiter so!"
 
-#: src/baller2.c:665
+#: src/baller2.c:685
 msgid ""
 "Maybe you ought to\n"
 " lower Our taxes..."
@@ -170,7 +181,7 @@ msgstr ""
 "Vielleicht sollten Sie mal\n"
 " die Steuern senken..."
 
-#: src/baller2.c:666
+#: src/baller2.c:686
 msgid ""
 "If you keep this up,\n"
 " We shall discharge you!"
@@ -178,7 +189,7 @@ msgstr ""
 "Wenn Sie so weiter machen\n"
 " werde ich Sie entlassen!"
 
-#: src/baller2.c:667
+#: src/baller2.c:687
 msgid ""
 "Why don't you buy\n"
 " a shaft tower..."
@@ -186,7 +197,7 @@ msgstr ""
 "Vielleicht mal 'nen\n"
 " Förderturm kaufen..."
 
-#: src/baller2.c:668
+#: src/baller2.c:688
 msgid ""
 "You ought to\n"
 " kindly make more of\n"
@@ -196,7 +207,7 @@ msgstr ""
 " gefälligst mehr Mühe\n"
 " geben!"
 
-#: src/baller2.c:669
+#: src/baller2.c:689
 msgid ""
 "You don't need to visit Us\n"
 " in each round."
@@ -204,7 +215,7 @@ msgstr ""
 "Sie brauchen nicht\n"
 " jede Runde zu kommen."
 
-#: src/baller2.c:670
+#: src/baller2.c:690
 #, c-format
 msgid ""
 "Are you aware\n"
@@ -215,7 +226,7 @@ msgstr ""
 " dass Sie mich bereits\n"
 " %d mal besucht haben?"
 
-#: src/baller2.c:671
+#: src/baller2.c:691
 msgid ""
 "So, are you certain\n"
 " that you will manage\n"
@@ -225,11 +236,11 @@ msgstr ""
 " dass Sie auch ohne eine\n"
 " Windfahne zurecht kommen?"
 
-#: src/baller2.c:672
+#: src/baller2.c:692
 msgid "Nice to see you..."
 msgstr "Schön, Sie zu sehen..."
 
-#: src/baller2.c:673
+#: src/baller2.c:693
 msgid ""
 "What are We supposed\n"
 " to say in such an\n"
@@ -239,7 +250,7 @@ msgstr ""
 " so einer frühen Phase\n"
 " schon sagen?"
 
-#: src/baller2.c:674
+#: src/baller2.c:694
 msgid ""
 "You ought to earn more money,\n"
 " build more shaft towers,\n"
@@ -249,7 +260,7 @@ msgstr ""
 " verdienen, Fördertürme bauen\n"
 " und den Gegner besiegen."
 
-#: src/baller2.c:675
+#: src/baller2.c:695
 msgid ""
 "We do not have anything new\n"
 " to say to you."
@@ -257,7 +268,7 @@ msgstr ""
 "Ich habe Ihnen nichts\n"
 " neues zu sagen."
 
-#: src/baller2.c:676
+#: src/baller2.c:696
 msgid ""
 "We are pleased for you\n"
 " to come around and visit Us."
@@ -265,7 +276,7 @@ msgstr ""
 "Find' ich nett, dass\n"
 " Sie mich mal besuchen!"
 
-#: src/baller2.c:691
+#: src/baller2.c:711
 msgid ""
 "The king is not in the mood\n"
 "to talk to you."
@@ -273,19 +284,19 @@ msgstr ""
 "Der König hat keine Lust,\n"
 "dich zu sprechen."
 
-#: src/baller2.c:691
+#: src/baller2.c:711
 msgid "Too bad."
 msgstr "Schade"
 
-#: src/ballergui.c:52 src/settings.c:223
+#: src/ballergui.c:52 src/settings.c:222
 msgid "Quit Ballerburg?"
 msgstr "Ballerburg beenden?"
 
-#: src/ballergui.c:52 src/settings.c:223
+#: src/ballergui.c:52 src/settings.c:222
 msgid "Yes"
 msgstr "Ja"
 
-#: src/ballergui.c:52 src/settings.c:223
+#: src/ballergui.c:52 src/settings.c:222
 msgid "No"
 msgstr "Nein"
 
@@ -357,7 +368,7 @@ msgstr "30 Pulver:"
 msgid "2 cannonballs:"
 msgstr "2 Kugeln:"
 
-#: src/market.c:114 src/screen.c:40
+#: src/market.c:114 src/screen.c:56
 msgid "Done"
 msgstr "Fertig"
 
@@ -365,67 +376,67 @@ msgstr "Fertig"
 msgid " Lay bricks: "
 msgstr " Anbauen: "
 
-#: src/market.c:136 src/market.c:159
+#: src/market.c:136 src/market.c:162
 #, c-format
 msgid " Bricks left: %02d "
 msgstr " Verbleibende Steine: %02d "
 
-#: src/settings.c:65
+#: src/settings.c:64
 msgid "Settings"
 msgstr "Einstellungen"
 
-#: src/settings.c:68 src/settings.c:247
+#: src/settings.c:67 src/settings.c:246
 msgid "Player 1"
 msgstr "Spieler 1"
 
-#: src/settings.c:69 src/settings.c:86
+#: src/settings.c:68 src/settings.c:85
 msgid "Name:"
 msgstr "Name:"
 
-#: src/settings.c:71 src/settings.c:88
+#: src/settings.c:70 src/settings.c:87
 msgid "Human"
 msgstr "Mensch"
 
-#: src/settings.c:72 src/settings.c:89
+#: src/settings.c:71 src/settings.c:88
 msgid "Computer"
 msgstr "Computer"
 
-#: src/settings.c:73 src/settings.c:90
+#: src/settings.c:72 src/settings.c:89
 msgid "AI strategy:"
 msgstr "KI Strategie:"
 
-#: src/settings.c:78 src/settings.c:95
+#: src/settings.c:77 src/settings.c:94
 msgid "AI strength:"
 msgstr "KI Stärke:"
 
-#: src/settings.c:85 src/settings.c:251
+#: src/settings.c:84 src/settings.c:250
 msgid "Player 2"
 msgstr "Spieler 2"
 
-#: src/settings.c:101
+#: src/settings.c:100
 msgid "Maximum rounds:"
 msgstr "Maximale Rundenzahl:"
 
-#: src/settings.c:105
+#: src/settings.c:104
 msgid "unlimited"
 msgstr "unbegrenzt"
 
-#: src/settings.c:107
+#: src/settings.c:106
 msgid "King may capitulate"
 msgstr "König kann kapitulieren"
 
-#: src/settings.c:108
+#: src/settings.c:107
 msgid "Players may build"
 msgstr "Anbauen ist erlaubt"
 
-#: src/settings.c:110 src/settings.c:245
+#: src/settings.c:109 src/settings.c:244
 msgid "New game"
 msgstr "Neues Spiel"
 
-#: src/settings.c:111
+#: src/settings.c:110
 msgid "Continue game"
 msgstr "Weiterspielen"
 
-#: src/settings.c:112
+#: src/settings.c:111
 msgid "Exit program"
 msgstr "Programm beenden"
