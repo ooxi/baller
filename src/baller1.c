@@ -511,7 +511,7 @@ void werdran(char c)
 			ad[0]=ad[5]=32;
 			ad[2]=ad[3]='?';
 		}
-		v_gtext(handle, x+4, y+h+12, "Wind:");
+		v_gtext(handle, x+4, y+h+12, _("Wind:"));
 		v_gtext(handle, x+52, y+h+12, ad);
 
 		c=wnd>0? 1:-1;
