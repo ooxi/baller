@@ -165,6 +165,12 @@ void m_laden(const char * string)
 	fclose(f_handle);
 }
 
+void m_quit(void)
+{
+	free(liste); liste = NULL;
+	free(takte); takte = NULL;
+}
+
 /************************ Stück spielen **************************************/
 void m_musik(void)
 {

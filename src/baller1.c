@@ -127,6 +127,8 @@ int main(int argc, char **argv)
 	t_save();
 
 	scr_exit();
+	m_quit();
+	free(bur_ad);
 
 	return 0;
 }
