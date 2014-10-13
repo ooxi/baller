@@ -1,3 +1,12 @@
+/*
+ * 8x16 font data.
+ *
+ * Generated from font8x16.bmp with:
+ *
+ *   convert font8x16.bmp xbm:font8x16.h
+ *
+ * font8x16.bmp and this file are in the public domain.
+ */
 #define font8x16_width 128
 #define font8x16_height 256
 static char font8x16_bits[] = {
