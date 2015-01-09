@@ -886,6 +886,7 @@ int hlineColor(SDL_Surface * dst, Sint16 x1, Sint16 x2, Sint16 y, Uint32 color)
 
 \returns Returns 0 on success, -1 on failure.
 */
+#if 0
 int hlineRGBA(SDL_Surface * dst, Sint16 x1, Sint16 x2, Sint16 y, Uint8 r, Uint8 g, Uint8 b, Uint8 a)
 {
 	/*
@@ -893,6 +894,7 @@ int hlineRGBA(SDL_Surface * dst, Sint16 x1, Sint16 x2, Sint16 y, Uint8 r, Uint8 
 	*/
 	return (hlineColor(dst, x1, x2, y, ((Uint32) r << 24) | ((Uint32) g << 16) | ((Uint32) b << 8) | (Uint32) a));
 }
+#endif
 
 /*!
 \brief Draw vertical line with blending.
@@ -1073,6 +1075,7 @@ int vlineColor(SDL_Surface * dst, Sint16 x, Sint16 y1, Sint16 y2, Uint32 color)
 
 \returns Returns 0 on success, -1 on failure.
 */
+#if 0
 int vlineRGBA(SDL_Surface * dst, Sint16 x, Sint16 y1, Sint16 y2, Uint8 r, Uint8 g, Uint8 b, Uint8 a)
 {
 	/*
@@ -1080,6 +1083,7 @@ int vlineRGBA(SDL_Surface * dst, Sint16 x, Sint16 y1, Sint16 y2, Uint8 r, Uint8 
 	*/
 	return (vlineColor(dst, x, y1, y2, ((Uint32) r << 24) | ((Uint32) g << 16) | ((Uint32) b << 8) | (Uint32) a));
 }
+#endif
 
 /*!
 \brief Draw rectangle with blending.
@@ -1300,237 +1304,6 @@ static int _clipLine(SDL_Surface * dst, Sint16 * x1, Sint16 * y1, Sint16 * x2, S
 	return draw;
 }
 
-/*!
-\brief Draw box (filled rectangle) with blending.
-
-\param dst The surface to draw on.
-\param x1 X coordinate of the first point (i.e. top right) of the box.
-\param y1 Y coordinate of the first point (i.e. top right) of the box.
-\param x2 X coordinate of the second point (i.e. bottom left) of the box.
-\param y2 Y coordinate of the second point (i.e. bottom left) of the box.
-\param color The color value of the box to draw (0xRRGGBBAA). 
-
-\returns Returns 0 on success, -1 on failure.
-*/
-int boxColor(SDL_Surface * dst, Sint16 x1, Sint16 y1, Sint16 x2, Sint16 y2, Uint32 color)
-{
-	Sint16 left, right, top, bottom;
-	Uint8 *pixel, *pixellast;
-	int x, dx;
-	int dy;
-	int pixx, pixy;
-	Sint16 w, h, tmp;
-	int result;
-	Uint8 *colorptr;
-
-	/*
-	* Check visibility of clipping rectangle
-	*/
-	if ((dst->clip_rect.w==0) || (dst->clip_rect.h==0)) {
-		return(0);
-	}
-
-	/*
-	* Order coordinates to ensure that
-	* x1<=x2 and y1<=y2 
-	*/
-	if (x1 > x2) {
-		tmp = x1;
-		x1 = x2;
-		x2 = tmp;
-	}
-	if (y1 > y2) {
-		tmp = y1;
-		y1 = y2;
-		y2 = tmp;
-	}
-
-	/* 
-	* Get clipping boundary and 
-	* check visibility 
-	*/
-	left = dst->clip_rect.x;
-	if (x2<left) {
-		return(0);
-	}
-	right = dst->clip_rect.x + dst->clip_rect.w - 1;
-	if (x1>right) {
-		return(0);
-	}
-	top = dst->clip_rect.y;
-	if (y2<top) {
-		return(0);
-	}
-	bottom = dst->clip_rect.y + dst->clip_rect.h - 1;
-	if (y1>bottom) {
-		return(0);
-	}
-
-	/* Clip all points */
-	if (x1<left) { 
-		x1=left; 
-	} else if (x1>right) {
-		x1=right;
-	}
-	if (x2<left) { 
-		x2=left; 
-	} else if (x2>right) {
-		x2=right;
-	}
-	if (y1<top) { 
-		y1=top; 
-	} else if (y1>bottom) {
-		y1=bottom;
-	}
-	if (y2<top) { 
-		y2=top; 
-	} else if (y2>bottom) {
-		y2=bottom;
-	}
-
-	/*
-	* Test for special cases of straight line or single point 
-	*/
-	if (x1 == x2) {
-		if (y1 == y2) {
-			return (pixelColor(dst, x1, y1, color));
-		} else { 
-			return (vlineColor(dst, x1, y1, y2, color));
-		}
-	}
-	if (y1 == y2) {
-		return (hlineColor(dst, x1, x2, y1, color));
-	}
-
-	/*
-	* Calculate width&height 
-	*/
-	w = x2 - x1;
-	h = y2 - y1;
-
-	/*
-	* Alpha check 
-	*/
-	if ((color & 255) == 255) {
-
-		/*
-		* No alpha-blending required 
-		*/
-
-		/*
-		* Setup color 
-		*/
-		colorptr = (Uint8 *) & color;
-		if (SDL_BYTEORDER == SDL_BIG_ENDIAN) {
-			color = SDL_MapRGBA(dst->format, colorptr[0], colorptr[1], colorptr[2], colorptr[3]);
-		} else {
-			color = SDL_MapRGBA(dst->format, colorptr[3], colorptr[2], colorptr[1], colorptr[0]);
-		}
-
-		/*
-		* Lock the surface 
-		*/
-		if (SDL_MUSTLOCK(dst)) {
-			if (SDL_LockSurface(dst) < 0) {
-				return (-1);
-			}
-		}
-
-		/*
-		* More variable setup 
-		*/
-		dx = w;
-		dy = h;
-		pixx = dst->format->BytesPerPixel;
-		pixy = dst->pitch;
-		pixel = ((Uint8 *) dst->pixels) + pixx * (int) x1 + pixy * (int) y1;
-		pixellast = pixel + pixx * dx + pixy * dy;
-		dx++;
-
-		/*
-		* Draw 
-		*/
-		switch (dst->format->BytesPerPixel) {
-		case 1:
-			for (; pixel <= pixellast; pixel += pixy) {
-				memset(pixel, (Uint8) color, dx);
-			}
-			break;
-		case 2:
-			pixy -= (pixx * dx);
-			for (; pixel <= pixellast; pixel += pixy) {
-				for (x = 0; x < dx; x++) {
-					*(Uint16*) pixel = color;
-					pixel += pixx;
-				}
-			}
-			break;
-		case 3:
-			pixy -= (pixx * dx);
-			for (; pixel <= pixellast; pixel += pixy) {
-				for (x = 0; x < dx; x++) {
-					if (SDL_BYTEORDER == SDL_BIG_ENDIAN) {
-						pixel[0] = (color >> 16) & 0xff;
-						pixel[1] = (color >> 8) & 0xff;
-						pixel[2] = color & 0xff;
-					} else {
-						pixel[0] = color & 0xff;
-						pixel[1] = (color >> 8) & 0xff;
-						pixel[2] = (color >> 16) & 0xff;
-					}
-					pixel += pixx;
-				}
-			}
-			break;
-		default:		/* case 4 */
-			pixy -= (pixx * dx);
-			for (; pixel <= pixellast; pixel += pixy) {
-				for (x = 0; x < dx; x++) {
-					*(Uint32 *) pixel = color;
-					pixel += pixx;
-				}
-			}
-			break;
-		}
-
-		/* Unlock surface */
-		if (SDL_MUSTLOCK(dst)) {
-			SDL_UnlockSurface(dst);
-		}
-
-		result = 0;
-
-	} else {
-
-		result = filledRectAlpha(dst, x1, y1, x1 + w, y1 + h, color);
-
-	}
-
-	return (result);
-}
-
-/*!
-\brief Draw box (filled rectangle) with blending.
-
-\param dst The surface to draw on.
-\param x1 X coordinate of the first point (i.e. top right) of the box.
-\param y1 Y coordinate of the first point (i.e. top right) of the box.
-\param x2 X coordinate of the second point (i.e. bottom left) of the box.
-\param y2 Y coordinate of the second point (i.e. bottom left) of the box.
-\param r The red value of the box to draw. 
-\param g The green value of the box to draw. 
-\param b The blue value of the box to draw. 
-\param a The alpha value of the box to draw.
-
-\returns Returns 0 on success, -1 on failure.
-*/
-int boxRGBA(SDL_Surface * dst, Sint16 x1, Sint16 y1, Sint16 x2, Sint16 y2, Uint8 r, Uint8 g, Uint8 b, Uint8 a)
-{
-	/*
-	* Draw 
-	*/
-	return (boxColor(dst, x1, y1, x2, y2, ((Uint32) r << 24) | ((Uint32) g << 16) | ((Uint32) b << 8) | (Uint32) a));
-}
 
 /* ----- Line */
 
@@ -1889,6 +1662,7 @@ int filledCircleColor(SDL_Surface * dst, Sint16 x, Sint16 y, Sint16 rad, Uint32 
 
 \returns Returns 0 on success, -1 on failure.
 */
+#if 0
 int filledCircleRGBA(SDL_Surface * dst, Sint16 x, Sint16 y, Sint16 rad, Uint8 r, Uint8 g, Uint8 b, Uint8 a)
 {
 	/*
@@ -1897,7 +1671,7 @@ int filledCircleRGBA(SDL_Surface * dst, Sint16 x, Sint16 y, Sint16 rad, Uint8 r,
 	return (filledCircleColor
 		(dst, x, y, rad, ((Uint32) r << 24) | ((Uint32) g << 16) | ((Uint32) b << 8) | (Uint32) a));
 }
-
+#endif
 
 /* ---- Filled Polygon */
 
