@@ -134,7 +134,10 @@ static void Paths_GetExecDirFromPATH(const char *argv0, char *pExecDir, int nMax
 
 	pTmpName = malloc(FILENAME_MAX);
 	if (!pTmpName)
+	{
+		free(pPathEnv);
 		return;
+	}
 
 	/* If there is a semicolon in the PATH, we assume it is the PATH
 	 * separator token (like on Windows), otherwise we use a colon. */
