@@ -1,10 +1,10 @@
 
 		 ============================
-		 =   Ballerburg SDL v1.1.0  =
+		 =   Ballerburg SDL v1.2.0  =
 		 ============================
 
 	    Copyright (C) 1987, 1989  Eckhard Kruse
-	    Copyright (C) 2010, 2014  Thomas Huth
+	    Copyright (C) 2010, 2015  Thomas Huth
 
 
 	  Für meine Schwester Martina Huth - ich werde
