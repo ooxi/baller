@@ -20,7 +20,7 @@
 #define P57       57.296
 #define G         0.02     /* Fallbeschleunigung ( g/500 ) */
 
-extern short handle, mx,my,bt,dum,m_buf[8], xy[100],
+extern short mx, my, bt, xy[100],
 	bur[2],bx[2],by[2], ge[2],pu[2],ku[2],vo[2],st[2],kn[2],
 	wx[2],wy[2], *bg, zug,n, p[6], max_rund,
 	fx,fy,fw,fh,

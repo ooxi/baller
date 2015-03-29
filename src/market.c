@@ -130,8 +130,8 @@ static void anbau(void)
 	savearea = scr_save_bg(220, 375-12, 25*8, 38);
 
 	color(1);
-	vsf_interior( handle,2 );
-	vsf_style( handle,9 );
+	scr_sf_interior(2);
+	scr_sf_style(9);
 	scr_ctr_text(320, 365, _(" Lay bricks: "));
 	sprintf(brickstr,  _(" Bricks left: %02d "), 20);
 	scr_ctr_text(320, 382, brickstr);
@@ -157,7 +157,7 @@ static void anbau(void)
 				xy[1]=my-1;
 				xy[2]=mx+2;
 				xy[3]=my+1;
-				v_bar( handle,xy );
+				scr_bar(xy);
 				s--;
 				sprintf(brickstr,  _(" Bricks left: %02d "), s);
 				scr_ctr_text(320, 382, brickstr);

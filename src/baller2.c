@@ -311,7 +311,8 @@ void schuss(int k)
 	oldn=n;
 	if ( !v ) for ( c=0;c<4;c++ )    /* Einschlag der Kugel */
 		{
-			if ( ox>6 && ox<634 ) v_circle( handle, (int)ox,(int)oy, 5 );
+			if (ox > 6 && ox < 634)
+				scr_circle((int)ox, (int)oy, 5);
 
 			baller(22+c*3);
 
@@ -351,7 +352,7 @@ void schuss(int k)
 				{
 					end=n+17;
 					expls( a=639*n+f*(bg[21]+15),v=by[n]-bg[22]-12,17,17,40 );
-					v_circle( handle, a,v,17 );
+					scr_circle(a, v, 17);
 					expls( a,v,17,17,200 );
 					c=4;
 				}
@@ -404,7 +405,7 @@ void expls(int x, int y, int w, int h, int d)
 	{
 		int fire_col;
 
-		v_pline( handle,2,xy );
+		scr_pline(2, xy);
 		memmove(xy, xy+4, 120);
 		for ( j=28;j<32; )
 		{
@@ -421,7 +422,7 @@ void expls(int x, int y, int w, int h, int d)
 
 	for ( i=0;i<32;i+=4 )
 	{
-		v_pline( handle,2,xy+i );
+		scr_pline(2, xy+i);
 	}
 }
 
@@ -504,7 +505,7 @@ void bild(void)
 
 	scr_update(0, 0, 640, 400);
 
-	v_gtext(handle, 276, 395+16, _(" Round     "));
+	scr_l_text(276, 395+16, _(" Round     "));
 	scr_draw_done_button(0);
 
 	show();
@@ -620,14 +621,14 @@ void draw(short x, short y, short *a)
 	short i,fil=1;
 
 	hide();
-	vsf_interior( handle,2 );
-	vsf_style( handle,9 );
+	scr_sf_interior(2);
+	scr_sf_style(9);
 	while ( *a!=-1 )
 	{
 		if ( *a==-2 )
 		{
-			vsf_interior( handle,*++a );
-			vsf_style( handle,*++a );
+			scr_sf_interior(*++a);
+			scr_sf_style(*++a);
 		}
 		else if ( *a==-4 ) fil=!fil;
 		else
@@ -640,8 +641,10 @@ void draw(short x, short y, short *a)
 			}
 			xy[i++]=xy[0];
 			xy[i++]=xy[1];
-			if ( fil ) v_fillarea( handle,i/2,xy );
-			else v_pline( handle,i/2-1,xy );
+			if (fil)
+				scr_fillarea(i/2, xy);
+			else
+				scr_pline(i/2-1, xy);
 		}
 		a++;
 	}

@@ -49,7 +49,7 @@
 
 #define COMP_NUM  7
 
-short handle, mx,my,bt,dum,m_buf[8], xy[100],
+short mx, my, bt, xy[100],
 	bur[2],bx[2],by[2], ge[2],pu[2],ku[2],vo[2],st[2],kn[2],
 	wx[2],wy[2], *bg, zug,n, p[6], max_rund,
 	*burgen[30], b_anz;
@@ -142,7 +142,7 @@ void tabelle(void)
 
 	save_area = scr_save_bg(17, 55, 640-17*2+1, 400-55*2+24+1);
 
-	vsf_interior(handle,0);
+	scr_sf_interior(0);
 	box(17,56, 623,367, 1);
 	box(19,58, 621,365, 1);
 	box(20,59, 620,364, 1);
@@ -156,12 +156,12 @@ void tabelle(void)
 	for (i = 268; i < 364; i += 24)
 		line(20,i, 620,i);
 	for (i = 0; i < COMP_NUM; i++)
-		v_gtext(handle, 124+i*72, 78, _(cn[i]));
+		scr_l_text(124+i*72, 78, _(cn[i]));
 	for (i = 0; i < COMP_NUM; i++)
-		v_gtext(handle, 36, 110+i*24, _(cn[i]));
+		scr_l_text(36, 110+i*24, _(cn[i]));
 
-	vsf_interior(handle,2);
-	vsf_style(handle, 1);
+	scr_sf_interior(2);
+	scr_sf_style(1);
 	for (i = 0; i < COMP_NUM; i++)
 	{
 		for (j = 0; j < COMP_NUM+4; j++)
@@ -173,20 +173,20 @@ void tabelle(void)
 				txt[1]='-';
 				txt[2]=0;
 			}
-			v_gtext(handle, 140+i*72, 110+j*24+8*(j>=COMP_NUM), txt);
+			scr_l_text(140+i*72, 110+j*24+8*(j>=COMP_NUM), txt);
 			if (i == j)
 				box(116+i*72, 92+j*24, 188+i*72, 116+j*24, 1);
 		}
 	}
 
-	v_gtext(handle, 28, 286, _("Games"));
-	v_gtext(handle, 28, 310, _("Total won"));
-	v_gtext(handle, 28, 334, _("Total lost"));
-	v_gtext(handle, 28, 358, _("Won in %"));
+	scr_l_text(28, 286, _("Games"));
+	scr_l_text(28, 310, _("Total won"));
+	scr_l_text(28, 334, _("Total lost"));
+	scr_l_text(28, 358, _("Won in %"));
 
 	line(20, 59, 108, 84);
-	v_gtext(handle, 36, 80, "-");
-	v_gtext(handle, 88, 72, "+");
+	scr_l_text(36, 80, "-");
+	scr_l_text(88, 72, "+");
 
 	while (bt == 0 && event(1, 0) == 0);
 	while (bt != 0 && event(1, 0) == 0);
@@ -452,12 +452,12 @@ void ende(void)
 		rxy[1] = 80 + i*8;
 		rxy[2] = 600 - i*8;
 		rxy[3] = 320 - i*8;
-		v_bar(handle, rxy);
+		scr_bar(rxy);
 	}
 
-	v_gtext(handle, 140, 170, s1);
-	v_gtext(handle, 140, 210, s2);
-	v_gtext(handle, 140, 230, s3);
+	scr_l_text(140, 170, s1);
+	scr_l_text(140, 210, s2);
+	scr_l_text(140, 230, s3);
 
 	bt = 0;
 
@@ -494,7 +494,7 @@ void werdran(char c)
 
 	/* Anzahl der Spielrunden ausgeben */
 	z_txt(zug/2+1);
-	v_gtext(handle, 332, 395+16, txt);
+	scr_l_text(332, 395+16, txt);
 
 	if ( c )
 	{
@@ -513,8 +513,8 @@ void werdran(char c)
 			ad[0]=ad[5]=32;
 			ad[2]=ad[3]='?';
 		}
-		v_gtext(handle, x+4, y+h+12, _("Wind:"));
-		v_gtext(handle, x+52, y+h+12, ad);
+		scr_l_text(x+4, y+h+12, _("Wind:"));
+		scr_l_text(x+52, y+h+12, ad);
 
 		c=wnd>0? 1:-1;
 		wk=c*wnd/15.0;
@@ -553,7 +553,7 @@ void werdran(char c)
 			xy[11]=xy[1];
 			xy[6] = ((xy[4] + xy[8]) >> 1) + s2;
 			xy[7] = ((xy[5] + xy[9]) >> 1) + c2;
-			v_pline( handle,6,xy );
+			scr_pline(6, xy);
 		}
 		fahne();
 		show();
@@ -735,7 +735,7 @@ void line(short x1, short y1, short x2, short y2) /* Zeichnet eine Linie */
 	xy[1]=y1;
 	xy[2]=x2;
 	xy[3]=y2;
-	v_pline( handle, 2, xy );
+	scr_pline(2, xy);
 }
 
 void box(short x, short y, short x2, short y2, short c)
@@ -745,5 +745,5 @@ void box(short x, short y, short x2, short y2, short c)
 	xy[1]=y;
 	xy[2]=x2;
 	xy[3]=y2;
-	v_bar( handle,xy );
+	scr_bar(xy);
 }

@@ -121,7 +121,7 @@ static void draw_cannoneer(int x, int y, int w, int h)
 	}
 	xy[i++]=xy[0];
 	xy[i++]=xy[1];
-	v_fillarea( handle,i/2-1,xy );
+	scr_fillarea(i/2-1, xy);
 
 	/* Draw the cannon */
 	color( 1 );
@@ -145,7 +145,7 @@ static void draw_cannoneer(int x, int y, int w, int h)
 	xy[7]=yk-s*55-c*14;
 	xy[8]=xy[0];
 	xy[9]=xy[1];
-	v_fillarea( handle,4,xy );
+	scr_fillarea(4, xy);
 }
 
 
@@ -167,7 +167,7 @@ int sch_obj(short k)
 	wi=ka[n][k].w;
 	pv=ka[n][k].p;
 
-	vsf_interior( handle,1 );
+	scr_sf_interior(1);
 
 	do
 	{

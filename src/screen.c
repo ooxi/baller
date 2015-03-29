@@ -193,7 +193,7 @@ void scr_clear(void)
 	SDL_FillRect(surf, &rect, white);
 }
 
-void v_gtext(int handle, int x, int y, const char *text)
+void scr_l_text(int x, int y, const char *text)
 {
 	SDL_Rect rect;
 
@@ -230,7 +230,7 @@ void scr_ctr_text(int cx, int y, const char *text)
 	SDL_UpdateRects(surf, 1, &rect);
 }
 
-void v_circle(int handle, int x, int y, int w)
+void scr_circle(int x, int y, int w)
 {
 	SDL_Rect rect;
 
@@ -269,19 +269,19 @@ static void update_fill_color(void)
 	}
 }
 
-void vsf_style(short handle, short val)
+void scr_sf_style(short val)
 {
 	fill_style = val;
 	update_fill_color();
 }
 
-void vsf_interior(short handle, short val)
+void scr_sf_interior(short val)
 {
 	fill_interior = val;
 	update_fill_color();
 }
 
-void v_bar(short handle, short *xy)
+void scr_bar(short *xy)
 {
 	SDL_Rect rect;
 	Uint8 r, g, b;
@@ -329,7 +329,7 @@ void clr_bg(short x, short y, short w, short h)
 }
 
 
-void v_fillarea(short handle, short num, short xy[])
+void scr_fillarea(short num, short *xy)
 {
 	int i;
 	Sint16 vx[512], vy[512];
@@ -351,7 +351,7 @@ void v_fillarea(short handle, short num, short xy[])
 	SDL_UpdateRect(surf, 0,0, 640,480);
 }
 
-void v_pline(short handle, short num, short xy[])
+void scr_pline(short num, short *xy)
 {
 	int i;
 	int maxx, maxy;
